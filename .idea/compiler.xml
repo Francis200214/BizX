@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="biz-core" />
+        <module name="biz-starter-test" />
+        <module name="biz-common" />
+        <module name="biz-config" />
+        <module name="web-core-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="biz-common" target="1.8" />
+      <module name="biz-config" target="1.8" />
+      <module name="biz-core" target="1.8" />
+      <module name="biz-starter-test" target="1.8" />
+      <module name="biz-web" target="1.8" />
+      <module name="BizX" target="1.8" />
+      <module name="junit-service" target="1.8" />
+      <module name="web-annotation-service" target="1.5" />
+      <module name="web-annotation-service-api" target="1.5" />
+      <module name="web-annotation-service-impl" target="1.5" />
+      <module name="web-core-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

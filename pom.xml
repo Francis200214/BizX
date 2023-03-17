@@ -14,6 +14,7 @@
         <module>biz-web</module>
         <module>biz-core</module>
         <module>biz-config</module>
+        <module>biz-starter-test</module>
     </modules>
 
 
@@ -37,6 +38,11 @@
         <hutool.all.version>5.6.3</hutool.all.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>
+        <!-- javax.inject -->
+        <javax.inject.version>1</javax.inject.version>
+        <!-- junit -->
+        <junit.version>4.12</junit.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -145,6 +151,20 @@
                 <scope>compile</scope>
             </dependency>
 
+            <!-- javax.inject -->
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+
+            <!-- junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
