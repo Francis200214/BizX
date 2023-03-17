@@ -9,5 +9,4 @@ public abstract class BizLogAbstract {
 
 
 
-
 }
