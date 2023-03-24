@@ -5,6 +5,7 @@ package com.biz.common.singleton;
 import com.biz.common.concurrent.ExecutorsUtils;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -15,8 +16,8 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 单例Map
- * 可定时删除具体Key
+ * 单例 Map
+ * 可定时删除 Key
  *
  * @author francis
  */
@@ -50,11 +51,20 @@ public final class SingletonMap<K, V> {
         return v;
     }
 
-    public V get(K k) {
-        return get(k, () -> function);
+    public V get(K k, Supplier<V> supplier) {
+        return get(k, (v) -> Objects.requireNonNull(supplier, "supplier is null").get());
     }
 
-    private V get(K k, Supplier<Function<K, V>> functionSupplier) {
+    public V get(K k) {
+        return getCache(k, () -> function);
+    }
+
+    public V get(K k, Function<K, V> function) {
+        return getCache(k, () -> function);
+    }
+
+
+    private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
         if (version != VERSION.get()) {
             synchronized (this) {
                 if (version != VERSION.get()) {
@@ -82,9 +92,7 @@ public final class SingletonMap<K, V> {
     private void remove(K k) {
         if (map.containsKey(k)) {
             synchronized (map) {
-                if (map.containsKey(k)) {
-                    map.remove(k);
-                }
+                map.remove(k);
             }
         }
 
@@ -119,7 +127,7 @@ public final class SingletonMap<K, V> {
             return this;
         }
 
-        public SingletonMap<K, V> builder() {
+        public SingletonMap builder() {
             return new SingletonMap(supplier, function, died);
         }
     }
