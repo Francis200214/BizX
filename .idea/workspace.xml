@@ -2,37 +2,148 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/AbstractServiceLoaderProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ApplicationContextAwareServiceLoaderImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ServiceLoaderProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/SpringUtilsServiceLoaderImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/com.biz.common.utils.ServiceLoaderProvider" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/org.springframework.context.ApplicationContextAware" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/service/SelectableService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BizX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BizX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/biz-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/biz-common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/SingletonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/SingletonMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/allclasses-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/allclasses-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/allclasses-noframe.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/allclasses-noframe.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/ExecutorsUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/ExecutorsUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/class-use/ExecutorsUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/class-use/ExecutorsUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/concurrent/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/AbstractCopier.CopyClassIndex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/AbstractCopier.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/AbstractCopier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/Copier.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/Copier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/class-use/AbstractCopier.CopyClassIndex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/class-use/AbstractCopier.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/class-use/AbstractCopier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/class-use/Copier.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/class-use/Copier.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/copier/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/Singleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/Singleton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/SingletonMap.SingletonMapBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/SingletonMap.SingletonMapBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/SingletonMap.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/SingletonMap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/Singleton.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/Singleton.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/SingletonMap.SingletonMapBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/SingletonMap.SingletonMapBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/SingletonMap.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/class-use/SingletonMap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/singleton/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/TransactionalRunner.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/TransactionalRunner.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/class-use/TransactionalRunner.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/class-use/TransactionalRunner.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/transactional/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/AbstractServiceLoaderProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/AbstractServiceLoaderProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ApplicationContextAwareBeanUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ApplicationContextAwareBeanUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ApplicationContextAwareServiceLoaderImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ApplicationContextAwareServiceLoaderImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/BarCodeUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/BarCodeUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/BizCommon.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/BizCommon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/CalendarUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/CalendarUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ChineseCharactersUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ChineseCharactersUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/Common.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/Common.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/DateUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/DateUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/FileUtils.FileDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/FileUtils.FileDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/FileUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/FileUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/QrCodeUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/QrCodeUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/RequestUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/RequestUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/SecureUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/SecureUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ServiceLoaderProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/ServiceLoaderProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/SpringUtilsServiceLoaderImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/SpringUtilsServiceLoaderImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/StrUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/StrUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/TokenUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/TokenUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/UUIDGenerate.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/UUIDGenerate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/AbstractServiceLoaderProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/AbstractServiceLoaderProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ApplicationContextAwareBeanUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ApplicationContextAwareBeanUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ApplicationContextAwareServiceLoaderImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ApplicationContextAwareServiceLoaderImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/BarCodeUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/BarCodeUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/BizCommon.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/BizCommon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/CalendarUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/CalendarUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ChineseCharactersUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ChineseCharactersUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/Common.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/Common.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/DateUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/DateUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/FileUtils.FileDTO.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/FileUtils.FileDTO.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/FileUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/FileUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/QrCodeUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/QrCodeUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/RequestUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/RequestUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/SecureUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/SecureUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ServiceLoaderProvider.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/ServiceLoaderProvider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/SpringUtilsServiceLoaderImpl.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/SpringUtilsServiceLoaderImpl.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/StrUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/StrUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/TokenUtils.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/TokenUtils.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/UUIDGenerate.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/class-use/UUIDGenerate.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/com/biz/common/utils/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/constant-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/constant-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/deprecated-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/deprecated-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/overview-frame.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/overview-frame.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/overview-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/overview-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/apidocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/apidocs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-javadoc.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-javadoc.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-sources.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT-sources.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/biz-common-1.0-SNAPSHOT.pom.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/javadoc-bundle-options/package-list" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/javadoc-bundle-options/package-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-config/biz-config.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/biz-config.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/biz-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/biz-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/SpringBeanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ApplicationContextAwareBeanUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/biz-starter-test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/biz-starter-test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-starter-test/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/service/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/service/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/service/impl/TestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/main/java/com/biz/starter/service/impl/TestServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/src/test/java/com/biz/starter/test/boot/test/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/test/java/com/biz/starter/test/boot/test/TestBoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/service/TestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/service/TestService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-starter-test/src/test/java/com/biz/starter/test/boot/test/TestBoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/src/test/java/com/biz/starter/test/boot/test/TestBoot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/service/impl/TestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/target/classes/com/biz/starter/service/impl/TestServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-starter-test/target/test-classes/com/biz/starter/test/boot/test/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/biz-web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/biz-web.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-starter-test/target/test-classes/com/biz/starter/test/boot/test/TestBoot.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-starter-test/target/test-classes/com/biz/starter/test/boot/test/TestBoot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/web-annotation-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-annotation-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/web-core-service/web-core-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-core-service/web-core-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/web-annotation-service/target/classes/com/biz/web/annotation/BizLog.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-annotation-service/target/classes/com/biz/web/annotation/BizLog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/web-annotation-service/target/classes/com/biz/web/annotation/BizVerification.class" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-annotation-service/target/classes/com/biz/web/annotation/BizVerification.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/web-core-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/web-core-service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/BizX-1.0-SNAPSHOT.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/BizX-1.0-SNAPSHOT.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/BizX-1.0-SNAPSHOT.pom.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/BizX/1.0-SNAPSHOT/BizX-1.0-SNAPSHOT.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/BizX/1.0-SNAPSHOT/BizX-1.0-SNAPSHOT.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/BizX/1.0-SNAPSHOT/BizX-1.0-SNAPSHOT.pom.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/BizX/1.0-SNAPSHOT/maven-metadata-nexus.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/BizX/maven-metadata-nexus.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-javadoc.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-javadoc.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-sources.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT-sources.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.jar.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/biz-common-1.0-SNAPSHOT.pom.asc.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/1.0-SNAPSHOT/maven-metadata-nexus.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/nexus-staging/deferred/org/bizx/biz-common/maven-metadata-nexus.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +173,7 @@
       <MavenGeneralSettings>
         <option name="localRepository" value="E:\apache-maven-3.6.3\maven_repository" />
         <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings_ali.xml" />
+        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="enabledProfiles">
@@ -91,7 +202,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/biz-common/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -108,20 +219,6 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\idea\BizX\biz-common\src\main\resources" />
-      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common" />
-      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common\copier" />
-      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common\service" />
-      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\utils" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.biz.common.transactional" />
-      <recent name="com.biz.common.concurrent" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\idea\BizX\biz-common\src\main\resources\META-INF\services" />
       <recent name="E:\idea\BizX\biz-common\src\main\resources\META-INF" />
@@ -129,6 +226,25 @@
       <recent name="E:\idea\BizX\biz-common\src\main\resources\MATE-INF\services" />
       <recent name="E:\idea\BizX\web-service" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.biz.common.transactional" />
+      <recent name="com.biz.common.concurrent" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\idea\BizX" />
+      <recent name="E:\idea\BizX\biz-common\src\main\resources" />
+      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common" />
+      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common\copier" />
+      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common\service" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean" />
+    </option>
   </component>
   <component name="RunManager" selected="JUnit.TestBoot.testBeanUtils">
     <configuration name="TestBoot.testBeanUtils" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -200,7 +316,9 @@
       <workItem from="1679380149866" duration="1559000" />
       <workItem from="1679466253100" duration="1194000" />
       <workItem from="1679549187398" duration="7410000" />
-      <workItem from="1679635053366" duration="4765000" />
+      <workItem from="1679635053366" duration="8495000" />
+      <workItem from="1679703673173" duration="339000" />
+      <workItem from="1679704074955" duration="18731000" />
     </task>
     <servers />
   </component>
@@ -208,10 +326,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="440" y="94" key="#Project_Structure" timestamp="1679052640172">
+    <state x="440" y="94" key="#Project_Structure" timestamp="1679654236446">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1679052640172" />
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1679654236446" />
     <state x="700" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1679308288207">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -232,26 +350,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="715" y="222" key="#xdebugger.evaluate/0.0.1920.1040@0.0.1920.1040" timestamp="1679112834581" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1679549206610">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1679703715314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1679549206610" />
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1679400649715">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1679703715314" />
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom" timestamp="1679738383850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1679400649715" />
-    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1679400649715">
+    <state width="1877" height="332" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1679738383850" />
+    <state width="1877" height="332" key="GridCell.Tab.0.center" timestamp="1679738383850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1679400649715" />
-    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1679400649715">
+    <state width="1877" height="332" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1679738383850" />
+    <state width="1877" height="332" key="GridCell.Tab.0.left" timestamp="1679738383849">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1679400649715" />
-    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1679400649715">
+    <state width="1877" height="332" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1679738383849" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right" timestamp="1679738383850">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1679400649715" />
+    <state width="1877" height="332" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1679738383850" />
     <state width="1877" height="282" key="GridCell.Tab.1.bottom" timestamp="1679400649713">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -268,22 +386,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1679400649713" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1679635350256">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1679703985402">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1679635350256" />
-    <state x="662" y="223" width="596" height="594" key="find.popup" timestamp="1679038659329">
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1679703985402" />
+    <state x="662" y="223" width="596" height="594" key="find.popup" timestamp="1679654526585">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="223" width="596" height="594" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1679038659329" />
+    <state x="662" y="223" width="596" height="594" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1679654526585" />
     <state x="430" y="180" key="new project wizard" timestamp="1679051581923">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="430" y="180" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1679051581923" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1679306861209">
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup" timestamp="1679651843948">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1679306861209" />
+    <state x="616" y="240" width="672" height="677" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1679651843948" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1679312065298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

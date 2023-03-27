@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Named;
 
 
-@Named
+//@Named
 public class TestServiceImpl implements TestService {
 
 

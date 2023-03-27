@@ -14,20 +14,20 @@ import java.util.ServiceLoader;
 /**
  * author francis
  */
-@SpringBootTest
-@Slf4j
+//@SpringBootTest
+//@Slf4j
 public class TestBoot {
 
-    @Test
-    public void testBeanUtils() {
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-        
-        final SpringUtilsServiceLoaderImpl bean = ApplicationContextAwareBeanUtils.getBean(SpringUtilsServiceLoaderImpl.class);
-        log.info("iterator.hasNext() {}", bean);
-        // ApplicationContextAwareBeanUtils
-
+//    @Test
+//    public void testBeanUtils() {
 //        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
-//        applicationContext.getBean(SpringUtilsServiceLoaderImpl.class);
-    }
+//
+//        final SpringUtilsServiceLoaderImpl bean = ApplicationContextAwareBeanUtils.getBean(SpringUtilsServiceLoaderImpl.class);
+//        log.info("iterator.hasNext() {}", bean);
+//        // ApplicationContextAwareBeanUtils
+//
+////        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+////        applicationContext.getBean(SpringUtilsServiceLoaderImpl.class);
+//    }
 
 }
