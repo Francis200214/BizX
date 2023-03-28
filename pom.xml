@@ -45,7 +45,8 @@
         <javax.inject.version>1</javax.inject.version>
         <!-- junit -->
         <junit.version>4.12</junit.version>
-
+        <!-- JTS -->
+        <jts.core.version>1.19.0</jts.core.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -161,6 +162,14 @@
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
+
+            <!-- JTS -->
+            <dependency>
+                <groupId>org.locationtech.jts</groupId>
+                <artifactId>jts-core</artifactId>
+                <version>${jts.core.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

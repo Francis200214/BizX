@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/AppLoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadStrategyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoginService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoginType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/StrategyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/GeometryUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,6 +183,7 @@
       <workItem from="1679635053366" duration="8495000" />
       <workItem from="1679703673173" duration="339000" />
       <workItem from="1679704074955" duration="22493000" />
+      <workItem from="1679981076513" duration="2684000" />
     </task>
     <servers />
   </component>
