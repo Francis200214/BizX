@@ -103,6 +103,9 @@ public final class JwtTokenUtils {
     }
 
 
+    /**
+     * JwtTokenUtils 内置的Builder模式类
+     */
     public static class JwtTokenUtilsBuilder {
         /**
          * JwtToken 加密密钥
