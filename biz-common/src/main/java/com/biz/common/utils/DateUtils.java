@@ -23,7 +23,7 @@ public final class DateUtils {
     }
 
     public static String format(Calendar cal, String format) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(BizCommon.isBlank(format) ? DEFAULT_DATETIME : format);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Common.isBlank(format) ? DEFAULT_DATETIME : format);
         return simpleDateFormat.format(cal.getTime());
     }
 
