@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="biz-core" />
         <module name="web-annotation-service" />
-        <module name="biz-starter-test" />
         <module name="biz-config" />
         <module name="biz-common" />
         <module name="web-core-service" />
