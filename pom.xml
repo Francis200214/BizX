@@ -17,7 +17,6 @@
         <module>biz-web</module>
         <module>biz-core</module>
         <module>biz-config</module>
-        <module>biz-starter-test</module>
     </modules>
 
 
