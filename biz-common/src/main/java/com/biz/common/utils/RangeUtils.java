@@ -10,8 +10,6 @@ package com.biz.common.utils;
  */
 public final class RangeUtils {
 
-
-
     /**
      * 长半径 a = 6378137
      */
@@ -27,7 +25,27 @@ public final class RangeUtils {
      */
     private static final double f = 1 / 298.2572236;
 
+    /**
+     * 获取左下角经纬度点
+     *
+     * @param longitude 经度
+     * @param latitude 纬度
+     * @return [0] 经度 [1] 纬度
+     */
+    public static double[] leftDownPoint(float longitude, float latitude) {
+        return rangeOutsidePointByLongitudeAndLatitude(longitude, latitude, 225, 1000);
+    }
 
+    /**
+     * 获取右上角经纬度点
+     *
+     * @param longitude 经度
+     * @param latitude 纬度
+     * @return [0] 经度 [1] 纬度
+     */
+    public static double[] rightUpPoint(float longitude, float latitude) {
+        return rangeOutsidePointByLongitudeAndLatitude(longitude, latitude, 45, 1000);
+    }
 
     /**
      * 根据 度、某个经纬度外 X米外的经纬度点
