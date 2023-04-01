@@ -20,8 +20,11 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("CustomWebMvcConfigurer addInterceptors");
+        // 检查Token
         registry.addInterceptor(customCheckTokenHandlerInterceptor())
-                // 拦截所有请求
+                .addPathPatterns("/**");
+        // 检查入参参数是否符合规则
+        registry.addInterceptor(customCheckParameterHandlerInterceptor())
                 .addPathPatterns("/**");
     }
 
@@ -29,6 +32,11 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     @Bean
     public CustomCheckTokenHandlerInterceptor customCheckTokenHandlerInterceptor() {
         return new CustomCheckTokenHandlerInterceptor();
+    }
+
+    @Bean
+    public CustomCheckParameterHandlerInterceptor customCheckParameterHandlerInterceptor() {
+        return new CustomCheckParameterHandlerInterceptor();
     }
 
 
