@@ -3,12 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BizX.iml" filepath="$PROJECT_DIR$/.idea/BizX.iml" />
+      <module fileurl="file://$PROJECT_DIR$/biz-all/biz-all.iml" filepath="$PROJECT_DIR$/biz-all/biz-all.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-common/biz-common.iml" filepath="$PROJECT_DIR$/biz-common/biz-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-config/biz-config.iml" filepath="$PROJECT_DIR$/biz-config/biz-config.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-core/biz-core.iml" filepath="$PROJECT_DIR$/biz-core/biz-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-web/biz-web.iml" filepath="$PROJECT_DIR$/biz-web/biz-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service.iml" filepath="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/biz-web/web-core-service/web-core-service.iml" filepath="$PROJECT_DIR$/biz-web/web-core-service/web-core-service.iml" />
     </modules>
   </component>
 </project>

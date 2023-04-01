@@ -7,9 +7,9 @@
     <groupId>io.github.francis200214</groupId>
     <artifactId>BizX</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1-release</version>
+    <version>1.0.4-release</version>
     <name>BizX</name>
-    <description>A flexible and efficient business development framework</description>
+    <description>BizX 是一个灵活而高效的业务开发框架, 其中也有很多为业务开发所需要的工具类的提供。</description>
     <url>https://github.com/Francis200214/BizX.git</url>
 
     <modules>
@@ -17,6 +17,7 @@
         <module>biz-web</module>
         <module>biz-core</module>
         <module>biz-config</module>
+        <module>biz-all</module>
     </modules>
 
 
@@ -206,10 +207,10 @@
 
     <profiles>
 
-        <profile>
-            <id>private-service</id>
+<!--        <profile>-->
+<!--            <id>BizX-Release</id>-->
 
-        </profile>
+<!--        </profile>-->
 
 <!--        <profile>-->
 <!--            <id>release</id>-->

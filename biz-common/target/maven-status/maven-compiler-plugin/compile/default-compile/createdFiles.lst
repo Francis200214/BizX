@@ -24,6 +24,7 @@ com\biz\common\utils\JwtTokenUtils$1.class
 com\biz\common\utils\RequestUtils.class
 com\biz\common\utils\ApplicationContextAwareBeanUtils.class
 com\biz\common\jts\JTSUtils.class
+com\biz\common\utils\RangeUtils.class
 com\biz\common\concurrent\ExecutorsUtils.class
 com\biz\common\utils\CalendarUtils.class
 com\biz\common\utils\SpringUtilsServiceLoaderImpl.class

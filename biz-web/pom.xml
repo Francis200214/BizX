@@ -5,18 +5,15 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.0.1-release</version>
+        <version>1.0.4-release</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>web-service</artifactId>
+    <artifactId>biz-web</artifactId>
+    <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
     <version>${project.parent.version}</version>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>web-annotation-service</module>
-        <module>web-core-service</module>
-    </modules>
 
 </project>
