@@ -1,5 +1,7 @@
 package com.biz.common.utils;
 
+import java.util.Collection;
+
 /**
  * 公共工具类
  *
@@ -8,6 +10,18 @@ package com.biz.common.utils;
  */
 public final class Common {
 
+
+    public static double[] toDoubles(double... doubles) {
+        int length = doubles.length;
+        if (length == 0) {
+            return new double[length];
+        }
+        double[] result = new double[length];
+        for (int i = 0; i < length; i++) {
+            result[i] = doubles[i];
+        }
+        return result;
+    }
 
     /**
      * 判断字符串是否不为Null或字符串去除两端空格后长度是否不为0
@@ -27,6 +41,16 @@ public final class Common {
      */
     public static boolean isBlank(String str) {
         return str == null ||  str.trim().length() == 0;
+    }
+
+    /**
+     * 判断集合是否为空
+     *
+     * @param collection
+     * @return
+     */
+    public static boolean isEmpty(Collection<?> collection) {
+        return collection == null || collection.isEmpty();
     }
 
     /**

@@ -4,6 +4,7 @@ import com.biz.common.utils.Common;
 import lombok.SneakyThrows;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.WKTReader;
 
 import java.util.List;
@@ -40,6 +41,17 @@ public final class GeometryUtils {
     public static Geometry coordinatesToGeometry(List<Coordinate> coordinates) {
         Coordinate[] coordinatesArray = new Coordinate[coordinates.size()];
         return JTSUtils.GEOMETRY_FACTORY.createPolygon(coordinates.toArray(coordinatesArray));
+    }
+
+    /**
+     * 获取 Geometry 中心点经纬度
+     *
+     * @param geometry
+     * @return double[0] 纬度 double[1] 纬度
+     */
+    public static double[] center(Geometry geometry) {
+        Point centroid = geometry.getCentroid();
+        return Common.toDoubles(centroid.getX(), centroid.getY());
     }
 
     /**
