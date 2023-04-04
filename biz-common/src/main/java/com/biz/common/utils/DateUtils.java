@@ -74,6 +74,29 @@ public final class DateUtils {
 
 
     /**
+     * 根据时间戳或者Date时间
+     *
+     * @param timeMills
+     * @return
+     */
+    public static String longToDateStr(long timeMills) {
+        return getDateFormat(DEFAULT_DATETIME).format(getCalendar(timeMills).getTime());
+    }
+
+
+    /**
+     * 根据时间戳初始化 Calendar
+     *
+     * @param timeMills
+     * @return
+     */
+    public static Calendar getCalendar(long timeMills) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timeMills);
+        return cal;
+    }
+
+    /**
      * 获取去年
      * 【时间格式：yyyy】
      *
