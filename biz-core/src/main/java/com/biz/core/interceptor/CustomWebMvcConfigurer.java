@@ -1,5 +1,6 @@
 package com.biz.core.interceptor;
 
+import com.biz.core.bean.BizXComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -16,8 +17,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @create 2023/4/1 16:30
  */
 @Slf4j
-@Configuration
-@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
+@BizXComponent
+//@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override

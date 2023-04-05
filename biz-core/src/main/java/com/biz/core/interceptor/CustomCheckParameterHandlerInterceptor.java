@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author francis
  * @create 2023/4/1 16:29
  */
-@Order(1)
+@Order(2)
 @Slf4j
 public class CustomCheckParameterHandlerInterceptor implements HandlerInterceptor {
 
