@@ -1,6 +1,6 @@
 package com.biz.core.spring;
 
-import com.biz.core.bean.BizXComponent;
+import com.biz.library.bean.BizXComponent;
 import com.biz.core.bean.BizXComponentBeanDefinitionScanner;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ResourceLoaderAware;

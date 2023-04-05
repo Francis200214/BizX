@@ -7,7 +7,11 @@
   </component>
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="CustomWebMvcConfigurer" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/biz/core/interceptor/CustomWebMvcConfigurer.java</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
 </module>

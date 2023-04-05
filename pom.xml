@@ -18,6 +18,7 @@
         <module>biz-core</module>
         <module>biz-config</module>
         <module>biz-all</module>
+        <module>biz-library</module>
     </modules>
 
 
@@ -25,16 +26,6 @@
         <java.version>1.8</java.version>
         <!-- SpringBoot版本 -->
         <spring.boot.version>2.6.3</spring.boot.version>
-        <!-- Druid -->
-        <druid.version>1.2.6</druid.version>
-        <!-- MySQL -->
-        <mysql.version>8.0.13</mysql.version>
-        <!-- Mybatis-Plus -->
-        <mybatis.plus.version>3.5.1</mybatis.plus.version>
-        <!-- Swagger -->
-        <springfox.swagger2>2.9.2</springfox.swagger2>
-        <!-- Swagger-UI -->
-        <swagger.bootstrap.ui>1.9.6</swagger.bootstrap.ui>
         <!-- FastJson -->
         <fastjson.version>1.2.79</fastjson.version>
         <!-- hutool -->
@@ -47,8 +38,6 @@
         <junit.version>4.12</junit.version>
         <!-- JTS -->
         <jts.core.version>1.19.0</jts.core.version>
-        <!-- EasyExcel -->
-        <easyexcel.version>3.1.0</easyexcel.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -61,13 +50,13 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
-        <!-- SpringWeb 启动依赖 -->
+<!--        &lt;!&ndash; SpringWeb 启动依赖 &ndash;&gt;-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -92,48 +81,6 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <!-- Druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-
-            <!-- MySQL -->
-            <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>
-
-            <!-- MyBatis-Plus -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis.plus.version}</version>
-            </dependency>
-
-            <!-- Swagger -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${springfox.swagger2}</version>
-            </dependency>
-
-            <!-- Swagger-Ui -->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger-ui</artifactId>
-                <version>${springfox.swagger2}</version>
-            </dependency>
-
-            <!-- Swagger-Bootstrap-Ui -->
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>swagger-bootstrap-ui</artifactId>
-                <version>${swagger.bootstrap.ui}</version>
             </dependency>
 
             <!-- fastJson -->
@@ -170,20 +117,6 @@
                 <groupId>org.locationtech.jts</groupId>
                 <artifactId>jts-core</artifactId>
                 <version>${jts.core.version}</version>
-            </dependency>
-
-
-            <!-- EasyExcel -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>easyexcel</artifactId>
-                <version>${easyexcel.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>poi-ooxml-schemas</artifactId>
-                        <groupId>org.apache.poi</groupId>
-                    </exclusion>
-                </exclusions>
             </dependency>
 
         </dependencies>

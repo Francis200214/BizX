@@ -1,4 +1,4 @@
-package com.biz.core.bean;
+package com.biz.library.bean;
 
 import java.lang.annotation.*;
 

@@ -1,6 +1,6 @@
 package com.biz.core.interceptor;
 
-import com.biz.core.bean.BizXComponent;
+import com.biz.library.bean.BizXComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.method.HandlerMethod;

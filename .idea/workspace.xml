@@ -5,10 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/poi/ExcelUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/biz-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/biz-core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/bean/BizXComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckParameterHandlerInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomWebMvcConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,23 +77,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "E:/idea/agriculture",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "spring.configuration.checksum": "0e36fe5f6a06daeccfd4e11327c1221d",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea/agriculture&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.117227316&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23333333&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;3b1c27ef3a63ff651b716b81caeb5877&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -150,7 +169,9 @@
       <workItem from="1680517306108" duration="55000" />
       <workItem from="1680530075731" duration="2557000" />
       <workItem from="1680615821042" duration="2714000" />
-      <workItem from="1680661355137" duration="11767000" />
+      <workItem from="1680661355137" duration="12533000" />
+      <workItem from="1680678999566" duration="398000" />
+      <workItem from="1680679407782" duration="105000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -173,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680677943126</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="1、CustomWebMvcConfigurer使用Configurer注解；">
+      <created>1680678224735</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680678224735</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +211,7 @@
     <MESSAGE value="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。" />
     <MESSAGE value="1、增加了反射工具类以及反射工具类返回的数据模型；&#10;2、测试策略模式；" />
     <MESSAGE value="1、由注解BizX改成BizXEnable，其中使用Import注解，增加了注入Bean的实现类；&#10;2、增加了BizXComponent注解，使用该注解的Class注入到Bean中，并添加了BizXComponentBeanDefinitionScanner实现类；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、由注解BizX改成BizXEnable，其中使用Import注解，增加了注入Bean的实现类；&#10;2、增加了BizXComponent注解，使用该注解的Class注入到Bean中，并添加了BizXComponentBeanDefinitionScanner实现类；" />
+    <MESSAGE value="1、CustomWebMvcConfigurer使用Configurer注解；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、CustomWebMvcConfigurer使用Configurer注解；" />
   </component>
 </project>

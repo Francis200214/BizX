@@ -4,7 +4,6 @@ import cn.hutool.core.io.FileUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.logging.log4j.util.Strings;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,7 +56,7 @@ public final class FileUtils {
      */
     public static void base64ToFile(String filePath, String fileContext, String fileType) {
         // 判断文件base64编码是否为空
-        if (Strings.isBlank(fileContext)) {
+        if (Common.isBlank(fileContext)) {
             return;
         }
         // 设置文件存储位置

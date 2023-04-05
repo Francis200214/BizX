@@ -10,6 +10,7 @@
         <module name="biz-core" />
         <module name="biz-common" />
         <module name="biz-config" />
+        <module name="biz-library" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
