@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  *
  * @author francis
  */
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.FIELD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BizVerification {
 

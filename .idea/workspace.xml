@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckDouble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckInteger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/poi/ExcelUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/biz-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/biz-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/bean/BizXComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckParameterHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/interceptor/CustomCheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +25,8 @@
       <list>
         <option value="Interface" />
         <option value="Enum" />
-        <option value="AnnotationType" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -120,11 +107,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.biz.library.web" />
       <recent name="com.biz.common.str.a" />
       <recent name="com.biz.core.interceptor" />
       <recent name="com.biz.common.utils" />
       <recent name="com.biz.common.transactional" />
-      <recent name="com.biz.common.concurrent" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -212,6 +199,7 @@
     <MESSAGE value="1、增加了反射工具类以及反射工具类返回的数据模型；&#10;2、测试策略模式；" />
     <MESSAGE value="1、由注解BizX改成BizXEnable，其中使用Import注解，增加了注入Bean的实现类；&#10;2、增加了BizXComponent注解，使用该注解的Class注入到Bean中，并添加了BizXComponentBeanDefinitionScanner实现类；" />
     <MESSAGE value="1、CustomWebMvcConfigurer使用Configurer注解；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、CustomWebMvcConfigurer使用Configurer注解；" />
+    <MESSAGE value="1、增加了biz-library module，主要存放公共注解；&#10;2、更新了README；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、增加了biz-library module，主要存放公共注解；&#10;2、更新了README；" />
   </component>
 </project>
