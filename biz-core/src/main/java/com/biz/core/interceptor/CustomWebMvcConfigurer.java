@@ -1,6 +1,5 @@
 package com.biz.core.interceptor;
 
-import com.biz.core.bean.BizXComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,7 +16,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @create 2023/4/1 16:30
  */
 @Slf4j
-@BizXComponent
+@Configuration
 //@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
 public class CustomWebMvcConfigurer implements WebMvcConfigurer {
 
@@ -25,23 +24,23 @@ public class CustomWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("CustomWebMvcConfigurer addInterceptors");
         // 检查Token
-        registry.addInterceptor(customCheckTokenHandlerInterceptor())
+        registry.addInterceptor(new CustomCheckTokenHandlerInterceptor())
                 .addPathPatterns("/**");
         // 检查入参参数是否符合规则
-        registry.addInterceptor(customCheckParameterHandlerInterceptor())
+        registry.addInterceptor(new CustomCheckParameterHandlerInterceptor())
                 .addPathPatterns("/**");
     }
 
 
-    @Bean
-    public CustomCheckTokenHandlerInterceptor customCheckTokenHandlerInterceptor() {
-        return new CustomCheckTokenHandlerInterceptor();
-    }
-
-    @Bean
-    public CustomCheckParameterHandlerInterceptor customCheckParameterHandlerInterceptor() {
-        return new CustomCheckParameterHandlerInterceptor();
-    }
+//    @Bean
+//    public CustomCheckTokenHandlerInterceptor customCheckTokenHandlerInterceptor() {
+//        return new CustomCheckTokenHandlerInterceptor();
+//    }
+//
+//    @Bean
+//    public CustomCheckParameterHandlerInterceptor customCheckParameterHandlerInterceptor() {
+//        return new CustomCheckParameterHandlerInterceptor();
+//    }
 
 
 }
