@@ -1,4 +1,4 @@
-package com.biz.core.interceptor;
+package com.biz.web.interceptor;
 
 import org.springframework.context.annotation.Import;
 

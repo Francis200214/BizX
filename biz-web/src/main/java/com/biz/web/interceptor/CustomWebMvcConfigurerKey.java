@@ -1,4 +1,4 @@
-package com.biz.core.interceptor;
+package com.biz.web.interceptor;
 
 /**
  * 热插拔 CustomWebMvcConfigurer 标记类
