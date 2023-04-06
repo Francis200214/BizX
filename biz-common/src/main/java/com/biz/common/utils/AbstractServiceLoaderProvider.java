@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public abstract class AbstractServiceLoaderProvider implements ServiceLoaderProvider {
 
-    private final SingletonMap<String, Object> cache = SingletonMap.<String, Object>builder().builder();
+    private final SingletonMap<String, Object> cache = SingletonMap.<String, Object>builder().build();
 
     private static ReentrantLock lock = new ReentrantLock(true);
 

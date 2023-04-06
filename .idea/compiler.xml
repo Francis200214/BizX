@@ -11,6 +11,7 @@
         <module name="biz-common" />
         <module name="biz-config" />
         <module name="biz-library" />
+        <module name="biz-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

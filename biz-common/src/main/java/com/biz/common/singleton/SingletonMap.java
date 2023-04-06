@@ -127,7 +127,7 @@ public final class SingletonMap<K, V> {
             return this;
         }
 
-        public SingletonMap builder() {
+        public SingletonMap build() {
             return new SingletonMap(supplier, function, died);
         }
     }

@@ -16,28 +16,36 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 @Configuration
 //@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
-public class CustomWebMvcConfigurer implements WebMvcConfigurer {
+public class BizXWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("CustomWebMvcConfigurer addInterceptors");
+        // 接口限时刷新
+        registry.addInterceptor(accessLimintInterceptor())
+                .addPathPatterns("/**");
         // 检查Token
-        registry.addInterceptor(customCheckTokenHandlerInterceptor())
+        registry.addInterceptor(checkTokenHandlerInterceptor())
                 .addPathPatterns("/**");
         // 检查入参参数是否符合规则
-        registry.addInterceptor(customCheckParameterHandlerInterceptor())
+        registry.addInterceptor(checkParameterHandlerInterceptor())
                 .addPathPatterns("/**");
     }
 
 
     @Bean
-    public CustomCheckTokenHandlerInterceptor customCheckTokenHandlerInterceptor() {
-        return new CustomCheckTokenHandlerInterceptor();
+    public AccessLimintInterceptor accessLimintInterceptor() {
+        return new AccessLimintInterceptor();
     }
 
     @Bean
-    public CustomCheckParameterHandlerInterceptor customCheckParameterHandlerInterceptor() {
-        return new CustomCheckParameterHandlerInterceptor();
+    public CheckTokenHandlerInterceptor checkTokenHandlerInterceptor() {
+        return new CheckTokenHandlerInterceptor();
+    }
+
+    @Bean
+    public CheckParameterHandlerInterceptor checkParameterHandlerInterceptor() {
+        return new CheckParameterHandlerInterceptor();
     }
 
 

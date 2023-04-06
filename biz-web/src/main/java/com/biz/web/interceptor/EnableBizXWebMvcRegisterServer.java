@@ -13,6 +13,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(CustomWebMvcConfigurerKey.class)
-public @interface EnableCustomWebMvcRegisterServer {
+@Import(BizXWebMvcConfigurer.class)
+public @interface EnableBizXWebMvcRegisterServer {
 }

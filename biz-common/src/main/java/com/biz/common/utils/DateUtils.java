@@ -43,7 +43,7 @@ public final class DateUtils {
      */
     private static DateFormat getDateFormat(String format) {
         if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
-            DATE_FORMAT_THREAD_LOCAL.set(SingletonMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).builder());
+            DATE_FORMAT_THREAD_LOCAL.set(SingletonMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
         }
 
         return DATE_FORMAT_THREAD_LOCAL.get().get(format);
