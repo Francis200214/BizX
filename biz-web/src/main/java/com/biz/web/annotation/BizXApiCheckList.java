@@ -1,4 +1,4 @@
-package com.biz.library.web;
+package com.biz.web.annotation;
 
 import java.lang.annotation.*;
 

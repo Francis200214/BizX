@@ -1,14 +1,14 @@
-package com.biz.library.web;
+package com.biz.web.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * 检查Integer类型
+ * 检查Double类型
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckInteger {
+public @interface BizXApiCheckDouble {
 
     /**
      * 是否可以为null
@@ -18,16 +18,16 @@ public @interface BizXApiCheckInteger {
     /**
      * 最小值
      */
-    int min() default Integer.MIN_VALUE;
+    double min() default Double.MIN_VALUE;
 
     /**
      * 最大值
      */
-    int max() default Integer.MAX_VALUE;
+    double max() default Double.MAX_VALUE;
 
     /**
      * 默认值
      */
-    int value() default 10;
+    double value() default 20D;
 
 }

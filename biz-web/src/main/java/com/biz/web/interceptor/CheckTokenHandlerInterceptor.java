@@ -1,5 +1,6 @@
 package com.biz.web.interceptor;
 
+import com.biz.library.web.BizVerification;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.method.HandlerMethod;
@@ -8,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Method;
 
 /**
  * 检查 Token 拦截器
@@ -27,6 +29,17 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor {
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
+
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        Method method = handlerMethod.getMethod();
+
+        BizVerification verification = method.getAnnotation(BizVerification.class);
+        if (verification == null) {
+            return true;
+        }
+
+        // TODO 处理当前用户的角色
+
 
         return true;
     }

@@ -1,5 +1,8 @@
-package com.biz.library.web;
+package com.biz.web.annotation;
 
+import com.biz.web.validator.CheckStringValidator;
+
+import javax.validation.Constraint;
 import java.lang.annotation.*;
 
 /**
@@ -8,6 +11,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Constraint(validatedBy = CheckStringValidator.class)
 public @interface BizXApiCheckString {
 
     /**
