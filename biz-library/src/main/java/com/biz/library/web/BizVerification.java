@@ -17,6 +17,6 @@ public @interface BizVerification {
     /**
      * 默认为空，所有角色都能访问
      */
-    String[] roles() default "";
+    String[] roles() default "*";
 
 }

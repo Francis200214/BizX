@@ -5,31 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimintInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/validator/CheckStringValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/SingletonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/SingletonMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/AbstractServiceLoaderProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/AbstractServiceLoaderProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/GeometryUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/GeometryUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizVerification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckDouble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckInteger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckList.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/src/main/java/com/biz/library/web/BizXApiCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CustomCheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CustomCheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CustomWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CustomWebMvcConfigurerKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurerKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/EnableCustomWebMvcRegisterServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/EnableBizXWebMvcRegisterServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/core/BizAccount.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/core/BizAccountFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/interceptor/CustomCheckParameterHandlerInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/interceptor/CustomCheckTokenHandlerInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/interceptor/CustomWebMvcConfigurer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/interceptor/CustomWebMvcConfigurerKey.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/biz-web/com/biz/web/interceptor/EnableCustomWebMvcRegisterServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +93,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "810c78aa6cfa114a898519e51f2d55f5",
+    "spring.configuration.checksum": "0b0bd6f7e1967ea6f9af49fd52e11a08",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -181,7 +173,8 @@
       <workItem from="1680679407782" duration="105000" />
       <workItem from="1680745571293" duration="402000" />
       <workItem from="1680750814867" duration="592000" />
-      <workItem from="1680775887548" duration="4817000" />
+      <workItem from="1680775887548" duration="7723000" />
+      <workItem from="1680827203215" duration="7668000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -225,5 +218,16 @@
     <MESSAGE value="1、增加了biz-library module，主要存放公共注解；&#10;2、更新了README；" />
     <MESSAGE value="1、增加了检查字符串、Double、Integer、List类型的注解；" />
     <option name="LAST_COMMIT_MESSAGE" value="1、增加了检查字符串、Double、Integer、List类型的注解；" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -10,7 +10,7 @@ import org.locationtech.jts.io.WKTReader;
 import java.util.List;
 
 /**
- * Geometry（墨卡托）工具类
+ * Geometry 工具类
  *
  * @author francis
  * @create 2023/3/28 18:40
