@@ -44,6 +44,7 @@ public class CheckParameterHandlerInterceptor implements HandlerInterceptor, Met
 //
 //        }
         HandlerMethod handlerMethod = (HandlerMethod) handler;
+
         Method method = handlerMethod.getMethod();
         for (Parameter parameter : method.getParameters()) {
             String name = parameter.getName();

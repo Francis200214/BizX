@@ -7,6 +7,8 @@ import java.lang.annotation.*;
 
 /**
  * 检查String类型
+ *
+ * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -22,6 +24,6 @@ public @interface BizXApiCheckString {
     /**
      * 默认值
      */
-    String value() default "";
+    String value();
 
 }

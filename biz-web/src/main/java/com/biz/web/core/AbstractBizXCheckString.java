@@ -1,5 +1,6 @@
 package com.biz.web.core;
 
+import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.BizXApiCheck;
 import com.biz.web.annotation.BizXApiCheckString;
@@ -23,16 +24,19 @@ import java.util.Arrays;
 @BizXComponent
 public class AbstractBizXCheckString {
 
+
+
     @Around("@annotation(check)")
-//    @Around(value = "execution(public * com..*.*(..))")
     public Object paramCheck(ProceedingJoinPoint joinPoint, BizXApiCheck check) throws Throwable {
-        //获取方法传入参数数组
-        Object[] args = joinPoint.getArgs();
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        Parameter[] parameters = signature.getMethod().getParameters();
+        // 获取方法传入参数数组
+        final Object[] args = joinPoint.getArgs();
+        MethodSignature signature = Common.to(joinPoint.getSignature());
+        final Parameter[] parameters = signature.getMethod().getParameters();
+        int parametersLength = parameters.length, i = 0;
         //循环数组
-        for (int i = 0; i < parameters.length; i++) {
+        for (; i < parametersLength; i++) {
             Parameter parameter = parameters[i];
+            parameter.getAnnotations();
             //处理类似String Integer的类
             if (isPrimite(parameter.getType())) {
                 //获取参数上是否带有自定义注解，不为空则代表有

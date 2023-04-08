@@ -3,14 +3,14 @@ package com.biz.web.annotation;
 import java.lang.annotation.*;
 
 /**
- * 检查Integer类型
+ * 检查Short类型
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckInteger {
+public @interface BizXApiCheckShort {
 
     /**
      * 是否可以为null
@@ -18,13 +18,18 @@ public @interface BizXApiCheckInteger {
     boolean isNull() default true;
 
     /**
+     * 默认值
+     */
+    short value();
+
+    /**
      * 最小值
      */
-    int min() default Integer.MIN_VALUE;
+    short min() default Short.MIN_VALUE;
 
     /**
      * 最大值
      */
-    int max() default Integer.MAX_VALUE;
+    short max() default Short.MAX_VALUE;
 
 }

@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
  * 打开检查入参规范
  * 在接口或者方法上加上该注解，表示打开入参规范检查
  * 规范检查
+ *
+ * @author francis
  */
 @Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
 @Retention(RetentionPolicy.RUNTIME)

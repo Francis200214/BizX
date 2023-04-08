@@ -4,6 +4,8 @@ import java.lang.annotation.*;
 
 /**
  * 检查Double类型
+ *
+ * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
@@ -24,10 +26,5 @@ public @interface BizXApiCheckDouble {
      * 最大值
      */
     double max() default Double.MAX_VALUE;
-
-    /**
-     * 默认值
-     */
-    double value() default 20D;
 
 }
