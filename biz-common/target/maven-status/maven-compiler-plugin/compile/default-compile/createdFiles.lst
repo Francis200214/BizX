@@ -6,6 +6,7 @@ com\biz\common\transactional\TransactionalRunner.class
 com\biz\common\utils\SecureUtils.class
 com\biz\common\copier\AbstractCopier$CopyClassIndex.class
 com\biz\common\utils\FileUtils$FileDTO$FileDTOBuilder.class
+com\biz\common\utils\ClassUtils.class
 com\biz\common\utils\FileUtils$FileDTO.class
 com\biz\common\jts\GeometryUtils.class
 com\biz\common\reflection\model\FieldModel$FieldModelBuilder.class

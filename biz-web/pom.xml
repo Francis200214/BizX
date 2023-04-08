@@ -5,14 +5,14 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.2.3-release</version>
+        <version>1.2.7-release</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-web</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
-    <version>1.2.3-release</version>
+    <version>1.2.7-release</version>
     <packaging>jar</packaging>
 
 
@@ -33,6 +33,15 @@
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
         </dependency>
+
+        <!-- AOP -->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.19</version>
+        </dependency>
+
+        <!-- Validator 参数校验 -->
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
