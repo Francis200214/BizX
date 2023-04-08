@@ -1,14 +1,16 @@
-package com.biz.web.core;
+package com.biz.web.aop;
 
 import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.BizXApiCheck;
 import com.biz.web.annotation.BizXApiCheckString;
+import com.biz.web.core.VerificationUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 
+import javax.inject.Inject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -24,7 +26,8 @@ import java.util.Arrays;
 @BizXComponent
 public class AbstractBizXCheckString {
 
-
+//    @Inject
+//    private CheckParameterFactory checkParameterFactory;
 
     @Around("@annotation(check)")
     public Object paramCheck(ProceedingJoinPoint joinPoint, BizXApiCheck check) throws Throwable {

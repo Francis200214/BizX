@@ -5,26 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckFloat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckLong.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckShort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterStringHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/resources/services/com.biz.web.aop.CheckParameterStrategy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/resources/services/org.springframework.beans.factory.InitializingBean" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/resources/services/org.springframework.context.ApplicationContextAware" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckDouble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckInteger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckList.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/core/AbstractBizXCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/core/AbstractBizXCheckString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/InjectContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-core/src/main/resources/META-INF/services/org.springframework.beans.factory.InitializingBean" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ApplicationContextAwareBeanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ApplicationContextAwareBeanUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/core/AbstractBizXCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +168,7 @@
       <workItem from="1680745571293" duration="402000" />
       <workItem from="1680750814867" duration="592000" />
       <workItem from="1680775887548" duration="7723000" />
-      <workItem from="1680827203215" duration="26264000" />
+      <workItem from="1680827203215" duration="32304000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -234,7 +226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680928881905</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1、增加了检查Float、Long、Short的注解；">
+      <created>1680948034011</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680948034011</updated>
+    </task>
+    <task id="LOCAL-00010" summary="1、使用单例工厂加策略模式实现检查入参数据规范；&#10;2、使用SPI机制对检查入参数据规范的工厂和策略进行注入；">
+      <created>1680948109103</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680948109103</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +257,8 @@
     <MESSAGE value="引入Vadidator做参数校验" />
     <MESSAGE value="增加了操作Class工具类" />
     <MESSAGE value="增加了BizXApiCheck注解，该注解主要用到接口或方法上，主要功能是开启该接口或方法的参数校验；" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了BizXApiCheck注解，该注解主要用到接口或方法上，主要功能是开启该接口或方法的参数校验；" />
+    <MESSAGE value="1、增加了检查Float、Long、Short的注解；" />
+    <MESSAGE value="1、使用单例工厂加策略模式实现检查入参数据规范；&#10;2、使用SPI机制对检查入参数据规范的工厂和策略进行注入；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、使用单例工厂加策略模式实现检查入参数据规范；&#10;2、使用SPI机制对检查入参数据规范的工厂和策略进行注入；" />
   </component>
 </project>
