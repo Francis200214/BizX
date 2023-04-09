@@ -54,8 +54,8 @@ public class AbstractBizXCheckString {
 //                }
                 //利用反射，调用自定义注解中的参数方法
 
-                Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
-                Object invoke = verificationUtil.invoke(null, args[i]);
+//                Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
+//                Object invoke = verificationUtil.invoke(null, args[i]);
 //                if (invoke.equals(false)) {
 //                    throw new RuntimeException();
 //                }
@@ -74,8 +74,8 @@ public class AbstractBizXCheckString {
 //                if (args[i] == null) {
 //                    throw new RuntimeException();
 //                }
-                Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
-                Object invoke = verificationUtil.invoke(null, field.get(arg));
+//                Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
+//                Object invoke = verificationUtil.invoke(null, field.get(arg));
 //                if (invoke.equals(false)) {
 //                    throw new RuntimeException();
 //                }
