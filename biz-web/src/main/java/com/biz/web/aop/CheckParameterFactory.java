@@ -1,5 +1,6 @@
 package com.biz.web.aop;
 
+import com.biz.library.bean.BizXComponent;
 import com.biz.web.aop.handler.CheckParameterStrategy;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @author francis
  * @create: 2023-04-08 17:05
  **/
+@BizXComponent
 public class CheckParameterFactory implements InitializingBean, ApplicationContextAware {
 
     private static final Map<Class<?>, CheckParameterStrategy> CHECK_PARAMETER_STRATEGY_MAP = new HashMap<>();

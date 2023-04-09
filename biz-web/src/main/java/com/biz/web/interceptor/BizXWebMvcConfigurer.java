@@ -1,8 +1,8 @@
 package com.biz.web.interceptor;
 
+import com.biz.library.bean.BizXComponent;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -14,11 +14,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @create 2023/4/1 16:30
  */
 @Slf4j
-@Configuration
+@BizXComponent
 //@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
 public class BizXWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
+    @SuppressWarnings("all")
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("CustomWebMvcConfigurer addInterceptors");
         // 接口限时刷新

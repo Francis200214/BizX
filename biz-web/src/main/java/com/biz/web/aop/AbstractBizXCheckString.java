@@ -26,8 +26,8 @@ import java.util.Arrays;
 @BizXComponent
 public class AbstractBizXCheckString {
 
-//    @Inject
-//    private CheckParameterFactory checkParameterFactory;
+    @Inject
+    private CheckParameterFactory checkParameterFactory;
 
     @Around("@annotation(check)")
     public Object paramCheck(ProceedingJoinPoint joinPoint, BizXApiCheck check) throws Throwable {
