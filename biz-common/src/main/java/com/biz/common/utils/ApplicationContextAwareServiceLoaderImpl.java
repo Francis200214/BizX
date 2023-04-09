@@ -9,7 +9,7 @@ public class ApplicationContextAwareServiceLoaderImpl extends AbstractServiceLoa
 
     @Override
     protected <T> T load(Class<?> tClass) {
-        return Common.to(ApplicationContextAwareBeanUtils.getBean(tClass));
+        return Common.to(BizXBeanUtils.getBean(tClass));
     }
 
 }

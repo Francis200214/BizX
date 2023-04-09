@@ -1,31 +1,20 @@
 package com.biz.common.utils;
 
-import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
 /**
- * 获取spring容器中的bean的工具类
+ * Bean Util
+ * 对Bean的一些操作
  *
  * @author francis
- */
-public class ApplicationContextAwareBeanUtils implements ApplicationContextAware {
-
-    private static ApplicationContext applicationContext;
-
-    private ApplicationContextAwareBeanUtils() {
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationContextAwareBeanUtils.applicationContext = applicationContext;
-    }
+ * @create: 2023-04-09 22:16
+ **/
+public final class BizXBeanUtils {
 
     /**
      * 获取 Bean
@@ -35,7 +24,7 @@ public class ApplicationContextAwareBeanUtils implements ApplicationContextAware
      * @param <T>
      */
     public static <T> T getBean(Class<T> clazz) {
-        return applicationContext.getBean(clazz);
+        return getApplicationContext().getBean(clazz);
     }
 
     /**
@@ -45,7 +34,7 @@ public class ApplicationContextAwareBeanUtils implements ApplicationContextAware
      * @return
      */
     public static Map<String, Object> getBeansWithAnnotation(Class<? extends Annotation> clazz) {
-        return applicationContext.getBeansWithAnnotation(clazz);
+        return getApplicationContext().getBeansWithAnnotation(clazz);
     }
 
     /**
@@ -55,8 +44,8 @@ public class ApplicationContextAwareBeanUtils implements ApplicationContextAware
      */
     public static List<Class<?>> getBeanDefinitionClasses() {
         List<Class<?>> classList = new ArrayList<>();
-        for (String beanName : applicationContext.getBeanDefinitionNames()) {
-            classList.add(applicationContext.getBean(beanName).getClass());
+        for (String beanName : getApplicationContext().getBeanDefinitionNames()) {
+            classList.add(getApplicationContext().getBean(beanName).getClass());
         }
         return classList;
     }
@@ -67,7 +56,18 @@ public class ApplicationContextAwareBeanUtils implements ApplicationContextAware
      * @return 所有的 Bean
      */
     public static String[] getBeanDefinitionNames() {
-        return applicationContext.getBeanDefinitionNames();
+        return getApplicationContext().getBeanDefinitionNames();
     }
+
+
+    /**
+     * 获取 ApplicationContext
+     *
+     * @return ApplicationContext
+     */
+    private static ApplicationContext getApplicationContext() {
+        return ApplicationContextAwareUtils.getApplicationContext();
+    }
+
 
 }

@@ -1,6 +1,6 @@
 package com.biz.core.bean;
 
-import com.biz.common.utils.ApplicationContextAwareBeanUtils;
+import com.biz.common.utils.BizXBeanUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.annotation.Order;
 
@@ -18,11 +18,11 @@ public class InjectContainer implements InitializingBean {
 
 
     @Override
-    public void afterPropertiesSet() throws Exception {
-        for (String beanDefinitionName : ApplicationContextAwareBeanUtils.getBeanDefinitionNames()) {
-            String bean = ApplicationContextAwareBeanUtils.getBean(beanDefinitionName.getClass());
-            injectDependencies(bean);
-        }
+    public void afterPropertiesSet() {
+//        for (String beanDefinitionName : BizXBeanUtils.getBeanDefinitionNames()) {
+//            String bean = BizXBeanUtils.getBean(beanDefinitionName.getClass());
+//            injectDependencies(bean);
+//        }
     }
 
 
@@ -38,7 +38,7 @@ public class InjectContainer implements InitializingBean {
                 // 获取字段的类型
                 Class<?> fieldType = field.getType();
                 // 从容器中获取依赖对象
-                Object dependency = ApplicationContextAwareBeanUtils.getBean(fieldType);
+                Object dependency = BizXBeanUtils.getBean(fieldType);
                 // 设置字段可访问
                 field.setAccessible(true);
                 try {
