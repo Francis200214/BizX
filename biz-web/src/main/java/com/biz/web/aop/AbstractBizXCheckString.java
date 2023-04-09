@@ -2,9 +2,8 @@ package com.biz.web.aop;
 
 import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
-import com.biz.web.annotation.BizXApiCheck;
 import com.biz.web.annotation.BizXApiCheckString;
-import com.biz.web.core.VerificationUtils;
+import com.biz.web.annotation.BizXEnableApiCheck;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,7 +11,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 
@@ -30,7 +28,7 @@ public class AbstractBizXCheckString {
     private CheckParameterService checkParameterService;
 
     @Around("@annotation(check)")
-    public Object paramCheck(ProceedingJoinPoint joinPoint, BizXApiCheck check) throws Throwable {
+    public Object paramCheck(ProceedingJoinPoint joinPoint, BizXEnableApiCheck check) throws Throwable {
         // 获取方法传入参数数组
         final Object[] args = joinPoint.getArgs();
         MethodSignature signature = Common.to(joinPoint.getSignature());
