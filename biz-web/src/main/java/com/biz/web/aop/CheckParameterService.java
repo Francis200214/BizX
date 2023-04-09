@@ -16,7 +16,7 @@ public interface CheckParameterService {
      * @param args 参数值
      * @return
      */
-    void handle(Parameter parameter, Object[] args);
+    void handle(Parameter parameter, Object args) throws Throwable;
 
 
 }

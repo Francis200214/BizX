@@ -249,8 +249,8 @@ public class ReflectionUtils {
     /**
      * 根据传入的方法名字符串，获取对应的方法
      *
-     * @param clazz          类的Class对象
-     * @param name           方法名
+     * @param clazz          要操作的类的Class对象
+     * @param name           要寻找哪个方法名
      * @param parameterTypes 方法的形参对应的Class类型【可以不写】
      * @return 方法对象【Method类型】
      */

@@ -19,7 +19,7 @@ public class CheckParameterDoubleHandler implements CheckParameterStrategy {
     }
 
     @Override
-    public void check(Parameter parameter, Object o) {
+    public void check(Parameter parameter, Object o) throws Exception {
 
     }
 }

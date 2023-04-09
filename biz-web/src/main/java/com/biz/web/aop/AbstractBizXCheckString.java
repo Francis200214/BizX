@@ -40,9 +40,6 @@ public class AbstractBizXCheckString {
         for (; i < parametersLength; i++) {
             Parameter parameter = parameters[i];
             parameter.getAnnotations();
-
-//            checkParameterService.handle(parameter, args);
-
             //处理类似String Integer的类
             if (isPrimite(parameter.getType())) {
                 //获取参数上是否带有自定义注解，不为空则代表有
@@ -56,6 +53,7 @@ public class AbstractBizXCheckString {
 //                    throw new RuntimeException("参数为Null");
 //                }
                 //利用反射，调用自定义注解中的参数方法
+
                 Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
                 Object invoke = verificationUtil.invoke(null, args[i]);
 //                if (invoke.equals(false)) {

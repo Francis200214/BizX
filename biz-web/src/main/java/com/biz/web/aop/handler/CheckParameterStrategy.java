@@ -1,5 +1,6 @@
 package com.biz.web.aop.handler;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 
 /**
@@ -23,6 +24,6 @@ public interface CheckParameterStrategy {
      * @param parameter Parameter实体
      * @param o 入参数据
      */
-    void check(Parameter parameter, Object o);
+    void check(Parameter parameter, Object o) throws Exception;
 
 }

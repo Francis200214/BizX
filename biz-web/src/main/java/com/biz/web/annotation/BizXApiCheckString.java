@@ -1,8 +1,6 @@
 package com.biz.web.annotation;
 
-import com.biz.web.validator.AbstractCheckStringValidator;
 
-import javax.validation.Constraint;
 import java.lang.annotation.*;
 
 /**
@@ -22,8 +20,8 @@ public @interface BizXApiCheckString {
     boolean isNull() default true;
 
     /**
-     * 默认值
+     * 异常信息
      */
-    String value();
+    BizXApiCheckError error() default @BizXApiCheckError;
 
 }
