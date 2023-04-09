@@ -7,6 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,7 +21,7 @@ import java.util.Map;
  * @create: 2023-04-08 17:05
  **/
 @BizXComponent
-public class CheckParameterFactory implements InitializingBean, ApplicationContextAware {
+public class CheckParameterFactory implements InitializingBean, ApplicationContextAware, CheckParameterService {
 
     private static final Map<Class<?>, CheckParameterStrategy> CHECK_PARAMETER_STRATEGY_MAP = new HashMap<>();
 
@@ -37,5 +38,10 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
+    }
+
+    @Override
+    public void handle(Parameter parameter, Object[] args) {
+
     }
 }

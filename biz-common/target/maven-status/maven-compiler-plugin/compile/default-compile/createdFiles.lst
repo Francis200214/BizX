@@ -15,6 +15,7 @@ com\biz\common\reflection\model\MethodModel$MethodModelBuilder.class
 com\biz\common\utils\ApplicationContextAwareServiceLoaderImpl.class
 com\biz\common\reflection\model\ParameterTypeModel$ParameterTypeModelBuilder.class
 com\biz\common\utils\ServiceLoaderProvider.class
+com\biz\common\utils\ApplicationContextAwareUtils.class
 com\biz\common\copier\Copier.class
 com\biz\common\utils\BarCodeUtils.class
 com\biz\common\reflection\model\ConstructorMethodModel$ConstructorMethodModelBuilder.class
@@ -28,13 +29,13 @@ com\biz\common\copier\AbstractCopier.class
 com\biz\common\utils\JwtTokenUtils.class
 com\biz\common\utils\JwtTokenUtils$1.class
 com\biz\common\utils\RequestUtils.class
-com\biz\common\utils\ApplicationContextAwareBeanUtils.class
 com\biz\common\jts\JTSUtils.class
 com\biz\common\utils\RangeUtils.class
 com\biz\common\concurrent\ExecutorsUtils.class
 com\biz\common\utils\CalendarUtils.class
 com\biz\common\utils\SpringUtilsServiceLoaderImpl.class
 com\biz\common\reflection\model\ConstructorMethodModel.class
+com\biz\common\utils\BizXBeanUtils.class
 com\biz\common\reflection\model\ParameterTypeModel.class
 com\biz\common\concurrent\ExecutorsUtils$1.class
 com\biz\common\reflection\model\FieldModel.class

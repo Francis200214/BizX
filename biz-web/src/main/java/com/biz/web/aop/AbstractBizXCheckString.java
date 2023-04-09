@@ -27,7 +27,7 @@ import java.util.Arrays;
 public class AbstractBizXCheckString {
 
     @Inject
-    private CheckParameterFactory checkParameterFactory;
+    private CheckParameterService checkParameterService;
 
     @Around("@annotation(check)")
     public Object paramCheck(ProceedingJoinPoint joinPoint, BizXApiCheck check) throws Throwable {
@@ -40,6 +40,9 @@ public class AbstractBizXCheckString {
         for (; i < parametersLength; i++) {
             Parameter parameter = parameters[i];
             parameter.getAnnotations();
+
+//            checkParameterService.handle(parameter, args);
+
             //处理类似String Integer的类
             if (isPrimite(parameter.getType())) {
                 //获取参数上是否带有自定义注解，不为空则代表有
