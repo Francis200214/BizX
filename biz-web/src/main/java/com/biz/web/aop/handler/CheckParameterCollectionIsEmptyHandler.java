@@ -1,9 +1,11 @@
 package com.biz.web.aop.handler;
 
+import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckCollectionIsEmpty;
 
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
+import java.util.Collection;
 
 /**
  * 检查 Collection 是否为空 具体实现
@@ -20,7 +22,21 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
     }
 
     @Override
-    public void check(Parameter parameter, Object o) throws Exception {
+    public void check(Annotation annotation, Object o) throws Exception {
+        if (annotation instanceof BizXApiCheckCollectionIsEmpty) {
+            BizXApiCheckCollectionIsEmpty check = Common.to(annotation);
+            if (o instanceof Collection) {
+                if (!check.isEmpty()) {
+                    if (o == null) {
+                        throw new RuntimeException("is not null");
+                    }
+                    Collection collection = Common.to(o);
+                    if (collection.isEmpty()) {
+                        throw new RuntimeException(check.error().message());
+                    }
+                }
+            }
+        }
         //获取参数上是否带有自定义注解，不为空则代表有
 //        BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
 //        if (annotation == null) {

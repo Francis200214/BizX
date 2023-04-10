@@ -3,7 +3,7 @@ package com.biz.web.aop.handler;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckDoubleMin;
 
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
 
 /**
  * 检查 Double 最小值 具体实现
@@ -20,7 +20,7 @@ public class CheckParameterDoubleMinHandler implements CheckParameterStrategy {
     }
 
     @Override
-    public void check(Parameter parameter, Object o) throws Exception {
+    public void check(Annotation annotation, Object o) throws Exception {
 
     }
 }

@@ -1,6 +1,6 @@
 package com.biz.web.aop.handler;
 
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
 
 /**
  * 入参检查
@@ -20,9 +20,9 @@ public interface CheckParameterStrategy {
     /**
      * 检查入参是否符合规则
      *
-     * @param parameter Parameter实体
-     * @param o 入参数据
+     * @param annotation
+     * @param o          入参数据
      */
-    void check(Parameter parameter, Object o) throws Exception;
+    void check(Annotation annotation, Object o) throws Exception;
 
 }

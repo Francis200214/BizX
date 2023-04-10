@@ -1,6 +1,7 @@
 package com.biz.web.aop;
 
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
 
 /**
@@ -12,11 +13,11 @@ public interface CheckParameterService {
     /**
      * 处理数据
      *
-     * @param parameter 参数
-     * @param args 参数值
+     * @param annotation 参数
+     * @param args       参数值
      * @return
      */
-    void handle(Parameter parameter, Object args) throws Throwable;
+    void handle(Annotation annotation, Object args) throws Throwable;
 
 
 }

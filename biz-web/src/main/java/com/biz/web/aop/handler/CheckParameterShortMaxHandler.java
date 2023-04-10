@@ -3,7 +3,7 @@ package com.biz.web.aop.handler;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckShortMax;
 
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
 
 /**
  * 检查 Short 最大值 具体实现
@@ -19,7 +19,7 @@ public class CheckParameterShortMaxHandler implements CheckParameterStrategy {
     }
 
     @Override
-    public void check(Parameter parameter, Object o) throws Exception {
+    public void check(Annotation annotation, Object o) throws Exception {
 
     }
 }

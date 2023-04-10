@@ -7,7 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-import java.lang.reflect.Parameter;
+import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,13 +41,13 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
     }
 
     @Override
-    public void handle(Parameter parameter, Object args) throws Throwable {
-        CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(parameter.getType());
+    public void handle(Annotation annotation, Object args) throws Throwable {
+        CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.getClass());
         if (checkParameterStrategy == null) {
-            throw new RuntimeException("not found check parameter strategy");
+            return;
         }
         // 处理操作具体类型的参数
-        checkParameterStrategy.check(parameter, args);
+        checkParameterStrategy.check(annotation, args);
 
 
         //处理类似String Integer的类
