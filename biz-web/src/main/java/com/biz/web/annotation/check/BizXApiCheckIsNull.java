@@ -1,10 +1,12 @@
-package com.biz.web.annotation;
+package com.biz.web.annotation.check;
 
+
+import com.biz.web.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;
 
 /**
- * 检查String类型
+ * 检查是否为Null
  *
  * @author francis
  **/
@@ -12,7 +14,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 //@Constraint(validatedBy = {AbstractCheckStringValidator.class})
-public @interface BizXApiCheckString {
+public @interface BizXApiCheckIsNull {
 
     /**
      * 是否可以为null
@@ -22,6 +24,6 @@ public @interface BizXApiCheckString {
     /**
      * 异常信息
      */
-    BizXApiCheckError error() default @BizXApiCheckError;
+    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
 
 }

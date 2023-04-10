@@ -2,8 +2,8 @@ package com.biz.web.aop;
 
 import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
-import com.biz.web.annotation.BizXApiCheckString;
 import com.biz.web.annotation.BizXEnableApiCheck;
+import com.biz.web.annotation.check.BizXApiCheckDoubleMin;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -41,7 +41,7 @@ public class AbstractBizXCheckString {
             //处理类似String Integer的类
             if (isPrimite(parameter.getType())) {
                 //获取参数上是否带有自定义注解，不为空则代表有
-                BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
+                BizXApiCheckDoubleMin annotation = parameter.getAnnotation(BizXApiCheckDoubleMin.class);
                 if (annotation == null) {
                     continue;
                 }
@@ -65,7 +65,7 @@ public class AbstractBizXCheckString {
             Field[] declaredFields = paramClazz.getDeclaredFields();
             for (Field field : declaredFields) {
                 field.setAccessible(true);
-                BizXApiCheckString annotation = field.getAnnotation(BizXApiCheckString.class);
+                BizXApiCheckDoubleMin annotation = field.getAnnotation(BizXApiCheckDoubleMin.class);
                 if (annotation == null) {
                     continue;
                 }

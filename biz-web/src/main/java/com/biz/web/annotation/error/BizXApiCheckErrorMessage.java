@@ -1,4 +1,4 @@
-package com.biz.web.annotation;
+package com.biz.web.annotation.error;
 
 import java.lang.annotation.*;
 
@@ -10,16 +10,16 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckError {
+public @interface BizXApiCheckErrorMessage {
 
     /**
      * 错误码
      */
-    int code() default 9999;
+    int code() default 99999;
 
     /**
      * 错误信息
      */
-    String message() default "";
+    String message() default "未知异常";
 
 }

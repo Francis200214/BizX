@@ -5,9 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckDoubleMin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckFloatMax.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckFloatMin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckIsNull.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckLongMin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckShortMin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMinHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMaxHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMinHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMaxHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMinHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIsNullHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMaxHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMinHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMaxHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMinHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterSizeHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckDouble.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckDoubleMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckError.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/error/BizXApiCheckErrorMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckFloat.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckIntegerMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckInteger.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckIntegerMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckList.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckCollectionIsEmpty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckLong.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckLongMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckShort.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckShortMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/BizXApiCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckString.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterStringHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterCollectionIsEmptyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckStringParameterUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/validator/AbstractCheckStringValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/validator/AbstractCheckStringValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/services/com.biz.web.aop.CheckParameterStrategy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,9 +62,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
-        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -104,11 +145,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.biz.web.aop" />
+      <recent name="com.biz.web.aop.handler" />
+      <recent name="com.biz.web.annotation.check" />
       <recent name="com.biz.web.annotation" />
+      <recent name="com.biz.web.aop" />
       <recent name="com.biz.library.web" />
-      <recent name="com.biz.common.str.a" />
-      <recent name="com.biz.core.interceptor" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -160,7 +201,7 @@
       <workItem from="1680750814867" duration="592000" />
       <workItem from="1680775887548" duration="7723000" />
       <workItem from="1680827203215" duration="40518000" />
-      <workItem from="1681094566069" duration="755000" />
+      <workItem from="1681094566069" duration="8449000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -288,7 +329,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681053920567</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块">
+      <created>1681109619856</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681109619856</updated>
+    </task>
+    <task id="LOCAL-00020" summary="biz-all模块pom增加了biz-library模块">
+      <created>1681109678514</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681109678514</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,6 +371,8 @@
     <MESSAGE value="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；" />
     <MESSAGE value="1、解决了部分异常" />
     <MESSAGE value="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；" />
+    <MESSAGE value="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块" />
+    <MESSAGE value="biz-all模块pom增加了biz-library模块" />
+    <option name="LAST_COMMIT_MESSAGE" value="biz-all模块pom增加了biz-library模块" />
   </component>
 </project>

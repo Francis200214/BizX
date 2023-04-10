@@ -1,38 +1,34 @@
 package com.biz.web.aop.handler;
 
-import com.biz.common.reflection.ReflectionUtils;
 import com.biz.library.bean.BizXComponent;
-import com.biz.web.annotation.BizXApiCheckError;
-import com.biz.web.annotation.BizXApiCheckString;
-import com.biz.web.core.VerificationUtils;
+import com.biz.web.annotation.check.BizXApiCheckCollectionIsEmpty;
 
 import java.lang.reflect.Parameter;
 
 /**
- * 检查 String 具体实现
+ * 检查 Collection 是否为空 具体实现
  *
  * @author francis
  * @create: 2023-04-08 16:45
  **/
 @BizXComponent
-public class CheckParameterStringHandler implements CheckParameterStrategy {
+public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStrategy {
 
     @Override
     public Class<?> getCheckAnnotation() {
-        return String.class;
+        return BizXApiCheckCollectionIsEmpty.class;
     }
 
     @Override
-
     public void check(Parameter parameter, Object o) throws Exception {
         //获取参数上是否带有自定义注解，不为空则代表有
-        BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
-        if (annotation == null) {
-            return;
-        }
-        if (annotation.isNull()) {
-
-        }
+//        BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
+//        if (annotation == null) {
+//            return;
+//        }
+//        if (annotation.isNull()) {
+//
+//        }
         //判断传入参数是否为null
 //                if (args[i] == null) {
 //                    //抛出自定义异常，会被我的全局异常处理捕获，返回固定的返回体

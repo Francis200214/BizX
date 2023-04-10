@@ -5,17 +5,16 @@ import com.biz.library.bean.BizXComponent;
 import java.lang.reflect.Parameter;
 
 /**
- * 检查 Double 具体实现
+ * 检查 长度 具体实现
  *
  * @author francis
- * @create: 2023-04-08 16:45
+ * @create: 2023-04-10 22:24
  **/
 @BizXComponent
-public class CheckParameterDoubleHandler implements CheckParameterStrategy {
-
+public class CheckParameterSizeHandler implements CheckParameterStrategy {
     @Override
     public Class<?> getCheckAnnotation() {
-        return Double.class;
+        return null;
     }
 
     @Override

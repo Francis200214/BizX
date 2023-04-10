@@ -1,6 +1,5 @@
 package com.biz.web.aop.handler;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Parameter;
 
 /**

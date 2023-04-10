@@ -38,6 +38,10 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor {
             return true;
         }
 
+        String token = request.getHeader("biz-token");
+        if (token == null) {
+            throw new RuntimeException("token is null");
+        }
         // TODO 处理当前用户的角色
 
 

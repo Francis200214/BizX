@@ -1,20 +1,13 @@
 package com.biz.web.interceptor;
 
-import com.biz.web.annotation.BizXApiCheckString;
 import lombok.extern.slf4j.Slf4j;
-import org.aopalliance.intercept.MethodInterceptor;
-import org.aopalliance.intercept.MethodInvocation;
-import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.*;
 import java.util.Map;
 
 /**
@@ -26,7 +19,7 @@ import java.util.Map;
  */
 @Order(3)
 @Slf4j
-public class CheckParameterHandlerInterceptor implements HandlerInterceptor, MethodInterceptor {
+public class CheckParameterHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
@@ -35,42 +28,6 @@ public class CheckParameterHandlerInterceptor implements HandlerInterceptor, Met
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
-        log.info("Metho {}", request.getMethod());
-        if (HttpMethod.POST.equals(request.getMethod())) {
-
-        }
-        // POST请求
-//        if ("POST".equals(request.getMethod())) {
-//
-//        }
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-
-        Method method = handlerMethod.getMethod();
-        for (Parameter parameter : method.getParameters()) {
-            String name = parameter.getName();
-            BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
-            Annotation[] annotations = parameter.getAnnotations();
-            Class<?> type = parameter.getType();
-            AnnotatedType annotatedType = parameter.getAnnotatedType();
-            Annotation[] declaredAnnotations = parameter.getDeclaredAnnotations();
-            Type parameterizedType = parameter.getParameterizedType();
-            Executable declaringExecutable = parameter.getDeclaringExecutable();
-
-        }
-        for (MethodParameter methodParameter : handlerMethod.getMethodParameters()) {
-            Parameter parameter = methodParameter.getParameter();
-            Method method1 = methodParameter.getMethod();
-            Class<?> parameterType = methodParameter.getParameterType();
-            AnnotatedElement annotatedElement = methodParameter.getAnnotatedElement();
-            Class<?> declaringClass = methodParameter.getDeclaringClass();
-            int parameterIndex = methodParameter.getParameterIndex();
-            Member member = methodParameter.getMember();
-
-        }
-//        Method method = handlerMethod.getMethod();
-//        BizXApiCheckString checkParams = method.getAnnotation(BizXApiCheckString.class);
-//
-//        request.getAttribute("password");
         return true;
     }
 
@@ -87,9 +44,4 @@ public class CheckParameterHandlerInterceptor implements HandlerInterceptor, Met
         log.info("CustomCheckTokenHandlerInterceptor afterCompletion");
     }
 
-    @Override
-    public Object invoke(MethodInvocation invocation) throws Throwable {
-
-        return null;
-    }
 }
