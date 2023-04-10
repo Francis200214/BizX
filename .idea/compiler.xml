@@ -10,6 +10,7 @@
         <module name="biz-core" />
         <module name="biz-common" />
         <module name="biz-config" />
+        <module name="biz-all" />
         <module name="biz-library" />
         <module name="biz-web" />
       </profile>
