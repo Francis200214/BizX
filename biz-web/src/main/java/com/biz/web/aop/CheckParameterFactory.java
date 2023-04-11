@@ -42,7 +42,21 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
 
     @Override
     public void handle(Annotation annotation, Object args) throws Throwable {
-        CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.getClass());
+//        Class<? extends Annotation> aClass = annotation.annotationType();
+//        CHECK_PARAMETER_STRATEGY_MAP.forEach((k, v) -> {
+//            try {
+//
+//                if (k.equals(aClass)) {
+//                    v.check(annotation, args);
+//                }
+//
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        });
+        CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());
         if (checkParameterStrategy == null) {
             return;
         }
