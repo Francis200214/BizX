@@ -5,7 +5,6 @@ import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckIsNull;
 
 import java.lang.annotation.Annotation;
-import java.util.Collection;
 
 /**
  * 检查 是否为Null 具体实现
@@ -24,10 +23,8 @@ public class CheckParameterIsNullHandler implements CheckParameterStrategy {
     public void check(Annotation annotation, Object o) throws Exception {
         if (annotation instanceof BizXApiCheckIsNull) {
             BizXApiCheckIsNull check = Common.to(annotation);
-            if (!check.isNull()) {
-                if (o == null) {
-                    throw new RuntimeException(check.error().message());
-                }
+            if (!check.isNull() && o == null) {
+                throw new RuntimeException(check.error().message());
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.biz.web.aop.handler;
 
 import com.biz.library.bean.BizXComponent;
+import com.biz.web.annotation.check.BizXApiCheckSize;
 
 import java.lang.annotation.Annotation;
 
@@ -14,7 +15,7 @@ import java.lang.annotation.Annotation;
 public class CheckParameterSizeHandler implements CheckParameterStrategy {
     @Override
     public Class<?> getCheckAnnotation() {
-        return null;
+        return BizXApiCheckSize.class;
     }
 
     @Override
