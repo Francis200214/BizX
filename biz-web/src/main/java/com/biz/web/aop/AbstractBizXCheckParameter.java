@@ -12,10 +12,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import javax.inject.Inject;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.lang.reflect.Parameter;
-import java.util.Arrays;
-import java.util.Set;
 
 /**
  * 校验入参
@@ -30,6 +27,9 @@ public class AbstractBizXCheckParameter {
     @Inject
     private CheckParameterFactory checkParameterFactory;
 
+    /**
+     * 检查接口上有 BizXEnableApiCheck 注解的方法
+     */
     @Around("@annotation(check)")
     public Object paramCheck(ProceedingJoinPoint joinPoint, BizXEnableApiCheck check) throws Throwable {
         // 获取方法传入参数数组
@@ -66,10 +66,6 @@ public class AbstractBizXCheckParameter {
 
         return joinPoint.proceed();
     }
-
-//    public static boolean checkType(Class<?> o) {
-//        return o == String.class || o == Long.class || o == Integer.class || o == Double.class || o == Float.class || o == Byte.class ||
-//    }
 
 
 }

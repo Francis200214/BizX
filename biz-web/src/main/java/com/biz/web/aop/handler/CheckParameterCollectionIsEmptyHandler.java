@@ -30,32 +30,22 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
                     if (o == null) {
                         throw new RuntimeException("is not null");
                     }
-                    Collection collection = Common.to(o);
-                    if (collection.isEmpty()) {
+                    if (CheckCollection.isEmpty(Common.to(o))) {
                         throw new RuntimeException(check.error().message());
                     }
                 }
             }
         }
-        //获取参数上是否带有自定义注解，不为空则代表有
-//        BizXApiCheckString annotation = parameter.getAnnotation(BizXApiCheckString.class);
-//        if (annotation == null) {
-//            return;
-//        }
-//        if (annotation.isNull()) {
-//
-//        }
-        //判断传入参数是否为null
-//                if (args[i] == null) {
-//                    //抛出自定义异常，会被我的全局异常处理捕获，返回固定的返回体
-//                    throw new RuntimeException("参数为Null");
-//                }
-        // 利用反射，调用自定义注解中的参数方法
-//        Method verificationUtil = VerificationUtils.class.getMethod(annotation.value(), Object.class);
-//        Object invoke = verificationUtil.invoke(null, o);
-//                if (invoke.equals(false)) {
-//                    throw new RuntimeException();
-//                }
+    }
+
+
+    private static class CheckCollection {
+
+        public static boolean isEmpty(Collection collection) {
+            return Common.isEmpty(collection);
+        }
 
     }
+
+
 }
