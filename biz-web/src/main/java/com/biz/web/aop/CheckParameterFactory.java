@@ -52,9 +52,4 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
     }
 
 
-
-    private boolean isPrimite(Class<?> clazz) {
-        return clazz.isPrimitive() || clazz == String.class;
-    }
-
 }

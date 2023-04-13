@@ -23,7 +23,7 @@ public class CheckParameterIsNullHandler implements CheckParameterStrategy {
     public void check(Annotation annotation, Object o) throws Exception {
         if (annotation instanceof BizXApiCheckIsNull) {
             BizXApiCheckIsNull check = Common.to(annotation);
-            if (!check.isNull() && o == null) {
+            if (!check.isNull() && CheckIsNull.isNull(o)) {
                 throw new RuntimeException(check.error().message());
             }
         }
