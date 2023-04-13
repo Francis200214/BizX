@@ -23,29 +23,22 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
 
     @Override
     public void check(Annotation annotation, Object o) throws Exception {
+        if (o == null) {
+            return;
+        }
         if (annotation instanceof BizXApiCheckCollectionIsEmpty) {
             BizXApiCheckCollectionIsEmpty check = Common.to(annotation);
             if (o instanceof Collection) {
-                if (!check.isEmpty()) {
-                    if (o == null) {
-                        throw new RuntimeException("is not null");
-                    }
-                    if (CheckCollection.isEmpty(Common.to(o))) {
-                        throw new RuntimeException(check.error().message());
-                    }
+                if (!check.isEmpty() && isEmpty(Common.to(o))) {
+                    throw new RuntimeException(check.error().message());
                 }
             }
         }
     }
 
 
-    private static class CheckCollection {
-
-        public static boolean isEmpty(Collection collection) {
-            return Common.isEmpty(collection);
-        }
-
+    public static boolean isEmpty(Collection collection) {
+        return Common.isEmpty(collection);
     }
-
 
 }

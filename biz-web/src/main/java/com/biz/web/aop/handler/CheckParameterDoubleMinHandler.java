@@ -1,5 +1,6 @@
 package com.biz.web.aop.handler;
 
+import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckDoubleMin;
 
@@ -21,6 +22,18 @@ public class CheckParameterDoubleMinHandler implements CheckParameterStrategy {
 
     @Override
     public void check(Annotation annotation, Object o) throws Exception {
+        if (o == null) {
+            return;
+        }
 
+        if (annotation instanceof BizXApiCheckDoubleMin) {
+            BizXApiCheckDoubleMin check = Common.to(annotation);
+            if (o instanceof Double) {
+                Double num = Common.to(o);
+                if (num < check.min()) {
+                    throw new RuntimeException(check.error().message());
+                }
+            }
+        }
     }
 }

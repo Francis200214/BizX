@@ -1,5 +1,6 @@
 package com.biz.web.aop.handler;
 
+import com.biz.common.utils.Common;
 import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckFloatMin;
 
@@ -20,6 +21,18 @@ public class CheckParameterFloatMinHandler implements CheckParameterStrategy {
 
     @Override
     public void check(Annotation annotation, Object o) throws Exception {
+        if (o == null) {
+            return;
+        }
 
+        if (annotation instanceof BizXApiCheckFloatMin) {
+            BizXApiCheckFloatMin check = Common.to(annotation);
+            if (o instanceof Float) {
+                Float num = Common.to(o);
+                if (num < check.min()) {
+                    throw new RuntimeException(check.error().message());
+                }
+            }
+        }
     }
 }
