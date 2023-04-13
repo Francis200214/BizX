@@ -2,6 +2,8 @@ package com.biz.common.reflection.model;
 
 import lombok.*;
 
+import java.lang.annotation.Annotation;
+
 /**
  * 通过反射获得Class的属性信息实体
  *
@@ -28,5 +30,12 @@ public class FieldModel {
      * 数据类型
      */
     private String typeName;
+
+    /**
+     * 属性上的注解
+     */
+    private Annotation[] annotations;
+
+    private Object field;
 
 }

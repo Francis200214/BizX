@@ -225,6 +225,7 @@ public class ReflectionUtils {
      */
     public static <T> T getNewInstance(Constructor<?> constructor, Object... initrans)
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        // 不检查java权限控制
         constructor.setAccessible(true);
         return (T) constructor.newInstance(initrans);
     }
@@ -241,6 +242,7 @@ public class ReflectionUtils {
     public static void setField(Class<?> clazz, String name, Object obj, Object value)
             throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
         Field field = clazz.getDeclaredField(name);
+        // 不检查java权限控制
         field.setAccessible(true);
         field.set(obj, value);
     }
@@ -270,9 +272,38 @@ public class ReflectionUtils {
      */
     public static Object invokeMethod(Method method, Object obj, Object... args)
             throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        // 不检查java权限控制
         method.setAccessible(true);
         return method.invoke(obj, args);
     }
+
+
+    /**
+     * 获取参数的Class类型
+     *
+     * @param parameter
+     * @return
+     */
+    public static Class<?> getModifiersByParameter(Parameter parameter) {
+        return parameter.getType();
+    }
+
+
+//            通过parameter.getModifiers()获取参数修饰符
+//通过parameter.getName()获取参数名
+//通过parameter.getParameterizedType()获取参数化类型(泛型)
+//通过parameter.toString()获取参数的字符串描述
+//通过parameter.isSynthetic()判断参数是否是合成的
+//通过parameter.isImplicit()判断参数是否是隐式的
+//通过parameter.isNamePresent()判断参数是否以类文件名命名
+//通过parameter.isVarArgs()判断参数是否是可变的
+//通过parameter.getAnnotatedType()获取注解的类型（组合类型）
+//            通过parameter.getAnnotation()和parameter.getDeclaredAnnotation()获取参数的一个注解
+//通过parameter.getAnnotationsByType(annotation.class)和parameter.getDeclaredAnnotationsByType(annotation.class)获取一类注解
+//通过parameter.getAnnotations()和parameter.getDeclaredAnnotations()获取全部注解
+//————————————————
+//    版权声明：本文为CSDN博主「hanchao5272」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+//    原文链接：https://blog.csdn.net/hanchao5272/article/details/79436715
 
 
     /**
@@ -312,10 +343,13 @@ public class ReflectionUtils {
     private static Set<FieldModel> buildFieldModelSet(Field[] fields) {
         Set<FieldModel> set = new HashSet<>();
         for (Field field : fields) {
+            // 不检查java权限控制
+            field.setAccessible(true);
             set.add(FieldModel.builder()
                     .modifier(Modifier.toString(field.getModifiers()))
                     .typeName(field.getType().getSimpleName())
                     .name(field.getName())
+                    .annotations(field.getAnnotations())
                     .build());
         }
         return set;

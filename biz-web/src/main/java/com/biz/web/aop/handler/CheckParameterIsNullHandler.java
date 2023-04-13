@@ -28,4 +28,14 @@ public class CheckParameterIsNullHandler implements CheckParameterStrategy {
             }
         }
     }
+
+
+    private static class CheckIsNull {
+
+        public static boolean isNull(Object o) {
+            return o == null ? true : false;
+        }
+
+    }
+
 }

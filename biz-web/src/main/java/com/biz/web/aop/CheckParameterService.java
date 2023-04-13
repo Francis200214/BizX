@@ -2,6 +2,7 @@ package com.biz.web.aop;
 
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 
 /**
  * @author francis
@@ -11,6 +12,7 @@ public interface CheckParameterService {
 
     /**
      * 处理数据
+     * 处理GET接口中的参数
      *
      * @param annotation 参数
      * @param args       参数值
@@ -18,5 +20,14 @@ public interface CheckParameterService {
      */
     void handle(Annotation annotation, Object args) throws Throwable;
 
+
+    /**
+     * 处理对象中的参数数据
+     * 处理JSON中的数据
+     *
+     * @param declaredField
+     * @param arg
+     */
+    void handleField (Field declaredField, Object arg);
 
 }
