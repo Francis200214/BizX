@@ -43,43 +43,27 @@ public class AbstractBizXCheckParameter {
             // 获取方法的参数类型
             Class<?> type = parameter.getType();
 
+            // 参数不是自定义类
+            if (type.getClassLoader() == null) {
+                Object arg = args[i];
+                for (Annotation annotation : type.getAnnotations()) {
+                    checkParameterFactory.handle(annotation, arg);
+                }
 
-
-
-            // 获取当前参数中所有的属性字段
-            for (FieldModel field : ReflectionUtils.getFields(type)) {
-                // 获取属性字段的所有注解
-                for (Annotation annotation : field.getAnnotations()) {
-                    checkParameterFactory.handle(annotation, args[i]);
+            } else {
+                Object arg = args[i];
+                // 获取自定义对象的所有字段
+                for (FieldModel field : ReflectionUtils.getFields(type)) {
+                    // 属性字段中的值
+                    Object byFieldValue = ReflectionUtils.getByFieldValue(field.getField(), arg);
+                    for (Annotation annotation : field.getAnnotations()) {
+                        checkParameterFactory.handle(annotation, byFieldValue);
+                    }
                 }
             }
 
-
-            if (type.getClassLoader() != null) {
-                // 获取自定义对象的所有字段
-                Field[] declaredFields = type.getDeclaredFields();
-                Object arg = args[i];
-//                for (Field declaredField : declaredFields) {
-//                    // 判断该字段上是否有注解
-//                    if (declaredField.getAnnotation(EmailFormatCheck.class) != null) {
-//                        EmailFormatCheck emailFormatCheck = declaredField.getAnnotation(EmailFormatCheck.class);
-//                        if (declaredField.getType() == String.class) {
-//                            // 取消字段的安全访问检查，使能够对字段进行操作
-//                            declaredField.setAccessible(true);
-//                            // 获取该字段的值
-//                            String fieldValue = String.valueOf(declaredField.get(arg));
-//                            // 检查该字段是否符合邮箱的格式
-//                            if (!fieldValue.matches(Consts.EMAIL_FORMAT)) {
-//                                return ResponseUtils.fail(emailFormatCheck.msg());
-//                            }
-//                        } else {
-//                            return ResponseUtils.fail("参数类型不正确！");
-//                        }
-//                    }
-//                }
-            }
-
         }
+
         return joinPoint.proceed();
     }
 

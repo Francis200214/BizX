@@ -145,14 +145,13 @@ public class ReflectionUtils {
      *
      * @return 所有的注解名
      */
-    public static Set<String> getAnnotations(Class<?> clazz) {
+    public static Set<String> getAnnotationNames(Class<?> clazz) {
         Set<String> set = new HashSet<>();
         for (Annotation annotation : clazz.getAnnotations()) {
             set.add(annotation.annotationType().getSimpleName());
         }
         return set;
     }
-
 
     /**
      * 获取父类的泛型
@@ -247,6 +246,18 @@ public class ReflectionUtils {
         field.set(obj, value);
     }
 
+    /**
+     * 取属性字段中的值
+     *
+     * @param field 属性字段
+     * @param value 属性字段中的值
+     * @return
+     */
+    public static Object getByFieldValue(Field field, Object value) throws IllegalAccessException {
+        field.setAccessible(true);
+        return field.get(value);
+    }
+
 
     /**
      * 根据传入的方法名字符串，获取对应的方法
@@ -276,34 +287,6 @@ public class ReflectionUtils {
         method.setAccessible(true);
         return method.invoke(obj, args);
     }
-
-
-    /**
-     * 获取参数的Class类型
-     *
-     * @param parameter
-     * @return
-     */
-    public static Class<?> getModifiersByParameter(Parameter parameter) {
-        return parameter.getType();
-    }
-
-
-//            通过parameter.getModifiers()获取参数修饰符
-//通过parameter.getName()获取参数名
-//通过parameter.getParameterizedType()获取参数化类型(泛型)
-//通过parameter.toString()获取参数的字符串描述
-//通过parameter.isSynthetic()判断参数是否是合成的
-//通过parameter.isImplicit()判断参数是否是隐式的
-//通过parameter.isNamePresent()判断参数是否以类文件名命名
-//通过parameter.isVarArgs()判断参数是否是可变的
-//通过parameter.getAnnotatedType()获取注解的类型（组合类型）
-//            通过parameter.getAnnotation()和parameter.getDeclaredAnnotation()获取参数的一个注解
-//通过parameter.getAnnotationsByType(annotation.class)和parameter.getDeclaredAnnotationsByType(annotation.class)获取一类注解
-//通过parameter.getAnnotations()和parameter.getDeclaredAnnotations()获取全部注解
-//————————————————
-//    版权声明：本文为CSDN博主「hanchao5272」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-//    原文链接：https://blog.csdn.net/hanchao5272/article/details/79436715
 
 
     /**
@@ -350,6 +333,7 @@ public class ReflectionUtils {
                     .typeName(field.getType().getSimpleName())
                     .name(field.getName())
                     .annotations(field.getAnnotations())
+                    .field(field)
                     .build());
         }
         return set;

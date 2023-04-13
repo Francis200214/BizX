@@ -51,10 +51,6 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
         checkParameterStrategy.check(annotation, args);
     }
 
-    @Override
-    public void handleField (Field declaredField, Object arg) {
-
-    }
 
 
     private boolean isPrimite(Class<?> clazz) {
