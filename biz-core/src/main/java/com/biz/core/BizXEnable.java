@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(value = {
-        ApplicationContextAwareUtils.class,
+//        ApplicationContextAwareUtils.class,
         BizXSpringBeanDefinitionRegistrar.class
 })
 public @interface BizXEnable {

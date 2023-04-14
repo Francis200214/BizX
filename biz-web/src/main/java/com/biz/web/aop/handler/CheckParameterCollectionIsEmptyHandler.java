@@ -1,7 +1,6 @@
 package com.biz.web.aop.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckCollectionIsEmpty;
 
 import java.lang.annotation.Annotation;
@@ -13,7 +12,7 @@ import java.util.Collection;
  * @author francis
  * @create: 2023-04-08 16:45
  **/
-@BizXComponent
+
 public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStrategy {
 
     @Override

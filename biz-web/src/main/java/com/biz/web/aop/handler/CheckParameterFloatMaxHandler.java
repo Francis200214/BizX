@@ -1,7 +1,6 @@
 package com.biz.web.aop.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.check.BizXApiCheckFloatMax;
 
 import java.lang.annotation.Annotation;
@@ -12,7 +11,7 @@ import java.lang.annotation.Annotation;
  * @author francis
  * @create: 2023-04-10 22:22
  **/
-@BizXComponent
+
 public class CheckParameterFloatMaxHandler implements CheckParameterStrategy {
     @Override
     public Class<?> getCheckAnnotation() {

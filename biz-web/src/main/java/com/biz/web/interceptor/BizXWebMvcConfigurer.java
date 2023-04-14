@@ -1,8 +1,10 @@
 package com.biz.web.interceptor;
 
-import com.biz.library.bean.BizXComponent;
+import com.biz.web.interceptor.condition.AccessLimitConditionConfiguration;
+import com.biz.web.interceptor.condition.CheckTokenConditionConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -14,8 +16,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @create 2023/4/1 16:30
  */
 @Slf4j
-@BizXComponent
-//@ConditionalOnBean(CustomWebMvcConfigurerKey.class)
 public class BizXWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
@@ -23,30 +23,24 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         log.info("CustomWebMvcConfigurer addInterceptors");
         // 接口限时刷新
-        registry.addInterceptor(accessLimintInterceptor())
+        registry.addInterceptor(accessLimitInterceptor())
                 .addPathPatterns("/**");
         // 检查Token
         registry.addInterceptor(checkTokenHandlerInterceptor())
                 .addPathPatterns("/**");
-        // 检查入参参数是否符合规则
-        registry.addInterceptor(checkParameterHandlerInterceptor())
-                .addPathPatterns("/**");
     }
 
 
     @Bean
-    public AccessLimintInterceptor accessLimintInterceptor() {
-        return new AccessLimintInterceptor();
+    @Conditional(AccessLimitConditionConfiguration.class)
+    public AccessLimitInterceptor accessLimitInterceptor() {
+        return new AccessLimitInterceptor();
     }
 
     @Bean
+    @Conditional(CheckTokenConditionConfiguration.class)
     public CheckTokenHandlerInterceptor checkTokenHandlerInterceptor() {
         return new CheckTokenHandlerInterceptor();
-    }
-
-    @Bean
-    public CheckParameterHandlerInterceptor checkParameterHandlerInterceptor() {
-        return new CheckParameterHandlerInterceptor();
     }
 
 

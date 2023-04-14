@@ -1,7 +1,6 @@
 package com.biz.web.interceptor;
 
 import com.biz.common.singleton.SingletonMap;
-import com.biz.common.utils.Common;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,12 +17,12 @@ import java.util.concurrent.atomic.AtomicLong;
  **/
 @Order(1)
 @Slf4j
-public class AccessLimintInterceptor implements HandlerInterceptor {
+public class AccessLimitInterceptor implements HandlerInterceptor {
 
     /**
      * 10秒内不能
      */
-    private final SingletonMap<String, AtomicLong> accessLimintCatchMap = SingletonMap.<String, AtomicLong>builder()
+    private final SingletonMap<String, AtomicLong> accessLimitCatchMap = SingletonMap.<String, AtomicLong>builder()
             .died(1000 * 10L)
             .build();
 

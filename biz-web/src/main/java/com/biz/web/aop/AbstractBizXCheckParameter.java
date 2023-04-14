@@ -3,16 +3,15 @@ package com.biz.web.aop;
 import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.reflection.model.FieldModel;
 import com.biz.common.utils.Common;
-import com.biz.library.bean.BizXComponent;
 import com.biz.web.annotation.BizXEnableApiCheck;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 
-import javax.inject.Inject;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
+import java.util.ServiceLoader;
 
 /**
  * 校验入参
@@ -21,11 +20,22 @@ import java.lang.reflect.Parameter;
  * @create: 2023-04-08 10:41
  **/
 @Aspect
-@BizXComponent
 public class AbstractBizXCheckParameter {
 
-    @Inject
-    private CheckParameterFactory checkParameterFactory;
+    private CheckParameterService checkParameterService;
+
+    /**
+     * 使用构造器注入
+     * 由 ServiceLoader 方式注入
+     */
+    public AbstractBizXCheckParameter() {
+        ServiceLoader<CheckParameterService> load = ServiceLoader.load(CheckParameterService.class);
+        for (CheckParameterService parameterService : load) {
+            if (parameterService != null && checkParameterService == null) {
+                checkParameterService = parameterService;
+            }
+        }
+    }
 
     /**
      * 检查接口上有 BizXEnableApiCheck 注解的方法
@@ -38,6 +48,7 @@ public class AbstractBizXCheckParameter {
         // 获取方法的参数
         final Parameter[] parameters = signature.getMethod().getParameters();
 
+
         for (int parametersLength = parameters.length, i = 0; i < parametersLength; i++) {
             Parameter parameter = parameters[i];
             // 获取方法的参数类型
@@ -47,7 +58,7 @@ public class AbstractBizXCheckParameter {
             if (type.getClassLoader() == null) {
                 Object arg = args[i];
                 for (Annotation annotation : type.getAnnotations()) {
-                    checkParameterFactory.handle(annotation, arg);
+                    checkParameterService.handle(annotation, arg);
                 }
 
             } else {
@@ -57,7 +68,7 @@ public class AbstractBizXCheckParameter {
                     // 属性字段中的值
                     Object byFieldValue = ReflectionUtils.getByFieldValue(field.getField(), arg);
                     for (Annotation annotation : field.getAnnotations()) {
-                        checkParameterFactory.handle(annotation, byFieldValue);
+                        checkParameterService.handle(annotation, byFieldValue);
                     }
                 }
             }

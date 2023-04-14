@@ -5,8 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/condition/AccessLimitConditionConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/condition/CheckTokenConditionConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/yml/BizInterceptorProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/org.springframework.context.ApplicationContextAware" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/BizXEnable.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/BizXEnable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterCollectionIsEmptyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterCollectionIsEmptyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMinHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterFloatMinHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIntegerMinHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIsNullHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterIsNullHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterLongMinHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMaxHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMinHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterShortMinHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterSizeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterSizeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimintInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckParameterHandlerInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/services/com.biz.web.aop.CheckParameterService" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/services/com.biz.web.aop.CheckParameterService" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +70,7 @@
       <MavenGeneralSettings>
         <option name="localRepository" value="E:\apache-maven-3.6.3\maven_repository" />
         <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
+        <option name="useMavenConfig" value="true" />
         <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings_bizx.xml" />
       </MavenGeneralSettings>
     </option>
@@ -67,12 +93,16 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "release",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/soybean-admin-java",
+    "last_opened_file_path": "E:/idea/BizX/biz-web/src/main/resources/META-INF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,8 +111,8 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "4400b955bfd27a92196a62bad300db4d",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "spring.configuration.checksum": "2649735be54bdf9e4b837b4c6821f9cd",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -91,34 +121,88 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
       <recent name="E:\idea\BizX\biz-core\src\main\resources" />
       <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\annotation" />
       <recent name="E:\idea\BizX" />
       <recent name="E:\idea\BizX\biz-common\src\main\resources" />
-      <recent name="E:\idea\BizX\common-utils\src\main\java\com\biz\common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
       <recent name="E:\idea\BizX\biz-web\src\main\resources" />
       <recent name="E:\idea\BizX\biz-common\src\main\resources\META-INF\services" />
       <recent name="E:\idea\BizX\biz-common\src\main\resources\META-INF" />
       <recent name="E:\idea\BizX\biz-common\src\main\resources" />
-      <recent name="E:\idea\BizX\biz-common\src\main\resources\MATE-INF\services" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.biz.web.condition" />
       <recent name="com.biz.web.annotation.verification" />
       <recent name="com.biz.web.aop.handler" />
       <recent name="com.biz.web.annotation.check" />
       <recent name="com.biz.web.annotation" />
-      <recent name="com.biz.web.aop" />
     </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
     </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
+    <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.test.DemoTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestDemo.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.test.TestDemo" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.demo.DemoApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.DemoApplication" />
+        <item itemvalue="JUnit.DemoTest.test" />
+        <item itemvalue="JUnit.TestDemo.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -168,7 +252,9 @@
       <workItem from="1681203860728" duration="3939000" />
       <workItem from="1681288833543" duration="1333000" />
       <workItem from="1681373133670" duration="2185000" />
-      <workItem from="1681375375596" duration="11197000" />
+      <workItem from="1681375375596" duration="11711000" />
+      <workItem from="1681438496696" duration="16427000" />
+      <workItem from="1681461824269" duration="4178000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -394,7 +480,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681437709605</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="删除demo">
+      <created>1681438032603</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1681438032603</updated>
+    </task>
+    <task id="LOCAL-00034" summary="添加了demo">
+      <created>1681438209932</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1681438209932</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,8 +524,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="增加了操作Class工具类" />
-    <MESSAGE value="增加了BizXApiCheck注解，该注解主要用到接口或方法上，主要功能是开启该接口或方法的参数校验；" />
     <MESSAGE value="1、增加了检查Float、Long、Short的注解；" />
     <MESSAGE value="1、使用单例工厂加策略模式实现检查入参数据规范；&#10;2、使用SPI机制对检查入参数据规范的工厂和策略进行注入；" />
     <MESSAGE value="1、BeanUtils工具类中增加了获取所有BeanName、获取所有BeanClass的方法" />
@@ -449,6 +547,23 @@
     <MESSAGE value="优化了判断Collection类型参数" />
     <MESSAGE value="实现了所有的注解校验" />
     <MESSAGE value="BizComponent注解移到core包下" />
-    <option name="LAST_COMMIT_MESSAGE" value="BizComponent注解移到core包下" />
+    <MESSAGE value="删除demo" />
+    <MESSAGE value="添加了demo" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加了demo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ServiceLoaderProvider.java</url>
+          <line>3</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
