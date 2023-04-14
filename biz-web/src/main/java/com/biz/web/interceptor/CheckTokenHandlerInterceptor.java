@@ -1,6 +1,6 @@
 package com.biz.web.interceptor;
 
-import com.biz.library.web.BizVerification;
+import com.biz.web.annotation.verification.BizVerification;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.method.HandlerMethod;

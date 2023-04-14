@@ -1,6 +1,6 @@
 package com.biz.core.bean;
 
-import com.biz.library.bean.BizXComponent;
+import com.biz.core.annotaion.BizXComponent;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
