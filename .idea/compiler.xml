@@ -13,11 +13,11 @@
         <module name="biz-web" />
         <module name="biz-config" />
         <module name="biz-all" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="biz-starter-test" target="1.8" />
-      <module name="demo" target="11" />
       <module name="junit-service" target="1.8" />
       <module name="web-annotation-service" target="1.8" />
       <module name="web-annotation-service-api" target="1.5" />
