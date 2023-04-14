@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service-api/pom.xml" />
         <option value="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service-impl/pom.xml" />
         <option value="$PROJECT_DIR$/biz-web/web-core-service/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/junit-service/pom.xml" />
       </set>
     </option>
