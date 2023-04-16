@@ -19,7 +19,7 @@
         <module>biz-config</module>
         <module>biz-all</module>
         <module>biz-library</module>
-        <module>demo</module>
+<!--        <module>demo</module>-->
     </modules>
 
 
