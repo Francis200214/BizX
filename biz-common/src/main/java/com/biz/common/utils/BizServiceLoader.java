@@ -8,7 +8,7 @@ import java.util.ServiceLoader;
  *
  * @author francis
  */
-public class SpringUtilsServiceLoaderImpl extends AbstractServiceLoaderProvider {
+public class BizServiceLoader extends AbstractServiceLoaderProvider {
 
     @Override
     protected <T> T load(Class<?> tClass) {
