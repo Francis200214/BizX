@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/SpringUtilsServiceLoaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/BizServiceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/com.biz.common.utils.ServiceLoaderProvider" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/com.biz.common.utils.ServiceLoaderProvider" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "release",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/BizX/biz-web/src/main/resources/META-INF",
+    "last_opened_file_path": "E:/idea/BizX/demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -97,11 +95,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\idea\BizX\demo" />
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
       <recent name="E:\idea\BizX\biz-core\src\main\resources" />
       <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\annotation" />
       <recent name="E:\idea\BizX" />
-      <recent name="E:\idea\BizX\biz-common\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
@@ -187,10 +185,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.StrategyTest" />
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="JUnit.TestDemo.test" />
+        <item itemvalue="JUnit.DemoTest.test" />
+        <item itemvalue="Application.StrategyTest" />
+        <item itemvalue="Application.StrategyTest" />
       </list>
     </recent_temporary>
   </component>
