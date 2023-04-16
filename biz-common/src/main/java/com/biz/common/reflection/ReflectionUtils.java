@@ -4,6 +4,7 @@ import com.biz.common.reflection.model.ConstructorMethodModel;
 import com.biz.common.reflection.model.FieldModel;
 import com.biz.common.reflection.model.MethodModel;
 import com.biz.common.reflection.model.ParameterTypeModel;
+import com.biz.common.strategy.StrategyService;
 import com.biz.common.utils.Common;
 
 import java.lang.annotation.Annotation;
@@ -75,6 +76,44 @@ public class ReflectionUtils {
         return set;
     }
 
+
+    /**
+     * 获取所有实现的接口
+     *
+     * @param clazz Class
+     * @return
+     */
+    public static Set<Class<?>> getInterfaces(Class<?> clazz) {
+        return new HashSet<>(Arrays.asList(clazz.getInterfaces()));
+    }
+
+    /**
+     * 从一个List<Class> 中寻找实现了 clazz 接口的 class
+     *
+     * @param clazz
+     * @param classList
+     * @return
+     */
+    public static List<Class<?>> getImplementsClass(Class<?> clazz, List<Class<?>> classList) {
+        List<Class<?>> result = new ArrayList<>();
+        for (Class<?> aClass : classList) {
+            if (clazz.isAssignableFrom(aClass)) {
+                result.add(aClass);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 判断 aClass 是否实现了 bClass
+     *
+     * @param aClass aClass
+     * @param bClass bClass
+     * @return
+     */
+    public static boolean isImplementsClass(Class<?> aClass, Class<?> bClass) {
+        return aClass.isAssignableFrom(bClass);
+    }
 
     /**
      * 获取所有属性
