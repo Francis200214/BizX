@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-    </list>
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -505,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681650918195</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="更新了gitignore">
+      <created>1681651403961</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1681651403961</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、尝试实现JSR-330的@Inject注解" />
     <MESSAGE value="1、CheckParameterFactory使用BizXComponent进行注入" />
     <MESSAGE value="1、ApplicationContextAwareBeanUtils更名为ApplicationContextAwareUtils，主要封装操作ApplicationContext的一些操作，不在封装获取Bean的操作；&#10;2、新增了BizXBeanUtils工具类，提供对Bean的操作；" />
     <MESSAGE value="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；" />
@@ -560,7 +564,8 @@
     <MESSAGE value="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入" />
     <MESSAGE value="更新了版本" />
     <MESSAGE value="反射工具类补充了新的方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="反射工具类补充了新的方法" />
+    <MESSAGE value="更新了gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了gitignore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
