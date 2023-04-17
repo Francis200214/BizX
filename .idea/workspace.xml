@@ -5,16 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,11 +60,12 @@
     </option>
     <option name="enabledProfiles">
       <list>
-        <option value="bizx-maven-deploy" />
+        <option value="release" />
       </list>
     </option>
     <option name="disabledProfiles">
       <list>
+        <option value="bizx-maven-deploy" />
         <option value="ossrh" />
         <option value="zny-maven-deploy" />
       </list>
@@ -96,7 +97,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "4f21fb9c9242c34c53fb66956b91800d",
+    "spring.configuration.checksum": "5af18841e8a7a7d79c14ac72e77de5b6",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -272,6 +273,7 @@
       <workItem from="1681438496696" duration="16427000" />
       <workItem from="1681461824269" duration="5709000" />
       <workItem from="1681467879746" duration="7338000" />
+      <workItem from="1681717117222" duration="2984000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -567,7 +569,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681713412963</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="1、升级了版本；">
+      <created>1681714215635</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1681714215635</updated>
+    </task>
+    <task id="LOCAL-00044" summary="1、升级了版本；">
+      <created>1681714366381</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1681714366381</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +613,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；" />
     <MESSAGE value="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；" />
     <MESSAGE value="1、解决了部分异常" />
     <MESSAGE value="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；" />
@@ -622,7 +637,23 @@
     <MESSAGE value="更新了gitignore" />
     <MESSAGE value="实现了策略模式封装代码" />
     <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
+    <MESSAGE value="1、升级了版本；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、升级了版本；" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/SelectableStrategyService.java</url>
+          <line>10</line>
+          <properties class="com.biz.common.strategy.SelectableStrategyService" method="slelect">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

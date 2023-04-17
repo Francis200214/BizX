@@ -1,0 +1,14 @@
+server:
+  port: 8001
+
+biz:
+  interceptor:
+    access: true
+    checkToken: true
+
+user:
+  names: "张三"
+  age: 18
+  hobbies:
+    - "看书"
+    - "写代码"
