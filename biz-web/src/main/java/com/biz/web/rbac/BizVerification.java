@@ -1,4 +1,4 @@
-package com.biz.web.annotation.verification;
+package com.biz.web.rbac;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
