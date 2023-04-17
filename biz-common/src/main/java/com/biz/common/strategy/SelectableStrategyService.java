@@ -6,7 +6,7 @@ package com.biz.common.strategy;
  * @param <Parameter_Type>
  * @param <T>
  */
-public interface LoadStrategyService<Parameter_Type, T extends StrategyService<Parameter_Type>> {
+public interface SelectableStrategyService<Parameter_Type, T extends StrategyService<Parameter_Type>> {
 
     T slelect(Parameter_Type param);
 
