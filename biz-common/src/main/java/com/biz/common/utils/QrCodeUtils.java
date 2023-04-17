@@ -57,7 +57,7 @@ public final class QrCodeUtils {
             MatrixToImageWriter.writeToPath(bitMatrix, DEFAULT_IMAGE_FORMAT, file);
             //如果想直接将二维码上传到自己的fastdfs时使用file即可
             // File file = new File("乐协作6.png");
-            //MatrixToImageWriter.writeToFile(bitMatrix, format, file);
+            //MatrixToImageWriter.writeToFile(bitMatrix, calendarToStr, file);
             //后面的操作就是直接将file上传至你自己的fastdfs中，这里不再累述了。
             return true;
         } catch (Exception e) {
