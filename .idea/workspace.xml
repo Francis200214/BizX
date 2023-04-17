@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LazySelectableAbstractStrategyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadStrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/SelectableStrategyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/StrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/StrategyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,10 +123,10 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.biz.web.condition" />
-      <recent name="com.biz.web.annotation.verification" />
       <recent name="com.biz.web.aop.handler" />
       <recent name="com.biz.web.annotation.check" />
+      <recent name="com.biz.web.condition" />
+      <recent name="com.biz.web.annotation.verification" />
       <recent name="com.biz.web.annotation" />
     </key>
   </component>
@@ -547,7 +553,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681692080178</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="实现了策略模式封装代码">
+      <created>1681710670167</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1681710670167</updated>
+    </task>
+    <task id="LOCAL-00042" summary="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；">
+      <created>1681713412963</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1681713412963</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,8 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、CheckParameterFactory使用BizXComponent进行注入" />
-    <MESSAGE value="1、ApplicationContextAwareBeanUtils更名为ApplicationContextAwareUtils，主要封装操作ApplicationContext的一些操作，不在封装获取Bean的操作；&#10;2、新增了BizXBeanUtils工具类，提供对Bean的操作；" />
     <MESSAGE value="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；" />
     <MESSAGE value="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；" />
     <MESSAGE value="1、解决了部分异常" />
@@ -602,7 +620,9 @@
     <MESSAGE value="更新了版本" />
     <MESSAGE value="反射工具类补充了新的方法" />
     <MESSAGE value="更新了gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了gitignore" />
+    <MESSAGE value="实现了策略模式封装代码" />
+    <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

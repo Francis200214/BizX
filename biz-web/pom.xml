@@ -5,14 +5,14 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.3.13-release</version>
+        <version>1.4.1-release</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-web</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
-    <version>1.3.13-release</version>
+    <version>1.4.1-release</version>
     <packaging>jar</packaging>
 
 
