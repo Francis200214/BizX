@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LoadAbstractStrategyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/SpringUtilsServiceLoaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/BizServiceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/com.biz.common.utils.ServiceLoaderProvider" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/resources/META-INF/services/com.biz.common.utils.ServiceLoaderProvider" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-config/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-config/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -82,7 +86,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "release",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/BizX/biz-web/src/main/resources/META-INF",
+    "last_opened_file_path": "E:/idea/BizX/demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -101,11 +105,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\idea\BizX\demo" />
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
       <recent name="E:\idea\BizX\biz-core\src\main\resources" />
       <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\annotation" />
       <recent name="E:\idea\BizX" />
-      <recent name="E:\idea\BizX\biz-common\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
@@ -115,13 +119,14 @@
       <recent name="E:\idea\BizX\biz-common\src\main\resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.demo" />
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.biz.web.condition" />
-      <recent name="com.biz.web.annotation.verification" />
       <recent name="com.biz.web.aop.handler" />
       <recent name="com.biz.web.annotation.check" />
+      <recent name="com.biz.web.condition" />
+      <recent name="com.biz.web.annotation.verification" />
       <recent name="com.biz.web.annotation" />
     </key>
   </component>
@@ -130,13 +135,13 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.StrategyTest">
+  <component name="RunManager" selected="JUnit.DemoTest.test1">
     <configuration name="StrategyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.demo.test.StrategyTest" />
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="PATTERN" value="com.demo.strategy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -148,7 +153,7 @@
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="PATTERN" value="com.demo.strategy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,11 +165,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DemoTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.strategy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.test.DemoTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestDemo.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="PATTERN" value="com.demo.strategy.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -191,9 +212,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest.test1" />
+        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="Application.StrategyTest" />
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="JUnit.TestDemo.test" />
       </list>
     </recent_temporary>
@@ -249,7 +271,7 @@
       <workItem from="1681375375596" duration="11711000" />
       <workItem from="1681438496696" duration="16427000" />
       <workItem from="1681461824269" duration="5709000" />
-      <workItem from="1681467879746" duration="7015000" />
+      <workItem from="1681467879746" duration="7338000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -503,7 +525,49 @@
       <option name="project" value="LOCAL" />
       <updated>1681468253890</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="反射工具类补充了新的方法">
+      <created>1681650918195</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1681650918195</updated>
+    </task>
+    <task id="LOCAL-00038" summary="更新了gitignore">
+      <created>1681651403961</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1681651403961</updated>
+    </task>
+    <task id="LOCAL-00039" summary="更新了gitignore">
+      <created>1681691661258</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1681691661258</updated>
+    </task>
+    <task id="LOCAL-00040" summary="更新了gitignore">
+      <created>1681692080178</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1681692080178</updated>
+    </task>
+    <task id="LOCAL-00041" summary="实现了策略模式封装代码">
+      <created>1681710670167</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1681710670167</updated>
+    </task>
+    <task id="LOCAL-00042" summary="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；">
+      <created>1681713412963</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1681713412963</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -533,10 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、BeanUtils工具类中增加了获取所有BeanName、获取所有BeanClass的方法" />
-    <MESSAGE value="1、尝试实现JSR-330的@Inject注解" />
-    <MESSAGE value="1、CheckParameterFactory使用BizXComponent进行注入" />
-    <MESSAGE value="1、ApplicationContextAwareBeanUtils更名为ApplicationContextAwareUtils，主要封装操作ApplicationContext的一些操作，不在封装获取Bean的操作；&#10;2、新增了BizXBeanUtils工具类，提供对Bean的操作；" />
     <MESSAGE value="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；" />
     <MESSAGE value="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；" />
     <MESSAGE value="1、解决了部分异常" />
@@ -558,7 +618,11 @@
     <MESSAGE value="添加了demo" />
     <MESSAGE value="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入" />
     <MESSAGE value="更新了版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新了版本" />
+    <MESSAGE value="反射工具类补充了新的方法" />
+    <MESSAGE value="更新了gitignore" />
+    <MESSAGE value="实现了策略模式封装代码" />
+    <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

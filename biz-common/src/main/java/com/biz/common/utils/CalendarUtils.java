@@ -18,7 +18,7 @@ public final class CalendarUtils {
     public static String currentYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 0);
-        return DateUtils.format(cal, DateUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
     }
 
     /**
@@ -37,7 +37,7 @@ public final class CalendarUtils {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -56,7 +56,7 @@ public final class CalendarUtils {
         cal.set(Calendar.SECOND, 59);
         cal.set(Calendar.MILLISECOND, 999);
         cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -68,7 +68,7 @@ public final class CalendarUtils {
     public static String lastYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -1);
-        return DateUtils.format(cal, DateUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
     }
 
     /**
@@ -87,7 +87,7 @@ public final class CalendarUtils {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -106,7 +106,7 @@ public final class CalendarUtils {
         cal.set(Calendar.SECOND, 59);
         cal.set(Calendar.MILLISECOND, 999);
         cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -118,7 +118,7 @@ public final class CalendarUtils {
         currCal.add(Calendar.DATE, 1);
         currCal.add(Calendar.MONTH, 0);
         currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -129,7 +129,7 @@ public final class CalendarUtils {
         int currentYear = currCal.get(Calendar.YEAR);
         currCal.set(Calendar.YEAR, currentYear);
         currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -138,7 +138,7 @@ public final class CalendarUtils {
     public static String getFirstOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -147,7 +147,7 @@ public final class CalendarUtils {
     public static String getLastOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
 }
