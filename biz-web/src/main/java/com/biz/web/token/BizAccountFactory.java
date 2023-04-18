@@ -1,4 +1,4 @@
-package com.biz.web.core;
+package com.biz.web.token;
 
 import java.io.Serializable;
 
