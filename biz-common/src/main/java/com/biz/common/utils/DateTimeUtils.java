@@ -4,6 +4,7 @@ package com.biz.common.utils;
 import com.biz.common.singleton.SingletonMap;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -13,7 +14,7 @@ import java.util.Date;
  *
  * @author francis
  */
-public final class DateUtils {
+public final class DateTimeUtils {
 
     public static final String DEFAULT_DATE = "yyyy-MM-dd";
     public static final String DEFAULT_TIME = "HH:mm:ss";
@@ -31,23 +32,11 @@ public final class DateUtils {
      * @param cal
      * @return
      */
-    public static String format(Calendar cal) {
-        return format(cal, DEFAULT_DATETIME);
+    public static String calendarToStr(Calendar cal) {
+        return calendarToStr(cal, DEFAULT_DATETIME);
     }
 
-    /**
-     * 获取 DateFormat
-     *
-     * @param format 时间转换格式
-     * @return
-     */
-    private static DateFormat getDateFormat(String format) {
-        if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
-            DATE_FORMAT_THREAD_LOCAL.set(SingletonMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
-        }
 
-        return DATE_FORMAT_THREAD_LOCAL.get().get(format);
-    }
 
     /**
      * Calendar 转成时间字符串
@@ -56,7 +45,7 @@ public final class DateUtils {
      * @param format 时间格式
      * @return
      */
-    public static String format(Calendar cal, String format) {
+    public static String calendarToStr(Calendar cal, String format) {
         return getDateFormat(Common.isBlank(format) ? DEFAULT_DATETIME : format).format(cal.getTime());
     }
 
@@ -72,6 +61,39 @@ public final class DateUtils {
         return getDateFormat(DEFAULT_DATETIME).format(date);
     }
 
+    /**
+     * Date 转成 时间字符串
+     *
+     * @param date Date
+     * @param format 格式
+     * @return
+     */
+    public static String dateToStr(Date date, String format) {
+        return getDateFormat(format).format(date);
+    }
+
+    /**
+     * 时间字符串转成时间
+     *
+     * @param date 时间字符串
+     * @return
+     * @throws ParseException
+     */
+    public static Date strToDate(String date) throws ParseException {
+        return getDateFormat(DEFAULT_DATETIME).parse(date);
+    }
+
+    /**
+     * 时间字符串转成时间
+     *
+     * @param date 时间字符串
+     * @param parse 转换格式
+     * @return
+     * @throws ParseException
+     */
+    public static Date strToDate(String date, String parse) throws ParseException {
+        return getDateFormat(parse).parse(date);
+    }
 
     /**
      * 根据时间戳或者Date时间
@@ -81,6 +103,20 @@ public final class DateUtils {
      */
     public static String longToDateStr(long timeMills) {
         return getDateFormat(DEFAULT_DATETIME).format(getCalendar(timeMills).getTime());
+    }
+
+    /**
+     * 获取 DateFormat
+     *
+     * @param format 时间转换格式
+     * @return
+     */
+    private static DateFormat getDateFormat(String format) {
+        if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
+            DATE_FORMAT_THREAD_LOCAL.set(SingletonMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
+        }
+
+        return DATE_FORMAT_THREAD_LOCAL.get().get(format);
     }
 
 
@@ -105,7 +141,7 @@ public final class DateUtils {
     public static String currentYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 0);
-        return DateUtils.format(cal, DateUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
     }
 
     /**
@@ -124,7 +160,7 @@ public final class DateUtils {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -143,7 +179,7 @@ public final class DateUtils {
         cal.set(Calendar.SECOND, 59);
         cal.set(Calendar.MILLISECOND, 999);
         cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -155,7 +191,7 @@ public final class DateUtils {
     public static String lastYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -1);
-        return DateUtils.format(cal, DateUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
     }
 
     /**
@@ -174,7 +210,7 @@ public final class DateUtils {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -193,7 +229,7 @@ public final class DateUtils {
         cal.set(Calendar.SECOND, 59);
         cal.set(Calendar.MILLISECOND, 999);
         cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(cal);
+        return DateTimeUtils.calendarToStr(cal);
     }
 
     /**
@@ -205,7 +241,7 @@ public final class DateUtils {
         currCal.add(Calendar.DATE, 1);
         currCal.add(Calendar.MONTH, 0);
         currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -216,7 +252,7 @@ public final class DateUtils {
         int currentYear = currCal.get(Calendar.YEAR);
         currCal.set(Calendar.YEAR, currentYear);
         currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -225,7 +261,7 @@ public final class DateUtils {
     public static String getFirstOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
     /**
@@ -234,7 +270,7 @@ public final class DateUtils {
     public static String getLastOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateUtils.format(currCal, DateUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
     }
 
 }

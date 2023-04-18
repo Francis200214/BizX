@@ -1,5 +1,7 @@
 package com.biz.common.utils;
 
+import java.util.UUID;
+
 /**
  * UUID 生成
  *
@@ -8,7 +10,8 @@ package com.biz.common.utils;
 public final class UUIDGenerate {
 
     public String generate() {
-        return "";
+        return UUID.randomUUID().toString();
     }
+
 
 }
