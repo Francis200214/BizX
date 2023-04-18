@@ -2,6 +2,7 @@ package com.biz.web.token;
 
 
 import com.biz.common.utils.BizXBeanUtils;
+import com.biz.common.utils.JwtTokenUtils;
 
 import java.io.Serializable;
 
@@ -26,6 +27,15 @@ public abstract class AbstractToken implements Token {
         }
         BizAccountFactory bean = BizXBeanUtils.getBean(BizAccountFactory.class);
         return bean.getBizAccount(currentTokenId);
+    }
+
+
+    @Override
+    public void setCurrentUser(BizAccount<?> bizAccount) {
+        JwtTokenUtils builder = JwtTokenUtils.JwtTokenUtilsbuilder()
+//                .expire()
+                .builder();
+//        builder.createToken()
     }
 
     @Override
