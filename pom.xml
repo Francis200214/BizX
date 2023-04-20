@@ -16,7 +16,6 @@
         <module>biz-common</module>
         <module>biz-web</module>
         <module>biz-core</module>
-        <module>biz-config</module>
         <module>biz-all</module>
         <module>biz-library</module>
 <!--        <module>demo</module>-->
