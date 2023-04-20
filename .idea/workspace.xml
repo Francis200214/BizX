@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractTokenSessionManage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenSessionManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/core/BizAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/core/BizAccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizAccountFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,31 +66,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;release&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/idea/BizX/demo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.117227316&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.23333333&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;5af18841e8a7a7d79c14ac72e77de5b6&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "release",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "E:/idea/BizX/demo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.117227316",
+    "project.structure.side.proportion": "0.23333333",
+    "settings.editor.selected.configurable": "configurable.group.editor",
+    "spring.configuration.checksum": "5af18841e8a7a7d79c14ac72e77de5b6",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -153,6 +145,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
       </list>
     </recent_temporary>
@@ -211,6 +204,7 @@
       <workItem from="1681467879746" duration="7338000" />
       <workItem from="1681717117222" duration="2984000" />
       <workItem from="1681778615077" duration="10578000" />
+      <workItem from="1681864763968" duration="2496000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -590,7 +584,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/SelectableStrategyService.java</url>
           <line>10</line>
-          <properties class="com.biz.common.strategy.SelectableStrategyService">
+          <properties class="com.biz.common.strategy.SelectableStrategyService" method="slelect">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
