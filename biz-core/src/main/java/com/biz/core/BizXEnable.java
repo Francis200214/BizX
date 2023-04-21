@@ -1,6 +1,5 @@
 package com.biz.core;
 
-import com.biz.common.utils.ApplicationContextAwareUtils;
 import com.biz.core.spring.BizXSpringBeanDefinitionRegistrar;
 import org.springframework.context.annotation.Import;
 
