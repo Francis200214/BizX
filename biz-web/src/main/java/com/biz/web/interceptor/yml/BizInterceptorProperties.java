@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 @Setter
 @Getter
 @ToString
-@PropertySource(value = "classpath:application.properties")
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class BizInterceptorProperties {
 
     /**

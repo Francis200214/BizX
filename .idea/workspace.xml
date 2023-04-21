@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/SingletonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "5af18841e8a7a7d79c14ac72e77de5b6",
+    "spring.configuration.checksum": "010add58d745434934324eba83c15d0f",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -145,6 +146,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
       </list>
@@ -205,6 +207,7 @@
       <workItem from="1681717117222" duration="2984000" />
       <workItem from="1681778615077" duration="10578000" />
       <workItem from="1681864763968" duration="2496000" />
+      <workItem from="1682043533400" duration="10066000" />
     </task>
     <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
       <created>1680346182350</created>
@@ -521,7 +524,35 @@
       <option name="project" value="LOCAL" />
       <updated>1681725477387</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="1、修改了拦截器的配置实体和Token配置实体；">
+      <created>1682063473587</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1682063473587</updated>
+    </task>
+    <task id="LOCAL-00047" summary="1、增加了OSS模块，主要封装了文件操作；&#10;2、增加了catch模块，主要封装一些缓存机制；">
+      <created>1682063557329</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1682063557329</updated>
+    </task>
+    <task id="LOCAL-00048" summary="1、调整了common包中的一些结构；">
+      <created>1682063598289</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1682063598289</updated>
+    </task>
+    <task id="LOCAL-00049" summary="1、调整了引入common包中的一些结构；">
+      <created>1682063619069</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1682063619069</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,11 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、解决了部分异常" />
-    <MESSAGE value="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；" />
-    <MESSAGE value="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块" />
-    <MESSAGE value="biz-all模块pom增加了biz-library模块" />
-    <MESSAGE value="重新定义了API检查入参注解" />
     <MESSAGE value="检查参数实现" />
     <MESSAGE value="查询不同的策略更改了方式" />
     <MESSAGE value="不同策略实现修改了判断方式" />
@@ -576,7 +602,12 @@
     <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
     <MESSAGE value="1、升级了版本；" />
     <MESSAGE value="1、UUID生成使用JKD的；&#10;2、增加了生成随机数工具类，有生成数字、双精度、字符串方法；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、UUID生成使用JKD的；&#10;2、增加了生成随机数工具类，有生成数字、双精度、字符串方法；" />
+    <MESSAGE value="1、删除了biz-config的module；&#10;2、修改了README；" />
+    <MESSAGE value="1、修改了拦截器的配置实体和Token配置实体；" />
+    <MESSAGE value="1、增加了OSS模块，主要封装了文件操作；&#10;2、增加了catch模块，主要封装一些缓存机制；" />
+    <MESSAGE value="1、调整了common包中的一些结构；" />
+    <MESSAGE value="1、调整了引入common包中的一些结构；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、调整了引入common包中的一些结构；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

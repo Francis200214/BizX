@@ -13,7 +13,7 @@ import java.io.*;
  *
  * @author francis
  */
-public final class BarCodeUtils {
+public final class BarCodeUtil {
 
     /**
      * 图片类型

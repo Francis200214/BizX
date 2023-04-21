@@ -1,8 +1,9 @@
-package com.biz.common.singleton;
+package com.biz.map;
 
 
 
 import com.biz.common.concurrent.ExecutorsUtils;
+import com.biz.common.singleton.Singleton;
 
 import java.util.Map;
 import java.util.Objects;

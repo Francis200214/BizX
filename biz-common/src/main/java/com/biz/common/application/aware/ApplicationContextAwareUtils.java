@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.application.aware;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

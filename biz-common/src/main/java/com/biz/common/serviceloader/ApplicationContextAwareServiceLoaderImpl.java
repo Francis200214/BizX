@@ -1,4 +1,7 @@
-package com.biz.common.utils;
+package com.biz.common.serviceloader;
+
+import com.biz.common.bean.BizXBeanUtils;
+import com.biz.common.utils.Common;
 
 /**
  * ApplicationContextAware 实现

@@ -22,6 +22,25 @@ import java.util.*;
  */
 public class ReflectionUtils {
 
+    /**
+     * 判断是否是包装类型
+     *
+     * @param clazz Class
+     * @return true 是包装类 false 不是包装类
+     */
+    public static boolean isPackagingType(Class<?> clazz) {
+        return clazz.isPrimitive();
+    }
+
+    /**
+     * 是否是字符串类型
+     *
+     * @param clazz Class
+     * @return true 是字符串类型 false 不是字符串类型
+     */
+    public static boolean isStringClass(Class<?> clazz) {
+        return clazz == String.class;
+    }
 
     /**
      * 获取 Class 的包名
