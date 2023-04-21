@@ -1,7 +1,7 @@
 package com.biz.web.token;
 
 
-import com.biz.common.utils.BizXBeanUtils;
+import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.utils.JwtTokenUtils;
 
 import java.io.Serializable;
