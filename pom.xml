@@ -18,7 +18,9 @@
         <module>biz-core</module>
         <module>biz-all</module>
         <module>biz-library</module>
-<!--        <module>demo</module>-->
+        <module>biz-oss</module>
+        <module>biz-catch</module>
+        <!--        <module>demo</module>-->
     </modules>
 
 
@@ -40,6 +42,8 @@
         <jts.core.version>1.19.0</jts.core.version>
         <!-- aspectj -->
         <aspectj.version>1.9.19</aspectj.version>
+        <!-- AmazonS3 -->
+        <aws.version>1.12.423</aws.version>
 
         <!-- Maven插件版本 -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -62,13 +66,6 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash; SpringWeb 启动依赖 &ndash;&gt;-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -136,6 +133,13 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <!-- AmazonS3 -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${aws.version}</version>
             </dependency>
 
         </dependencies>
