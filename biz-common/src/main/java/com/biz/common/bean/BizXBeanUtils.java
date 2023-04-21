@@ -1,5 +1,6 @@
-package com.biz.common.utils;
+package com.biz.common.bean;
 
+import com.biz.common.application.aware.ApplicationContextAwareUtils;
 import org.springframework.context.ApplicationContext;
 
 import java.lang.annotation.Annotation;

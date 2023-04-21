@@ -12,7 +12,7 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  *
  * @author francis
  */
-public final class ChineseCharactersUtils {
+public final class ChineseCharactersUtil {
 
 
     /**

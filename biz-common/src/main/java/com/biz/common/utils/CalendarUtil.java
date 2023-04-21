@@ -7,7 +7,7 @@ import java.util.Calendar;
  *
  * @author francis
  */
-public final class CalendarUtils {
+public final class CalendarUtil {
 
     /**
      * 获取去年
