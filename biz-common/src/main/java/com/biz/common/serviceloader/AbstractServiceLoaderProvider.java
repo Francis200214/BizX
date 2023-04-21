@@ -1,7 +1,7 @@
 package com.biz.common.serviceloader;
 
-import com.biz.common.singleton.SingletonMap;
 import com.biz.common.utils.Common;
+import com.biz.map.SingletonMap;
 
 import java.util.concurrent.locks.ReentrantLock;
 

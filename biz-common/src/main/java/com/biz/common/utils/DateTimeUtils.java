@@ -1,7 +1,8 @@
 package com.biz.common.utils;
 
 
-import com.biz.common.singleton.SingletonMap;
+
+import com.biz.map.SingletonMap;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -37,7 +38,6 @@ public final class DateTimeUtils {
     }
 
 
-
     /**
      * Calendar 转成时间字符串
      *
@@ -64,7 +64,7 @@ public final class DateTimeUtils {
     /**
      * Date 转成 时间字符串
      *
-     * @param date Date
+     * @param date   Date
      * @param format 格式
      * @return
      */
@@ -86,7 +86,7 @@ public final class DateTimeUtils {
     /**
      * 时间字符串转成时间
      *
-     * @param date 时间字符串
+     * @param date  时间字符串
      * @param parse 转换格式
      * @return
      * @throws ParseException
