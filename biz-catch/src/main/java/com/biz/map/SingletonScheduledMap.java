@@ -1,7 +1,6 @@
 package com.biz.map;
 
 
-
 import com.biz.common.concurrent.ExecutorsUtils;
 import com.biz.common.singleton.Singleton;
 
@@ -17,12 +16,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 单例 Map
- * 可定时删除 Key
+ * 单例定时清除 Map
  *
  * @author francis
  */
-public final class SingletonMap<K, V> {
+public final class SingletonScheduledMap<K, V> {
 
     private static final Singleton<ScheduledExecutorService> SCHEDULED_EXECUTOR_SERVICE_SINGLETON = Singleton.setSupplier(ExecutorsUtils::buildScheduledExecutorService);
     private static final AtomicLong VERSION = new AtomicLong(Long.MIN_VALUE);
@@ -33,7 +31,7 @@ public final class SingletonMap<K, V> {
     private final Lock lock = new ReentrantLock(true);
 
 
-    public SingletonMap (Supplier<Map<K, V>> supplier, Function<K, V> function, long died) {
+    public SingletonScheduledMap(Supplier<Map<K, V>> supplier, Function<K, V> function, long died) {
         this.map = supplier == null ? new ConcurrentHashMap<>() : supplier.get();
         this.function = function;
         this.died = died;
@@ -128,8 +126,8 @@ public final class SingletonMap<K, V> {
             return this;
         }
 
-        public SingletonMap build() {
-            return new SingletonMap(supplier, function, died);
+        public SingletonScheduledMap build() {
+            return new SingletonScheduledMap(supplier, function, died);
         }
     }
 
