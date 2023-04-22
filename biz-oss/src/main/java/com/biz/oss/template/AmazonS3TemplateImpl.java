@@ -31,7 +31,7 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     @Override
     @SneakyThrows
     public void createBucket(String bucketName) {
-        if ( !amazonS3.doesBucketExistV2(bucketName) ) {
+        if (!amazonS3.doesBucketExistV2(bucketName)) {
             amazonS3.createBucket((bucketName));
         }
     }
@@ -61,9 +61,9 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     /**
      * 上传对象
      *
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @param stream 文件流
+     * @param bucketName  bucket名称
+     * @param objectName  文件名称
+     * @param stream      文件流
      * @param contextType 文件类型
      */
     @Override
@@ -71,11 +71,13 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     public void putObject(String bucketName, String objectName, InputStream stream, String contextType) {
         putObject(bucketName, objectName, stream, stream.available(), contextType);
     }
+
     /**
      * 上传对象
+     *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @param stream 文件流
+     * @param stream     文件流
      */
     @Override
     @SneakyThrows
@@ -131,8 +133,8 @@ public class AmazonS3TemplateImpl implements OssTemplate {
      * 根据bucketName和prefix获取对象集合
      *
      * @param bucketName bucket名称
-     * @param prefix 前缀
-     * @param recursive 是否递归查询
+     * @param prefix     前缀
+     * @param recursive  是否递归查询
      * @return
      */
     @Override
@@ -146,16 +148,16 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     /**
      * 上传文件
      *
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @param stream stream流
+     * @param bucketName  bucket名称
+     * @param objectName  文件名称
+     * @param stream      stream流
      * @param size
      * @param contextType
      * @return
      */
     @SneakyThrows
     private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size,
-                                      String contextType)  {
+                                      String contextType) {
         byte[] bytes = IOUtils.toByteArray(stream);
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(size);

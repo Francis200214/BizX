@@ -39,9 +39,9 @@ public interface OssTemplate {
     /**
      * 上传文件
      *
-     * @param bucketName bucket名称
-     * @param objectName 文件名称
-     * @param stream 文件流
+     * @param bucketName  bucket名称
+     * @param objectName  文件名称
+     * @param stream      文件流
      * @param contextType 文件类型
      * @throws Exception
      */
@@ -52,7 +52,7 @@ public interface OssTemplate {
      *
      * @param bucketName bucket名称
      * @param objectName 文件名称
-     * @param stream 文件流
+     * @param stream     文件流
      * @throws Exception
      */
     void putObject(String bucketName, String objectName, InputStream stream) throws Exception;
@@ -89,8 +89,8 @@ public interface OssTemplate {
      * 根据文件前置查询文件
      *
      * @param bucketName bucket名称
-     * @param prefix 前缀
-     * @param recursive 是否递归查询
+     * @param prefix     前缀
+     * @param recursive  是否递归查询
      * @return S3ObjectSummary 列表
      */
     List<S3ObjectSummary> getAllObjectsByPrefix(String bucketName, String prefix, boolean recursive);
