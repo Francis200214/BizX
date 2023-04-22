@@ -7,28 +7,28 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 
 /**
- * token 配置
+ * Token 配置实体
  *
  * @author francis
- * @create: 2023-04-18 17:52
+ * @create: 2023-04-22 13:15
  **/
 @Setter
 @Getter
 @ToString
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
-public class TokenCurrentYml {
-
-
-    /**
-     * rbac 是否开启
-     */
-    @Value("${biz.token.rbac:false}")
-    private boolean rbac;
+public class TokenProperties {
 
     /**
-     * token 失效时间
+     * Token 密钥
      */
-    @Value("${biz.token.dieTime:3600000}")
-    private long dieTime;
+    @Value("biz.token.secret")
+    private String secret;
+
+    /**
+     * Token 有效时间
+     * 默认一小时
+     */
+    @Value("biz.token.expire:3600000")
+    private long expire;
 
 }

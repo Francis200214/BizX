@@ -37,5 +37,4 @@ public class CheckParameterDoubleMaxHandler implements CheckParameterStrategy {
     }
 
 
-
 }

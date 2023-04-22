@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * 检查参数工厂
- *
+ * <p>
  * 主要做注册 Bean 后将实现 CheckParameterStrategy 接口的实现类加入到 Map 中，
  * 方便后续使用 CheckParameterStrategy 下各个实现类
  *

@@ -1,4 +1,4 @@
-package com.biz.web.token;
+package com.biz.web.account;
 
 import java.io.Serializable;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  * @author francis
  */
-public interface BizAccountFactory <ID extends Serializable> {
+public interface BizAccountFactory<ID extends Serializable> {
 
     BizAccount<ID> getBizAccount(ID id);
 

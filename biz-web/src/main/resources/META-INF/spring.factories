@@ -5,7 +5,8 @@ com.biz.web.aop.CheckParameterFactory,\
 com.biz.web.interceptor.BizXWebMvcConfigurer,\
 com.biz.web.interceptor.yml.BizInterceptorProperties,\
 com.biz.web.interceptor.condition.AccessLimitConditionConfiguration,\
-com.biz.web.interceptor.condition.CheckTokenConditionConfiguration
+com.biz.web.interceptor.condition.CheckTokenConditionConfiguration,\
+com.biz.web.token.TokenProperties
 
 
 
