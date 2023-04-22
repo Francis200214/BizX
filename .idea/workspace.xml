@@ -4,53 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtToken.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/application/aware/ApplicationContextAwareUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/application/aware/ApplicationContextAwareUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/bean/BizXBeanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/bean/BizXBeanUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/Copier.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/Copier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/JTSUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/JTSUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/FieldModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/FieldModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LazySelectableAbstractStrategyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/LazySelectableAbstractStrategyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/BarCodeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/BarCodeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ChineseCharactersUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ChineseCharactersUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateTimeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RandomUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RandomUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RangeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RangeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/UUIDGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/UUIDGenerate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/bean/BizXComponentBeanDefinitionScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/src/main/java/com/biz/core/spring/BizXSpringBeanDefinitionRegistrar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/template/AmazonS3TemplateImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/template/AmazonS3TemplateImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/template/OssTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/template/OssTemplate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDateTimeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDateTimeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMaxHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDoubleMaxHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractSessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/account/BizAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizAccountFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/account/BizAccountFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/BizSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/SessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenCurrentYml.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/StrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/StrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -110,31 +64,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/BizX/demo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.117227316",
-    "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "e69f97aeeb145a44f1d351a3c3eaf080",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea/BizX/demo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.117227316&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23333333&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;e69f97aeeb145a44f1d351a3c3eaf080&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -254,41 +208,6 @@
       <workItem from="1681778615077" duration="10578000" />
       <workItem from="1681864763968" duration="2496000" />
       <workItem from="1682043533400" duration="10066000" />
-    </task>
-    <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
-      <created>1680346182350</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1680346182350</updated>
-    </task>
-    <task id="LOCAL-00002" summary="1、增加了反射工具类以及反射工具类返回的数据模型；&#10;2、测试策略模式；">
-      <created>1680440857400</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1680440857400</updated>
-    </task>
-    <task id="LOCAL-00003" summary="1、由注解BizX改成BizXEnable，其中使用Import注解，增加了注入Bean的实现类；&#10;2、增加了BizXComponent注解，使用该注解的Class注入到Bean中，并添加了BizXComponentBeanDefinitionScanner实现类；">
-      <created>1680677943126</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1680677943126</updated>
-    </task>
-    <task id="LOCAL-00004" summary="1、CustomWebMvcConfigurer使用Configurer注解；">
-      <created>1680678224735</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1680678224735</updated>
-    </task>
-    <task id="LOCAL-00005" summary="升级了版本，修改了工具类注释">
-      <created>1680876792640</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1680876792640</updated>
     </task>
     <task id="LOCAL-00006" summary="引入Vadidator做参数校验">
       <created>1680876835227</created>
@@ -598,7 +517,42 @@
       <option name="project" value="LOCAL" />
       <updated>1682063619069</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="1、修改了缓存Map的名称；">
+      <created>1682159992709</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1682159992709</updated>
+    </task>
+    <task id="LOCAL-00051" summary="1、完善了OSS模块内的注释说明；">
+      <created>1682160051249</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1682160051249</updated>
+    </task>
+    <task id="LOCAL-00052" summary="1、删除了core包内无需的引入类；">
+      <created>1682160116016</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1682160116016</updated>
+    </task>
+    <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
+      <created>1682160242216</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1682160242216</updated>
+    </task>
+    <task id="LOCAL-00054" summary="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；">
+      <created>1682160359366</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1682160359366</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,11 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="检查参数实现" />
-    <MESSAGE value="查询不同的策略更改了方式" />
-    <MESSAGE value="不同策略实现修改了判断方式" />
-    <MESSAGE value="更新了README" />
-    <MESSAGE value="优化检查参数" />
     <MESSAGE value="优化了AOP控制操作参数" />
     <MESSAGE value="优化了判断String类型参数" />
     <MESSAGE value="优化了判断Collection类型参数" />
@@ -653,7 +602,12 @@
     <MESSAGE value="1、增加了OSS模块，主要封装了文件操作；&#10;2、增加了catch模块，主要封装一些缓存机制；" />
     <MESSAGE value="1、调整了common包中的一些结构；" />
     <MESSAGE value="1、调整了引入common包中的一些结构；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、调整了引入common包中的一些结构；" />
+    <MESSAGE value="1、修改了缓存Map的名称；" />
+    <MESSAGE value="1、完善了OSS模块内的注释说明；" />
+    <MESSAGE value="1、删除了core包内无需的引入类；" />
+    <MESSAGE value="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；" />
+    <MESSAGE value="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
