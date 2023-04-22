@@ -2,9 +2,9 @@ package com.demo.test;
 
 import com.biz.common.strategy.LazySelectableAbstractStrategyService;
 import com.biz.common.strategy.SelectableStrategyService;
+import com.demo.controller.LoginController;
 import com.demo.strategy.PeopleEnum;
 import com.demo.strategy.PeopleStrategyService;
-import com.demo.controller.LoginController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

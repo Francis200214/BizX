@@ -2,7 +2,6 @@ package com.demo.test;
 
 import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.strategy.StrategyService;
-import com.demo.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -15,8 +14,6 @@ import java.util.Map;
  * @create: 2023-04-16 20:27
  **/
 public class StrategyTest {
-
-
 
 
     public static void main(String[] args) {
@@ -52,7 +49,6 @@ public class StrategyTest {
 //        results.add(CCC.class);
         return results;
     }
-
 
 
 }

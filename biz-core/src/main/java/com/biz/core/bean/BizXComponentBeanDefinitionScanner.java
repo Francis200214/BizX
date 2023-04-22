@@ -9,9 +9,8 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
 import java.util.Set;
 
 /**
- * @BizXComponent Bean注入实现类
- *
  * @author francis
+ * @BizXComponent Bean注入实现类
  * @create: 2023-04-05 14:29
  **/
 public class BizXComponentBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
