@@ -31,7 +31,7 @@ public final class ChineseCharactersUtil {
         for (int i = 0; i < newChar.length; i++) {
             if (newChar[i] > 128) {
                 pinyinStr.append(PinyinHelper.toHanyuPinyinStringArray(newChar[i], defaultFormat)[0].charAt(0));
-            }else{
+            } else {
                 pinyinStr.append(newChar[i]);
             }
         }
@@ -53,7 +53,7 @@ public final class ChineseCharactersUtil {
         for (int i = 0; i < newChar.length; i++) {
             if (newChar[i] > 128) {
                 pinyinStr.append(PinyinHelper.toHanyuPinyinStringArray(newChar[i], defaultFormat)[0]);
-            }else{
+            } else {
                 pinyinStr.append(newChar[i]);
             }
         }

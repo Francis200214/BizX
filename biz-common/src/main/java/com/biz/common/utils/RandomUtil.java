@@ -50,7 +50,7 @@ public final class RandomUtil {
      * 生成一个范围内的随机数
      *
      * @param start 范围起始值
-     * @param end 范围结束值
+     * @param end   范围结束值
      * @return
      */
     public static int generateNumber(int start, int end) {
@@ -61,7 +61,7 @@ public final class RandomUtil {
      * 生成一个范围内的随机树
      *
      * @param start 范围起始值
-     * @param end 范围结束值
+     * @param end   范围结束值
      * @return
      */
     public static double generateDouble(double start, double end) {

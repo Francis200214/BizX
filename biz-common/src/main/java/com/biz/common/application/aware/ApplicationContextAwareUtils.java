@@ -24,6 +24,7 @@ public class ApplicationContextAwareUtils implements ApplicationContextAware {
 
     /**
      * 获取 ApplicationContext
+     *
      * @return
      */
     public static ApplicationContext getApplicationContext() {

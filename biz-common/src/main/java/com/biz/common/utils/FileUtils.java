@@ -46,13 +46,12 @@ public final class FileUtils {
     }
 
 
-
     /**
      * base64转成文件并保存
      *
-     * @param filePath 文件存储路径
+     * @param filePath    文件存储路径
      * @param fileContext 文件base64编码
-     * @param fileType 文件类型后缀（jpg、png）
+     * @param fileType    文件类型后缀（jpg、png）
      */
     public static void base64ToFile(String filePath, String fileContext, String fileType) {
         // 判断文件base64编码是否为空
@@ -74,7 +73,6 @@ public final class FileUtils {
 
         }
     }
-
 
 
     @Setter

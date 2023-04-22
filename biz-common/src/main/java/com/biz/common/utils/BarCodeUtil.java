@@ -27,7 +27,7 @@ public final class BarCodeUtil {
     /**
      * 生成条形码文件
      *
-     * @param text  条形码的文本内容
+     * @param text 条形码的文本内容
      * @param path 生成条形码的文件路径
      * @return 返回生成的条形码文件
      */
@@ -62,12 +62,12 @@ public final class BarCodeUtil {
     /**
      * 生成条形码【code128】
      *
-     * @param text 要生成的文本
-     * @param height 条形码的高度
-     * @param width 条形码的宽度
+     * @param text          要生成的文本
+     * @param height        条形码的高度
+     * @param width         条形码的宽度
      * @param withQuietZone 是否两边留白
-     * @param hideText 是否隐藏可读文本
-     * @param outputStream 输出流
+     * @param hideText      是否隐藏可读文本
+     * @param outputStream  输出流
      */
     private static void generateBarCode128(String text, Double height, Double width, boolean withQuietZone, boolean hideText, OutputStream outputStream) {
         Code128Bean code128Bean = new Code128Bean();
@@ -93,9 +93,6 @@ public final class BarCodeUtil {
 
         }
     }
-
-
-
 
 
 }

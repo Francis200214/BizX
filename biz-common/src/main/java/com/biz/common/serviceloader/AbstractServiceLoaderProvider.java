@@ -1,18 +1,16 @@
 package com.biz.common.serviceloader;
 
 import com.biz.common.utils.Common;
-import com.biz.map.SingletonMap;
+import com.biz.map.SingletonScheduledMap;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 
- *
  * @author francis
  */
 public abstract class AbstractServiceLoaderProvider implements ServiceLoaderProvider {
 
-    private final SingletonMap<String, Object> cache = SingletonMap.<String, Object>builder().build();
+    private final SingletonScheduledMap<String, Object> cache = SingletonScheduledMap.<String, Object>builder().build();
 
     private static ReentrantLock lock = new ReentrantLock(true);
 

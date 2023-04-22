@@ -1,8 +1,7 @@
 package com.biz.common.utils;
 
 
-
-import com.biz.map.SingletonMap;
+import com.biz.map.SingletonScheduledMap;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,7 +22,7 @@ public final class DateTimeUtils {
     public static final String DEFAULT_YEAR = "yyyy";
     public static final String DEFAULT_MM = "MM";
 
-    private static final ThreadLocal<SingletonMap<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
+    private static final ThreadLocal<SingletonScheduledMap<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
 
 
     /**
@@ -113,7 +112,7 @@ public final class DateTimeUtils {
      */
     private static DateFormat getDateFormat(String format) {
         if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
-            DATE_FORMAT_THREAD_LOCAL.set(SingletonMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
+            DATE_FORMAT_THREAD_LOCAL.set(SingletonScheduledMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
         }
 
         return DATE_FORMAT_THREAD_LOCAL.get().get(format);

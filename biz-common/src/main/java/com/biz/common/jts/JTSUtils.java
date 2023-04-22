@@ -16,5 +16,4 @@ public final class JTSUtils {
     public static final GeometryFactory GEOMETRY_FACTORY = new GeometryFactory();
 
 
-
 }

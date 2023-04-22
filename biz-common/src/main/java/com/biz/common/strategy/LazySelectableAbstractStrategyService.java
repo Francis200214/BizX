@@ -1,7 +1,7 @@
 package com.biz.common.strategy;
 
-import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.bean.BizXBeanUtils;
+import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.utils.Common;
 import lombok.extern.slf4j.Slf4j;
 

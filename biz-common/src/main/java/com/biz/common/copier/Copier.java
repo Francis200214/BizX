@@ -4,7 +4,6 @@ package com.biz.common.copier;
 public interface Copier<P, T> {
 
     /**
-     *
      * @param p
      * @return
      */

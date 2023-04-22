@@ -21,8 +21,8 @@ public final class BizXBeanUtils {
      * 获取 Bean
      *
      * @param clazz
-     * @return
      * @param <T>
+     * @return
      */
     public static <T> T getBean(Class<T> clazz) {
         return getApplicationContext().getBean(clazz);
