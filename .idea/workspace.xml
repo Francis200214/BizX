@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/AbstractCatchMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/TimedDeletionMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/BizScheduledFuture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenProperties.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -208,13 +218,6 @@
       <workItem from="1681778615077" duration="10578000" />
       <workItem from="1681864763968" duration="2496000" />
       <workItem from="1682043533400" duration="10066000" />
-    </task>
-    <task id="LOCAL-00006" summary="引入Vadidator做参数校验">
-      <created>1680876835227</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1680876835227</updated>
     </task>
     <task id="LOCAL-00007" summary="增加了操作Class工具类">
       <created>1680928790942</created>
@@ -552,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682160359366</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="1、同步代码">
+      <created>1682160452682</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1682160452682</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="优化了AOP控制操作参数" />
     <MESSAGE value="优化了判断String类型参数" />
     <MESSAGE value="优化了判断Collection类型参数" />
     <MESSAGE value="实现了所有的注解校验" />
@@ -607,7 +616,8 @@
     <MESSAGE value="1、删除了core包内无需的引入类；" />
     <MESSAGE value="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；" />
     <MESSAGE value="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；" />
+    <MESSAGE value="1、同步代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、同步代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

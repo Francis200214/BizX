@@ -1,14 +1,11 @@
 package com.biz.web.session;
 
 import com.biz.common.bean.BizXBeanUtils;
-import com.biz.common.singleton.Singleton;
-import com.biz.common.utils.JwtToken;
+import com.biz.common.utils.Common;
 import com.biz.common.utils.UUIDGenerate;
+import com.biz.map.SingletonScheduledMap;
 import com.biz.web.account.BizAccount;
 import com.biz.web.token.TokenProperties;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 会话管理
@@ -18,15 +15,11 @@ import java.util.Map;
  **/
 public class AbstractSessionManage implements SessionManage {
 
-    private static final String TOKEN_KEY = "ACCOUNT_ID";
-    private static ThreadLocal<String> token = null;
-
     /**
      * 会话缓存 Map
      */
-    private static Map<String, String> sessionMap = new HashMap<>();
-
-    private static final Singleton<JwtToken> JWT_TOKEN_UTILS_SINGLETON = Singleton.setSupplier(AbstractSessionManage::buildJwtToken);
+    private static SingletonScheduledMap<String, Object> sessionMap = SingletonScheduledMap.builder()
+            .build();
 
 
     @Override
@@ -34,35 +27,31 @@ public class AbstractSessionManage implements SessionManage {
         if (!sessionMap.containsKey(token)) {
             return null;
         }
-        String jwtData = sessionMap.get(token);
-        JwtToken jwtToken = getJwtToken();
-        if (jwtToken.checkExpire(jwtData)) {
-            return jwtToken.getData(jwtData, TOKEN_KEY);
 
-        }
-        return null;
+        return sessionMap.get(token);
     }
 
     @Override
     public String createSession(BizAccount<?> account) {
-        JwtToken jwtToken = getJwtToken();
-        jwtToken.putData(TOKEN_KEY, account.getId());
         String id = UUIDGenerate.generate();
-        sessionMap.put(id, jwtToken.createToken());
+        sessionMap.put(id, Common.to(account.getId()));
         return id;
     }
 
-
-    public JwtToken getJwtToken() {
-        return JWT_TOKEN_UTILS_SINGLETON.get();
+    @Override
+    public void resetSessionDiedTime(String token) {
+        sessionMap.resetDiedCatch(token, getTokenProperties());
     }
 
-    private static JwtToken buildJwtToken() {
-        TokenProperties tokenProperties = BizXBeanUtils.getBean(TokenProperties.class);
-        return JwtToken.builder()
-                .secret(tokenProperties.getSecret())
-                .expire(tokenProperties.getExpire())
-                .build();
+
+    /**
+     * 获取配置的 token 失效时间
+     *
+     * @return
+     */
+    private long getTokenProperties() {
+        TokenProperties bean = BizXBeanUtils.getBean(TokenProperties.class);
+        return bean.getExpire();
     }
 
 

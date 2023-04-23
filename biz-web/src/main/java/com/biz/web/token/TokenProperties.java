@@ -19,12 +19,6 @@ import org.springframework.context.annotation.PropertySource;
 public class TokenProperties {
 
     /**
-     * Token 密钥
-     */
-    @Value("biz.token.secret")
-    private String secret;
-
-    /**
      * Token 有效时间
      * 默认一小时
      */

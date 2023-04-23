@@ -28,4 +28,12 @@ public interface SessionManage {
     String createSession(BizAccount<?> account);
 
 
+    /**
+     * 刷新 token 清除时间
+     *
+     * @param token
+     */
+    void resetSessionDiedTime(String token);
+
+
 }
