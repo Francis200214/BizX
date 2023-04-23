@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
@@ -27,28 +28,25 @@ public final class SingletonScheduledMap<K, V> {
     private long version = VERSION.get();
     private final Function<K, V> function;
     private final long died;
-    private final Map<K, V> map;
+    private final Map<K, Value<V>> map;
     private final Lock lock = new ReentrantLock(true);
 
 
-    public SingletonScheduledMap(Supplier<Map<K, V>> supplier, Function<K, V> function, long died) {
+    public SingletonScheduledMap(Supplier<Map<K, Value<V>>> supplier, Function<K, V> function, long died) {
         this.map = supplier == null ? new ConcurrentHashMap<>() : supplier.get();
         this.function = function;
         this.died = died;
     }
 
-    public V put(K k, V v, long died) {
-        lock.lock();
-        try {
-            if (!map.containsKey(k)) {
-                SCHEDULED_EXECUTOR_SERVICE_SINGLETON.get().schedule(() -> remove(k), died, TimeUnit.MILLISECONDS);
-                map.put(k, v);
-            }
-        } finally {
-            lock.unlock();
-        }
-        return v;
+    public V put(K k, V v) {
+        return putCatch(k, v, died);
     }
+
+
+    public V put(K k, V v, long died) {
+        return putCatch(k, v, died);
+    }
+
 
     public V get(K k, Supplier<V> supplier) {
         return get(k, (v) -> Objects.requireNonNull(supplier, "supplier is null").get());
@@ -63,6 +61,53 @@ public final class SingletonScheduledMap<K, V> {
     }
 
 
+    /**
+     * 判断 Map 中是否存在 key
+     *
+     * @param k key
+     * @return true 存在 false 不存在
+     */
+    public boolean containsKey(K k) {
+        return map.containsKey(k);
+    }
+
+
+
+
+    /**
+     * 设置定时时间，清除 Map 中的 Key
+     *
+     * @param k key
+     * @param died 过期时间
+     */
+    public void resetDiedCatch(K k, long died) {
+        ScheduledFuture<?> scheduledFuture = ExecutorsUtils.buildScheduledFuture(() -> remove(k), died);
+
+        SCHEDULED_EXECUTOR_SERVICE_SINGLETON.get().schedule(() -> remove(k), died, TimeUnit.MILLISECONDS);
+    }
+
+
+    private V putCatch(K k, V v, long died) {
+        lock.lock();
+        try {
+            if (!map.containsKey(k)) {
+                resetDiedCatch(k, died);
+                map.put(k, buildValue(k, v, died));
+            }
+        } finally {
+            lock.unlock();
+        }
+        return v;
+    }
+
+    private Value<V> buildValue(K k, V v, long died) {
+        Value value = new Value();
+        value.v = v;
+        value.scheduledFuture = ExecutorsUtils.buildScheduledFuture(() -> remove(k), died);
+        return value;
+    }
+
+
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
         if (version != VERSION.get()) {
             synchronized (this) {
@@ -74,9 +119,12 @@ public final class SingletonScheduledMap<K, V> {
         }
 
         if (!map.containsKey(k)) {
+            if (functionSupplier == null) {
+                return null;
+            }
             return put(k, functionSupplier.get().apply(k), died);
         }
-        return map.get(k);
+        return map.get(k).v;
     }
 
 
@@ -94,19 +142,44 @@ public final class SingletonScheduledMap<K, V> {
                 map.remove(k);
             }
         }
-
     }
 
 
+    /**
+     * Map 的 Value 值
+     * 内部封装了 ScheduledFuture，用于定时删除 Map 中的 key
+     *
+     * @param <V>
+     */
+    private static class Value<V> {
+        private ScheduledFuture<?> scheduledFuture;
+        private V v;
+    }
+
+
+    /**
+     * 获取缓存 Map 创建者
+     *
+     * @return Map 创建者
+     * @param <K>
+     * @param <V>
+     */
     public static <K, V> SingletonMapBuilder<K, V> builder() {
         return new SingletonMapBuilder<>();
     }
 
-    public static class SingletonMapBuilder<K, V> {
 
-        private Supplier<Map<K, V>> supplier;
+    /**
+     * 内置缓存 Map 创建者
+     *
+     * @param <K>
+     * @param <V>
+     */
+    public static class SingletonMapBuilder<K, V> {
+        private Supplier<Map<K, Value<V>>> supplier;
         private Function<K, V> function;
-        private long died = 500L;
+        // 默认十分钟
+        private long died = 1000 * 60 * 10L;
 
         public SingletonMapBuilder() {
         }
@@ -116,7 +189,7 @@ public final class SingletonScheduledMap<K, V> {
             return this;
         }
 
-        public SingletonMapBuilder<K, V> map(Supplier<Map<K, V>> supplier) {
+        public SingletonMapBuilder<K, V> map(Supplier<Map<K, Value<V>>> supplier) {
             this.supplier = supplier;
             return this;
         }
