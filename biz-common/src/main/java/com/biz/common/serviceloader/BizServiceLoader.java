@@ -14,9 +14,14 @@ public class BizServiceLoader extends AbstractServiceLoaderProvider {
 
     @Override
     protected <T> T load(Class<?> tClass) {
-        ServiceLoader<?> loadedDrivers = ServiceLoader.load(tClass);
+        return loadService(tClass);
+    }
+
+
+    public static <T> T loadService(Class<?> clazz) {
+        ServiceLoader<?> loadedDrivers = ServiceLoader.load(clazz);
         for (Object next : loadedDrivers) {
-            if (tClass.getName().equals(next.getClass().getName())) {
+            if (clazz.getName().equals(next.getClass().getName())) {
                 return Common.to(next);
             }
         }

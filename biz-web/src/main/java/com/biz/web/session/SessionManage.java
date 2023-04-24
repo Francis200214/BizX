@@ -2,6 +2,9 @@ package com.biz.web.session;
 
 import com.biz.web.account.BizAccount;
 
+import java.io.Serializable;
+import java.util.Optional;
+
 /**
  * token 会话管理
  *
@@ -12,12 +15,12 @@ public interface SessionManage {
 
 
     /**
-     * 获取当前用户信息
+     * 获取当前用户Id
      *
      * @param token
      * @return
      */
-    Object getSession(String token);
+    Optional<Serializable> getSession(String token);
 
     /**
      * 生成一个新的 Token

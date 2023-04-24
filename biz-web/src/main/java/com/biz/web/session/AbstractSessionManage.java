@@ -7,6 +7,9 @@ import com.biz.map.SingletonScheduledMap;
 import com.biz.web.account.BizAccount;
 import com.biz.web.token.TokenProperties;
 
+import java.io.Serializable;
+import java.util.Optional;
+
 /**
  * 会话管理
  *
@@ -18,17 +21,17 @@ public class AbstractSessionManage implements SessionManage {
     /**
      * 会话缓存 Map
      */
-    private static SingletonScheduledMap<String, Object> sessionMap = SingletonScheduledMap.builder()
+    private static SingletonScheduledMap<String, Serializable> sessionMap = SingletonScheduledMap.builder()
             .build();
 
 
     @Override
-    public Object getSession(String token) {
+    public Optional<Serializable> getSession(String token) {
         if (!sessionMap.containsKey(token)) {
             return null;
         }
 
-        return sessionMap.get(token);
+        return Optional.of(sessionMap.get(token));
     }
 
     @Override

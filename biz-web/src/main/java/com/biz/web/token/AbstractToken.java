@@ -2,11 +2,14 @@ package com.biz.web.token;
 
 
 import com.biz.common.bean.BizXBeanUtils;
-import com.biz.common.utils.JwtTokenUtils;
+import com.biz.common.serviceloader.BizServiceLoader;
+import com.biz.common.serviceloader.ServiceLoaderProvider;
 import com.biz.web.account.BizAccount;
 import com.biz.web.account.BizAccountFactory;
+import com.biz.web.session.SessionManage;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 /**
  * @author francis
@@ -15,9 +18,16 @@ import java.io.Serializable;
 public abstract class AbstractToken implements Token {
 
 
-    private static ThreadLocal<Object> tokenObject = new ThreadLocal<>();
+    private ThreadLocal<String> token = new ThreadLocal<>();
 
-    private Serializable currentTokenId = null;
+    private final SessionManage sessionManage;
+
+    private final Serializable currentTokenId = null;
+
+    public AbstractToken(SessionManage sessionManage) {
+        this.sessionManage = getSessionManage(sessionManage);
+    }
+
 
     @Override
     public String getCurrentToken() {
@@ -26,11 +36,21 @@ public abstract class AbstractToken implements Token {
 
     @Override
     public BizAccount<?> getCurrentUser() {
-        if (currentTokenId == null) {
+        if (token.get() == null) {
             throw new RuntimeException("current token id is null");
         }
-        BizAccountFactory bean = BizXBeanUtils.getBean(BizAccountFactory.class);
-        return bean.getBizAccount(currentTokenId);
+        Optional<Serializable> session = sessionManage.getSession(token.get());
+        if (!session.isPresent()) {
+            return null;
+        }
+        try {
+            BizAccountFactory bean = BizXBeanUtils.getBean(BizAccountFactory.class);
+            bean.getBizAccount(session.get());
+
+        } catch (Exception e){
+            throw new RuntimeException("BizAccountFactory is not definition");
+        }
+        return null;
     }
 
 
@@ -42,9 +62,6 @@ public abstract class AbstractToken implements Token {
 
         // 3、返回时的 header 中存放 token
 
-        JwtTokenUtils builder = JwtTokenUtils.JwtTokenUtilsbuilder()
-//                .expire()
-                .builder();
 //        builder.createToken()
     }
 
@@ -52,4 +69,10 @@ public abstract class AbstractToken implements Token {
     public void destroy() {
 
     }
+
+
+    private SessionManage getSessionManage(SessionManage sessionManage) {
+        return Optional.ofNullable(sessionManage).orElse(BizServiceLoader.loadService(sessionManage.getClass()));
+    }
+
 }
