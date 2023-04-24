@@ -1,6 +1,7 @@
 package com.biz.map;
 
 
+import com.biz.common.concurrent.BizScheduledFuture;
 import com.biz.common.concurrent.ExecutorsUtils;
 import com.biz.common.singleton.Singleton;
 
@@ -8,8 +9,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -72,18 +71,28 @@ public final class SingletonScheduledMap<K, V> {
     }
 
 
-
-
     /**
      * 设置定时时间，清除 Map 中的 Key
      *
-     * @param k key
+     * @param k    key
      * @param died 过期时间
      */
     public void resetDiedCatch(K k, long died) {
-        ScheduledFuture<?> scheduledFuture = ExecutorsUtils.buildScheduledFuture(() -> remove(k), died);
+        if (!map.containsKey(k)) {
+            throw new RuntimeException("This key is not in the map");
+        }
+        lock.lock();
+        try {
+            if (!map.containsKey(k)) {
+                throw new RuntimeException("This key is not in the map");
+            }
+            Value<V> vValue = map.get(k);
+            // 设置延迟清除时间，重新加载
+            vValue.scheduledFuture.resetDied(died);
+        } finally {
+            lock.unlock();
+        }
 
-        SCHEDULED_EXECUTOR_SERVICE_SINGLETON.get().schedule(() -> remove(k), died, TimeUnit.MILLISECONDS);
     }
 
 
@@ -91,7 +100,6 @@ public final class SingletonScheduledMap<K, V> {
         lock.lock();
         try {
             if (!map.containsKey(k)) {
-                resetDiedCatch(k, died);
                 map.put(k, buildValue(k, v, died));
             }
         } finally {
@@ -103,7 +111,19 @@ public final class SingletonScheduledMap<K, V> {
     private Value<V> buildValue(K k, V v, long died) {
         Value value = new Value();
         value.v = v;
-        value.scheduledFuture = ExecutorsUtils.buildScheduledFuture(() -> remove(k), died);
+        value.scheduledFuture = BizScheduledFuture.builder()
+                .runnable(() -> {
+                    lock.lock();
+                    try {
+                        remove(k);
+                    } finally {
+                        lock.unlock();
+                    }
+                })
+                .time(died)
+                .scheduledExecutorService(SCHEDULED_EXECUTOR_SERVICE_SINGLETON.get())
+                .build();
+        value.scheduledFuture.submit();
         return value;
     }
 
@@ -152,7 +172,7 @@ public final class SingletonScheduledMap<K, V> {
      * @param <V>
      */
     private static class Value<V> {
-        private ScheduledFuture<?> scheduledFuture;
+        private BizScheduledFuture scheduledFuture;
         private V v;
     }
 
@@ -160,9 +180,9 @@ public final class SingletonScheduledMap<K, V> {
     /**
      * 获取缓存 Map 创建者
      *
-     * @return Map 创建者
      * @param <K>
      * @param <V>
+     * @return Map 创建者
      */
     public static <K, V> SingletonMapBuilder<K, V> builder() {
         return new SingletonMapBuilder<>();

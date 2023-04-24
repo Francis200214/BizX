@@ -1,7 +1,9 @@
 package com.biz.common.concurrent;
 
+import java.util.Objects;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -35,23 +37,57 @@ public class BizScheduledFuture {
         this.time = time;
     }
 
-
     public void submit() {
-
+        submit(this.runnable, this.time);
     }
 
 
-    public void canal() {
+    public void cancel() {
         if (scheduledFuture == null) {
             return;
         }
         lock.lock();
         try {
-
+            if (scheduledFuture == null) {
+                return;
+            }
+            scheduledFuture.cancel(true);
+            scheduledFuture = null;
         } finally {
             lock.unlock();
         }
+    }
 
+
+    public void resetDied(long time) {
+        lock.lock();
+        try {
+            cancel();
+            submit(runnable, time);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+
+    private void submit(Runnable runnable, long time) {
+        Objects.requireNonNull(runnable, "This is runnable is not null");
+        lock.lock();
+        try {
+            if (scheduledFuture != null) {
+                scheduledFuture.cancel(false);
+            }
+            scheduledFuture = this.scheduledExecutorService.schedule(() -> {
+                lock.lock();
+                try {
+                    runnable.run();
+                } finally {
+                    lock.unlock();
+                }
+            }, time, TimeUnit.MILLISECONDS);
+        } finally {
+            lock.unlock();
+        }
     }
 
 
