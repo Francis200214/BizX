@@ -32,7 +32,9 @@ public class BizScheduledFuture {
     private final ReentrantLock lock = new ReentrantLock(true);
 
     public BizScheduledFuture(ScheduledExecutorService scheduledExecutorService, Runnable runnable, long time) {
-        this.scheduledExecutorService = scheduledExecutorService == null ? ExecutorsUtils.buildScheduledExecutorService(10) : scheduledExecutorService;
+        this.scheduledExecutorService = scheduledExecutorService == null
+                ? ExecutorsUtils.buildScheduledExecutorService(10)
+                : scheduledExecutorService;
         this.runnable = runnable;
         this.time = time;
     }

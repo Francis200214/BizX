@@ -1,8 +1,5 @@
 package com.biz.common.serviceloader;
 
-import com.biz.common.utils.Common;
-import com.biz.map.SingletonScheduledMap;
-
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -10,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public abstract class AbstractServiceLoaderProvider implements ServiceLoaderProvider {
 
-    private final SingletonScheduledMap<String, Object> cache = SingletonScheduledMap.<String, Object>builder().build();
+//    private final SingletonScheduledMap<String, Object> cache = SingletonScheduledMap.<String, Object>builder().build();
 
     private static ReentrantLock lock = new ReentrantLock(true);
 
@@ -18,8 +15,8 @@ public abstract class AbstractServiceLoaderProvider implements ServiceLoaderProv
     public <T> T get(Class<?> tClass) {
         lock.lock();
         try {
-            return Common.to(cache.get(tClass.getName(), key -> load(tClass)));
-
+//            return Common.to(cache.get(tClass.getName(), key -> load(tClass)));
+            return load(tClass);
         } finally {
             lock.unlock();
         }

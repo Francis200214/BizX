@@ -1,13 +1,13 @@
 package com.biz.common.utils;
 
 
-import com.biz.map.SingletonScheduledMap;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 基础时间工具类
@@ -22,7 +22,7 @@ public final class DateTimeUtils {
     public static final String DEFAULT_YEAR = "yyyy";
     public static final String DEFAULT_MM = "MM";
 
-    private static final ThreadLocal<SingletonScheduledMap<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
+    private static final ThreadLocal<Map<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
 
 
     /**
@@ -111,8 +111,16 @@ public final class DateTimeUtils {
      * @return
      */
     private static DateFormat getDateFormat(String format) {
+        Map<String, DateFormat> dateFormatMap = DATE_FORMAT_THREAD_LOCAL.get();
         if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
-            DATE_FORMAT_THREAD_LOCAL.set(SingletonScheduledMap.<String, DateFormat>builder().function(x -> new SimpleDateFormat(format)).build());
+            Map<String, DateFormat> map = new HashMap<>();
+            map.put(format, new SimpleDateFormat(format));
+            DATE_FORMAT_THREAD_LOCAL.set(map);
+        }
+
+        if (!dateFormatMap.containsKey(format)) {
+            dateFormatMap.put(format, new SimpleDateFormat(format));
+            DATE_FORMAT_THREAD_LOCAL.set(dateFormatMap);
         }
 
         return DATE_FORMAT_THREAD_LOCAL.get().get(format);

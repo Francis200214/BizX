@@ -17,11 +17,11 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-catch</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>${project.parent.groupId}</groupId>-->
+<!--            <artifactId>biz-catch</artifactId>-->
+<!--            <version>${project.parent.version}</version>-->
+<!--        </dependency>-->
 
         <!-- hutool -->
         <dependency>
