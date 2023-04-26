@@ -3,7 +3,7 @@ package com.biz.oss.properties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * 配置文件实体
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @Setter
 @Getter
 @ToString
-@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
+@ConfigurationProperties(prefix = "biz.oss")
 public class OssProperties {
 
     /**
@@ -25,7 +25,7 @@ public class OssProperties {
     /**
      * 区域
      */
-    private String region;
+    private String region = "1";
 
     /**
      * true path-style nginx 反向代理和S3默认支持 pathStyle模式 {http://endpoint/bucketname}

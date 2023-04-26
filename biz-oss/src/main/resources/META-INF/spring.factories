@@ -1,6 +1,6 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.biz.oss.config.OssAutoConfiguration,\
-com.biz.oss.properties.OssProperties
+com.biz.oss.config.OssAutoConfiguration
+
 
 
 

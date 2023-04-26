@@ -10,9 +10,9 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.biz.oss.properties.OssProperties;
 import com.biz.oss.template.AmazonS3TemplateImpl;
-import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +24,7 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2023-04-21 13:22
  **/
 @Configuration
-@RequiredArgsConstructor
+@ConditionalOnProperty(prefix = "biz.oss", name = {"endpoint", "accessKey", "secretKey"})
 @EnableConfigurationProperties(OssProperties.class)
 public class OssAutoConfiguration {
 
