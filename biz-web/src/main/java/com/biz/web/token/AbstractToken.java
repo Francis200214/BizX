@@ -51,12 +51,10 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
         }
         try {
             BizAccountFactory bean = BizXBeanUtils.getBean(BizAccountFactory.class);
-            bean.getBizAccount(session.get());
-
+            return bean.getBizAccount(session.get());
         } catch (Exception e) {
             throw new RuntimeException("BizAccountFactory is not definition");
         }
-        return null;
     }
 
     @Override
@@ -79,6 +77,12 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         // 当所有的bean都被成功装载、初始化和刷新后，调用这里
+        try {
+            SessionManage bean = BizXBeanUtils.getBean(SessionManage.class);
+            this.sessionManage = bean;
+        } catch (Exception e) {
+
+        }
     }
 
 }

@@ -19,10 +19,6 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-//        OssProperties bean = BizXBeanUtils.getBean(OssProperties.class);
-//        System.out.println(bean);
-//        AmazonS3 amazonS3 = BizXBeanUtils.getBean(AmazonS3.class);
-//        System.out.println(amazonS3);
     }
 
 }

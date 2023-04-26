@@ -5,35 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/config/AmazonS3Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/AccountFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/BizScheduledFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/BizScheduledFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateTimeUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/config/OssAutoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/config/OssAutoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/properties/OssProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/properties/OssProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurerKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/EnableBizXWebMvcRegisterServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/EnableBizXWebMvcRegisterServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/yml/BizInterceptorProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/yml/BizInterceptorProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/TokenProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +128,23 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="JUnit.DemoTest.test">
+    <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.demo.test" />
+      <option name="MAIN_CLASS_NAME" value="com.demo.test.DemoTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -186,8 +176,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
@@ -251,35 +241,7 @@
       <workItem from="1681864763968" duration="2496000" />
       <workItem from="1682043533400" duration="10066000" />
       <workItem from="1682296650138" duration="8543000" />
-      <workItem from="1682387092577" duration="22921000" />
-    </task>
-    <task id="LOCAL-00012" summary="1、尝试实现JSR-330的@Inject注解">
-      <created>1680965118760</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1680965118760</updated>
-    </task>
-    <task id="LOCAL-00013" summary="1、CheckParameterFactory使用BizXComponent进行注入">
-      <created>1681049337571</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1681049337571</updated>
-    </task>
-    <task id="LOCAL-00014" summary="1、ApplicationContextAwareBeanUtils更名为ApplicationContextAwareUtils，主要封装操作ApplicationContext的一些操作，不在封装获取Bean的操作；&#10;2、新增了BizXBeanUtils工具类，提供对Bean的操作；">
-      <created>1681050298202</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1681050298202</updated>
-    </task>
-    <task id="LOCAL-00015" summary="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；">
-      <created>1681051024573</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1681051024573</updated>
+      <workItem from="1682387092577" duration="24068000" />
     </task>
     <task id="LOCAL-00016" summary="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；">
       <created>1681053640034</created>
@@ -596,7 +558,35 @@
       <option name="project" value="LOCAL" />
       <updated>1682332646826</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="1、Common中清除掉使用缓存的地方；">
+      <created>1682504321151</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1682504321151</updated>
+    </task>
+    <task id="LOCAL-00062" summary="1、缓存Map中把remove方法改成公共的；&#10;2、demo中测试框架；">
+      <created>1682504371438</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1682504371438</updated>
+    </task>
+    <task id="LOCAL-00063" summary="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；">
+      <created>1682504441493</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1682504441493</updated>
+    </task>
+    <task id="LOCAL-00064" summary="1、完善了Session；&#10;2、完善了Token；">
+      <created>1682504476003</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1682504476003</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -626,10 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="添加了demo" />
-    <MESSAGE value="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入" />
-    <MESSAGE value="更新了版本" />
-    <MESSAGE value="反射工具类补充了新的方法" />
     <MESSAGE value="更新了gitignore" />
     <MESSAGE value="实现了策略模式封装代码" />
     <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
@@ -651,7 +637,11 @@
     <MESSAGE value="1、完善了Session管理，使用缓存Map做为缓存Session；" />
     <MESSAGE value="1、完善了延迟做某件事；&#10;2、完善了延迟清除Map中增加了时间重置功能；" />
     <MESSAGE value="1、在ServiceLoader中增加了静态方法用来获取ServiceLoader中的Class；&#10;2、完善了Token信息；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、在ServiceLoader中增加了静态方法用来获取ServiceLoader中的Class；&#10;2、完善了Token信息；" />
+    <MESSAGE value="1、Common中清除掉使用缓存的地方；" />
+    <MESSAGE value="1、缓存Map中把remove方法改成公共的；&#10;2、demo中测试框架；" />
+    <MESSAGE value="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；" />
+    <MESSAGE value="1、完善了Session；&#10;2、完善了Token；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、完善了Session；&#10;2、完善了Token；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -667,18 +657,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java</url>
-          <line>30</line>
+          <line>28</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/config/OssAutoConfiguration.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="11" />
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/biz-oss/src/main/java/com/biz/oss/config/OssAutoConfiguration.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="13" />
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
