@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 @Setter
 @Getter
 @ToString
+@Configuration
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class TokenProperties {
 
@@ -22,7 +24,7 @@ public class TokenProperties {
      * Token 有效时间
      * 默认一小时
      */
-    @Value("biz.token.expire:3600000")
-    private long expire;
+    @Value("${biz.token.expire:3600000}")
+    private Long expire;
 
 }

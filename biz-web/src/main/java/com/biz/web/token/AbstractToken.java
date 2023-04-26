@@ -2,36 +2,42 @@ package com.biz.web.token;
 
 
 import com.biz.common.bean.BizXBeanUtils;
-import com.biz.common.serviceloader.BizServiceLoader;
-import com.biz.common.serviceloader.ServiceLoaderProvider;
+import com.biz.common.utils.Common;
 import com.biz.web.account.BizAccount;
 import com.biz.web.account.BizAccountFactory;
 import com.biz.web.session.SessionManage;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.annotation.Order;
 
+import javax.annotation.PostConstruct;
 import java.io.Serializable;
 import java.util.Optional;
 
 /**
+ * Token
+ *
  * @author francis
  * @create: 2023-04-18 09:23
  **/
-public abstract class AbstractToken implements Token {
+@Order(81)
+public class AbstractToken implements Token, ApplicationListener<ContextRefreshedEvent> {
 
+    private final ThreadLocal<String> token = new ThreadLocal<>();
 
-    private ThreadLocal<String> token = new ThreadLocal<>();
+    private final ThreadLocal<Boolean> set = ThreadLocal.withInitial(() -> false);
 
-    private final SessionManage sessionManage;
+    private SessionManage sessionManage;
 
-    private final Serializable currentTokenId = null;
-
-    public AbstractToken(SessionManage sessionManage) {
-        this.sessionManage = getSessionManage(sessionManage);
+    @PostConstruct
+    private void init() {
+//        sessionManage = BizXBeanUtils.getBean(SessionManage.class);
     }
 
 
     @Override
     public String getCurrentToken() {
-        return null;
+        return token.get();
     }
 
     @Override
@@ -47,32 +53,32 @@ public abstract class AbstractToken implements Token {
             BizAccountFactory bean = BizXBeanUtils.getBean(BizAccountFactory.class);
             bean.getBizAccount(session.get());
 
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("BizAccountFactory is not definition");
         }
         return null;
     }
 
-
     @Override
     public void setCurrentUser(BizAccount<?> bizAccount) {
-        // 1、生成一个 token 并保存
-
-        // 2、生成的 token 与 account 信息绑定
-
-        // 3、返回时的 header 中存放 token
-
-//        builder.createToken()
+        String session = sessionManage.createSession(bizAccount);
+        token.set(session);
+        set.set(true);
     }
 
     @Override
     public void destroy() {
-
+        if (Common.isBlank(token.get())) {
+            return;
+        }
+        // 销毁Session
+        sessionManage.destroySession(token.get());
+        token.remove();
     }
 
-
-    private SessionManage getSessionManage(SessionManage sessionManage) {
-        return Optional.ofNullable(sessionManage).orElse(BizServiceLoader.loadService(sessionManage.getClass()));
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent event) {
+        // 当所有的bean都被成功装载、初始化和刷新后，调用这里
     }
 
 }

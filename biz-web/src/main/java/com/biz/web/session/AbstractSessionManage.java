@@ -6,6 +6,9 @@ import com.biz.common.utils.UUIDGenerate;
 import com.biz.map.SingletonScheduledMap;
 import com.biz.web.account.BizAccount;
 import com.biz.web.token.TokenProperties;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.core.annotation.Order;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -16,34 +19,46 @@ import java.util.Optional;
  * @author francis
  * @create: 2023-04-18 16:33
  **/
-public class AbstractSessionManage implements SessionManage {
+@Slf4j
+@Order(80)
+public class AbstractSessionManage implements SessionManage, InitializingBean {
 
     /**
      * 会话缓存 Map
      */
-    private static SingletonScheduledMap<String, Serializable> sessionMap = SingletonScheduledMap.builder()
+    private static final SingletonScheduledMap<String, Serializable> SESSION_MAP = SingletonScheduledMap.builder()
+//            .died(getDiedTime())
             .build();
 
 
     @Override
     public Optional<Serializable> getSession(String token) {
-        if (!sessionMap.containsKey(token)) {
-            return null;
+        if (!SESSION_MAP.containsKey(token)) {
+            return Optional.empty();
         }
 
-        return Optional.of(sessionMap.get(token));
+        return Optional.of(SESSION_MAP.get(token));
     }
 
     @Override
     public String createSession(BizAccount<?> account) {
         String id = UUIDGenerate.generate();
-        sessionMap.put(id, Common.to(account.getId()));
+        SESSION_MAP.put(id, Common.to(account.getId()));
         return id;
     }
 
     @Override
     public void resetSessionDiedTime(String token) {
-        sessionMap.resetDiedCatch(token, getTokenProperties());
+        try {
+            SESSION_MAP.resetDiedCatch(token, getDiedTime());
+        } catch (RuntimeException e) {
+            log.error("reset key appear error in map ", e);
+        }
+    }
+
+    @Override
+    public void destroySession(String session) {
+        SESSION_MAP.remove(session);
     }
 
 
@@ -52,10 +67,15 @@ public class AbstractSessionManage implements SessionManage {
      *
      * @return
      */
-    private long getTokenProperties() {
+    private static long getDiedTime() {
         TokenProperties bean = BizXBeanUtils.getBean(TokenProperties.class);
         return bean.getExpire();
     }
 
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+//        SESSION_MAP.resetDiedCatch();
+//        BizXBeanUtils.getBean(TokenProperties.class);
+    }
 }

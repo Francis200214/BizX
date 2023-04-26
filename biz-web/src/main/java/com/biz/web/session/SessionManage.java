@@ -17,13 +17,13 @@ public interface SessionManage {
     /**
      * 获取当前用户Id
      *
-     * @param token
+     * @param session
      * @return
      */
-    Optional<Serializable> getSession(String token);
+    Optional<Serializable> getSession(String session);
 
     /**
-     * 生成一个新的 Token
+     * 生成一个新的会话Token
      *
      * @param account 用户信息
      * @return
@@ -32,11 +32,17 @@ public interface SessionManage {
 
 
     /**
-     * 刷新 token 清除时间
+     * 刷新 会话token 时间
      *
-     * @param token
+     * @param session
      */
-    void resetSessionDiedTime(String token);
+    void resetSessionDiedTime(String session);
 
+
+    /**
+     * 销毁
+     * @param session
+     */
+    void destroySession(String session);
 
 }

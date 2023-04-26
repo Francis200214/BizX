@@ -41,6 +41,7 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
 
     @Override
     public void handle(Annotation annotation, Object args) throws Throwable {
+        // 从缓存Map中获取对应的处理实现
         CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());
         if (checkParameterStrategy == null) {
             return;

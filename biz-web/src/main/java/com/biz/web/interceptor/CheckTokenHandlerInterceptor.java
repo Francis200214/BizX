@@ -24,7 +24,7 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        log.info("CustomCheckTokenHandlerInterceptor preHandle");
+        log.info("CheckTokenHandlerInterceptor preHandle");
         // 如果不是映射到Controller方法直接放行
         if (!(handler instanceof HandlerMethod)) {
             return true;
@@ -50,12 +50,12 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
-        log.info("CustomCheckTokenHandlerInterceptor postHandle");
+        log.info("CheckTokenHandlerInterceptor postHandle");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        log.info("CustomCheckTokenHandlerInterceptor afterCompletion");
+        log.info("CheckTokenHandlerInterceptor afterCompletion");
     }
 
 }

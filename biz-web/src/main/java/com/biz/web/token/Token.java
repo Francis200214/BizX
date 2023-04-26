@@ -26,7 +26,11 @@ public interface Token extends Serializable {
      */
     BizAccount<?> getCurrentUser();
 
-
+    /**
+     * 设置当前用户信息
+     *
+     * @param bizAccount
+     */
     void setCurrentUser(BizAccount<?> bizAccount);
 
     /**

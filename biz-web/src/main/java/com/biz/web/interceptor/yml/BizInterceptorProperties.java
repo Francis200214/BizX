@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 /**
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 @Setter
 @Getter
 @ToString
+@Configuration
 @PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class BizInterceptorProperties {
 
