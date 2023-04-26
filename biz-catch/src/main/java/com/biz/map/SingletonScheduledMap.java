@@ -77,7 +77,7 @@ public final class SingletonScheduledMap<K, V> {
      * @param k    key
      * @param died 过期时间
      */
-    public void resetDiedCatch(K k, long died) {
+    public void resetDiedCatch(K k, long died) throws RuntimeException {
         if (!map.containsKey(k)) {
             throw new RuntimeException("This key is not in the map");
         }
@@ -93,6 +93,19 @@ public final class SingletonScheduledMap<K, V> {
             lock.unlock();
         }
 
+    }
+
+    /**
+     * 删除 Map 中的 Key
+     *
+     * @param k
+     */
+    public void remove(K k) {
+        if (map.containsKey(k)) {
+            synchronized (map) {
+                map.remove(k);
+            }
+        }
     }
 
 
@@ -152,14 +165,6 @@ public final class SingletonScheduledMap<K, V> {
         synchronized (map) {
             if (map.size() > 0) {
                 map.clear();
-            }
-        }
-    }
-
-    private void remove(K k) {
-        if (map.containsKey(k)) {
-            synchronized (map) {
-                map.remove(k);
             }
         }
     }
