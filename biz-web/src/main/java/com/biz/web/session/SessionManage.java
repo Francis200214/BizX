@@ -41,6 +41,7 @@ public interface SessionManage {
 
     /**
      * 销毁
+     *
      * @param session
      */
     void destroySession(String session);

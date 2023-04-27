@@ -2,7 +2,6 @@ package com.biz.web.interceptor;
 
 import com.biz.map.SingletonScheduledMap;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author francis
  * @create: 2023-04-06 21:35
  **/
-@Order(1)
 @Slf4j
 public class AccessLimitInterceptor implements HandlerInterceptor {
 

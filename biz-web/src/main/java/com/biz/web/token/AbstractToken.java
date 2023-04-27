@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.annotation.Order;
 
-import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletResponse;
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -27,12 +27,11 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
 
     private final ThreadLocal<Boolean> set = ThreadLocal.withInitial(() -> false);
 
+    private final ThreadLocal<HttpServletResponse> responseThreadLocal = ThreadLocal.withInitial(() -> null);
+
     private SessionManage sessionManage;
 
-    @PostConstruct
-    private void init() {
-//        sessionManage = BizXBeanUtils.getBean(SessionManage.class);
-    }
+    private static final String HEADER_KEY = "Biz-Token";
 
 
     @Override
@@ -62,6 +61,8 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
         String session = sessionManage.createSession(bizAccount);
         token.set(session);
         set.set(true);
+        HttpServletResponse httpServletResponse = responseThreadLocal.get();
+        httpServletResponse.addHeader(HEADER_KEY, session);
     }
 
     @Override
@@ -72,6 +73,21 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
         // 销毁Session
         sessionManage.destroySession(token.get());
         token.remove();
+    }
+
+    @Override
+    public boolean isSetAccount() {
+        return set.get();
+    }
+
+    @Override
+    public void initAccount(String token) {
+        this.token.set(token);
+    }
+
+    @Override
+    public void setHttpServletResponse(HttpServletResponse response) {
+        responseThreadLocal.set(response);
     }
 
     @Override
