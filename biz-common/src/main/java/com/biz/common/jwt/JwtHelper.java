@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -11,21 +11,21 @@ import java.util.Optional;
  * @author francis
  * @create: 2023-04-22 14:02
  **/
-public final class JwtToken {
+public final class JwtHelper {
 
 
     /**
-     * JwtToken 加密密钥
+     * JwtHelper 加密密钥
      */
     private final String SECRET;
 
     /**
-     * JwtToken 有效期（15天）
+     * JwtHelper 有效期（15天）
      */
     private final long EXPIRE;
 
     /**
-     * JwtToken 加密算法
+     * JwtHelper 加密算法
      */
     private final SignatureAlgorithm SIGNATURE_ALGORITHM;
 
@@ -34,7 +34,7 @@ public final class JwtToken {
      */
     private final Map<String, Object> DATA;
 
-    public JwtToken(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+    public JwtHelper(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
         SECRET = Optional.ofNullable(secret).orElse(JwtTokenUtil.DEFAULT_SECRET);
         EXPIRE = expire <= 0 ? JwtTokenUtil.DEFAULT_EXPIRE : expire;
         SIGNATURE_ALGORITHM = Optional.ofNullable(signatureAlgorithm).orElse(JwtTokenUtil.DEFAULT_SIGNATURE_ALGORITHM);
@@ -103,7 +103,7 @@ public final class JwtToken {
         private String secret;
 
         /**
-         * JwtToken 有效期
+         * JwtHelper 有效期
          */
         private long expire;
 
@@ -141,8 +141,8 @@ public final class JwtToken {
             return this;
         }
 
-        public JwtToken build() {
-            return new JwtToken(secret, expire, signatureAlgorithm, data);
+        public JwtHelper build() {
+            return new JwtHelper(secret, expire, signatureAlgorithm, data);
         }
 
     }

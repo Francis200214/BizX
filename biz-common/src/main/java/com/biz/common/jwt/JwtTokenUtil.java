@@ -1,10 +1,12 @@
-package com.biz.common.utils;
+package com.biz.common.jwt;
 
+import com.biz.common.utils.Common;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,31 +20,56 @@ import java.util.Map;
 public final class JwtTokenUtil {
 
     /**
-     * JwtToken 加密密钥
+     * Jwt 默认加密密钥
      */
-    public static final String DEFAULT_SECRET = "";
+    public static final String DEFAULT_SECRET = "biz";
 
     /**
-     * JwtToken 默认有效期（1天）
+     * Jwt 默认有效期（1天）
      */
     public static final long DEFAULT_EXPIRE = 1000 * 60 * 60 * 24;
 
     /**
-     * JwtToken 加密算法
+     * Jwt 默认加密算法
      */
     public static final SignatureAlgorithm DEFAULT_SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
 
 
     /**
-     * 生成 jwtToken
+     * 生成
      *
-     * @param key  Jwt Body 的 Key
-     * @param data Jwt Body 的值
+     * @param key  JKey
+     * @param data 值
      * @return token 值
      */
     public static String createToken(String key, Object data) {
         return createToken(DEFAULT_SECRET, System.currentTimeMillis() + DEFAULT_EXPIRE, DEFAULT_SIGNATURE_ALGORITHM, key, data);
     }
+
+    /**
+     * 生成
+     *
+     * @param secret 密钥
+     * @param key key
+     * @param data 值
+     * @return token 值
+     */
+    public static String createToken(String secret, String key, Object data) {
+        return createToken(secret, System.currentTimeMillis() + DEFAULT_EXPIRE, DEFAULT_SIGNATURE_ALGORITHM, key, data);
+    }
+
+    /**
+     * 生成
+     *
+     * @param secret 密钥
+     * @param key key
+     * @param data 值
+     * @return token 值
+     */
+    public static String createToken(Key secret, String key, Object data) {
+        return createToken(secret, System.currentTimeMillis() + DEFAULT_EXPIRE, DEFAULT_SIGNATURE_ALGORITHM, key, data);
+    }
+
 
     /**
      * 生成 token
@@ -60,6 +87,13 @@ public final class JwtTokenUtil {
         return create(secret, expire, signatureAlgorithm, map);
     }
 
+    public static String createToken(Key secret, long expire, SignatureAlgorithm signatureAlgorithm, String key, Object data) {
+        Map<String, Object> map = new HashMap<>();
+        map.put(key, data);
+        return create(secret, expire, signatureAlgorithm, map);
+    }
+
+
     /**
      * 生成 token
      *
@@ -71,6 +105,25 @@ public final class JwtTokenUtil {
      */
     public static String createToken(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
         return create(secret, expire, signatureAlgorithm, data);
+    }
+
+
+    private static String create(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(expire))
+                .addClaims(data)
+                .signWith(signatureAlgorithm, secret)
+                .compact();
+    }
+
+    private static String create(Key secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(expire))
+                .addClaims(data)
+                .signWith(signatureAlgorithm, secret)
+                .compact();
     }
 
 
@@ -132,17 +185,7 @@ public final class JwtTokenUtil {
     }
 
 
-    private static String create(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
-        return Jwts.builder()
-                //JWT头信息
-                .setHeaderParam("typ", "JWT")
-                .setHeaderParam("alg", "HS2256")
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(expire))
-                .addClaims(data)
-                .signWith(signatureAlgorithm, secret)
-                .compact();
-    }
+
 
     private static boolean check(String token, String secret) {
         try {
