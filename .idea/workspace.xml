@@ -5,9 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/rbac/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/rbac/BizVerification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +73,12 @@
     </option>
     <option name="enabledProfiles">
       <list>
-        <option value="release" />
+        <option value="bizx-maven-deploy" />
+        <option value="bizx-maven-public" />
       </list>
     </option>
     <option name="disabledProfiles">
       <list>
-        <option value="bizx-maven-deploy" />
         <option value="ossrh" />
         <option value="zny-maven-deploy" />
       </list>
@@ -128,7 +149,7 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DemoTest.test">
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
     <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -176,8 +197,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="Spring Boot.DemoApplication" />
+        <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test1" />
@@ -241,14 +262,8 @@
       <workItem from="1681864763968" duration="2496000" />
       <workItem from="1682043533400" duration="10066000" />
       <workItem from="1682296650138" duration="8543000" />
-      <workItem from="1682387092577" duration="24068000" />
-    </task>
-    <task id="LOCAL-00016" summary="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；">
-      <created>1681053640034</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1681053640034</updated>
+      <workItem from="1682387092577" duration="29074000" />
+      <workItem from="1682561894057" duration="9517000" />
     </task>
     <task id="LOCAL-00017" summary="1、解决了部分异常">
       <created>1681053671215</created>
@@ -586,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682504476003</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="1、测试当前用户；">
+      <created>1682505554001</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1682505554001</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,7 +638,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="更新了gitignore" />
     <MESSAGE value="实现了策略模式封装代码" />
     <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
     <MESSAGE value="1、升级了版本；" />
@@ -641,7 +662,8 @@
     <MESSAGE value="1、缓存Map中把remove方法改成公共的；&#10;2、demo中测试框架；" />
     <MESSAGE value="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；" />
     <MESSAGE value="1、完善了Session；&#10;2、完善了Token；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、完善了Session；&#10;2、完善了Token；" />
+    <MESSAGE value="1、测试当前用户；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、测试当前用户；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -656,24 +678,19 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/response/TokenResponseBodyAdvice.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="2" />
+          <line>38</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="20" />
+          <line>43</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

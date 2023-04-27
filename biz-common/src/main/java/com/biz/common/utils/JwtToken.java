@@ -1,7 +1,6 @@
 package com.biz.common.utils;
 
 import io.jsonwebtoken.SignatureAlgorithm;
-import sun.plugin2.os.windows.SECURITY_ATTRIBUTES;
 
 import java.util.Map;
 import java.util.Optional;
@@ -54,7 +53,7 @@ public final class JwtToken {
     /**
      * 保存 Token Data
      *
-     * @param key key
+     * @param key   key
      * @param value 值
      */
     public void putData(String key, Object value) {
@@ -64,8 +63,8 @@ public final class JwtToken {
     /**
      * 获取 Token 中某个 Key 的值
      *
-     * @param token Token
-     * @param key key
+     * @param token  Token
+     * @param key    key
      * @param secret 密钥
      * @return
      */
@@ -77,7 +76,7 @@ public final class JwtToken {
      * 获取 Token 中某个 Key 的值
      *
      * @param token Token
-     * @param key key
+     * @param key   key
      * @return
      */
     public Object getData(String token, String key) {

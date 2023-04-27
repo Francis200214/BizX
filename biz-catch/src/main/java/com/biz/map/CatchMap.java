@@ -23,8 +23,8 @@ public interface CatchMap<K, V> {
     /**
      * 设置 Key-Value 值，并设置过期时间
      *
-     * @param k key
-     * @param v value
+     * @param k    key
+     * @param v    value
      * @param died 过期时间
      * @return
      */
@@ -34,7 +34,7 @@ public interface CatchMap<K, V> {
      * 获取 value 值
      * 当 Key 不存在时执行 自定义函数
      *
-     * @param k key
+     * @param k        key
      * @param supplier 自定义函数
      * @return 值
      */
@@ -52,7 +52,7 @@ public interface CatchMap<K, V> {
      * 获取 value 值
      * 当 Key 不存在时执行 自定义函数
      *
-     * @param k key
+     * @param k        key
      * @param function 自定义函数
      * @return 值
      */

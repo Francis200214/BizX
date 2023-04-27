@@ -33,7 +33,6 @@ public final class JwtTokenUtil {
     public static final SignatureAlgorithm DEFAULT_SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
 
 
-
     /**
      * 生成 jwtToken
      *
@@ -48,11 +47,11 @@ public final class JwtTokenUtil {
     /**
      * 生成 token
      *
-     * @param secret 密钥
-     * @param expire 失效时间
+     * @param secret             密钥
+     * @param expire             失效时间
      * @param signatureAlgorithm 加密算法
-     * @param key Jwt Body 的 Key
-     * @param data Jwt Body 的值
+     * @param key                Jwt Body 的 Key
+     * @param data               Jwt Body 的值
      * @return token 值
      */
     public static String createToken(String secret, long expire, SignatureAlgorithm signatureAlgorithm, String key, Object data) {
@@ -64,17 +63,15 @@ public final class JwtTokenUtil {
     /**
      * 生成 token
      *
-     * @param secret 密钥
-     * @param expire 失效时间
+     * @param secret             密钥
+     * @param expire             失效时间
      * @param signatureAlgorithm 加密算法
-     * @param data Jwt Body 的 key-value
+     * @param data               Jwt Body 的 key-value
      * @return token 值
      */
     public static String createToken(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
         return create(secret, expire, signatureAlgorithm, data);
     }
-
-
 
 
     /**
@@ -94,7 +91,7 @@ public final class JwtTokenUtil {
      * 判断 jwtToken 是否有效
      *
      * @param jwtToken token 信息
-     * @param serret 密钥
+     * @param serret   密钥
      * @return true 有效 false 无效
      */
     public static boolean checkToken(String jwtToken, String serret) {
@@ -109,7 +106,7 @@ public final class JwtTokenUtil {
      * 获取 Jwt Body 中某个 Key 值
      *
      * @param token jwtToken
-     * @param key key
+     * @param key   key
      * @return
      */
     public static Object getData(final String token, final String key) {
@@ -119,8 +116,8 @@ public final class JwtTokenUtil {
     /**
      * 获取 Jwt Body 中某个 Key 值
      *
-     * @param token jwtToken
-     * @param key key
+     * @param token  jwtToken
+     * @param key    key
      * @param secret 密钥信息
      * @return
      */
