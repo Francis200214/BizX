@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.http;
 
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;

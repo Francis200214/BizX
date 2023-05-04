@@ -5,30 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/rbac/BizVerification.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/rbac/BizVerification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/SessionManage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/Copier.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/Copier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/BarCodeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/barcode/BarCodeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/CalendarUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/calendar/CalendarUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/ChineseCharactersUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/chinesecharacter/ChineseCharactersUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/datetime/DateTimeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/FileUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/FileUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/QrCodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/qrcode/QrCodeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RandomUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/random/RandomUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RequestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/http/RequestUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/UUIDGenerate.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/id/UUIDGenerate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/annotation/check/BizXApiCheckDateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDateTimeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/handler/CheckParameterDateTimeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Enum" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -263,28 +256,9 @@
       <workItem from="1682043533400" duration="10066000" />
       <workItem from="1682296650138" duration="8543000" />
       <workItem from="1682387092577" duration="29074000" />
-      <workItem from="1682561894057" duration="9517000" />
-    </task>
-    <task id="LOCAL-00017" summary="1、解决了部分异常">
-      <created>1681053671215</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1681053671215</updated>
-    </task>
-    <task id="LOCAL-00018" summary="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；">
-      <created>1681053920567</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1681053920567</updated>
-    </task>
-    <task id="LOCAL-00019" summary="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块">
-      <created>1681109619856</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1681109619856</updated>
+      <workItem from="1682561894057" duration="13816000" />
+      <workItem from="1682681933675" duration="75000" />
+      <workItem from="1683164371415" duration="7442000" />
     </task>
     <task id="LOCAL-00020" summary="biz-all模块pom增加了biz-library模块">
       <created>1681109678514</created>
@@ -608,7 +582,28 @@
       <option name="project" value="LOCAL" />
       <updated>1682505554001</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="1、清楚了不需要的引用；">
+      <created>1682577991891</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1682577991891</updated>
+    </task>
+    <task id="LOCAL-00067" summary="1、测试生成、获取当前用户信息；">
+      <created>1682578030967</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1682578030967</updated>
+    </task>
+    <task id="LOCAL-00068" summary="1、完善了Jwt工具和增强器；">
+      <created>1682589504819</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1682589504819</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,9 +633,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="实现了策略模式封装代码" />
-    <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
-    <MESSAGE value="1、升级了版本；" />
     <MESSAGE value="1、UUID生成使用JKD的；&#10;2、增加了生成随机数工具类，有生成数字、双精度、字符串方法；" />
     <MESSAGE value="1、删除了biz-config的module；&#10;2、修改了README；" />
     <MESSAGE value="1、修改了拦截器的配置实体和Token配置实体；" />
@@ -663,7 +655,10 @@
     <MESSAGE value="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；" />
     <MESSAGE value="1、完善了Session；&#10;2、完善了Token；" />
     <MESSAGE value="1、测试当前用户；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、测试当前用户；" />
+    <MESSAGE value="1、清楚了不需要的引用；" />
+    <MESSAGE value="1、测试生成、获取当前用户信息；" />
+    <MESSAGE value="1、完善了Jwt工具和增强器；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、完善了Jwt工具和增强器；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

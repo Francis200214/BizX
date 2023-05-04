@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author francis
  */
-public final class JwtTokenUtil {
+public final class JwtTokenUtils {
 
     /**
      * Jwt 默认加密密钥

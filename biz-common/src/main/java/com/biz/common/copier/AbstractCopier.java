@@ -4,6 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.TypeVariable;
 
 /**
+ * 两个对象转换
+ *
+ * @author francis
  * @param <P>
  * @param <T>
  */
@@ -38,7 +41,10 @@ public abstract class AbstractCopier<P, T> implements Copier<P, T> {
     }
 
     private enum CopyClassIndex {
-        P(0), T(1);
+        // 当前对象
+        P(0),
+        // 转换对象
+        T(1);
         private int index;
 
         CopyClassIndex(int i) {

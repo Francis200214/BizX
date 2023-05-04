@@ -1,4 +1,6 @@
-package com.biz.common.utils;
+package com.biz.common.date.calendar;
+
+import com.biz.common.date.datetime.DateTimeUtils;
 
 import java.util.Calendar;
 
@@ -7,7 +9,7 @@ import java.util.Calendar;
  *
  * @author francis
  */
-public final class CalendarUtil {
+public final class CalendarUtils {
 
     /**
      * 获取去年

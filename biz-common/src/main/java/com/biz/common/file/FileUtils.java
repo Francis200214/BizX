@@ -1,6 +1,7 @@
-package com.biz.common.utils;
+package com.biz.common.file;
 
 import cn.hutool.core.io.FileUtil;
+import com.biz.common.utils.Common;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

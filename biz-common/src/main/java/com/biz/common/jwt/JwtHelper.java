@@ -35,9 +35,9 @@ public final class JwtHelper {
     private final Map<String, Object> DATA;
 
     public JwtHelper(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
-        SECRET = Optional.ofNullable(secret).orElse(JwtTokenUtil.DEFAULT_SECRET);
-        EXPIRE = expire <= 0 ? JwtTokenUtil.DEFAULT_EXPIRE : expire;
-        SIGNATURE_ALGORITHM = Optional.ofNullable(signatureAlgorithm).orElse(JwtTokenUtil.DEFAULT_SIGNATURE_ALGORITHM);
+        SECRET = Optional.ofNullable(secret).orElse(JwtTokenUtils.DEFAULT_SECRET);
+        EXPIRE = expire <= 0 ? JwtTokenUtils.DEFAULT_EXPIRE : expire;
+        SIGNATURE_ALGORITHM = Optional.ofNullable(signatureAlgorithm).orElse(JwtTokenUtils.DEFAULT_SIGNATURE_ALGORITHM);
         DATA = data;
     }
 
@@ -47,7 +47,7 @@ public final class JwtHelper {
      * @return token值
      */
     public String createToken() {
-        return JwtTokenUtil.createToken(SECRET, EXPIRE, SIGNATURE_ALGORITHM, DATA);
+        return JwtTokenUtils.createToken(SECRET, EXPIRE, SIGNATURE_ALGORITHM, DATA);
     }
 
     /**
@@ -69,7 +69,7 @@ public final class JwtHelper {
      * @return
      */
     public Object getData(String token, String key, String secret) {
-        return JwtTokenUtil.getData(token, key, secret);
+        return JwtTokenUtils.getData(token, key, secret);
     }
 
     /**
@@ -80,7 +80,7 @@ public final class JwtHelper {
      * @return
      */
     public Object getData(String token, String key) {
-        return JwtTokenUtil.getData(token, key, SECRET);
+        return JwtTokenUtils.getData(token, key, SECRET);
     }
 
     /**
@@ -90,7 +90,7 @@ public final class JwtHelper {
      * @return
      */
     public boolean checkExpire(String token) {
-        return JwtTokenUtil.checkToken(token, SECRET);
+        return JwtTokenUtils.checkToken(token, SECRET);
     }
 
 

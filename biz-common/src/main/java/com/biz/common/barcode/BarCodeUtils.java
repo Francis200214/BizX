@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.barcode;
 
 import cn.hutool.core.io.FileUtil;
 import org.krysalis.barcode4j.HumanReadablePlacement;
@@ -13,7 +13,7 @@ import java.io.*;
  *
  * @author francis
  */
-public final class BarCodeUtil {
+public final class BarCodeUtils {
 
     /**
      * 图片类型
@@ -37,9 +37,6 @@ public final class BarCodeUtil {
         try {
             OutputStream outputStream = new FileOutputStream(file);
             generateBarCode128(text, 30.0, 0.09, true, true, outputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-
         } catch (Exception e) {
             e.printStackTrace();
 

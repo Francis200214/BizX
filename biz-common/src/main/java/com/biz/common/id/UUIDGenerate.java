@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.id;
 
 import java.util.UUID;
 

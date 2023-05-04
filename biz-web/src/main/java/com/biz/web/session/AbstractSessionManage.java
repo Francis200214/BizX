@@ -2,7 +2,7 @@ package com.biz.web.session;
 
 import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.utils.Common;
-import com.biz.common.utils.UUIDGenerate;
+import com.biz.common.id.UUIDGenerate;
 import com.biz.map.SingletonScheduledMap;
 import com.biz.web.account.BizAccount;
 import com.biz.web.token.TokenProperties;

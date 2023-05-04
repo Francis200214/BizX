@@ -1,4 +1,4 @@
-package com.biz.common.utils;
+package com.biz.common.random;
 
 import cn.hutool.core.exceptions.UtilException;
 
@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author francis
  * @create: 2023-04-17 17:04
  **/
-public final class RandomUtil {
+public final class RandomUtils {
 
     /**
      * 随机数数字
