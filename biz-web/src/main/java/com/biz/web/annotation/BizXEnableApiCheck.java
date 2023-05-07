@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  *
  * @author francis
  */
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
+@Target({ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BizXEnableApiCheck {
 }
