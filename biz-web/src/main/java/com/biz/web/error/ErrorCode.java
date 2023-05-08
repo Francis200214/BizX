@@ -1,11 +1,12 @@
 package com.biz.web.error;
 
 /**
+ * 系统异常
+ *
  * @author francis
  * @create: 2023-05-08 18:14
  **/
-
-public enum ErrorCode {
+public enum ErrorCode implements ErrorBaseInterface {
     /**
      * 成功
      */
@@ -38,10 +39,12 @@ public enum ErrorCode {
         this.message = message;
     }
 
+    @Override
     public int getCode() {
         return code;
     }
 
+    @Override
     public String getMessage() {
         return message;
     }
