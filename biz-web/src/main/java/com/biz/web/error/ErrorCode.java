@@ -1,7 +1,7 @@
 package com.biz.web.error;
 
 /**
- * 系统异常
+ * 系统异常枚举
  *
  * @author francis
  * @create: 2023-05-08 18:14

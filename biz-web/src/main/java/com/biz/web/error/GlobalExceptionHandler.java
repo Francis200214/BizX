@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 /**
- * 全局异常
+ * 全局异常处理
  *
  * @author francis
  * @create: 2023-05-08 18:08
  **/
 @ControllerAdvice
-public class GlobalExceptionFilter {
+public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BusinessException.class)
-    public ResponseData<Object> errorHandle(BusinessException e){
+    @ExceptionHandler(BizXException.class)
+    public ResponseData<Object> errorHandle(BizXException e){
         return ResponseData.builder()
                 .code(e.getCode())
                 .message(e.getMessage())
