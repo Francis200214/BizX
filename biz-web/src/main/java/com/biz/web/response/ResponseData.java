@@ -1,8 +1,6 @@
 package com.biz.web.response;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * 自定义返回值
@@ -13,13 +11,12 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseData<T> {
 
     private int code;
     private String message;
     private T data;
-
-    private ResponseData() {
-    }
 
 }
