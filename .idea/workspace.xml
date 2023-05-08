@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/IF.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/BusinessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/BizXException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorBaseInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorBaseInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,14 +249,7 @@
       <workItem from="1683431716395" duration="1426000" />
       <workItem from="1683448645689" duration="12000" />
       <workItem from="1683540461479" duration="2004000" />
-      <workItem from="1683551098994" duration="1889000" />
-    </task>
-    <task id="LOCAL-00025" summary="更新了README">
-      <created>1681303554458</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1681303554458</updated>
+      <workItem from="1683551098994" duration="2237000" />
     </task>
     <task id="LOCAL-00026" summary="优化检查参数">
       <created>1681379483215</created>
@@ -598,7 +587,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683542331228</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="1、增加了IF异常校验器；">
+      <created>1683553005383</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1683553005383</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、调整了引入common包中的一些结构；" />
     <MESSAGE value="1、修改了缓存Map的名称；" />
     <MESSAGE value="1、完善了OSS模块内的注释说明；" />
     <MESSAGE value="1、删除了core包内无需的引入类；" />
@@ -653,7 +648,8 @@
     <MESSAGE value="1、BizXEnableApiCheck增加了Type类型；" />
     <MESSAGE value="1、增加了全局异常拦截；" />
     <MESSAGE value="1、完善了全局异常拦截；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、完善了全局异常拦截；" />
+    <MESSAGE value="1、增加了IF异常校验器；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、增加了IF异常校验器；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
