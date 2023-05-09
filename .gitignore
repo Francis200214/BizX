@@ -18,3 +18,4 @@ code/
 rebel.xml
 *.bak
 pom.xml.versionsBackup
+workspace.xml
