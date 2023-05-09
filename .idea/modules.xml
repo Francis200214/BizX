@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BizX.iml" filepath="$PROJECT_DIR$/.idea/BizX.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-all/biz-all.iml" filepath="$PROJECT_DIR$/biz-all/biz-all.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-common/biz-common.iml" filepath="$PROJECT_DIR$/biz-common/biz-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-core/biz-core.iml" filepath="$PROJECT_DIR$/biz-core/biz-core.iml" />

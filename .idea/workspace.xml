@@ -4,24 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/demo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/UserInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/AAA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/ABEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/ABStrategyService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/BBB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/CCC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/ManImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/PeopleEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/PeopleStrategyService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/strategy/WomanImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/DemoTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/demo/test/StrategyTest.java" beforeDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="1、">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BizX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BizX.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="release" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,12 +63,12 @@
     <option name="enabledProfiles">
       <list>
         <option value="release" />
+        <option value="ossrh" />
       </list>
     </option>
     <option name="disabledProfiles">
       <list>
         <option value="bizx-maven-deploy" />
-        <option value="ossrh" />
         <option value="zny-maven-deploy" />
       </list>
     </option>
@@ -103,7 +98,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "configurable.group.editor",
+    "settings.editor.selected.configurable": "apifox_uploader.settings.ApifoxUploaderConfigurable",
     "spring.configuration.checksum": "5af18841e8a7a7d79c14ac72e77de5b6",
     "vue.rearranger.settings.migration": "true"
   }
@@ -143,20 +138,7 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.DemoTest.test1">
-    <configuration name="StrategyTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.demo.test.StrategyTest" />
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.strategy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Spring Boot.DemoApplication (1)">
     <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -205,6 +187,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="BizX" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.demo.DemoApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.demo.DemoApplication" />
@@ -218,13 +213,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.TestDemo.test" />
+      <item itemvalue="JUnit.DemoTest.test" />
+      <item itemvalue="JUnit.DemoTest.test1" />
+      <item itemvalue="Spring Boot.DemoApplication (1)" />
+      <item itemvalue="Spring Boot.DemoApplication" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DemoTest.test1" />
-        <item itemvalue="JUnit.DemoTest.test" />
-        <item itemvalue="Application.StrategyTest" />
+        <item itemvalue="Spring Boot.DemoApplication (1)" />
         <item itemvalue="Spring Boot.DemoApplication" />
         <item itemvalue="JUnit.TestDemo.test" />
+        <item itemvalue="JUnit.DemoTest.test1" />
+        <item itemvalue="JUnit.DemoTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -660,7 +662,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/SelectableStrategyService.java</url>
           <line>10</line>
-          <properties class="com.biz.common.strategy.SelectableStrategyService" method="slelect">
+          <properties class="com.biz.common.strategy.SelectableStrategyService">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
