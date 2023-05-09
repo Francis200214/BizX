@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * 检查参数工厂
- *
+ * <p>
  * 主要做注册 Bean 后将实现 CheckParameterStrategy 接口的实现类加入到 Map 中，
  * 方便后续使用 CheckParameterStrategy 下各个实现类
  *
@@ -41,6 +41,7 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
 
     @Override
     public void handle(Annotation annotation, Object args) throws Throwable {
+        // 从缓存Map中获取对应的处理实现
         CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());
         if (checkParameterStrategy == null) {
             return;

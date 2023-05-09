@@ -1,0 +1,21 @@
+server:
+  port: 8001
+
+biz:
+  interceptor:
+    access: true
+    checkToken: true
+  oss:
+    endpoint: "localhost"
+    region: "1"
+    pathStyleAccess: true
+    accessKey: "1"
+    secretKey: "1"
+#    maxConnections: 10
+
+user:
+  names: "张三"
+  age: 18
+  hobbies:
+    - "看书"
+    - "写代码"

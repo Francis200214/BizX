@@ -5,17 +5,24 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.4.4-release</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-common</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.4.4-release</version>
     <packaging>jar</packaging>
 
     <dependencies>
+
+        <!--        <dependency>-->
+        <!--            <groupId>${project.parent.groupId}</groupId>-->
+        <!--            <artifactId>biz-catch</artifactId>-->
+        <!--            <version>${project.parent.version}</version>-->
+        <!--        </dependency>-->
+
         <!-- hutool -->
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -25,9 +32,23 @@
         <!-- JWT -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.0</version>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+
 
         <!-- 条形码 -->
         <dependency>

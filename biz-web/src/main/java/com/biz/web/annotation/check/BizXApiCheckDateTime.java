@@ -1,6 +1,6 @@
 package com.biz.web.annotation.check;
 
-import com.biz.common.utils.DateTimeUtils;
+import com.biz.common.date.datetime.DateTimeUtils;
 import com.biz.web.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;

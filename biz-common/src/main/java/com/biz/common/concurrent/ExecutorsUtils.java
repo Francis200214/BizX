@@ -14,6 +14,19 @@ public final class ExecutorsUtils {
     private static final TimeUnit MILLISECONDS = TimeUnit.MILLISECONDS;
     private static final LinkedBlockingQueue<Runnable> LINKED_BLOCKING_QUEUE = new LinkedBlockingQueue<>();
 
+
+    /**
+     * 过多少毫秒后执行
+     *
+     * @param task
+     * @param millisecond
+     * @return
+     */
+    public static ScheduledFuture<?> buildScheduledFuture(Runnable task, long millisecond) {
+        return buildScheduledExecutorService().schedule(task, millisecond, TimeUnit.MILLISECONDS);
+    }
+
+
     public static ScheduledExecutorService buildScheduledExecutorService() {
         return getScheduledExecutorService(CORE_SIZE);
     }

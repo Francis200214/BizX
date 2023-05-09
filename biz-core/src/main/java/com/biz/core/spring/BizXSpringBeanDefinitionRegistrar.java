@@ -26,7 +26,6 @@ public class BizXSpringBeanDefinitionRegistrar implements ImportBeanDefinitionRe
     }
 
 
-
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         // 注入带有 @BizXComponent 的 Class
@@ -42,6 +41,7 @@ public class BizXSpringBeanDefinitionRegistrar implements ImportBeanDefinitionRe
 
     /**
      * 注入 @BizXComponent 注解实现
+     *
      * @param registry
      */
     private void injectBizXComponentBeanDefinitionScanner(BeanDefinitionRegistry registry) {

@@ -9,13 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="biz-core" />
         <module name="biz-common" />
+        <module name="biz-catch" />
         <module name="biz-library" />
         <module name="biz-web" />
-        <module name="biz-config" />
+        <module name="biz-oss" />
         <module name="biz-all" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="biz-config" target="1.8" />
       <module name="biz-starter-test" target="1.8" />
       <module name="biz-web (1)" target="1.8" />
       <module name="biz-web (2)" target="1.8" />

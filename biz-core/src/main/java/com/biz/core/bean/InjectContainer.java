@@ -1,6 +1,6 @@
 package com.biz.core.bean;
 
-import com.biz.common.utils.BizXBeanUtils;
+import com.biz.common.bean.BizXBeanUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.core.annotation.Order;
 

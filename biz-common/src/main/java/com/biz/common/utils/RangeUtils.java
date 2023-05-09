@@ -2,7 +2,7 @@ package com.biz.common.utils;
 
 /**
  * 经纬度范围工具类
- *
+ * <p>
  * 主要封装了 根据经纬度往外扩多少米的左下角经纬度点和右上角经纬度点
  *
  * @author francis
@@ -29,7 +29,7 @@ public final class RangeUtils {
      * 获取左下角经纬度点
      *
      * @param longitude 经度
-     * @param latitude 纬度
+     * @param latitude  纬度
      * @return [0] 经度 [1] 纬度
      */
     public static double[] leftDownPoint(float longitude, float latitude) {
@@ -40,7 +40,7 @@ public final class RangeUtils {
      * 获取右上角经纬度点
      *
      * @param longitude 经度
-     * @param latitude 纬度
+     * @param latitude  纬度
      * @return [0] 经度 [1] 纬度
      */
     public static double[] rightUpPoint(float longitude, float latitude) {
@@ -135,10 +135,10 @@ public final class RangeUtils {
      * 判断是否是一个正确的经纬度点
      *
      * @param longitude 经度
-     * @param latitude 纬度
+     * @param latitude  纬度
      * @return
      */
-    public static boolean isValidLngLat(Double longitude, Double latitude){
+    public static boolean isValidLngLat(Double longitude, Double latitude) {
         return longitude != null && latitude != null && longitude < 180 && latitude < 90 && longitude > 1 && latitude > 1;
     }
 

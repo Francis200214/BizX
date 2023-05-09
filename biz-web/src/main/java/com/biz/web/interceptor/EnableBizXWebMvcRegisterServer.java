@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 
 /**
- * 控制 CustomWebMvcConfigurer 热插拔注解
+ * 控制 WebMvcConfigurer 热插拔注解
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

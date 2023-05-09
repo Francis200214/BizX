@@ -25,7 +25,7 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
         // 接口限时刷新
         registry.addInterceptor(accessLimitInterceptor())
                 .addPathPatterns("/**");
-        // 检查Token
+        // 检查入参Token
         registry.addInterceptor(checkTokenHandlerInterceptor())
                 .addPathPatterns("/**");
     }

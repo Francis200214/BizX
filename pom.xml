@@ -16,9 +16,11 @@
         <module>biz-common</module>
         <module>biz-web</module>
         <module>biz-core</module>
-        <module>biz-config</module>
         <module>biz-all</module>
         <module>biz-library</module>
+        <module>biz-oss</module>
+        <module>biz-catch</module>
+        <!--        <module>demo</module>-->
     </modules>
 
 
@@ -29,7 +31,7 @@
         <!-- FastJson -->
         <fastjson.version>1.2.79</fastjson.version>
         <!-- hutool -->
-        <hutool.all.version>5.6.3</hutool.all.version>
+        <hutool.all.version>5.8.11</hutool.all.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>
         <!-- javax.inject -->
@@ -40,6 +42,8 @@
         <jts.core.version>1.19.0</jts.core.version>
         <!-- aspectj -->
         <aspectj.version>1.9.19</aspectj.version>
+        <!-- AmazonS3 -->
+        <aws.version>1.12.423</aws.version>
 
         <!-- Maven插件版本 -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -136,6 +140,13 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectj.version}</version>
+            </dependency>
+
+            <!-- AmazonS3 -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${aws.version}</version>
             </dependency>
 
         </dependencies>
@@ -292,7 +303,6 @@
             </distributionManagement>
         </profile>
     </profiles>
-
 
 
 </project>

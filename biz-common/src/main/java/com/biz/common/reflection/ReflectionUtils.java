@@ -4,7 +4,6 @@ import com.biz.common.reflection.model.ConstructorMethodModel;
 import com.biz.common.reflection.model.FieldModel;
 import com.biz.common.reflection.model.MethodModel;
 import com.biz.common.reflection.model.ParameterTypeModel;
-import com.biz.common.strategy.StrategyService;
 import com.biz.common.utils.Common;
 
 import java.lang.annotation.Annotation;
@@ -14,7 +13,7 @@ import java.util.*;
 /**
  * 反射工具类
  * <br/>
- *
+ * <p>
  * 封装反射的方法
  *
  * @author francis
@@ -22,6 +21,25 @@ import java.util.*;
  */
 public class ReflectionUtils {
 
+    /**
+     * 判断是否是包装类型
+     *
+     * @param clazz Class
+     * @return true 是包装类 false 不是包装类
+     */
+    public static boolean isPackagingType(Class<?> clazz) {
+        return clazz.isPrimitive();
+    }
+
+    /**
+     * 是否是字符串类型
+     *
+     * @param clazz Class
+     * @return true 是字符串类型 false 不是字符串类型
+     */
+    public static boolean isStringClass(Class<?> clazz) {
+        return clazz == String.class;
+    }
 
     /**
      * 获取 Class 的包名
@@ -147,10 +165,10 @@ public class ReflectionUtils {
         Set<ConstructorMethodModel> set = new HashSet<>();
         for (Constructor<?> constructor : clazz.getDeclaredConstructors()) {
             set.add(ConstructorMethodModel.builder()
-                        .modifier(Modifier.toString(constructor.getModifiers()))
-                        .name(clazz.getSimpleName())
-                        .parameterTypeModels(buildParameterTypeModelSet(constructor.getParameterTypes()))
-                        .build());
+                    .modifier(Modifier.toString(constructor.getModifiers()))
+                    .name(clazz.getSimpleName())
+                    .parameterTypeModels(buildParameterTypeModelSet(constructor.getParameterTypes()))
+                    .build());
         }
 
         return set;
@@ -245,7 +263,7 @@ public class ReflectionUtils {
     /**
      * 根据传入的类的Class对象，以及构造方法的形参的Class对象，获取对应的构造方法对象
      *
-     * @param clazz 类的Class对象
+     * @param clazz          类的Class对象
      * @param parameterTypes 构造方法的形参的Class对象
      * @return 构造方法对象
      */
@@ -258,7 +276,7 @@ public class ReflectionUtils {
      * 根据传入的构造方法对象，以及，获取对应的实例
      *
      * @param constructor 构造方法对象
-     * @param initrans 传入构造方法的实参
+     * @param initrans    传入构造方法的实参
      * @return 对应的实例
      */
     public static <T> T getNewInstance(Constructor<?> constructor, Object... initrans)

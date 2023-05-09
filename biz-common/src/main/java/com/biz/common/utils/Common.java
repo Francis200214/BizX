@@ -4,6 +4,8 @@ import java.util.Collection;
 
 /**
  * 公共工具类
+ * 该工具类主要整合一些常用的工具类方法，
+ * 比如说操作时间转换、字符串判空、集合判空等
  *
  * @author francis
  * @date 2023/3/28 18:43
@@ -40,7 +42,7 @@ public final class Common {
      * @return
      */
     public static boolean isBlank(String str) {
-        return str == null ||  str.trim().length() == 0;
+        return str == null || str.trim().length() == 0;
     }
 
     /**

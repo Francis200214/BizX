@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.biz.oss.config.OssAutoConfiguration
+
+
+
+
+
