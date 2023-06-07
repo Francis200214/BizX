@@ -23,10 +23,16 @@ import java.util.Optional;
 @Order(81)
 public class AbstractToken implements Token, ApplicationListener<ContextRefreshedEvent> {
 
+    /**
+     *
+     */
     private final ThreadLocal<String> token = new ThreadLocal<>();
 
     private final ThreadLocal<Boolean> set = ThreadLocal.withInitial(() -> false);
 
+    /**
+     * 当前线程本次请求的 HttpServletResponse 对象
+     */
     private final ThreadLocal<HttpServletResponse> responseThreadLocal = ThreadLocal.withInitial(() -> null);
 
     private SessionManage sessionManage;

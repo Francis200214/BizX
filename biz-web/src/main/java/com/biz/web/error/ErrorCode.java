@@ -20,6 +20,10 @@ public enum ErrorCode implements ErrorBaseInterface {
      */
     NO_AUTH(1002,"无权限"),
     /**
+     * Account 没有初始化
+     */
+    ACCOUNT_NOT_INIT(1003,"Account not init"),
+    /**
      * 系统内部未知异常
      */
     SYSTEM_ERROR(99999,"系统内部未知异常");

@@ -1,12 +1,7 @@
 package com.biz.web.account;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.io.Serializable;
 import java.util.Set;
-import java.util.concurrent.ScheduledFuture;
 
 /**
  * 当前的用户信息
@@ -27,33 +22,6 @@ public interface BizAccount<ID extends Serializable> {
      *
      * @return
      */
-    Set<String> roles();
+    Set<String> getRoles();
 
-    /**
-     * 会话信息
-     *
-     * @author francis
-     * @create: 2023-04-18 10:09
-     **/
-    @Setter
-    @Getter
-    @EqualsAndHashCode
-    class BizSession implements Serializable {
-
-        /**
-         * 当前用户信息
-         */
-        private BizAccount<?> userinfo;
-
-        /**
-         * 创建时间
-         */
-        private long createTime;
-
-        /**
-         * 时间到期后清除任务
-         */
-        private ScheduledFuture<?> scheduledFuture;
-
-    }
 }

@@ -55,6 +55,8 @@ public interface Token extends Serializable {
 
     /**
      * 设置 HttpServletResponse
+     *
+     * @param response 响应对象
      */
     void setHttpServletResponse(HttpServletResponse response);
 

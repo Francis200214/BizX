@@ -1,10 +1,8 @@
 package com.biz.web.interceptor;
 
-import com.biz.web.interceptor.condition.AccessLimitConditionConfiguration;
-import com.biz.web.interceptor.condition.CheckTokenConditionConfiguration;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,26 +19,50 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     @SuppressWarnings("all")
     public void addInterceptors(InterceptorRegistry registry) {
-        log.info("CustomWebMvcConfigurer addInterceptors");
         // 接口限时刷新
         registry.addInterceptor(accessLimitInterceptor())
                 .addPathPatterns("/**");
-        // 检查入参Token
+        // 检查Token
         registry.addInterceptor(checkTokenHandlerInterceptor())
+                .addPathPatterns("/**");
+        // 检查用户权限
+        registry.addInterceptor(checkAuthorityInterceptor())
                 .addPathPatterns("/**");
     }
 
 
+    /**
+     * 接口防刷
+     *
+     * @return AccessLimitInterceptor Bean
+     */
     @Bean
-    @Conditional(AccessLimitConditionConfiguration.class)
+    @ConditionalOnProperty(prefix = "biz.interceptor", name = "access", value = "true")
     public AccessLimitInterceptor accessLimitInterceptor() {
         return new AccessLimitInterceptor();
     }
 
+    /**
+     * 检查Token
+     *
+     * @return CheckTokenHandlerInterceptor Bean
+     */
     @Bean
-    @Conditional(CheckTokenConditionConfiguration.class)
+    @ConditionalOnProperty(prefix = "biz.interceptor", name = "checkToken", value = "true")
     public CheckTokenHandlerInterceptor checkTokenHandlerInterceptor() {
         return new CheckTokenHandlerInterceptor();
+    }
+
+
+    /**
+     * 检查用户权限
+     *
+     * @return CheckAuthorityInterceptor Bean
+     */
+    @Bean
+    @ConditionalOnProperty(prefix = "biz.interceptor", name = "auth", value = "true")
+    public CheckAuthorityInterceptor checkAuthorityInterceptor() {
+        return new CheckAuthorityInterceptor();
     }
 
 

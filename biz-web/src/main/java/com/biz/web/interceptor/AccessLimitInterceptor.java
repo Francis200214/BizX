@@ -2,6 +2,7 @@ package com.biz.web.interceptor;
 
 import com.biz.map.SingletonScheduledMap;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @create: 2023-04-06 21:35
  **/
 @Slf4j
-public class AccessLimitInterceptor implements HandlerInterceptor {
+public class AccessLimitInterceptor implements HandlerInterceptor, Ordered {
 
     /**
      * 10秒内不能
@@ -40,4 +41,8 @@ public class AccessLimitInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    @Override
+    public int getOrder() {
+        return 102;
+    }
 }
