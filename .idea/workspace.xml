@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/account/BizAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/account/BizAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/AbstractBizXCheckParameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/AccessLimitInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/aop/CheckParameterFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckAuthorityInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckAuthorityInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/condition/AccessLimitConditionConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/condition/CheckTokenConditionConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/yml/BizInterceptorProperties.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,14 +257,7 @@
       <workItem from="1683540461479" duration="2004000" />
       <workItem from="1683551098994" duration="2237000" />
       <workItem from="1683679110325" duration="70000" />
-      <workItem from="1686103724184" duration="4148000" />
-    </task>
-    <task id="LOCAL-00028" summary="优化了AOP控制操作参数">
-      <created>1681381080097</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1681381080097</updated>
+      <workItem from="1686103724184" duration="12697000" />
     </task>
     <task id="LOCAL-00029" summary="优化了判断String类型参数">
       <created>1681381221641</created>
@@ -614,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683629210023</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="1、检查Token的拦截器中去除了检查权限的代码；&#10;2、实现了检查用户权限的代码；&#10;3、WebMvc配置中拦截器的初始化使用SpringBoot的ConditionalOnProperty注解;">
+      <created>1686108263777</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1686108263777</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -644,7 +632,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、完善了OSS模块内的注释说明；" />
     <MESSAGE value="1、删除了core包内无需的引入类；" />
     <MESSAGE value="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；" />
     <MESSAGE value="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；" />
@@ -669,7 +656,8 @@
     <MESSAGE value="1、完善了全局异常拦截；" />
     <MESSAGE value="1、增加了IF异常校验器；" />
     <MESSAGE value="1、增加了检查接口权限拦截器；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、增加了检查接口权限拦截器；" />
+    <MESSAGE value="1、检查Token的拦截器中去除了检查权限的代码；&#10;2、实现了检查用户权限的代码；&#10;3、WebMvc配置中拦截器的初始化使用SpringBoot的ConditionalOnProperty注解;" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、检查Token的拦截器中去除了检查权限的代码；&#10;2、实现了检查用户权限的代码；&#10;3、WebMvc配置中拦截器的初始化使用SpringBoot的ConditionalOnProperty注解;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

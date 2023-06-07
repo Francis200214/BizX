@@ -112,9 +112,11 @@ public final class SingletonScheduledMap<K, V> {
     private V putCatch(K k, V v, long died) {
         lock.lock();
         try {
-            if (!map.containsKey(k)) {
-                map.put(k, buildValue(k, v, died));
+            if (map.containsKey(k)) {
+                Value<V> vValue = map.get(k);
+                vValue.scheduledFuture.cancel();
             }
+            map.put(k, buildValue(k, v, died));
         } finally {
             lock.unlock();
         }

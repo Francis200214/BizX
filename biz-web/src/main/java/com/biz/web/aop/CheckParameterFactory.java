@@ -26,6 +26,7 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
 
     private ApplicationContext applicationContext;
 
+
     @Override
     public void afterPropertiesSet() {
         // 将 Spring 容器中所有的 CheckParameterStrategy 注册到 LOGIN_HANDLER_MAP

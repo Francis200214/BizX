@@ -34,7 +34,6 @@ public class CheckAuthorityInterceptor implements HandlerInterceptor, Applicatio
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        log.info("CheckAuthorityInterceptor preHandle");
         // 如果不是映射到Controller方法直接放行
         if (!(handler instanceof HandlerMethod)) {
             return true;
