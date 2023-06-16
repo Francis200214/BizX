@@ -1,7 +1,7 @@
 package com.biz.web.interceptor;
 
-import com.biz.map.SingletonScheduledMap;
 import com.biz.web.annotation.BizXAccessLimit;
+import com.biz.web.interceptor.accessLimit.AccessLimitCatchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.web.method.HandlerMethod;
@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 接口防刷拦截处理
@@ -22,6 +22,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class AccessLimitInterceptor implements HandlerInterceptor, Ordered {
 
 
+    private AccessLimitCatchService accessLimitCatchService;
 
 
     @Override
@@ -39,11 +40,8 @@ public class AccessLimitInterceptor implements HandlerInterceptor, Ordered {
         }
 
         // 这里忽略代理软件方式访问，默认直接访问，也就是获取得到的就是访问者真实ip地址
-        String lockKey = request.getRemoteAddr() + request.getRequestURI();
-
-
-
-        return true;
+        AtomicInteger accessNumber = accessLimitCatchService.getAccessNumber(request.getRemoteAddr(), request.getRequestURI());
+        return accessNumber.get() <= 10;
     }
 
     @Override
