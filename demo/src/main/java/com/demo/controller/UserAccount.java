@@ -24,7 +24,8 @@ public class UserAccount implements BizAccount<String> {
     }
 
     @Override
-    public Set<String> roles() {
+    public Set<String> getRoles() {
         return null;
     }
+
 }
