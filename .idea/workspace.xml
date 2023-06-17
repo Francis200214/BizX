@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/datetime/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/datetime/DateTimeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +89,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "cdc4f72f0e1f6494807aac689a474d1d",
+    "spring.configuration.checksum": "6daa9f937d579ca4c2ae362c9ae8c97f",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -267,14 +258,8 @@
       <workItem from="1683551098994" duration="2237000" />
       <workItem from="1683679110325" duration="70000" />
       <workItem from="1686103724184" duration="16235000" />
-      <workItem from="1686883325185" duration="1968000" />
-    </task>
-    <task id="LOCAL-00032" summary="BizComponent注解移到core包下">
-      <created>1681437709605</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1681437709605</updated>
+      <workItem from="1686883325185" duration="5177000" />
+      <workItem from="1686993596506" duration="2010000" />
     </task>
     <task id="LOCAL-00033" summary="删除demo">
       <created>1681438032603</created>
@@ -612,7 +597,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686884261521</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="升级到1.4.5-release">
+      <created>1686885573535</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1686885573535</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +634,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、同步代码" />
     <MESSAGE value="1、增加了BizScheduledFuture，主要用于定时做某件事；" />
     <MESSAGE value="1、定义了CatchMap，做为顶层缓存Map；&#10;2、缓存Map内部优化了功能，主要添加了可以刷新某个Key的过期时间；" />
     <MESSAGE value="1、完善了Session管理，使用缓存Map做为缓存Session；" />
@@ -667,7 +658,8 @@
     <MESSAGE value="1、修改了单例缓存Map中put时，如果之前有该Key值，则将旧值的定时任务暂停；" />
     <MESSAGE value="接口防刷中创建了判断访问者的默认缓存方式" />
     <MESSAGE value="1、创建了AccessLimitCatchService的SPI；&#10;2、接口防刷使用创建了AccessLimitCatchService；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、创建了AccessLimitCatchService的SPI；&#10;2、接口防刷使用创建了AccessLimitCatchService；" />
+    <MESSAGE value="升级到1.4.5-release" />
+    <option name="LAST_COMMIT_MESSAGE" value="升级到1.4.5-release" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

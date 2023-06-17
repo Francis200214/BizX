@@ -107,6 +107,17 @@ public final class DateTimeUtils {
     }
 
     /**
+     * 根据时间戳或者Date时间
+     *
+     * @param timeMills 时间戳
+     * @param parse 时间转换格式
+     * @return
+     */
+    public static String longToDateStr(long timeMills, String parse) {
+        return getDateFormat(parse).format(getCalendar(timeMills).getTime());
+    }
+
+    /**
      * 获取 DateFormat
      *
      * @param format 时间转换格式

@@ -1,6 +1,10 @@
 package com.biz.common.utils;
 
+import com.biz.common.date.calendar.CalendarUtils;
+import com.biz.common.date.datetime.DateTimeUtils;
+
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * 公共工具类
@@ -66,5 +70,13 @@ public final class Common {
         return (T) o;
     }
 
+
+    public static String now() {
+        return DateTimeUtils.longToDateStr(System.currentTimeMillis());
+    }
+
+    public static String now(String format) {
+        return DateTimeUtils.longToDateStr(System.currentTimeMillis(), format);
+    }
 
 }
