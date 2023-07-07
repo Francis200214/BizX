@@ -59,15 +59,18 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor, Applica
      * @param response
      */
     private void setHttpServletResponse(HttpServletResponse response) {
-        token.setHttpServletResponse(response);
+        if (token != null) {
+            token.setHttpServletResponse(response);
+        }
     }
 
     private void setAccountSession(HttpServletRequest request) {
         String header = request.getHeader("Biz-Token");
-        if (Common.isBlank(header)) {
-            throw new RuntimeException("token is null");
+        if (!Common.isBlank(header)) {
+            token.initAccount(header);
+//            throw new RuntimeException("token is null");
         }
-        token.initAccount(header);
+
     }
 
 }

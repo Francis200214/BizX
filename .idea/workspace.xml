@@ -6,18 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/CheckTokenHandlerInterceptor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,14 +270,8 @@
       <workItem from="1688008059265" duration="703000" />
       <workItem from="1688612410933" duration="3004000" />
       <workItem from="1688697638554" duration="1199000" />
-      <workItem from="1688709950825" duration="1109000" />
-    </task>
-    <task id="LOCAL-00035" summary="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入">
-      <created>1681466363846</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1681466363846</updated>
+      <workItem from="1688709950825" duration="3150000" />
+      <workItem from="1688717769739" duration="525000" />
     </task>
     <task id="LOCAL-00036" summary="更新了版本">
       <created>1681468253890</created>
@@ -626,7 +609,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688614705531</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="修复了BizXWebMvcConfigurer中不恰当使用@ConditionalOnProperty的用法；&#10;去除了Web的spring.factories文件中的引入">
+      <created>1688711180076</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1688711180076</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、完善了Session管理，使用缓存Map做为缓存Session；" />
     <MESSAGE value="1、完善了延迟做某件事；&#10;2、完善了延迟清除Map中增加了时间重置功能；" />
     <MESSAGE value="1、在ServiceLoader中增加了静态方法用来获取ServiceLoader中的Class；&#10;2、完善了Token信息；" />
     <MESSAGE value="1、Common中清除掉使用缓存的地方；" />
@@ -681,7 +670,8 @@
     <MESSAGE value="升级到1.4.5-release" />
     <MESSAGE value="Common中增加了当前时间函数" />
     <MESSAGE value="增加了PageRequest和PageResult，为了接口的分页入参和出参" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了PageRequest和PageResult，为了接口的分页入参和出参" />
+    <MESSAGE value="修复了BizXWebMvcConfigurer中不恰当使用@ConditionalOnProperty的用法；&#10;去除了Web的spring.factories文件中的引入" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了BizXWebMvcConfigurer中不恰当使用@ConditionalOnProperty的用法；&#10;去除了Web的spring.factories文件中的引入" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
