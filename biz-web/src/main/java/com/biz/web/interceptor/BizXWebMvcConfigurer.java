@@ -37,7 +37,7 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return AccessLimitInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(prefix = "biz.interceptor", name = "access", value = "true")
+    @ConditionalOnProperty(name = "biz.interceptor.access", havingValue = "true")
     public AccessLimitInterceptor accessLimitInterceptor() {
         return new AccessLimitInterceptor();
     }
@@ -48,7 +48,7 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return CheckTokenHandlerInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(prefix = "biz.interceptor", name = "checkToken", value = "true")
+    @ConditionalOnProperty(name = "biz.interceptor.checkToken", havingValue = "true")
     public CheckTokenHandlerInterceptor checkTokenHandlerInterceptor() {
         return new CheckTokenHandlerInterceptor();
     }
@@ -60,7 +60,7 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return CheckAuthorityInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(prefix = "biz.interceptor", name = "auth", value = "true")
+    @ConditionalOnProperty(name = "biz.interceptor.auth",  havingValue = "true")
     public CheckAuthorityInterceptor checkAuthorityInterceptor() {
         return new CheckAuthorityInterceptor();
     }

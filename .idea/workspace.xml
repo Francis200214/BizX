@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/api/PageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/api/PageResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,31 +78,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/SpringCloudAlibabaDemo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.117227316",
-    "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "0df566234041bd5d2b934c412e029aec",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/idea/SpringCloudAlibabaDemo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.117227316&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.23333333&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.editor&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;0df566234041bd5d2b934c412e029aec&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -126,6 +136,13 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
@@ -262,14 +279,9 @@
       <workItem from="1686993596506" duration="3220000" />
       <workItem from="1687856325513" duration="21000" />
       <workItem from="1688008059265" duration="703000" />
-      <workItem from="1688612410933" duration="1292000" />
-    </task>
-    <task id="LOCAL-00034" summary="添加了demo">
-      <created>1681438209932</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1681438209932</updated>
+      <workItem from="1688612410933" duration="3004000" />
+      <workItem from="1688697638554" duration="1199000" />
+      <workItem from="1688709950825" duration="1109000" />
     </task>
     <task id="LOCAL-00035" summary="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入">
       <created>1681466363846</created>
@@ -607,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686995940568</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="增加了PageRequest和PageResult，为了接口的分页入参和出参">
+      <created>1688614705530</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1688614705531</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、定义了CatchMap，做为顶层缓存Map；&#10;2、缓存Map内部优化了功能，主要添加了可以刷新某个Key的过期时间；" />
     <MESSAGE value="1、完善了Session管理，使用缓存Map做为缓存Session；" />
     <MESSAGE value="1、完善了延迟做某件事；&#10;2、完善了延迟清除Map中增加了时间重置功能；" />
     <MESSAGE value="1、在ServiceLoader中增加了静态方法用来获取ServiceLoader中的Class；&#10;2、完善了Token信息；" />
@@ -662,7 +680,8 @@
     <MESSAGE value="1、创建了AccessLimitCatchService的SPI；&#10;2、接口防刷使用创建了AccessLimitCatchService；" />
     <MESSAGE value="升级到1.4.5-release" />
     <MESSAGE value="Common中增加了当前时间函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="Common中增加了当前时间函数" />
+    <MESSAGE value="增加了PageRequest和PageResult，为了接口的分页入参和出参" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了PageRequest和PageResult，为了接口的分页入参和出参" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
