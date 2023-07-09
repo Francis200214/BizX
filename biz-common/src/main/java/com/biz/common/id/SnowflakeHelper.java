@@ -28,7 +28,7 @@ public class SnowflakeHelper {
         return new SnowflakeBuilder();
     }
 
-    private static class SnowflakeBuilder {
+    public static class SnowflakeBuilder {
         private int machineId;
 
         public SnowflakeBuilder machineId(int machineId) {
