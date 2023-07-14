@@ -13,7 +13,6 @@
         <module name="biz-library" />
         <module name="biz-web" />
         <module name="biz-oss" />
-        <module name="biz-all" />
         <module name="demo" />
       </profile>
     </annotationProcessing>

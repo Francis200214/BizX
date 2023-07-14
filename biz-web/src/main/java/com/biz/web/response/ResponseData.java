@@ -2,6 +2,8 @@ package com.biz.web.response;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 /**
  * 自定义返回值
  *
@@ -13,7 +15,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseData<T> {
+public class ResponseData<T> implements Serializable {
 
     private int code;
     private String message;

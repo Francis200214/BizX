@@ -7,7 +7,7 @@
     <groupId>io.github.francis200214</groupId>
     <artifactId>BizX</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>BizX</name>
     <description>BizX 是一个灵活而高效的业务开发框架, 其中也有很多为业务开发所需要的工具类的提供。</description>
     <url>https://github.com/Francis200214/BizX.git</url>
