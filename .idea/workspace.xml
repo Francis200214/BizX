@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/id/SnowflakeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/id/SnowflakeHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
@@ -97,7 +96,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "eaf42c7694a229175ccd03570aa45ab4",
+    "spring.configuration.checksum": "33cac2269a08ac9304e671ebf59667c2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -307,14 +306,9 @@
       <workItem from="1688709950825" duration="3150000" />
       <workItem from="1688717769739" duration="1288000" />
       <workItem from="1688801065517" duration="3036000" />
-      <workItem from="1688869129615" duration="860000" />
-    </task>
-    <task id="LOCAL-00038" summary="更新了gitignore">
-      <created>1681651403961</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1681651403961</updated>
+      <workItem from="1688869129615" duration="906000" />
+      <workItem from="1688888850080" duration="3247000" />
+      <workItem from="1689320987506" duration="1222000" />
     </task>
     <task id="LOCAL-00039" summary="更新了gitignore">
       <created>1681691661258</created>
@@ -652,7 +646,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688868622075</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="修改了雪花增强器中的builder参数方法">
+      <created>1688875607560</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1688875607561</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -682,7 +683,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、Common中清除掉使用缓存的地方；" />
     <MESSAGE value="1、缓存Map中把remove方法改成公共的；&#10;2、demo中测试框架；" />
     <MESSAGE value="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；" />
     <MESSAGE value="1、完善了Session；&#10;2、完善了Token；" />
@@ -707,7 +707,8 @@
     <MESSAGE value="修复了BizXWebMvcConfigurer中不恰当使用@ConditionalOnProperty的用法；&#10;去除了Web的spring.factories文件中的引入" />
     <MESSAGE value="解决了检查Token拦截器中设置Response的值" />
     <MESSAGE value="增加了雪花生成器" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了雪花生成器" />
+    <MESSAGE value="修改了雪花增强器中的builder参数方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了雪花增强器中的builder参数方法" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

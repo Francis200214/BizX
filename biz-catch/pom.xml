@@ -6,13 +6,13 @@
     <parent>
         <groupId>io.github.francis200214</groupId>
         <artifactId>BizX</artifactId>
-        <version>1.4.8-release</version>
+        <version>1.0.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>biz-catch</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
-    <version>1.4.8-release</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>biz-catch模块，内部封装了一些缓存机制</description>
 
