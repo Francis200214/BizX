@@ -4,6 +4,7 @@ package com.biz.map;
 import com.biz.common.concurrent.BizScheduledFuture;
 import com.biz.common.concurrent.ExecutorsUtils;
 import com.biz.common.singleton.Singleton;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.Objects;
@@ -20,6 +21,7 @@ import java.util.function.Supplier;
  *
  * @author francis
  */
+@Slf4j
 public final class SingletonScheduledMap<K, V> {
 
     private static final Singleton<ScheduledExecutorService> SCHEDULED_EXECUTOR_SERVICE_SINGLETON = Singleton.setSupplier(ExecutorsUtils::buildScheduledExecutorService);
@@ -29,7 +31,6 @@ public final class SingletonScheduledMap<K, V> {
     private final long died;
     private final Map<K, Value<V>> map;
     private final Lock lock = new ReentrantLock(true);
-
 
     public SingletonScheduledMap(Supplier<Map<K, Value<V>>> supplier, Function<K, V> function, long died) {
         this.map = supplier == null ? new ConcurrentHashMap<>() : supplier.get();
@@ -44,6 +45,16 @@ public final class SingletonScheduledMap<K, V> {
 
     public V put(K k, V v, long died) {
         return putCatch(k, v, died);
+    }
+
+
+    public V containsKeyAndPut(K k, V v) {
+        return containsKeyAndPutCatch(k, v, died);
+    }
+
+
+    public V containsKeyAndPut(K k, V v, long died) {
+        return containsKeyAndPutCatch(k, v, died);
     }
 
 
@@ -125,22 +136,36 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V putCatch(K k, V v, long died) {
-        lock.lock();
-        try {
-            if (map.containsKey(k)) {
-                Value<V> vValue = map.get(k);
-                vValue.scheduledFuture.cancel();
+        if (!map.containsKey(k)) {
+            lock.lock();
+            try {
+                if (!map.containsKey(k)) {
+                    map.put(k, buildValue(k, v, died));
+                }
+            } finally {
+                lock.unlock();
             }
-            map.put(k, buildValue(k, v, died));
-
-            return v;
-        } finally {
-            lock.unlock();
         }
+        return v;
     }
 
+
+    private V containsKeyAndPutCatch(K k, V v, long died) {
+        if (map.containsKey(k)) {
+            synchronized (map) {
+                if (map.containsKey(k)) {
+                    Value<V> vValue = map.get(k);
+                    vValue.scheduledFuture.cancel();
+                }
+            }
+        }
+        map.put(k, buildValue(k, v, died));
+        return v;
+    }
+
+
     private Value<V> buildValue(K k, V v, long died) {
-        Value value = new Value();
+        Value<V> value = new Value<>();
         value.v = v;
         value.scheduledFuture = BizScheduledFuture.builder()
                 .runnable(() -> {
@@ -160,26 +185,31 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
-        lock.lock();
-        try {
-            if (version != VERSION.get()) {
+        long startTime = System.currentTimeMillis();
+        if (version != VERSION.get()) {
+            synchronized (map) {
                 if (version != VERSION.get()) {
                     clear();
                     version = VERSION.get();
                 }
             }
-
-            if (!map.containsKey(k)) {
-                if (functionSupplier == null) {
-                    return null;
-                }
-                return put(k, functionSupplier.get().apply(k), died);
-            }
-
-            return map.get(k).v;
-        } finally {
-            lock.unlock();
         }
+
+        if (!map.containsKey(k)) {
+            lock.lock();
+            try {
+                if (!map.containsKey(k)) {
+                    if (functionSupplier == null) {
+                        return null;
+                    }
+                    return put(k, functionSupplier.get().apply(k), died);
+                }
+            } finally {
+                lock.unlock();
+            }
+        }
+
+        return map.get(k).v;
     }
 
 

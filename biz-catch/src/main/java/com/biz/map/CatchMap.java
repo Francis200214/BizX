@@ -13,12 +13,23 @@ public interface CatchMap<K, V> {
 
     /**
      * 设置 Key-Value 值
+     * 当 map 中存在时不 put
      *
      * @param k key
      * @param v value
      * @return
      */
     V put(K k, V v);
+
+    /**
+     * 设置 Key-Value 值
+     * 即使 map 中存在 Key 也设置 Value 值
+     *
+     * @param k key
+     * @param v value
+     * @return
+     */
+    V containsKeyAndPut(K k, V v);
 
     /**
      * 设置 Key-Value 值，并设置过期时间
@@ -29,6 +40,17 @@ public interface CatchMap<K, V> {
      * @return
      */
     V put(K k, V v, long died);
+
+    /**
+     *
+     * 即使 map 中存在 Key 也设置 Value 值和过期时间
+     *
+     * @param k key
+     * @param v value
+     * @param died 过期时间
+     * @return
+     */
+    V containsKeyAndPut(K k, V v, long died);
 
     /**
      * 获取 value 值

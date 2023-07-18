@@ -43,7 +43,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
     @Override
     public String createSession(BizAccount<?> account) {
         String id = UUIDGenerate.generate();
-        SESSION_MAP.put(id, Common.to(account.getId()));
+        SESSION_MAP.containsKeyAndPut(id, Common.to(account.getId()));
         return id;
     }
 
