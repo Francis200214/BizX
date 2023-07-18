@@ -211,17 +211,37 @@ public class ReflectionUtils {
     }
 
     /**
-     * 获取父类的泛型
+     * 获取当前类的第一个泛型
      *
      * @param clazz Class
      * @return 父类的泛型
      */
-    public static Class<?> getSuperClassGenericParameterizedType(Class<?> clazz) {
+    public static Class<?> getSuperClassGenericParameterizedTypeForOne(Class<?> clazz) {
         Type genericSuperClass = clazz.getGenericSuperclass();
         // 判断父类是否有泛型
         if (genericSuperClass instanceof ParameterizedType) {
             ParameterizedType pt = Common.to(genericSuperClass);
             return Common.to(pt.getActualTypeArguments()[0]);
+        }
+        return null;
+    }
+
+    /**
+     * 获取当前类第N个泛型示例
+     *
+     * @param clazz
+     * @return
+     */
+    public static Class<?> getSuperClassGenericParameterizedTypeWhichOnes(Class<?> clazz, int n) {
+        Type genericSuperClass = clazz.getGenericSuperclass();
+        // 判断父类是否有泛型
+        if (genericSuperClass instanceof ParameterizedType) {
+            ParameterizedType pt = Common.to(genericSuperClass);
+            Type actualTypeArgument = pt.getActualTypeArguments()[n];
+            if (actualTypeArgument == null) {
+                throw new RuntimeException("not find n TypeArgument");
+            }
+            return Common.to(actualTypeArgument);
         }
         return null;
     }
@@ -250,6 +270,9 @@ public class ReflectionUtils {
     }
 
 
+
+
+
     /**
      * 根据Class类型，获取对应的实例
      *
@@ -258,6 +281,19 @@ public class ReflectionUtils {
     public static <T> T getNewInstance(Class<?> clazz) throws InstantiationException, IllegalAccessException {
         return (T) clazz.newInstance();
     }
+
+    /**
+     * 使用 Class 的无参构造方法创建对象实例
+     *
+     * @param clazz
+     * @return
+     */
+    public static <T> T getDeclaredConstructorNewInstance(Class<?> clazz) throws InstantiationException, IllegalAccessException,
+            NoSuchMethodException, InvocationTargetException {
+        return (T) clazz.getDeclaredConstructor().newInstance();
+    }
+
+
 
 
     /**

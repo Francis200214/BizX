@@ -1,7 +1,8 @@
 package com.biz.common.copier;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.TypeVariable;
+import com.biz.common.reflection.ReflectionUtils;
+
+import java.lang.reflect.*;
 
 /**
  * 两个对象转换
@@ -26,6 +27,7 @@ public abstract class AbstractCopier<P, T> implements Copier<P, T> {
         return null;
     }
 
+
     @Override
     public T copy(P p, T t) {
         return t;
@@ -34,11 +36,15 @@ public abstract class AbstractCopier<P, T> implements Copier<P, T> {
 
     private Class<?> getClass(CopyClassIndex index) {
         if (aClass[index.index] == null) {
-            TypeVariable<?> t = Copier.class.getTypeParameters()[index.index];
-            aClass[index.index] = t.getClass();
+            Class<?> clz = ReflectionUtils.getSuperClassGenericParameterizedTypeWhichOnes(getClass(), 1);
+            if (clz == null) {
+                throw new RuntimeException("unknown copier T class");
+            }
+            aClass[index.index] = clz;
         }
         return aClass[index.index];
     }
+
 
     private enum CopyClassIndex {
         // 当前对象
@@ -55,5 +61,6 @@ public abstract class AbstractCopier<P, T> implements Copier<P, T> {
             return index;
         }
     }
+
 
 }
