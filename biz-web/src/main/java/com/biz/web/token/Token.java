@@ -60,4 +60,11 @@ public interface Token extends Serializable {
      */
     void setHttpServletResponse(HttpServletResponse response);
 
+    /**
+     * token 是否到期
+     *
+     * @return true 到期 false 未到期
+     */
+    boolean checkTokenIsExpire();
+
 }

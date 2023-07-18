@@ -4,6 +4,7 @@ import com.biz.common.copier.AbstractCopier;
 import com.biz.common.copier.Copier;
 import com.biz.common.utils.Common;
 import com.biz.web.account.BizAccount;
+import com.biz.web.rbac.BizAccessAllow;
 import com.biz.web.rbac.BizVerification;
 import com.biz.web.token.Token;
 import com.demo.controller.vo.AVo;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/login")
+@BizAccessAllow
 public class LoginController {
 
     @Autowired
@@ -40,7 +42,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(@RequestParam("password") String password) {
-
+        UserAccount userAccount = Common.to(token.getCurrentUser());
         AVo aVo = new AVo();
         aVo.setId("1");
         aVo.setName("dsds");

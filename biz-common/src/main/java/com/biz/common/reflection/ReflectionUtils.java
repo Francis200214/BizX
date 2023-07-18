@@ -31,6 +31,7 @@ public class ReflectionUtils {
         return clazz.isPrimitive();
     }
 
+
     /**
      * 是否是字符串类型
      *
@@ -40,6 +41,7 @@ public class ReflectionUtils {
     public static boolean isStringClass(Class<?> clazz) {
         return clazz == String.class;
     }
+
 
     /**
      * 获取 Class 的包名
@@ -105,6 +107,7 @@ public class ReflectionUtils {
         return new HashSet<>(Arrays.asList(clazz.getInterfaces()));
     }
 
+
     /**
      * 从一个List<Class> 中寻找实现了 clazz 接口的 class
      *
@@ -122,6 +125,7 @@ public class ReflectionUtils {
         return result;
     }
 
+
     /**
      * 判断 aClass 是否实现了 bClass
      *
@@ -132,6 +136,7 @@ public class ReflectionUtils {
     public static boolean isImplementsClass(Class<?> aClass, Class<?> bClass) {
         return aClass.isAssignableFrom(bClass);
     }
+
 
     /**
      * 获取所有属性
@@ -210,6 +215,7 @@ public class ReflectionUtils {
         return set;
     }
 
+
     /**
      * 获取当前类的第一个泛型
      *
@@ -225,6 +231,7 @@ public class ReflectionUtils {
         }
         return null;
     }
+
 
     /**
      * 获取当前类第N个泛型示例
@@ -270,9 +277,6 @@ public class ReflectionUtils {
     }
 
 
-
-
-
     /**
      * 根据Class类型，获取对应的实例
      *
@@ -281,6 +285,7 @@ public class ReflectionUtils {
     public static <T> T getNewInstance(Class<?> clazz) throws InstantiationException, IllegalAccessException {
         return (T) clazz.newInstance();
     }
+
 
     /**
      * 使用 Class 的无参构造方法创建对象实例
@@ -292,8 +297,6 @@ public class ReflectionUtils {
             NoSuchMethodException, InvocationTargetException {
         return (T) clazz.getDeclaredConstructor().newInstance();
     }
-
-
 
 
     /**
@@ -338,6 +341,7 @@ public class ReflectionUtils {
         field.setAccessible(true);
         field.set(obj, value);
     }
+
 
     /**
      * 取属性字段中的值
