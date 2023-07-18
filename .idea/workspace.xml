@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/vo/AVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/vo/BVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/copier/AbstractCopier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,14 +59,10 @@
     </option>
     <option name="enabledProfiles">
       <list>
+        <option value="bizx-maven-deploy" />
+        <option value="bizx-maven-public" />
         <option value="release" />
         <option value="ossrh" />
-        <option value="zny-maven-deploy" />
-      </list>
-    </option>
-    <option name="disabledProfiles">
-      <list>
-        <option value="bizx-maven-deploy" />
       </list>
     </option>
   </component>
@@ -262,14 +261,7 @@
       <workItem from="1688888850080" duration="3247000" />
       <workItem from="1689320987506" duration="1284000" />
       <workItem from="1689322490181" duration="4562000" />
-      <workItem from="1689642791124" duration="3464000" />
-    </task>
-    <task id="LOCAL-00041" summary="实现了策略模式封装代码">
-      <created>1681710670167</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1681710670167</updated>
+      <workItem from="1689642791124" duration="4606000" />
     </task>
     <task id="LOCAL-00042" summary="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；">
       <created>1681713412963</created>
@@ -607,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689328099352</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="全局异常类增加了日志打印；&#10;修复了Copier无法生成泛型对象问题；">
+      <created>1689646534233</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1689646534233</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -637,7 +636,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、完善了Session；&#10;2、完善了Token；" />
     <MESSAGE value="1、测试当前用户；" />
     <MESSAGE value="1、清楚了不需要的引用；" />
     <MESSAGE value="1、测试生成、获取当前用户信息；" />
@@ -662,7 +660,8 @@
     <MESSAGE value="修改了雪花增强器中的builder参数方法" />
     <MESSAGE value="后期使用SNAPSHOT版本" />
     <MESSAGE value="修复了全局异常拦截不到异常信息；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了全局异常拦截不到异常信息；" />
+    <MESSAGE value="全局异常类增加了日志打印；&#10;修复了Copier无法生成泛型对象问题；" />
+    <option name="LAST_COMMIT_MESSAGE" value="全局异常类增加了日志打印；&#10;修复了Copier无法生成泛型对象问题；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -672,10 +671,6 @@
           <line>20</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="org.springframework.web.bind.MissingServletRequestParameterException" package="org.springframework.web.bind" />
-          <option name="timeStamp" value="31" />
-        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
