@@ -101,11 +101,26 @@ public final class SingletonScheduledMap<K, V> {
      * @param k
      */
     public void remove(K k) {
-        if (map.containsKey(k)) {
-            synchronized (map) {
+        lock.lock();
+        try {
+            if (map.containsKey(k)) {
                 map.remove(k);
             }
+        } finally {
+            lock.unlock();
         }
+    }
+
+
+    /**
+     * 获取缓存 Map 创建者
+     *
+     * @param <K>
+     * @param <V>
+     * @return Map 创建者
+     */
+    public static <K, V> SingletonMapBuilder<K, V> builder() {
+        return new SingletonMapBuilder<>();
     }
 
 
@@ -117,10 +132,11 @@ public final class SingletonScheduledMap<K, V> {
                 vValue.scheduledFuture.cancel();
             }
             map.put(k, buildValue(k, v, died));
+
+            return v;
         } finally {
             lock.unlock();
         }
-        return v;
     }
 
     private Value<V> buildValue(K k, V v, long died) {
@@ -144,22 +160,26 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
-        if (version != VERSION.get()) {
-            synchronized (this) {
+        lock.lock();
+        try {
+            if (version != VERSION.get()) {
                 if (version != VERSION.get()) {
                     clear();
                     version = VERSION.get();
                 }
             }
-        }
 
-        if (!map.containsKey(k)) {
-            if (functionSupplier == null) {
-                return null;
+            if (!map.containsKey(k)) {
+                if (functionSupplier == null) {
+                    return null;
+                }
+                return put(k, functionSupplier.get().apply(k), died);
             }
-            return put(k, functionSupplier.get().apply(k), died);
+
+            return map.get(k).v;
+        } finally {
+            lock.unlock();
         }
-        return map.get(k).v;
     }
 
 
@@ -181,18 +201,6 @@ public final class SingletonScheduledMap<K, V> {
     private static class Value<V> {
         private BizScheduledFuture scheduledFuture;
         private V v;
-    }
-
-
-    /**
-     * 获取缓存 Map 创建者
-     *
-     * @param <K>
-     * @param <V>
-     * @return Map 创建者
-     */
-    public static <K, V> SingletonMapBuilder<K, V> builder() {
-        return new SingletonMapBuilder<>();
     }
 
 
