@@ -48,7 +48,7 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
     @Override
     public BizAccount<?> getCurrentUser() {
         if (token.get() == null) {
-            throw new RuntimeException("current token id is null");
+            return null;
         }
         Optional<Serializable> session = sessionManage.getSession(token.get());
         if (!session.isPresent()) {
