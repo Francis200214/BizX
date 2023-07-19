@@ -18,7 +18,7 @@ public enum ErrorCode implements ErrorBaseInterface {
     /**
      * 无权限
      */
-        NO_AUTH(1002,"无权限"),
+    NO_AUTH(1002,"无权限"),
     /**
      * Account 没有初始化
      */
