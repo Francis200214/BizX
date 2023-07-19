@@ -22,8 +22,8 @@ public class GlobalExceptionHandler {
         // 打印堆栈异常
         printException(Thread.currentThread(), e);
         return ResponseData.builder()
-                .code(e.getCode())
-                .message(e.getMessage())
+                .errorCode(e.getCode())
+                .errorMessage(e.getMessage())
                 .build();
     }
 
@@ -34,8 +34,8 @@ public class GlobalExceptionHandler {
         // 打印堆栈异常
         printException(Thread.currentThread(), e);
         return ResponseData.builder()
-                .code(ErrorCode.SYSTEM_ERROR.getCode())
-                .message(ErrorCode.SYSTEM_ERROR.getMessage())
+                .errorCode(ErrorCode.SYSTEM_ERROR.getCode())
+                .errorMessage(ErrorCode.SYSTEM_ERROR.getMessage())
                 .build();
     }
 

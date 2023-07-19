@@ -8,14 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/CatchMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/src/main/java/com/biz/map/SingletonScheduledMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/session/AbstractSessionManage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/response/ResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/response/ResponseData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -64,10 +63,7 @@
       <list>
         <option value="bizx-maven-deploy" />
         <option value="bizx-maven-public" />
-      </list>
-    </option>
-    <option name="disabledProfiles">
-      <list>
+        <option value="release" />
         <option value="ossrh" />
       </list>
     </option>
@@ -267,14 +263,8 @@
       <workItem from="1688888850080" duration="3247000" />
       <workItem from="1689320987506" duration="1284000" />
       <workItem from="1689322490181" duration="4562000" />
-      <workItem from="1689642791124" duration="15451000" />
-    </task>
-    <task id="LOCAL-00046" summary="1、修改了拦截器的配置实体和Token配置实体；">
-      <created>1682063473587</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1682063473587</updated>
+      <workItem from="1689642791124" duration="16192000" />
+      <workItem from="1689736836989" duration="668000" />
     </task>
     <task id="LOCAL-00047" summary="1、增加了OSS模块，主要封装了文件操作；&#10;2、增加了catch模块，主要封装一些缓存机制；">
       <created>1682063557329</created>
@@ -612,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689666815226</updated>
     </task>
-    <option name="localTasksCounter" value="95" />
+    <task id="LOCAL-00095" summary="优化了定时清除Map">
+      <created>1689673543089</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1689673543089</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +639,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、修改了Common包中的目录结构和文件名称；" />
     <MESSAGE value="1、更新了版本；" />
     <MESSAGE value="1、BizXEnableApiCheck增加了Type类型；" />
     <MESSAGE value="1、增加了全局异常拦截；" />
@@ -667,7 +663,8 @@
     <MESSAGE value="添加了BizAccessAllow注解，用于校验是否登录" />
     <MESSAGE value="升级到1.0.7" />
     <MESSAGE value="单例定时清除Map使用Lock锁；" />
-    <option name="LAST_COMMIT_MESSAGE" value="单例定时清除Map使用Lock锁；" />
+    <MESSAGE value="优化了定时清除Map" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化了定时清除Map" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

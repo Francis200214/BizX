@@ -17,8 +17,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ResponseData<T> implements Serializable {
 
-    private int code;
-    private String message;
+    private int errorCode;
+    private String errorMessage;
     private T data;
 
 }
