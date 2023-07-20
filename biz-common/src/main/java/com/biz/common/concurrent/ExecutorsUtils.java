@@ -12,7 +12,7 @@ public final class ExecutorsUtils {
     private static final int MAX_SIZE = 50;
     private static final long ALIVE_TIME = 0L;
     private static final TimeUnit MILLISECONDS = TimeUnit.MILLISECONDS;
-    private static final LinkedBlockingQueue<Runnable> LINKED_BLOCKING_QUEUE = new LinkedBlockingQueue<>();
+    private static final LinkedBlockingQueue<Runnable> LINKED_BLOCKING_QUEUE = new LinkedBlockingQueue<>(10000);
 
 
     /**
@@ -26,42 +26,84 @@ public final class ExecutorsUtils {
         return buildScheduledExecutorService().schedule(task, millisecond, TimeUnit.MILLISECONDS);
     }
 
-
+    /**
+     * 获取定时任务线程池
+     *
+     * @return
+     */
     public static ScheduledExecutorService buildScheduledExecutorService() {
         return getScheduledExecutorService(CORE_SIZE);
     }
 
+    /**
+     * 获取定时任务线程池
+     *
+     * @param coreSize 核心线程数
+     * @return
+     */
     public static ScheduledExecutorService buildScheduledExecutorService(int coreSize) {
         return getScheduledExecutorService(coreSize);
     }
 
+    /**
+     * 获取线程池
+     *
+     * @return
+     */
     public static ThreadPoolExecutor buildThreadPoolExecutor() {
-        return getThreadPoolExecutor(-1, -1, -1, null);
+        return getThreadPoolExecutor(CORE_SIZE, MAX_SIZE, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
     }
 
+    /**
+     * 获取线程池
+     *
+     * @param corePoolSize 核心线程数（最小线程数）
+     * @return
+     */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize) {
-        return getThreadPoolExecutor(corePoolSize, -1, -1, null);
+        return getThreadPoolExecutor(corePoolSize, MAX_SIZE, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
     }
 
+    /**
+     * 获取线程池
+     *
+     * @param corePoolSize 核心线程数（最小线程数）
+     * @param maximumPoolSize 最大线程数
+     * @return
+     */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize) {
-        return getThreadPoolExecutor(corePoolSize, maximumPoolSize, -1, null);
+        return getThreadPoolExecutor(corePoolSize, maximumPoolSize, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
     }
 
+    /**
+     * 获取线程池
+     *
+     * @param corePoolSize 核心线程数（最小线程数）
+     * @param maximumPoolSize 最大线程数
+     * @param keepAliveTime 空闲线程存活时间
+     * @return
+     */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime) {
-        return getThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, null);
+        return getThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, LINKED_BLOCKING_QUEUE);
     }
 
+    /**
+     * 获取线程池
+     *
+     * @param corePoolSize 核心线程数（最小线程数）
+     * @param maximumPoolSize 最大线程数
+     * @param keepAliveTime 空闲线程存活时间
+     * @param workQueue 任务队列【建议定义任务队列的长度，防止OOM异常】
+     * @return
+     */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, BlockingQueue<Runnable> workQueue) {
         return getThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, workQueue);
     }
 
+
+
     private static ThreadPoolExecutor getThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, BlockingQueue<Runnable> workQueue) {
-        return new ThreadPoolExecutor(
-                corePoolSize <= 0 ? CORE_SIZE : corePoolSize,
-                maximumPoolSize <= 0 ? MAX_SIZE : maximumPoolSize,
-                keepAliveTime <= -1 ? ALIVE_TIME : keepAliveTime,
-                MILLISECONDS,
-                workQueue == null ? LINKED_BLOCKING_QUEUE : workQueue) {
+        return new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, MILLISECONDS, workQueue) {
             @Override
             public void execute(Runnable command) {
                 synchronized (this) {
