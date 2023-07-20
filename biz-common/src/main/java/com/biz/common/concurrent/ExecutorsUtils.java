@@ -61,14 +61,14 @@ public final class ExecutorsUtils {
      * @return
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize) {
-        return getThreadPoolExecutor(corePoolSize, MAX_SIZE, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
+        return getThreadPoolExecutor(corePoolSize, MAX_SIZE + 5, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
     }
 
     /**
      * 获取线程池
      *
      * @param corePoolSize 核心线程数（最小线程数）
-     * @param maximumPoolSize 最大线程数
+     * @param maximumPoolSize 最大线程数【最大线程数不能比核心线程数小】
      * @return
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize) {
@@ -79,7 +79,7 @@ public final class ExecutorsUtils {
      * 获取线程池
      *
      * @param corePoolSize 核心线程数（最小线程数）
-     * @param maximumPoolSize 最大线程数
+     * @param maximumPoolSize 最大线程数【最大线程数不能比核心线程数小】
      * @param keepAliveTime 空闲线程存活时间
      * @return
      */
@@ -91,7 +91,7 @@ public final class ExecutorsUtils {
      * 获取线程池
      *
      * @param corePoolSize 核心线程数（最小线程数）
-     * @param maximumPoolSize 最大线程数
+     * @param maximumPoolSize 最大线程数【最大线程数不能比核心线程数小】
      * @param keepAliveTime 空闲线程存活时间
      * @param workQueue 任务队列【建议定义任务队列的长度，防止OOM异常】
      * @return
