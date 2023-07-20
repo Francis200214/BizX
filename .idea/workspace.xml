@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/random/PhoneNumberUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/datetime/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/date/datetime/DateTimeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/error/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/token/AbstractToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
@@ -29,9 +31,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -101,6 +103,9 @@
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.biz.common.random" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\idea\BizX\demo" />
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
@@ -139,7 +144,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="JUnit.DemoTest.test">
     <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
@@ -263,21 +268,8 @@
       <workItem from="1689320987506" duration="1284000" />
       <workItem from="1689322490181" duration="4562000" />
       <workItem from="1689642791124" duration="16192000" />
-      <workItem from="1689736836989" duration="4169000" />
-    </task>
-    <task id="LOCAL-00048" summary="1、调整了common包中的一些结构；">
-      <created>1682063598289</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1682063598289</updated>
-    </task>
-    <task id="LOCAL-00049" summary="1、调整了引入common包中的一些结构；">
-      <created>1682063619069</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1682063619069</updated>
+      <workItem from="1689736836989" duration="4238000" />
+      <workItem from="1689818981725" duration="2807000" />
     </task>
     <task id="LOCAL-00050" summary="1、修改了缓存Map的名称；">
       <created>1682159992709</created>
@@ -608,7 +600,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689737536533</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="获取当前用户token时如果没有返回null">
+      <created>1689766683634</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1689766683634</updated>
+    </task>
+    <task id="LOCAL-00098" summary="获取当前用户token时如果没有返回null">
+      <created>1689766715612</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1689766715612</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -638,7 +644,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、BizXEnableApiCheck增加了Type类型；" />
     <MESSAGE value="1、增加了全局异常拦截；" />
     <MESSAGE value="1、完善了全局异常拦截；" />
     <MESSAGE value="1、增加了IF异常校验器；" />
@@ -663,7 +668,8 @@
     <MESSAGE value="单例定时清除Map使用Lock锁；" />
     <MESSAGE value="优化了定时清除Map" />
     <MESSAGE value="修改了异常返回数据的code和message字段名称" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了异常返回数据的code和message字段名称" />
+    <MESSAGE value="获取当前用户token时如果没有返回null" />
+    <option name="LAST_COMMIT_MESSAGE" value="获取当前用户token时如果没有返回null" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

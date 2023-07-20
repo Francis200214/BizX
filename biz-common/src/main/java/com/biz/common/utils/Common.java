@@ -1,10 +1,10 @@
 package com.biz.common.utils;
 
-import com.biz.common.date.calendar.CalendarUtils;
 import com.biz.common.date.datetime.DateTimeUtils;
+import com.biz.common.random.PhoneNumberUtil;
+import com.biz.common.random.RandomUtils;
 
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * 公共工具类
@@ -17,6 +17,12 @@ import java.util.Date;
 public final class Common {
 
 
+    /**
+     * 多个 double 放入一个 double[] 中
+     *
+     * @param doubles 多个 double
+     * @return double[]
+     */
     public static double[] toDoubles(double... doubles) {
         int length = doubles.length;
         if (length == 0) {
@@ -70,13 +76,35 @@ public final class Common {
         return (T) o;
     }
 
-
+    /**
+     * 获取当前时间【yyyy-MM-dd HH:mm:ss】
+     *
+     * @return 当前时间【yyyy-MM-dd HH:mm:ss】
+     */
     public static String now() {
         return DateTimeUtils.longToDateStr(System.currentTimeMillis());
     }
 
+    /**
+     * 获取某种时间格式的当前时间
+     *
+     * @param format 时间格式
+     * @return 某种时间格式的当前时间
+     */
     public static String now(String format) {
         return DateTimeUtils.longToDateStr(System.currentTimeMillis(), format);
     }
+
+    /**
+     * 生成随机手机号
+     *
+     * @return 11位随机手机号
+     */
+    public static String createRandomPhoneNumber() {
+        return PhoneNumberUtil.createPhoneNumber(
+                PhoneNumberUtil.OperatorEnum.getOperateByCode(
+                        RandomUtils.generateNumber(3)));
+    }
+
 
 }

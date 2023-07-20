@@ -125,10 +125,10 @@ public final class DateTimeUtils {
      */
     private static DateFormat getDateFormat(String format) {
         Map<String, DateFormat> dateFormatMap = DATE_FORMAT_THREAD_LOCAL.get();
-        if (DATE_FORMAT_THREAD_LOCAL.get() == null) {
-            Map<String, DateFormat> map = new HashMap<>();
-            map.put(format, new SimpleDateFormat(format));
-            DATE_FORMAT_THREAD_LOCAL.set(map);
+        if (dateFormatMap == null) {
+            dateFormatMap = new HashMap<>();
+            dateFormatMap.put(format, new SimpleDateFormat(format));
+            DATE_FORMAT_THREAD_LOCAL.set(dateFormatMap);
         }
 
         if (!dateFormatMap.containsKey(format)) {
