@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +55,7 @@
         <option value="bizx-maven-public" />
         <option value="release" />
         <option value="ossrh" />
+        <option value="zny-maven-deploy" />
       </list>
     </option>
   </component>
@@ -123,11 +115,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.biz.web.api" />
+      <recent name="com.biz.web.response" />
       <recent name="com.demo.controller.vo" />
       <recent name="com.biz.oss.properties" />
       <recent name="com.biz.web.aop.handler" />
-      <recent name="com.biz.web.annotation.check" />
-      <recent name="com.biz.web.condition" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -267,14 +259,8 @@
       <workItem from="1689322490181" duration="4562000" />
       <workItem from="1689642791124" duration="16192000" />
       <workItem from="1689736836989" duration="4238000" />
-      <workItem from="1689818981725" duration="6833000" />
-    </task>
-    <task id="LOCAL-00052" summary="1、删除了core包内无需的引入类；">
-      <created>1682160116016</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1682160116016</updated>
+      <workItem from="1689818981725" duration="8051000" />
+      <workItem from="1689899285586" duration="1352000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -612,7 +598,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689842690761</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="增加了AppPageResult">
+      <created>1689845474051</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1689845474051</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -642,7 +635,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、增加了IF异常校验器；" />
     <MESSAGE value="1、增加了检查接口权限拦截器；" />
     <MESSAGE value="1、检查Token的拦截器中去除了检查权限的代码；&#10;2、实现了检查用户权限的代码；&#10;3、WebMvc配置中拦截器的初始化使用SpringBoot的ConditionalOnProperty注解;" />
     <MESSAGE value="1、修改了单例缓存Map中put时，如果之前有该Key值，则将旧值的定时任务暂停；" />
@@ -667,7 +659,8 @@
     <MESSAGE value="获取当前用户token时如果没有返回null" />
     <MESSAGE value="增加了创建随机手机号工具类；&#10;DateTime工具类修复了当前线程第一次操作时出现错误情况；" />
     <MESSAGE value="修改了线程池工具类中的方法注释" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了线程池工具类中的方法注释" />
+    <MESSAGE value="增加了AppPageResult" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了AppPageResult" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

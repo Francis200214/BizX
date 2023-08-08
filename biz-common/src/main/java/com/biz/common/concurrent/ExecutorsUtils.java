@@ -61,7 +61,7 @@ public final class ExecutorsUtils {
      * @return
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize) {
-        return getThreadPoolExecutor(corePoolSize, MAX_SIZE + 5, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
+        return getThreadPoolExecutor(corePoolSize, corePoolSize + 5, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
     }
 
     /**
