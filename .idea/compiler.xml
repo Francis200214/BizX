@@ -9,9 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="biz-core" />
         <module name="biz-common" />
-        <module name="biz-catch" />
         <module name="biz-library" />
         <module name="biz-web" />
+        <module name="biz-cache" />
         <module name="biz-oss" />
         <module name="demo" />
       </profile>

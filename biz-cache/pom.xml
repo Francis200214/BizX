@@ -9,7 +9,7 @@
         <version>1.0.28-SNAPSHOT</version>
     </parent>
 
-    <artifactId>biz-catch</artifactId>
+    <artifactId>biz-cache</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
     <version>1.0.28-SNAPSHOT</version>

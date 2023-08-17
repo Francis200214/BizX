@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="增加了分页助手工具类，主要提供数据分页的相关操作">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +85,7 @@
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
     "settings.editor.selected.configurable": "configurable.group.editor",
-    "spring.configuration.checksum": "b6288c70b156665339ecb7b3afafde51",
+    "spring.configuration.checksum": "5feda74ba5d504a01741d9cf7b946248",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -280,6 +278,7 @@
       <workItem from="1689899285586" duration="1352000" />
       <workItem from="1691460257798" duration="4121000" />
       <workItem from="1691481545936" duration="1283000" />
+      <workItem from="1692233616224" duration="853000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -624,7 +623,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -654,7 +653,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、修改了单例缓存Map中put时，如果之前有该Key值，则将旧值的定时任务暂停；" />
     <MESSAGE value="接口防刷中创建了判断访问者的默认缓存方式" />
     <MESSAGE value="1、创建了AccessLimitCatchService的SPI；&#10;2、接口防刷使用创建了AccessLimitCatchService；" />
     <MESSAGE value="升级到1.4.5-release" />
@@ -679,7 +677,8 @@
     <MESSAGE value="增加了AppPageResult" />
     <MESSAGE value="修复了构建固定线程池时内部最大线程数量问题" />
     <MESSAGE value="增加了分页助手工具类，主要提供数据分页的相关操作" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加了分页助手工具类，主要提供数据分页的相关操作" />
+    <MESSAGE value="更新了README，增加了感谢 JetBrains 提供的免费开源 License" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了README，增加了感谢 JetBrains 提供的免费开源 License" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

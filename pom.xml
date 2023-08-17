@@ -19,7 +19,7 @@
         <module>biz-all</module>
         <module>biz-library</module>
         <module>biz-oss</module>
-        <module>biz-catch</module>
+        <module>biz-cache</module>
         <!--        <module>demo</module>-->
     </modules>
 

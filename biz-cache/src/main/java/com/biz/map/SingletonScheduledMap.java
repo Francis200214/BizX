@@ -78,6 +78,9 @@ public final class SingletonScheduledMap<K, V> {
      * @return true 存在 false 不存在
      */
     public boolean containsKey(K k) {
+        if (k == null) {
+            return false;
+        }
         return map.containsKey(k);
     }
 
@@ -185,7 +188,6 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
-        long startTime = System.currentTimeMillis();
         if (version != VERSION.get()) {
             synchronized (map) {
                 if (version != VERSION.get()) {
@@ -215,7 +217,7 @@ public final class SingletonScheduledMap<K, V> {
 
     private void clear() {
         synchronized (map) {
-            if (map.size() > 0) {
+            if (!map.isEmpty()) {
                 map.clear();
             }
         }
