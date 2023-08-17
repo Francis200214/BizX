@@ -20,3 +20,10 @@ BizX 是一个灵活且高效的业务开发框架, 其中也提供了很多在�
 引入biz-all可把所有的jar包都引入
 
 
+## 鸣谢
+
+- 感谢 JetBrains 提供的免费开源 License：
+
+<p>
+<img src="https://images.gitee.com/uploads/images/2020/0406/220236_f5275c90_5531506.png" alt="图片引用自lets-mica" style="float:left;">
+</p>
