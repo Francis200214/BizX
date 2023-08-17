@@ -33,7 +33,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
 
     @Override
     public Optional<Serializable> getSession(String token) {
-        if (!SESSION_MAP.containsKey(token)) {
+        if (Common.isBlank(token) || !SESSION_MAP.containsKey(token)) {
             return Optional.empty();
         }
 

@@ -115,6 +115,10 @@ public final class SingletonScheduledMap<K, V> {
      * @param k
      */
     public void remove(K k) {
+        if (k == null) {
+            return;
+        }
+
         lock.lock();
         try {
             if (map.containsKey(k)) {
@@ -139,6 +143,10 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V putCatch(K k, V v, long died) {
+        if (k == null) {
+            return null;
+        }
+
         if (!map.containsKey(k)) {
             lock.lock();
             try {
@@ -188,6 +196,10 @@ public final class SingletonScheduledMap<K, V> {
 
 
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
+        if (k == null) {
+            return null;
+        }
+
         if (version != VERSION.get()) {
             synchronized (map) {
                 if (version != VERSION.get()) {

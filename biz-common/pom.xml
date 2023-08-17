@@ -5,21 +5,21 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.0.28-SNAPSHOT</version>
+        <version>1.1.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-common</artifactId>
     <name>${project.artifactId}</name>
     <groupId>${project.parent.groupId}</groupId>
-    <version>1.0.28-SNAPSHOT</version>
+    <version>1.1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
 
         <!--        <dependency>-->
         <!--            <groupId>${project.parent.groupId}</groupId>-->
-        <!--            <artifactId>biz-catch</artifactId>-->
+        <!--            <artifactId>biz-cache</artifactId>-->
         <!--            <version>${project.parent.version}</version>-->
         <!--        </dependency>-->
 
