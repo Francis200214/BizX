@@ -1,11 +1,9 @@
 package com.demo;
 
-import com.biz.common.bean.BizXBeanUtils;
 import com.biz.core.BizXEnable;
-import com.biz.web.interceptor.AccessLimitInterceptor;
-import com.biz.web.interceptor.CheckAuthorityInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * @author francis
@@ -13,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  **/
 @SpringBootApplication
 @BizXEnable
+@EnableCaching
 public class DemoApplication {
 
 
