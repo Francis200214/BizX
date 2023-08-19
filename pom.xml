@@ -20,6 +20,7 @@
         <module>biz-library</module>
         <module>biz-oss</module>
         <module>biz-cache</module>
+        <module>biz-rabbitmq</module>
         <!--        <module>demo</module>-->
     </modules>
 
@@ -86,7 +87,7 @@
             <!-- SpringBoot 版本管理器 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>

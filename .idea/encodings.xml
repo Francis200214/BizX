@@ -15,6 +15,8 @@
     <file url="file://$PROJECT_DIR$/biz-library/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/biz-oss/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/biz-oss/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/biz-rabbitmq/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/biz-rabbitmq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/biz-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/biz-web/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo/src/main/java" charset="UTF-8" />
