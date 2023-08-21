@@ -1,0 +1,5 @@
+# Auto Config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.biz.cache.caffeine.manager.BizCaffeineCacheManagerAbstract,\
+com.biz.common.application.aware.ApplicationContextAwareUtils,\
+com.biz.cache.caffeine.config.BizCaffeineCacheConfiguration

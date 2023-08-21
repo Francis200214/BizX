@@ -127,7 +127,7 @@ public class ReflectionUtils {
 
 
     /**
-     * 判断 aClass 是否实现了 bClass
+     * 判断 bClass 是否实现（继承）了 aClass
      *
      * @param aClass aClass
      * @param bClass bClass

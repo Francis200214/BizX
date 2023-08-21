@@ -3,6 +3,7 @@ package com.biz.common.application.aware;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.core.Ordered;
 
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.context.ApplicationContextAware;
  *
  * @author francis
  */
-public class ApplicationContextAwareUtils implements ApplicationContextAware {
+public class ApplicationContextAwareUtils implements ApplicationContextAware, Ordered {
 
     private static ApplicationContext applicationContext;
 
@@ -32,4 +33,8 @@ public class ApplicationContextAwareUtils implements ApplicationContextAware {
     }
 
 
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 }

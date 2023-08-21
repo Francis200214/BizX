@@ -1,6 +1,5 @@
 package com.demo.controller;
 
-import com.demo.cocnfig.CacheNameEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
