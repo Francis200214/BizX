@@ -2,7 +2,7 @@ package com.biz.cache.caffeine.manager;
 
 import org.springframework.cache.caffeine.CaffeineCache;
 
-import java.util.List;
+import java.util.Collection;
 
 /**
  * CaffeineCache 管理器
@@ -18,6 +18,6 @@ public interface BizCaffeineCacheManager {
      *
      * @return
      */
-    List<CaffeineCache> getCaffeineCaches();
+    Collection<CaffeineCache> getCaffeineCaches();
 
 }

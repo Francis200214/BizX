@@ -1,6 +1,10 @@
 server:
   port: 8001
 
+spring:
+  main:
+    allow-circular-references: true
+
 biz:
   interceptor:
     access: true
@@ -13,7 +17,7 @@ biz:
     secretKey: "1"
 #    maxConnections: 10
   cache:
-    caffeineCache: true
+    caffeine-cache: true
 
 user:
   names: "张三"

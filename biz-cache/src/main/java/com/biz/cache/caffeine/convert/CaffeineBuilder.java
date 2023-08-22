@@ -31,6 +31,11 @@ public class CaffeineBuilder {
     private static final String COMMON_COMMA = ",";
 
     /**
+     * 秒
+     */
+    private static final String SECOND = "s";
+
+    /**
      * 缓存名称
      */
     private String cacheName;
@@ -115,7 +120,40 @@ public class CaffeineBuilder {
 
 
     /**
+     * 设置 最大权重
+     *
+     * @param maximumWeight
+     * @return
+     */
+    public CaffeineBuilder setMaximumWeight(Long maximumWeight) {
+        if (maximumWeight != null) {
+            caffeineSpecStringBuilder.append(MAXIMUM_WEIGHT_STR)
+                    .append(COMMON_EQUAL_TO)
+                    .append(maximumWeight)
+                    .append(COMMON_COMMA);
+        }
+        return this;
+    }
+
+    /**
      * 设置 访问后过期时间
+     *
+     * @param expireAfterAccess
+     * @return
+     */
+    public CaffeineBuilder setExpireAfterAccess(Long expireAfterAccess) {
+        if (expireAfterAccess != null) {
+            caffeineSpecStringBuilder.append(EXPIRE_AFTER_ACCESS_STR)
+                    .append(COMMON_EQUAL_TO)
+                    .append(expireAfterAccess)
+                    .append(SECOND)
+                    .append(COMMON_COMMA);
+        }
+        return this;
+    }
+
+    /**
+     * 设置 写入后过期时间
      *
      * @param expireAfterWrite
      * @return
@@ -125,10 +163,12 @@ public class CaffeineBuilder {
             caffeineSpecStringBuilder.append(EXPIRE_AFTER_WRITE_STR)
                     .append(COMMON_EQUAL_TO)
                     .append(expireAfterWrite)
+                    .append(SECOND)
                     .append(COMMON_COMMA);
         }
         return this;
     }
+
 
     /**
      * 写入后刷新时间
@@ -141,6 +181,7 @@ public class CaffeineBuilder {
             caffeineSpecStringBuilder.append(REFRESH_AFTER_WRITE_STR)
                     .append(COMMON_EQUAL_TO)
                     .append(refreshAfterWrite)
+                    .append(SECOND)
                     .append(COMMON_COMMA);
         }
         return this;
@@ -173,6 +214,8 @@ public class CaffeineBuilder {
         return this.setCacheName(bizCaffeineCache.getCacheName())
                 .setInitialCapacity(bizCaffeineCache.getInitialCapacity())
                 .setMaximumSize(bizCaffeineCache.getMaximumSize())
+                .setMaximumWeight(bizCaffeineCache.getMaximumWeight())
+                .setExpireAfterAccess(bizCaffeineCache.getExpireAfterAccess())
                 .setExpireAfterWrite(bizCaffeineCache.getExpireAfterWrite())
                 .setRefreshAfterWrite(bizCaffeineCache.getRefreshAfterWrite())
                 .build();

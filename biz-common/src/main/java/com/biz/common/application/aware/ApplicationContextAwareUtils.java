@@ -1,9 +1,12 @@
 package com.biz.common.application.aware;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 
 
 /**
@@ -11,7 +14,8 @@ import org.springframework.core.Ordered;
  *
  * @author francis
  */
-public class ApplicationContextAwareUtils implements ApplicationContextAware, Ordered {
+@Order(Ordered.HIGHEST_PRECEDENCE)
+public class ApplicationContextAwareUtils implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
@@ -33,8 +37,4 @@ public class ApplicationContextAwareUtils implements ApplicationContextAware, Or
     }
 
 
-    @Override
-    public int getOrder() {
-        return 0;
-    }
 }
