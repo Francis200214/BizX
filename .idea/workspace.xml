@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-cache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +45,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/corretto-11.0.11/lib/src.zip!/java.base/java/util/concurrent/ThreadLocalRandom.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
@@ -51,9 +64,13 @@
     </option>
     <option name="enabledProfiles">
       <list>
+        <option value="release" />
+      </list>
+    </option>
+    <option name="disabledProfiles">
+      <list>
         <option value="bizx-maven-deploy" />
         <option value="bizx-maven-public" />
-        <option value="release" />
         <option value="ossrh" />
         <option value="zny-maven-deploy" />
       </list>
@@ -70,6 +87,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Maven.BizX [clean,compile,package,install...].executor": "Run",
+    "Maven.BizX [clean,compile].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -88,7 +107,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "configurable.group.editor",
+    "settings.editor.selected.configurable": "MavenSettings",
     "spring.configuration.checksum": "a5184f5b652259a16a16645253ab095b",
     "vue.rearranger.settings.migration": "true"
   }
@@ -189,8 +208,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="Application.PhoneNumberUtil" />
         <item itemvalue="JUnit.DemoTest.test" />
+        <item itemvalue="Application.PhoneNumberUtil" />
       </list>
     </recent_temporary>
   </component>
@@ -290,7 +309,14 @@
       <workItem from="1692666173207" duration="6699000" />
       <workItem from="1692674294944" duration="9399000" />
       <workItem from="1693382191796" duration="926000" />
-      <workItem from="1693383328752" duration="365000" />
+      <workItem from="1693383328752" duration="398000" />
+      <workItem from="1693386425571" duration="632000" />
+      <workItem from="1702365363811" duration="336000" />
+      <workItem from="1703642482891" duration="165000" />
+      <workItem from="1703642673382" duration="305000" />
+      <workItem from="1703642992000" duration="793000" />
+      <workItem from="1703644266160" duration="265000" />
+      <workItem from="1703644545364" duration="3573000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -635,7 +661,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -665,7 +691,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="解决了检查Token拦截器中设置Response的值" />
     <MESSAGE value="增加了雪花生成器" />
     <MESSAGE value="修改了雪花增强器中的builder参数方法" />
     <MESSAGE value="后期使用SNAPSHOT版本" />
@@ -690,7 +715,8 @@
     <MESSAGE value="封装集成RabbitMQ" />
     <MESSAGE value="集成Caffeine Cache框架" />
     <MESSAGE value="封装了Caffeine Cache框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="封装了Caffeine Cache框架" />
+    <MESSAGE value="修改了JWT工具类中的默认密钥" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了JWT工具类中的默认密钥" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
