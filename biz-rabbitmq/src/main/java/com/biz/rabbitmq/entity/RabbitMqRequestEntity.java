@@ -16,7 +16,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RabbitMQRequestEntity<T> implements Serializable {
+public class RabbitMqRequestEntity<T> implements Serializable {
 
     /**
      * 非必填，后台可自动生成  applicationName_随机日期id

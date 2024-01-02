@@ -2,7 +2,7 @@ package com.biz.rabbitmq.config;
 
 import cn.hutool.json.JSONUtil;
 import com.biz.common.utils.Common;
-import com.biz.rabbitmq.entity.RabbitMQRequestEntity;
+import com.biz.rabbitmq.entity.RabbitMqRequestEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
@@ -94,11 +94,11 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
         // 消息发送时间
         String id = correlationData.getId();
         String jsonData = new String(correlationData.getReturnedMessage().getBody());
-        RabbitMQRequestEntity rabbitMQRequest = JSONUtil.toBean(JSONUtil.toJsonStr(jsonData), RabbitMQRequestEntity.class);
+        RabbitMqRequestEntity rabbitMqRequest = JSONUtil.toBean(JSONUtil.toJsonStr(jsonData), RabbitMqRequestEntity.class);
         if (ack) {
-            log.info("[MQProducerAckConfig.confirm] 消息发送成功通道id [{}] 时间 [{}]  BODY={}", id, Common.now(), rabbitMQRequest);
+            log.info("[MQProducerAckConfig.confirm] 消息发送成功通道id [{}] 时间 [{}]  BODY={}", id, Common.now(), rabbitMqRequest);
         } else {
-            log.error("[MQProducerAckConfig.confirm] 消息发送失败通道id [{}] 时间 [{}] cause={}  BODY={}", id, Common.now(), cause, rabbitMQRequest);
+            log.error("[MQProducerAckConfig.confirm] 消息发送失败通道id [{}] 时间 [{}] cause={}  BODY={}", id, Common.now(), cause, rabbitMqRequest);
         }
     }
 
@@ -114,12 +114,12 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
      */
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-        RabbitMQRequestEntity rabbitMQRequest = JSONUtil.toBean(JSONUtil.toJsonStr(new String(message.getBody())), RabbitMQRequestEntity.class);
+        RabbitMqRequestEntity rabbitMqRequest = JSONUtil.toBean(JSONUtil.toJsonStr(new String(message.getBody())), RabbitMqRequestEntity.class);
         // 反序列化对象输出
         log.info("[MQProducerAckConfig.returnedMessage]消息送达MQ异常_业务id[{}]时间[{}]  \n 消息主体: {} \n 应答码: {} \n 描述: {} \n 消息使用的交换器: {} \n 消息使用的路由键: {}"
-                , rabbitMQRequest.getBusinessId()
+                , rabbitMqRequest.getBusinessId()
                 , Common.now()
-                , rabbitMQRequest.getData()
+                , rabbitMqRequest.getData()
                 , replyCode
                 , replyText
                 , exchange
@@ -130,4 +130,6 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         bizRabbitConfig = applicationContext.getBean(BizRabbitConfig.class);
     }
+
+
 }

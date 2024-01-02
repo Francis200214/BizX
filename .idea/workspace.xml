@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改了版本">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-cache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/config/BizMQProducerAckConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/config/BizMQProducerAckConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/entity/RabbitMQRequestEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/entity/RabbitMqRequestEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +88,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/BizX/biz-cache/src/main/resources/META-INF",
+    "last_opened_file_path": "E:/idea/concrete.coodex.org",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -317,6 +307,7 @@
       <workItem from="1703642992000" duration="793000" />
       <workItem from="1703644266160" duration="265000" />
       <workItem from="1703644545364" duration="3573000" />
+      <workItem from="1703832330632" duration="2153000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -661,7 +652,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -691,7 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="增加了雪花生成器" />
     <MESSAGE value="修改了雪花增强器中的builder参数方法" />
     <MESSAGE value="后期使用SNAPSHOT版本" />
     <MESSAGE value="修复了全局异常拦截不到异常信息；" />
@@ -716,7 +706,8 @@
     <MESSAGE value="集成Caffeine Cache框架" />
     <MESSAGE value="封装了Caffeine Cache框架" />
     <MESSAGE value="修改了JWT工具类中的默认密钥" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了JWT工具类中的默认密钥" />
+    <MESSAGE value="修改了版本" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改了版本" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
