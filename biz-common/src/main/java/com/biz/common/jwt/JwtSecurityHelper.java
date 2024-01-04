@@ -1,6 +1,7 @@
 package com.biz.common.jwt;
 
 import com.biz.common.utils.Common;
+import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author francis
  * @create: 2024-01-04 09:27
  **/
-public class JwtSecurityHelper {
+public final class JwtSecurityHelper {
 
     private static final String AUTHORIZATION_STR = "Authorization";
     private static final String BEARER_STR = "Bearer ";
@@ -19,12 +20,15 @@ public class JwtSecurityHelper {
     private final String TOKEN;
 
 
-    public JwtSecurityHelper(HttpServletRequest request) {
+    public JwtSecurityHelper(HttpServletRequest request, String secret, SignatureAlgorithm signatureAlgorithm) {
         this.TOKEN = subJwtTokenFromRequest(request);
         this.JWT_TOKEN_DECRYPT_HELPER = JwtDecryptHelper.decryptBuilder()
                 .token(this.TOKEN)
+                .secret(secret)
+                .signatureAlgorithm(signatureAlgorithm)
                 .build();
     }
+
 
 
     /**
@@ -46,6 +50,28 @@ public class JwtSecurityHelper {
         return Common.isNotBlank(TOKEN);
     }
 
+    /**
+     * 获取 Subject
+     *
+     * @return token
+     */
+    public String getSub() {
+        return this.JWT_TOKEN_DECRYPT_HELPER.subject();
+    }
+
+
+    /**
+     * 获取 Token 中某个 Key 的对应值
+     *
+     * @param key Key
+     * @return 值
+     */
+    public String getDataByKey(String key) {
+        return this.JWT_TOKEN_DECRYPT_HELPER.getByKey(key);
+    }
+
+
+
 
     /**
      * 从 HttpServletRequest 中取出 Token
@@ -64,6 +90,60 @@ public class JwtSecurityHelper {
         }
 
         return null;
+    }
+
+
+    /**
+     * Jwt Security 构建者
+     */
+    public static class JwtSecurityBuilder {
+
+        /**
+         * HttpServletRequest
+         */
+        private HttpServletRequest request;
+
+        /**
+         * 密钥
+         */
+        private String secret;
+
+        /**
+         * 需要解密的 密钥算法 信息
+         */
+        private SignatureAlgorithm signatureAlgorithm;
+
+
+        public JwtSecurityBuilder httpServletRequest(HttpServletRequest request) {
+            this.request = request;
+            return this;
+        }
+
+        /**
+         * 解密密钥
+         *
+         * @param secret 密钥
+         * @return JwtDecryptBuilder
+         */
+        public JwtSecurityBuilder secret(String secret) {
+            this.secret = secret;
+            return this;
+        }
+
+        /**
+         * 密钥算法
+         *
+         * @param signatureAlgorithm 密钥算法
+         * @return JwtDecryptBuilder
+         */
+        public JwtSecurityBuilder signatureAlgorithm(SignatureAlgorithm signatureAlgorithm) {
+            this.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+
+        public JwtSecurityHelper build() {
+            return new JwtSecurityHelper(request, this.secret, this.signatureAlgorithm);
+        }
     }
 
 }

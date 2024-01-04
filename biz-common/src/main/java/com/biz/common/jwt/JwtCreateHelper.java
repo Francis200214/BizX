@@ -49,7 +49,7 @@ public final class JwtCreateHelper {
      * @return token值
      */
     public String createToken() {
-        return JwtUtils.createToken(SECRET, EXPIRE, SIGNATURE_ALGORITHM, DATA);
+        return JwtUtils.createToken(this.SECRET, this.EXPIRE, this.SIGNATURE_ALGORITHM, this.DATA);
     }
 
     /**
@@ -59,7 +59,7 @@ public final class JwtCreateHelper {
      * @param value 值
      */
     public void putData(String key, Object value) {
-        DATA.put(key, value);
+        this.DATA.put(key, value);
     }
 
     /**
@@ -82,7 +82,7 @@ public final class JwtCreateHelper {
      * @return
      */
     public Object getData(String token, String key) {
-        return JwtUtils.getData(token, key, SECRET);
+        return JwtUtils.getData(token, key, this.SECRET);
     }
 
     /**
@@ -92,7 +92,7 @@ public final class JwtCreateHelper {
      * @return
      */
     public boolean checkExpire(String token) {
-        return JwtUtils.checkToken(token, SECRET);
+        return JwtUtils.checkToken(token, this.SECRET);
     }
 
 

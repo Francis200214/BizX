@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改了版本">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtSecurityHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenDecryptHelper.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="1、JwtTokenUtils改名为JwtUtils；&#10;2、Jwt内部操作方法不再使用已经被弃用的方法；&#10;3、增加了JwtDecryptHelper，主要用于Jwt解析;&#10;4、增加了JwtSecurityHelper，主要用于Jwt和SpringSecurity的融合；">
+      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/KeyUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtCreateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtTokenUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/Common.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtCreateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtCreateHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtDecryptHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtDecryptHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtSecurityHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtSecurityHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jwt/JwtUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,7 +312,8 @@
       <workItem from="1703644545364" duration="3573000" />
       <workItem from="1703832330632" duration="2153000" />
       <workItem from="1704244220119" duration="8528000" />
-      <workItem from="1704337518181" duration="1144000" />
+      <workItem from="1704337518181" duration="5743000" />
+      <workItem from="1704350472612" duration="714000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -658,7 +658,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -688,7 +688,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修改了雪花增强器中的builder参数方法" />
     <MESSAGE value="后期使用SNAPSHOT版本" />
     <MESSAGE value="修复了全局异常拦截不到异常信息；" />
     <MESSAGE value="全局异常类增加了日志打印；&#10;修复了Copier无法生成泛型对象问题；" />
@@ -713,7 +712,8 @@
     <MESSAGE value="封装了Caffeine Cache框架" />
     <MESSAGE value="修改了JWT工具类中的默认密钥" />
     <MESSAGE value="修改了版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改了版本" />
+    <MESSAGE value="1、JwtTokenUtils改名为JwtUtils；&#10;2、Jwt内部操作方法不再使用已经被弃用的方法；&#10;3、增加了JwtDecryptHelper，主要用于Jwt解析;&#10;4、增加了JwtSecurityHelper，主要用于Jwt和SpringSecurity的融合；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、JwtTokenUtils改名为JwtUtils；&#10;2、Jwt内部操作方法不再使用已经被弃用的方法；&#10;3、增加了JwtDecryptHelper，主要用于Jwt解析;&#10;4、增加了JwtSecurityHelper，主要用于Jwt和SpringSecurity的融合；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

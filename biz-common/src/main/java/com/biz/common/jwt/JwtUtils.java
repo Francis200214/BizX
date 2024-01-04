@@ -5,8 +5,6 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
@@ -149,6 +147,13 @@ public final class JwtUtils {
         return check(jwtToken, serret);
     }
 
+    public static boolean checkToken(String jwtToken, String serret, SignatureAlgorithm signatureAlgorithm) {
+        if (Common.isBlank(jwtToken)) {
+            return false;
+        }
+        return check(jwtToken, serret, signatureAlgorithm);
+    }
+
 
     /**
      * 获取 Jwt Body 中某个 Key 值
@@ -160,6 +165,20 @@ public final class JwtUtils {
     public static Object getData(final String token, final String key) {
         return get(token, key, DEFAULT_SECRET);
     }
+
+
+    /**
+     * 获取 Jwt Body 中
+     *
+     * @param token token
+     * @param key
+     * @param signatureAlgorithm
+     * @return
+     */
+    public static Object getData(final String token, final String key, final SignatureAlgorithm signatureAlgorithm) {
+        return get(token, key, DEFAULT_SECRET, signatureAlgorithm);
+    }
+
 
     /**
      * 获取 Jwt Body 中某个 Key 值
@@ -174,12 +193,51 @@ public final class JwtUtils {
     }
 
 
+    /**
+     * 获取
+     * @param token
+     * @return
+     */
+    public static Object getSub(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
+        return getSubject(token, secret, signatureAlgorithm);
+    }
+
+
+    public static Object getSub(String token) {
+        return getSubject(token, DEFAULT_SECRET, DEFAULT_SIGNATURE_ALGORITHM);
+    }
+
+    /**
+     * 获取 Jws<Claims>
+     *
+     * @param token Token 信息
+     * @return Jws<Claims>
+     */
+    public static Jws<Claims> getClaimsJws(String token) {
+        Jws<Claims> claimsJws = parseClaimsJws(token, DEFAULT_SECRET, DEFAULT_SIGNATURE_ALGORITHM);
+        if (claimsJws == null) {
+            return null;
+        }
+
+        return claimsJws;
+    }
+
+    public static Jws<Claims> getClaimsJws(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
+        Jws<Claims> claimsJws = parseClaimsJws(token, secret, signatureAlgorithm);
+        if (claimsJws == null) {
+            return null;
+        }
+
+        return claimsJws;
+    }
+
+
     private static String create(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
         return Jwts.builder()
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(expire))
                 .addClaims(data)
-                .signWith(getKeyFromSecret(secret, signatureAlgorithm))
+                .signWith(KeyUtils.getKeyFromSecret(secret, signatureAlgorithm))
                 .compact();
     }
 
@@ -189,64 +247,124 @@ public final class JwtUtils {
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(expire))
                 .addClaims(data)
-                .signWith(getKeyFromSecret(secret, signatureAlgorithm))
+                .signWith(KeyUtils.getKeyFromSecret(secret, signatureAlgorithm))
                 .compact();
     }
 
 
     private static Object get(String token, String key, String secret) {
-        SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes());
-        JwtParser jwtParserBuilder = Jwts.parserBuilder()
-                .setSigningKey(secretKey)
-                .build();
-        Jws<Claims> claimsJws = jwtParserBuilder.parseClaimsJws(token);
-//        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+        Jws<Claims> claimsJws = parseClaimsJws(token, secret);
+        if (claimsJws == null) {
+            return null;
+        }
+
         return claimsJws.getBody().get(key);
     }
 
 
+    private static Object get(String token, String key, String secret, SignatureAlgorithm signatureAlgorithm) {
+        Jws<Claims> claimsJws = parseClaimsJws(token, secret, signatureAlgorithm);
+        if (claimsJws == null) {
+            return null;
+        }
+        return claimsJws.getBody().get(key);
+    }
+
+    /**
+     * 获取 Jwt 中的 Subject
+     *
+     * @param token  token
+     * @param secret 密钥
+     * @return Subject 信息
+     */
+    private static Object getSubject(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
+        Jws<Claims> claimsJws = parseClaimsJws(token, secret, signatureAlgorithm);
+        if (claimsJws == null) {
+            return null;
+        }
+
+        return claimsJws.getBody().getSubject();
+    }
+
+
+
     private static boolean check(String token, String secret) {
+        return parseClaimsJws(token, secret) != null;
+    }
+
+    private static boolean check(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
+        return parseClaimsJws(token, secret, signatureAlgorithm) != null;
+    }
+
+
+    /**
+     * 解析 Jwt 的 ClaimsJws
+     *
+     * @param secret 密钥
+     * @return Jws<Claims>
+     */
+    private static Jws<Claims> parseClaimsJws(String token, String secret) {
         try {
-            SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes());
-            JwtParser jwtParserBuilder = Jwts.parserBuilder()
-                    .setSigningKey(secretKey)
+            JwtParser build = Jwts.parserBuilder()
+                    .setSigningKey(KeyUtils.getKeyFromSecret(secret))
                     .build();
-            jwtParserBuilder.parseClaimsJws(token);
-//            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            return build.parseClaimsJws(token);
 
         } catch (Exception e) {
             if (log.isDebugEnabled()) {
                 log.debug("解析 Jwt 时出现错误 ", e);
             }
-            return false;
-
         }
-        return true;
+
+        return null;
+    }
+
+    /**
+     * 解析 Jwt 的 ClaimsJws
+     *
+     * @param signatureAlgorithm 密钥算法
+     * @return Jws<Claims>
+     */
+    private static Jws<Claims> parseClaimsJws(String token, SignatureAlgorithm signatureAlgorithm) {
+        try {
+            JwtParser build = Jwts.parserBuilder()
+                    .setSigningKey(KeyUtils.getKeyFromSecret(signatureAlgorithm))
+                    .build();
+            return build.parseClaimsJws(token);
+
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("解析 Jwt 时出现错误 ", e);
+            }
+        }
+
+        return null;
     }
 
 
     /**
-     * 密钥 Key
+     * 解析 Jwt 的 ClaimsJws
      *
+     * @param token              token
      * @param secret             密钥
-     * @param signatureAlgorithm 加密算法
-     * @return 密钥 Key
+     * @param signatureAlgorithm 密钥算法
+     * @return Jws<Claims>
      */
-    private static Key getKeyFromSecret(String secret, SignatureAlgorithm signatureAlgorithm) {
-        byte[] keyBytes = Base64.getEncoder().encode(Common.isBlank(secret) ? DEFAULT_SECRET.getBytes() : secret.getBytes());
-        return new SecretKeySpec(keyBytes, signatureAlgorithm == null ? DEFAULT_SIGNATURE_ALGORITHM.getJcaName() : signatureAlgorithm.getJcaName());
+    private static Jws<Claims> parseClaimsJws(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
+        try {
+            JwtParser build = Jwts.parserBuilder()
+                    .setSigningKey(KeyUtils.getKeyFromSecret(secret, signatureAlgorithm))
+                    .build();
+            return build.parseClaimsJws(token);
+
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("解析 Jwt 时出现错误 ", e);
+            }
+        }
+
+        return null;
     }
 
-
-    /**
-     * 密钥 Key
-     *
-     * @param secret             密钥
-     * @param signatureAlgorithm 加密算法
-     * @return 密钥 Key
-     */
-    private static Key getKeyFromSecret(Key secret, SignatureAlgorithm signatureAlgorithm) {
-        return new SecretKeySpec(secret.getEncoded(), signatureAlgorithm == null ? DEFAULT_SIGNATURE_ALGORITHM.getJcaName() : signatureAlgorithm.getJcaName());
-    }
 
 }
