@@ -49,10 +49,10 @@ public final class Common {
      * 判断字符串是否为Null或字符串去除两端空格后长度是否为0
      *
      * @param str 被判断字符串
-     * @return
+     * @return 是否为 Null
      */
     public static boolean isBlank(String str) {
-        return str == null || str.trim().length() == 0;
+        return str == null || str.trim().isEmpty();
     }
 
     /**

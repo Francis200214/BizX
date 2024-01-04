@@ -11,35 +11,37 @@ import java.util.Optional;
  * @author francis
  * @create: 2023-04-22 14:02
  **/
-public final class JwtHelper {
+public final class JwtCreateHelper {
 
 
     /**
-     * JwtHelper 加密密钥
+     * JwtCreateHelper 加密密钥
      */
     private final String SECRET;
 
     /**
-     * JwtHelper 有效期（15天）
+     * JwtCreateHelper 有效期（15天）
      */
     private final long EXPIRE;
 
     /**
-     * JwtHelper 加密算法
+     * JwtCreateHelper 加密算法
      */
     private final SignatureAlgorithm SIGNATURE_ALGORITHM;
 
     /**
-     * Token 值
+     * Token 参数
      */
     private final Map<String, Object> DATA;
 
-    public JwtHelper(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
-        SECRET = Optional.ofNullable(secret).orElse(JwtTokenUtils.DEFAULT_SECRET);
-        EXPIRE = expire <= 0 ? JwtTokenUtils.DEFAULT_EXPIRE : expire;
-        SIGNATURE_ALGORITHM = Optional.ofNullable(signatureAlgorithm).orElse(JwtTokenUtils.DEFAULT_SIGNATURE_ALGORITHM);
-        DATA = data;
+
+    public JwtCreateHelper(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+        this.SECRET = Optional.ofNullable(secret).orElse(JwtUtils.DEFAULT_SECRET);
+        this.EXPIRE = expire <= 0 ? JwtUtils.DEFAULT_EXPIRE : expire;
+        this.SIGNATURE_ALGORITHM = Optional.ofNullable(signatureAlgorithm).orElse(JwtUtils.DEFAULT_SIGNATURE_ALGORITHM);
+        this.DATA = data;
     }
+
 
     /**
      * 创建 Token
@@ -47,7 +49,7 @@ public final class JwtHelper {
      * @return token值
      */
     public String createToken() {
-        return JwtTokenUtils.createToken(SECRET, EXPIRE, SIGNATURE_ALGORITHM, DATA);
+        return JwtUtils.createToken(SECRET, EXPIRE, SIGNATURE_ALGORITHM, DATA);
     }
 
     /**
@@ -69,7 +71,7 @@ public final class JwtHelper {
      * @return
      */
     public Object getData(String token, String key, String secret) {
-        return JwtTokenUtils.getData(token, key, secret);
+        return JwtUtils.getData(token, key, secret);
     }
 
     /**
@@ -80,7 +82,7 @@ public final class JwtHelper {
      * @return
      */
     public Object getData(String token, String key) {
-        return JwtTokenUtils.getData(token, key, SECRET);
+        return JwtUtils.getData(token, key, SECRET);
     }
 
     /**
@@ -90,7 +92,7 @@ public final class JwtHelper {
      * @return
      */
     public boolean checkExpire(String token) {
-        return JwtTokenUtils.checkToken(token, SECRET);
+        return JwtUtils.checkToken(token, SECRET);
     }
 
 
@@ -99,16 +101,22 @@ public final class JwtHelper {
     }
 
 
+    /**
+     * 创建 JwtToken 构建者
+     */
     public static class JwtTokenCreateBuilder {
+        /**
+         * 密钥
+         */
         private String secret;
 
         /**
-         * JwtHelper 有效期
+         * JwtCreateHelper 有效期
          */
         private long expire;
 
         /**
-         * Token 信息
+         * 需要加密的 Token 信息
          */
         private Map<String, Object> data;
 
@@ -141,8 +149,8 @@ public final class JwtHelper {
             return this;
         }
 
-        public JwtHelper build() {
-            return new JwtHelper(secret, expire, signatureAlgorithm, data);
+        public JwtCreateHelper build() {
+            return new JwtCreateHelper(secret, expire, signatureAlgorithm, data);
         }
 
     }

@@ -1,12 +1,12 @@
 package com.biz.common.jwt;
 
 import com.biz.common.utils.Common;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import lombok.extern.slf4j.Slf4j;
 
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
@@ -19,7 +19,8 @@ import java.util.Map;
  *
  * @author francis
  */
-public final class JwtTokenUtils {
+@Slf4j
+public final class JwtUtils {
 
     /**
      * Jwt 默认加密密钥
@@ -52,8 +53,8 @@ public final class JwtTokenUtils {
      * 生成
      *
      * @param secret 密钥
-     * @param key key
-     * @param data 值
+     * @param key    key
+     * @param data   值
      * @return token 值
      */
     public static String createToken(String secret, String key, Object data) {
@@ -64,8 +65,8 @@ public final class JwtTokenUtils {
      * 生成
      *
      * @param secret 密钥
-     * @param key key
-     * @param data 值
+     * @param key    key
+     * @param data   值
      * @return token 值
      */
     public static String createToken(Key secret, String key, Object data) {
@@ -84,13 +85,23 @@ public final class JwtTokenUtils {
      * @return token 值
      */
     public static String createToken(String secret, long expire, SignatureAlgorithm signatureAlgorithm, String key, Object data) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(8);
         map.put(key, data);
         return create(secret, expire, signatureAlgorithm, map);
     }
 
+    /**
+     * 生成 Token
+     *
+     * @param secret             密钥
+     * @param expire             失效时间
+     * @param signatureAlgorithm 加密算法
+     * @param key                Jwt Body 的 Key
+     * @param data               Jwt Body 的值
+     * @return
+     */
     public static String createToken(Key secret, long expire, SignatureAlgorithm signatureAlgorithm, String key, Object data) {
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>(8);
         map.put(key, data);
         return create(secret, expire, signatureAlgorithm, map);
     }
@@ -110,25 +121,6 @@ public final class JwtTokenUtils {
     }
 
 
-    private static String create(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
-        return Jwts.builder()
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(expire))
-                .addClaims(data)
-                .signWith(signatureAlgorithm, secret)
-                .compact();
-    }
-
-    private static String create(Key secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
-        return Jwts.builder()
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(expire))
-                .addClaims(data)
-                .signWith(signatureAlgorithm, secret)
-                .compact();
-    }
-
-
     /**
      * 判断 jwtToken 是否有效
      *
@@ -139,6 +131,7 @@ public final class JwtTokenUtils {
         if (Common.isBlank(jwtToken)) {
             return false;
         }
+
         return check(jwtToken, DEFAULT_SECRET);
     }
 
@@ -181,22 +174,79 @@ public final class JwtTokenUtils {
     }
 
 
+    private static String create(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(expire))
+                .addClaims(data)
+                .signWith(getKeyFromSecret(secret, signatureAlgorithm))
+                .compact();
+    }
+
+
+    private static String create(Key secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(expire))
+                .addClaims(data)
+                .signWith(getKeyFromSecret(secret, signatureAlgorithm))
+                .compact();
+    }
+
+
     private static Object get(String token, String key, String secret) {
-        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+        SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+        JwtParser jwtParserBuilder = Jwts.parserBuilder()
+                .setSigningKey(secretKey)
+                .build();
+        Jws<Claims> claimsJws = jwtParserBuilder.parseClaimsJws(token);
+//        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
         return claimsJws.getBody().get(key);
     }
 
 
-
-
     private static boolean check(String token, String secret) {
         try {
-            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            SecretKey secretKey = Keys.hmacShaKeyFor(secret.getBytes());
+            JwtParser jwtParserBuilder = Jwts.parserBuilder()
+                    .setSigningKey(secretKey)
+                    .build();
+            jwtParserBuilder.parseClaimsJws(token);
+//            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+
         } catch (Exception e) {
-            e.printStackTrace();
+            if (log.isDebugEnabled()) {
+                log.debug("解析 Jwt 时出现错误 ", e);
+            }
             return false;
+
         }
         return true;
+    }
+
+
+    /**
+     * 密钥 Key
+     *
+     * @param secret             密钥
+     * @param signatureAlgorithm 加密算法
+     * @return 密钥 Key
+     */
+    private static Key getKeyFromSecret(String secret, SignatureAlgorithm signatureAlgorithm) {
+        byte[] keyBytes = Base64.getEncoder().encode(Common.isBlank(secret) ? DEFAULT_SECRET.getBytes() : secret.getBytes());
+        return new SecretKeySpec(keyBytes, signatureAlgorithm == null ? DEFAULT_SIGNATURE_ALGORITHM.getJcaName() : signatureAlgorithm.getJcaName());
+    }
+
+
+    /**
+     * 密钥 Key
+     *
+     * @param secret             密钥
+     * @param signatureAlgorithm 加密算法
+     * @return 密钥 Key
+     */
+    private static Key getKeyFromSecret(Key secret, SignatureAlgorithm signatureAlgorithm) {
+        return new SecretKeySpec(secret.getEncoded(), signatureAlgorithm == null ? DEFAULT_SIGNATURE_ALGORITHM.getJcaName() : signatureAlgorithm.getJcaName());
     }
 
 }

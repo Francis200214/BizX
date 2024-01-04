@@ -18,7 +18,7 @@ public class BizServiceLoader extends AbstractServiceLoaderProvider {
     }
 
 
-    public static <T> T loadService(Class<?> clazz) {
+    private static <T> T loadService(Class<?> clazz) {
         ServiceLoader<?> loadedDrivers = ServiceLoader.load(clazz);
         for (Object next : loadedDrivers) {
             if (clazz.getName().equals(next.getClass().getName())) {
