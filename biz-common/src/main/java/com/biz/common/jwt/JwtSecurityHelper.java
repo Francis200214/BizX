@@ -20,7 +20,7 @@ public final class JwtSecurityHelper {
     private final String TOKEN;
 
 
-    public JwtSecurityHelper(HttpServletRequest request, String secret, SignatureAlgorithm signatureAlgorithm) {
+    private JwtSecurityHelper(HttpServletRequest request, String secret, SignatureAlgorithm signatureAlgorithm) {
         this.TOKEN = subJwtTokenFromRequest(request);
         this.JWT_TOKEN_DECRYPT_HELPER = JwtDecryptHelper.decryptBuilder()
                 .token(this.TOKEN)
@@ -72,6 +72,10 @@ public final class JwtSecurityHelper {
 
 
 
+    public static JwtSecurityBuilder jwtSecurityBuilder() {
+        return new JwtSecurityBuilder();
+    }
+
 
     /**
      * 从 HttpServletRequest 中取出 Token
@@ -91,6 +95,7 @@ public final class JwtSecurityHelper {
 
         return null;
     }
+
 
 
     /**
