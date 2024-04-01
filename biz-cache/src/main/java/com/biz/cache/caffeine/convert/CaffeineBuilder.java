@@ -2,6 +2,7 @@ package com.biz.cache.caffeine.convert;
 
 import com.biz.cache.caffeine.cache.BizCaffeineCache;
 import com.biz.common.utils.Common;
+import com.biz.common.utils.SymbolConstant;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.CaffeineSpec;
 import org.springframework.cache.caffeine.CaffeineCache;
@@ -14,26 +15,10 @@ import org.springframework.cache.caffeine.CaffeineCache;
  **/
 public class CaffeineBuilder {
 
-
     /**
      * CaffeineSpec parse 字符串
      */
-    private static StringBuilder caffeineSpecStringBuilder = new StringBuilder();
-
-    /**
-     * = 符号
-     */
-    private static final String COMMON_EQUAL_TO = "=";
-
-    /**
-     * , 符合
-     */
-    private static final String COMMON_COMMA = ",";
-
-    /**
-     * 秒
-     */
-    private static final String SECOND = "s";
+    private static final StringBuilder caffeineSpecStringBuilder = new StringBuilder();
 
     /**
      * 缓存名称
@@ -95,9 +80,9 @@ public class CaffeineBuilder {
     public CaffeineBuilder setInitialCapacity(Integer initialCapacity) {
         if (initialCapacity != null) {
             caffeineSpecStringBuilder.append(INITIAL_CAPACITY_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(initialCapacity)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }
@@ -111,9 +96,9 @@ public class CaffeineBuilder {
     public CaffeineBuilder setMaximumSize(Long maximumSize) {
         if (maximumSize != null) {
             caffeineSpecStringBuilder.append(MAXIMUM_SIZE_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(maximumSize)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }
@@ -128,9 +113,9 @@ public class CaffeineBuilder {
     public CaffeineBuilder setMaximumWeight(Long maximumWeight) {
         if (maximumWeight != null) {
             caffeineSpecStringBuilder.append(MAXIMUM_WEIGHT_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(maximumWeight)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }
@@ -144,10 +129,10 @@ public class CaffeineBuilder {
     public CaffeineBuilder setExpireAfterAccess(Long expireAfterAccess) {
         if (expireAfterAccess != null) {
             caffeineSpecStringBuilder.append(EXPIRE_AFTER_ACCESS_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(expireAfterAccess)
-                    .append(SECOND)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.SECOND)
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }
@@ -161,10 +146,10 @@ public class CaffeineBuilder {
     public CaffeineBuilder setExpireAfterWrite(Long expireAfterWrite) {
         if (expireAfterWrite != null) {
             caffeineSpecStringBuilder.append(EXPIRE_AFTER_WRITE_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(expireAfterWrite)
-                    .append(SECOND)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.SECOND)
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }
@@ -179,10 +164,10 @@ public class CaffeineBuilder {
     public CaffeineBuilder setRefreshAfterWrite(Long refreshAfterWrite) {
         if (refreshAfterWrite != null) {
             caffeineSpecStringBuilder.append(REFRESH_AFTER_WRITE_STR)
-                    .append(COMMON_EQUAL_TO)
+                    .append(SymbolConstant.EQUAL_TO)
                     .append(refreshAfterWrite)
-                    .append(SECOND)
-                    .append(COMMON_COMMA);
+                    .append(SymbolConstant.SECOND)
+                    .append(SymbolConstant.COMMA);
         }
         return this;
     }

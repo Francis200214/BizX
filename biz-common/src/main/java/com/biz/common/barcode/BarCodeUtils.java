@@ -7,6 +7,7 @@ import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * 条形码工具类
@@ -35,7 +36,7 @@ public final class BarCodeUtils {
         File file = new File(path);
         fileExists(file);
         try {
-            OutputStream outputStream = new FileOutputStream(file);
+            OutputStream outputStream = Files.newOutputStream(file.toPath());
             generateBarCode128(text, 30.0, 0.09, true, true, outputStream);
         } catch (Exception e) {
             e.printStackTrace();

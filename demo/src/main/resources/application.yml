@@ -9,12 +9,12 @@ biz:
   interceptor:
     access: true
     checkToken: true
-  oss:
-    endpoint: "localhost"
-    region: "1"
-    pathStyleAccess: true
-    accessKey: "1"
-    secretKey: "1"
+#  oss:
+#    endpoint: "localhost"
+#    region: "1"
+#    pathStyleAccess: true
+#    accessKey: "1"
+#    secretKey: "1"
 #    maxConnections: 10
   cache:
     caffeine-cache: true

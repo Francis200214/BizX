@@ -121,9 +121,7 @@ public final class SingletonScheduledMap<K, V> {
 
         lock.lock();
         try {
-            if (map.containsKey(k)) {
-                map.remove(k);
-            }
+            map.remove(k);
         } finally {
             lock.unlock();
         }
