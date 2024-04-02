@@ -1,6 +1,6 @@
 package com.biz.web.interceptor.accessLimit;
 
-import com.biz.map.SingletonScheduledMap;
+import com.biz.cache.map.SingletonScheduledMap;
 import lombok.*;
 
 import java.util.concurrent.atomic.AtomicInteger;

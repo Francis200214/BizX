@@ -1,4 +1,6 @@
 # Auto Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.biz.cache.caffeine.manager.BizCaffeineCacheLocalManager,\
-com.biz.cache.caffeine.config.BizCaffeineCacheConfiguration
+com.biz.cache.caffeine.config.BizCaffeineCacheConfiguration,\
+com.biz.cache.redis.config.BizRedisCacheConfiguration,\
+com.biz.cache.redis.manager.BizRedisCacheLocalManager

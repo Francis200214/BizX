@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/biz-all/biz-all.iml" filepath="$PROJECT_DIR$/biz-all/biz-all.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-common/biz-common.iml" filepath="$PROJECT_DIR$/biz-common/biz-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/biz-core/biz-core.iml" filepath="$PROJECT_DIR$/biz-core/biz-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/biz-web/biz-web.iml" filepath="$PROJECT_DIR$/biz-web/biz-web.iml" />
     </modules>
   </component>
 </project>

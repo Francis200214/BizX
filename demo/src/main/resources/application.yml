@@ -4,6 +4,15 @@ server:
 spring:
   main:
     allow-circular-references: true
+  redis:
+    jedis:
+      pool:
+        max-wait: 1000ms
+        max-active: 600
+        max-idle: 300
+    host: 127.0.0.1
+    port: 6379
+    password:
 
 biz:
   interceptor:
@@ -17,7 +26,7 @@ biz:
 #    secretKey: "1"
 #    maxConnections: 10
   cache:
-    caffeine-cache: true
+    redis-cache: true
 
 user:
   names: "张三"

@@ -12,6 +12,7 @@
         <module name="biz-rabbitmq" />
         <module name="biz-library" />
         <module name="biz-web" />
+        <module name="biz-redis" />
         <module name="biz-cache" />
         <module name="biz-oss" />
         <module name="demo" />

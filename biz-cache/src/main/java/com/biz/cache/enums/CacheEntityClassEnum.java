@@ -1,4 +1,4 @@
-package com.biz.cache.caffeine.enums;
+package com.biz.cache.enums;
 
 import lombok.Getter;
 

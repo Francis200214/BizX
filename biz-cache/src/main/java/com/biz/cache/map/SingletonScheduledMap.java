@@ -1,4 +1,4 @@
-package com.biz.map;
+package com.biz.cache.map;
 
 
 import com.biz.common.concurrent.BizScheduledFuture;

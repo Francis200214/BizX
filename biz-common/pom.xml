@@ -11,18 +11,10 @@
 
     <artifactId>biz-common</artifactId>
     <name>${project.artifactId}</name>
-    <groupId>${project.parent.groupId}</groupId>
     <version>1.4.5-release</version>
     <packaging>jar</packaging>
 
     <dependencies>
-
-        <!--        <dependency>-->
-        <!--            <groupId>${project.parent.groupId}</groupId>-->
-        <!--            <artifactId>biz-cache</artifactId>-->
-        <!--            <version>${project.parent.version}</version>-->
-        <!--        </dependency>-->
-
         <!-- hutool -->
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -33,17 +25,14 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-impl</artifactId>
-            <version>0.11.5</version>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.5</version>
             <scope>runtime</scope>
         </dependency>
 

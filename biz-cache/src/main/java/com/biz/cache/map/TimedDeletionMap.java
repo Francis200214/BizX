@@ -1,4 +1,4 @@
-package com.biz.map;
+package com.biz.cache.map;
 
 import java.util.Map;
 import java.util.function.Supplier;
