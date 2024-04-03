@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="1、增加了Redis组件，主要负责快速使用Redis；&#10;2、增加了RedisCache；">
-      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisCommonUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisListUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisMapUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisSetUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisStringUtils.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="1、增加了Redis相关类型操作工具类；">
+      <change afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisZSetUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisCommonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisCommonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisListUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisListUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisMapUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisMapUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisSetUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisSetUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisStringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisStringUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/resources/META-INF/spring.factories" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -332,7 +334,7 @@
       <workItem from="1708567496132" duration="79000" />
       <workItem from="1710829976389" duration="853000" />
       <workItem from="1711356840253" duration="625000" />
-      <workItem from="1711959466976" duration="19177000" />
+      <workItem from="1711959466976" duration="23186000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -677,7 +679,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="119" />
+    <option name="localTasksCounter" value="120" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -707,7 +709,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="升级到1.0.6-SNAPSHOT版本" />
     <MESSAGE value="添加了BizAccessAllow注解，用于校验是否登录" />
     <MESSAGE value="升级到1.0.7" />
     <MESSAGE value="单例定时清除Map使用Lock锁；" />
@@ -732,7 +733,8 @@
     <MESSAGE value="1、修改了JwtUtils中方法；&#10;2、完善了JwtSecurity；" />
     <MESSAGE value="1、创建了SymbolConstant常量类，主要用于存放标点符号；" />
     <MESSAGE value="1、增加了Redis组件，主要负责快速使用Redis；&#10;2、增加了RedisCache；" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、增加了Redis组件，主要负责快速使用Redis；&#10;2、增加了RedisCache；" />
+    <MESSAGE value="1、增加了Redis相关类型操作工具类；" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、增加了Redis相关类型操作工具类；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

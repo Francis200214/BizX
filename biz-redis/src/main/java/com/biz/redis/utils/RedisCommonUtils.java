@@ -1,10 +1,10 @@
 package com.biz.redis.utils;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -30,7 +30,7 @@ public class RedisCommonUtils {
      * @param key  键
      * @param time 时间(秒)
      */
-    public void expire(String key, long time) {
+    public void expire(@NonNull String key, long time) {
         try {
             if (time > 0) {
                 redisTemplate.expire(key, time, TimeUnit.SECONDS);
@@ -46,7 +46,7 @@ public class RedisCommonUtils {
      * @param key 键 不能为null
      * @return 时间(秒) 返回0代表为永久有效 -1代表没有该key
      */
-    public long getExpire(String key) {
+    public long getExpire(@NonNull String key) {
         return Optional.ofNullable(redisTemplate.getExpire(key, TimeUnit.SECONDS))
                 .orElse(-1L);
     }
@@ -57,7 +57,7 @@ public class RedisCommonUtils {
      * @param key 键
      * @return true 存在 false不存在
      */
-    public boolean hasKey(String key) {
+    public boolean hasKey(@NonNull String key) {
         try {
             return Boolean.TRUE.equals(redisTemplate.hasKey(key));
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class RedisCommonUtils {
      *
      * @param key 可以传一个值 或多个
      */
-    public void del(String... key) {
+    public void del(@NonNull String... key) {
         if (key != null && key.length > 0) {
             if (key.length == 1) {
                 redisTemplate.delete(key[0]);

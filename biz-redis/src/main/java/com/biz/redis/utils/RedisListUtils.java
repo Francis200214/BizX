@@ -1,5 +1,6 @@
 package com.biz.redis.utils;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -32,14 +33,15 @@ public class RedisListUtils {
      * @param end   结束 0 到 -1代表所有值
      * @return
      */
-    public List<Object> lGet(String key, long start, long end) {
+    public List<Object> lGet(@NonNull String key, long start, long end) {
         try {
             return redisTemplate.opsForList().range(key, start, end);
 
         } catch (Exception e) {
             log.error("获取list缓存的内容 出现异常 error {}", e.getMessage(), e);
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -48,15 +50,16 @@ public class RedisListUtils {
      * @param key 键
      * @return
      */
-    public long lGetListSize(String key) {
+    public long lGetListSize(@NonNull String key) {
         try {
             return Optional.ofNullable(redisTemplate.opsForList().size(key))
                     .orElse(0L);
 
         } catch (Exception e) {
             log.error("获取list缓存的长度 出现异常 error {}", e.getMessage(), e);
-            return 0;
         }
+
+        return 0;
     }
 
     /**
@@ -66,14 +69,15 @@ public class RedisListUtils {
      * @param index 索引 index>=0时， 0 表头，1 第二个元素，依次类推；index<0时，-1，表尾，-2倒数第二个元素，依次类推
      * @return
      */
-    public Object lGetIndex(String key, long index) {
+    public Object lGetIndex(@NonNull String key, long index) {
         try {
             return redisTemplate.opsForList().index(key, index);
 
         } catch (Exception e) {
             log.error("通过索引 获取list中的值 出现异常 error {}", e.getMessage(), e);
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -83,15 +87,16 @@ public class RedisListUtils {
      * @param value 值
      * @return
      */
-    public boolean lSet(String key, Object value) {
+    public boolean lSet(@NonNull String key, @NonNull Object value) {
         try {
             redisTemplate.opsForList().rightPush(key, value);
             return true;
 
         } catch (Exception e) {
             log.error("将list放入缓存 出现异常 error {}", e.getMessage(), e);
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -102,7 +107,7 @@ public class RedisListUtils {
      * @param time  时间(秒)
      * @return
      */
-    public boolean lSet(String key, Object value, long time) {
+    public boolean lSet(@NonNull String key, @NonNull Object value, long time) {
         try {
             redisTemplate.opsForList().rightPush(key, value);
             redisCommonUtils.expire(key, time);
@@ -110,8 +115,9 @@ public class RedisListUtils {
 
         } catch (Exception e) {
             log.error("将list放入缓存 出现异常 error {}", e.getMessage(), e);
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -121,15 +127,16 @@ public class RedisListUtils {
      * @param value 值
      * @return
      */
-    public boolean lSet(String key, List<Object> value) {
+    public boolean lSet(@NonNull String key, @NonNull List<Object> value) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             return true;
 
         } catch (Exception e) {
             log.error("将list放入缓存 出现异常 error {}", e.getMessage(), e);
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -140,7 +147,7 @@ public class RedisListUtils {
      * @param time  时间(秒)
      * @return
      */
-    public boolean lSet(String key, List<Object> value, long time) {
+    public boolean lSet(@NonNull String key, @NonNull List<Object> value, long time) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             redisCommonUtils.expire(key, time);
@@ -148,8 +155,9 @@ public class RedisListUtils {
 
         } catch (Exception e) {
             log.error("将list放入缓存 出现异常 error {}", e.getMessage(), e);
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -160,14 +168,15 @@ public class RedisListUtils {
      * @param value 值
      * @return
      */
-    public boolean lUpdateIndex(String key, long index, Object value) {
+    public boolean lUpdateIndex(@NonNull String key, long index, @NonNull Object value) {
         try {
             redisTemplate.opsForList().set(key, index, value);
             return true;
         } catch (Exception e) {
             log.error("根据索引修改list中的某条数据 出现异常 error {}", e.getMessage(), e);
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -178,7 +187,7 @@ public class RedisListUtils {
      * @param value 值
      * @return 移除的个数
      */
-    public void lRemove(String key, long count, Object value) {
+    public void lRemove(@NonNull String key, long count, @NonNull Object value) {
         try {
             redisTemplate.opsForList().remove(key, count, value);
 
