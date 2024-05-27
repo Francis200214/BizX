@@ -6,12 +6,12 @@
     <parent>
         <groupId>io.github.francis200214</groupId>
         <artifactId>BizX</artifactId>
-        <version>1.4.5-release</version>
+        <version>1.4.6-release</version>
     </parent>
 
     <groupId>${project.parent.groupId}</groupId>
     <artifactId>biz-rabbitmq</artifactId>
-    <version>1.4.5-release</version>
+    <version>1.4.6-release</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

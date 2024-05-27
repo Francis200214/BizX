@@ -41,9 +41,6 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
      * 配置统一head...等
      *
      * @param
-     * @return org.springframework.amqp.core.MessagePostProcessor
-     * @author tianyu.Ge
-     * @date 2022/9/13 10:25
      */
     public static final MessagePostProcessor messagePostProcessor =
             new MessagePostProcessor() {

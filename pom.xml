@@ -7,7 +7,7 @@
     <groupId>io.github.francis200214</groupId>
     <artifactId>BizX</artifactId>
     <packaging>pom</packaging>
-    <version>1.4.5-release</version>
+    <version>1.4.6-release</version>
     <name>BizX</name>
     <description>BizX 是一个灵活而高效的业务开发框架, 其中也有很多为业务开发所需要的工具类的提供。</description>
     <url>https://github.com/Francis200214/BizX.git</url>
@@ -29,11 +29,11 @@
     <properties>
         <java.version>1.8</java.version>
         <!-- SpringBoot版本 -->
-        <spring.boot.version>2.7.17</spring.boot.version>
+        <spring.boot.version>2.7.18</spring.boot.version>
         <!-- FastJson -->
         <fastjson.version>1.2.79</fastjson.version>
         <!-- hutool -->
-        <hutool.all.version>5.8.18</hutool.all.version>
+        <hutool.all.version>5.8.24</hutool.all.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>
         <!-- javax.inject -->
@@ -45,9 +45,7 @@
         <!-- aspectj -->
         <aspectj.version>1.9.19</aspectj.version>
         <!-- AmazonS3 -->
-        <aws.version>1.12.423</aws.version>
-        <!-- JWT -->
-        <jwt.version>0.11.5</jwt.version>
+        <aws.version>1.12.726</aws.version>
 
         <!-- Maven插件版本 -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -144,22 +142,6 @@
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-s3</artifactId>
                 <version>${aws.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
-                <version>${jwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jwt.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
-                <version>${jwt.version}</version>
             </dependency>
 
         </dependencies>
