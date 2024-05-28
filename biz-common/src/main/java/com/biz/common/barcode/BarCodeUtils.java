@@ -1,6 +1,7 @@
 package com.biz.common.barcode;
 
-import cn.hutool.core.io.FileUtil;
+import com.biz.common.file.FileUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.krysalis.barcode4j.HumanReadablePlacement;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
@@ -14,6 +15,7 @@ import java.nio.file.Files;
  *
  * @author francis
  */
+@Slf4j
 public final class BarCodeUtils {
 
     /**
@@ -34,27 +36,18 @@ public final class BarCodeUtils {
      */
     public static File generate(String text, String path) {
         File file = new File(path);
-        fileExists(file);
+        FileUtils.createFileIfNotExists(file);
         try {
             OutputStream outputStream = Files.newOutputStream(file.toPath());
             generateBarCode128(text, 30.0, 0.09, true, true, outputStream);
         } catch (Exception e) {
-            e.printStackTrace();
-
+            if (log.isDebugEnabled()) {
+                log.error("generate error ", e);
+            }
         }
         return file;
     }
 
-
-    /**
-     * 判断文件是否存在【自动生成父级目录和文件】
-     *
-     * @param file 文件
-     */
-    private static void fileExists(File file) {
-        // 创建文件及其父目录【这里使用hutool的方法】
-        FileUtil.touch(file);
-    }
 
 
     /**
@@ -87,7 +80,9 @@ public final class BarCodeUtils {
             canvas.finish();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            if (log.isDebugEnabled()) {
+                log.error("generateBarCode128 error ", e);
+            }
 
         }
     }

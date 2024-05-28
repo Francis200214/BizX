@@ -1,15 +1,13 @@
 package com.biz.common.file;
 
-import cn.hutool.core.io.FileUtil;
 import com.biz.common.utils.Common;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Base64;
 
 /**
@@ -17,6 +15,7 @@ import java.util.Base64;
  *
  * @author francis
  */
+@Slf4j
 public final class FileUtils {
 
     /**
@@ -37,7 +36,9 @@ public final class FileUtils {
             inputFile.close();
             context = Base64.getEncoder().encodeToString(buffer).replaceAll("\r|\n", "");
         } catch (Exception e) {
-            e.printStackTrace();
+            if (log.isDebugEnabled()) {
+                log.error("fileToBase64 error ", e);
+            }
         }
 
         return FileDTO.builder()
@@ -63,15 +64,56 @@ public final class FileUtils {
         final Base64.Decoder decoder = Base64.getDecoder();
         // 生成文件
         File file = new File(filePath);
-        // 创建文件及其父目录【这里使用hutool的方法】
-        FileUtil.touch(file);
-        try (OutputStream out = new FileOutputStream(file)) {
+        // 创建文件及其父目录
+        createFileIfNotExists(file);
+        try (OutputStream out = Files.newOutputStream(file.toPath())) {
             out.write(decoder.decode(fileContext));
             out.flush();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            if (log.isDebugEnabled()) {
+                log.error("base64ToFile error ", e);
+            }
+        }
+    }
 
+
+    /**
+     * 根据给定的File对象创建目录和文件。
+     * 如果目录和文件已经存在则不进行创建操作。
+     *
+     * @param file 要创建的文件
+     * @return true 如果文件成功创建或已经存在，false 如果创建失败
+     */
+    public static boolean createFileIfNotExists(File file) {
+        if (file == null) {
+            throw new IllegalArgumentException("File must not be null");
+        }
+
+        try {
+            // 检查父目录是否存在，如果不存在则创建
+            File parentDir = file.getParentFile();
+            if (parentDir != null && !parentDir.exists()) {
+                if (!parentDir.mkdirs()) {
+                    System.err.println("Failed to create directory: " + parentDir);
+                    return false;
+                }
+            }
+
+            // 检查文件是否存在，如果不存在则创建
+            if (!file.exists()) {
+                if (!file.createNewFile()) {
+                    System.err.println("Failed to create file: " + file);
+                    return false;
+                }
+            }
+
+            return true;
+        } catch (IOException e) {
+            if (log.isDebugEnabled()) {
+                log.error("createFileIfNotExists error ", e);
+            }
+            return false;
         }
     }
 

@@ -1,6 +1,7 @@
 package com.biz.common.random;
 
-import cn.hutool.core.exceptions.UtilException;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -13,6 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author francis
  * @create: 2023-04-17 17:04
  **/
+@Slf4j
 public final class RandomUtils {
 
     /**
@@ -111,11 +113,13 @@ public final class RandomUtils {
      * @return SecureRandom
      */
     public static SecureRandom getSHA1PRNGSecureRandom() {
-        SecureRandom random;
+        SecureRandom random = null;
         try {
             random = SecureRandom.getInstance("SHA1PRNG");
         } catch (NoSuchAlgorithmException e) {
-            throw new UtilException(e);
+            if (log.isDebugEnabled()) {
+                log.error("getSHA1PRNGSecureRandom error ", e);
+            }
         }
 
         return random;

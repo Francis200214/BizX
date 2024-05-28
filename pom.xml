@@ -101,12 +101,6 @@
                 <version>${fastjson.version}</version>
             </dependency>
 
-            <!-- hutool -->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.all.version}</version>
-            </dependency>
 
             <!-- javax.inject -->
             <dependency>
