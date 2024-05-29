@@ -1,7 +1,6 @@
 package com.biz.common.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -9,10 +8,15 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * MD5工具类
+ *
  * @author francis
  * @create 2024-05-28 11:07
  **/
 public class MD5Util {
+
+    private static final String MD5 = "MD5";
+
 
     /**
      * 生成字符串的MD5哈希值
@@ -22,7 +26,7 @@ public class MD5Util {
      */
     public static String getMD5(String input) {
         try {
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance(MD5);
             byte[] messageDigest = md.digest(input.getBytes());
             return bytesToHex(messageDigest);
         } catch (NoSuchAlgorithmException e) {
@@ -38,7 +42,7 @@ public class MD5Util {
      */
     public static String getFileMD5(File file) {
         try (InputStream fis = Files.newInputStream(file.toPath())) {
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance(MD5);
             byte[] buffer = new byte[1024];
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {

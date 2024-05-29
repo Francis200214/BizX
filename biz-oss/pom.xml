@@ -23,9 +23,9 @@
     <dependencies>
 
         <dependency>
-            <groupId>io.github.francis200214</groupId>
+            <groupId>${project.parent.groupId}</groupId>
             <artifactId>biz-common</artifactId>
-            <version>1.4.6-release</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>

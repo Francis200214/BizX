@@ -12,7 +12,6 @@
     <artifactId>biz-library</artifactId>
     <name>${project.artifactId}</name>
     <description>主要存放公共注解</description>
-    <groupId>${project.parent.groupId}</groupId>
     <version>1.4.6-release</version>
 
     <properties>
@@ -46,13 +45,6 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.springframework.boot</groupId>-->
-        <!--            <artifactId>spring-boot-starter-test</artifactId>-->
-        <!--            <scope>test</scope>-->
-        <!--        </dependency>-->
-
-        <!--        &lt;!&ndash; SpringWeb 启动依赖 &ndash;&gt;-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -61,9 +53,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombook.version}</version>
             <optional>true</optional>
         </dependency>
+
     </dependencies>
 
 

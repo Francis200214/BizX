@@ -31,7 +31,7 @@
         <!-- SpringBoot版本 -->
         <spring.boot.version>2.7.18</spring.boot.version>
         <!-- FastJson -->
-        <fastjson.version>1.2.79</fastjson.version>
+        <fastjson2.version>2.0.48</fastjson2.version>
         <!-- hutool -->
         <hutool.all.version>5.8.24</hutool.all.version>
         <!-- lombook -->
@@ -94,13 +94,12 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- fastJson -->
+            <!-- fastJson2 -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
             </dependency>
-
 
             <!-- javax.inject -->
             <dependency>

@@ -1,6 +1,6 @@
 package com.biz.rabbitmq.config;
 
-import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson2.JSONObject;
 import com.biz.common.utils.Common;
 import com.biz.rabbitmq.entity.RabbitMqRequestEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -91,7 +91,7 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
         // 消息发送时间
         String id = correlationData.getId();
         String jsonData = new String(correlationData.getReturnedMessage().getBody());
-        RabbitMqRequestEntity rabbitMqRequest = JSONUtil.toBean(JSONUtil.toJsonStr(jsonData), RabbitMqRequestEntity.class);
+        RabbitMqRequestEntity rabbitMqRequest = JSONObject.parseObject(jsonData, RabbitMqRequestEntity.class);
         if (ack) {
             log.info("[MQProducerAckConfig.confirm] 消息发送成功通道id [{}] 时间 [{}]  BODY={}", id, Common.now(), rabbitMqRequest);
         } else {
@@ -111,7 +111,7 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
      */
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
-        RabbitMqRequestEntity rabbitMqRequest = JSONUtil.toBean(JSONUtil.toJsonStr(new String(message.getBody())), RabbitMqRequestEntity.class);
+        RabbitMqRequestEntity rabbitMqRequest = JSONObject.parseObject(new String(message.getBody()), RabbitMqRequestEntity.class);
         // 反序列化对象输出
         log.info("[MQProducerAckConfig.returnedMessage]消息送达MQ异常_业务id[{}]时间[{}]  \n 消息主体: {} \n 应答码: {} \n 描述: {} \n 消息使用的交换器: {} \n 消息使用的路由键: {}"
                 , rabbitMqRequest.getBusinessId()

@@ -18,6 +18,12 @@
     <dependencies>
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
+            <artifactId>biz-cache</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
             <artifactId>biz-common</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
@@ -25,12 +31,6 @@
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
             <artifactId>biz-core</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-web</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -48,9 +48,23 @@
 
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-cache</artifactId>
+            <artifactId>biz-rabbitmq</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>biz-redis</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>biz-web</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
     </dependencies>
 
 

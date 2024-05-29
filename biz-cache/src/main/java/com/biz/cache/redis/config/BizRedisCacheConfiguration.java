@@ -27,7 +27,9 @@ public class BizRedisCacheConfiguration {
             Collection<BizRedisCacheEntity> cacheEntities = bizRedisCacheManager.getAll();
             for (BizRedisCacheEntity cacheEntity : cacheEntities) {
                 builder.withCacheConfiguration(cacheEntity.getCacheName(),
-                        RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofSeconds(cacheEntity.getTtl())));
+                        RedisCacheConfiguration.defaultCacheConfig()
+                                .entryTtl(Duration.ofSeconds(cacheEntity.getTtl()))
+                );
             }
         };
     }

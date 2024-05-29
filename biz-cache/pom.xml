@@ -11,7 +11,6 @@
 
     <artifactId>biz-cache</artifactId>
     <name>${project.artifactId}</name>
-    <groupId>${project.parent.groupId}</groupId>
     <version>1.4.6-release</version>
     <packaging>jar</packaging>
     <description>biz-cache模块，内部封装了一些缓存机制</description>
