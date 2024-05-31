@@ -86,7 +86,8 @@ public class ImageCompressor {
             ImageWriteParam param = writer.getDefaultWriteParam();
             if (param.canWriteCompressed()) {
                 param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-                param.setCompressionQuality(0.75f);  // 质量在0到1之间，值越低压缩越高
+                // 质量在0到1之间，值越低压缩越高
+                param.setCompressionQuality(1f);
             }
 
             // Step 3: 写入压缩图像到ByteArrayOutputStream

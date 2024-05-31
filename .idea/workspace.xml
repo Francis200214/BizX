@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、修改了SpringBoot版本，升级到2.7.18；">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/ImageCompressor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="增加：&#10;1、增加了文件压缩工具类；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-cache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-cache/src/main/java/com/biz/cache/redis/config/BizRedisCacheConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/src/main/java/com/biz/cache/redis/config/BizRedisCacheConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/MD5Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/SecureUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/SecureUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/config/BizMQProducerAckConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/config/BizMQProducerAckConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-redis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/ImageCompressor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/ImageCompressor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -353,7 +337,8 @@
       <workItem from="1716787688621" duration="7957000" />
       <workItem from="1716856990984" duration="5761000" />
       <workItem from="1716942558256" duration="7157000" />
-      <workItem from="1716982705037" duration="1209000" />
+      <workItem from="1716982705037" duration="1418000" />
+      <workItem from="1717036274064" duration="1708000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -698,7 +683,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,7 +713,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="优化了定时清除Map" />
     <MESSAGE value="修改了异常返回数据的code和message字段名称" />
     <MESSAGE value="获取当前用户token时如果没有返回null" />
     <MESSAGE value="增加了创建随机手机号工具类；&#10;DateTime工具类修复了当前线程第一次操作时出现错误情况；" />
@@ -753,7 +737,8 @@
     <MESSAGE value="1、将Redis相关工具类进行拆分；" />
     <MESSAGE value="1、增加了RedisGeo工具类；" />
     <MESSAGE value="修改：&#10;1、修改了SpringBoot版本，升级到2.7.18；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、修改了SpringBoot版本，升级到2.7.18；" />
+    <MESSAGE value="增加：&#10;1、增加了文件压缩工具类；" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加：&#10;1、增加了文件压缩工具类；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
