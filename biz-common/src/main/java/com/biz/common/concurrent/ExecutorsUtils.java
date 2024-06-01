@@ -111,7 +111,7 @@ public final class ExecutorsUtils {
             try {
                 if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
                     executor.shutdownNow();
-                    if (!executor.awaitTermination(60, TimeUnit.SECONDS) {
+                    if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
                         log.info("Thread pool did not terminate");
                     }
                 }
