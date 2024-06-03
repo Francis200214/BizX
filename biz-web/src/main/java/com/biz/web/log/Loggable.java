@@ -16,16 +16,20 @@ import java.lang.annotation.Target;
 public @interface Loggable {
 
     /**
-     * 日志类型
+     * 业务日志大类型
      */
-    String logType();
+    String logLargeType();
+
+    /**
+     * 业务日志小类型
+     */
+    String logSmallType();
 
     /**
      * 操作人
      * 通过 SpEL表达式获取
      */
     String operatorId() default "";
-
 
     /**
      * 操作人

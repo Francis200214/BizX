@@ -62,66 +62,41 @@ public final class ExecutorsUtils {
         return getThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, workQueue);
     }
 
-    private static ThreadPoolExecutor getThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, BlockingQueue<Runnable> workQueue) {
-        return new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, MILLISECONDS, workQueue, new CustomThreadFactory(), new CustomRejectedExecutionHandler()) {
-            @Override
-            public void execute(Runnable command) {
-                log.info("Task submitted to thread pool");
-                super.execute(command);
-            }
-        };
-    }
 
-    private static ScheduledExecutorService getScheduledExecutorService(int coreSize) {
-        return Executors.newScheduledThreadPool(coreSize <= -1 ? CORE_SIZE : coreSize, new CustomThreadFactory());
-    }
-
-    private static class CustomThreadFactory implements ThreadFactory {
-        private final AtomicInteger threadNumber = new AtomicInteger(1);
-        private final ThreadGroup group;
-
-        CustomThreadFactory() {
-            SecurityManager s = System.getSecurityManager();
-            group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
-        }
-
-        @Override
-        public Thread newThread(Runnable r) {
-            Thread t = new Thread(group, r, "pool-thread-" + threadNumber.getAndIncrement(), 0);
-            if (t.isDaemon()) {
-                t.setDaemon(false);
-            }
-            if (t.getPriority() != Thread.NORM_PRIORITY) {
-                t.setPriority(Thread.NORM_PRIORITY);
-            }
-            return t;
-        }
-    }
-
-    private static class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
-        @Override
-        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-            log.warn("Task rejected from thread pool: {}", r.toString());
-        }
-    }
-
+    /**
+     * 关闭线程池
+     * 关闭，并且暂停线程池中所有任务
+     *
+     * @param executor 线程池
+     */
     public static void shutdownThreadPool(ThreadPoolExecutor executor) {
         if (executor != null) {
+            // 禁止新的任务提交，同时执行已提交的任务
             executor.shutdown();
             try {
+                // 等待现有任务完成
                 if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+                    // 取消正在执行的任务并尝试停止所有活动的任务
                     executor.shutdownNow();
+                    // 再次等待这些任务终止
                     if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
-                        log.info("Thread pool did not terminate");
+                        log.error("线程池没有被终止!!!");
                     }
                 }
             } catch (InterruptedException ie) {
+                // 重新中断当前线程
                 executor.shutdownNow();
                 Thread.currentThread().interrupt();
             }
         }
     }
 
+    /**
+     * 关闭线程池
+     * 关闭，并且暂停线程池中所有任务
+     *
+     * @param executor 线程池
+     */
     public static void shutdownScheduledExecutor(ScheduledExecutorService executor) {
         if (executor != null) {
             executor.shutdown();
@@ -138,4 +113,60 @@ public final class ExecutorsUtils {
             }
         }
     }
+
+
+    private static ThreadPoolExecutor getThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, BlockingQueue<Runnable> workQueue) {
+        return new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, MILLISECONDS, workQueue, new CustomThreadFactory(), new CustomRejectedExecutionHandler()) {
+            @Override
+            public void execute(Runnable command) {
+                log.info("Task submitted to thread pool");
+                super.execute(command);
+            }
+        };
+    }
+
+    private static ScheduledExecutorService getScheduledExecutorService(int coreSize) {
+        return Executors.newScheduledThreadPool(coreSize <= -1 ? CORE_SIZE : coreSize, new CustomThreadFactory());
+    }
+
+
+    /**
+     * 用于自定义线程命名、设置线程属性、线程组管理
+     */
+    private static class CustomThreadFactory implements ThreadFactory {
+        // 线程编号
+        private final AtomicInteger threadNumber = new AtomicInteger(1);
+        private final ThreadGroup group;
+
+        CustomThreadFactory() {
+            // 获取安全管理器，并从中获取线程组。如果没有安全管理器，则使用当前线程的线程组
+            SecurityManager s = System.getSecurityManager();
+            group = (s != null) ? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+        }
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(group, r, "pool-thread-" + threadNumber.getAndIncrement(), 0);
+            // 设置线程为非守护线程
+            if (t.isDaemon()) {
+                t.setDaemon(false);
+            }
+            // 设置线程的优先级为正常优先级
+            if (t.getPriority() != Thread.NORM_PRIORITY) {
+                t.setPriority(Thread.NORM_PRIORITY);
+            }
+            return t;
+        }
+    }
+
+    /**
+     * 拒绝策略类，用于处理当线程池任务被拒绝时的情况
+     */
+    private static class CustomRejectedExecutionHandler implements RejectedExecutionHandler {
+        @Override
+        public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+            log.warn("Task rejected from thread pool: {}", r.toString());
+        }
+    }
+
 }
