@@ -2,11 +2,10 @@ package com.biz.web.log;
 
 import com.biz.common.utils.Common;
 import com.biz.web.log.recorder.LogRecorder;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
@@ -23,6 +22,7 @@ import java.lang.reflect.Method;
  **/
 @Aspect
 @Component
+@Slf4j
 public class LogAspect {
 
     /**
@@ -39,7 +39,6 @@ public class LogAspect {
      * 当前操作方法参数日志内容
      */
     private static final ThreadLocal<String> contentHolder = new ThreadLocal<>();
-    private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
     @Autowired
     private LogRecorder logRecorder;
@@ -109,7 +108,7 @@ public class LogAspect {
      * 执行完目标方法时出现了异常信息执行的操作
      *
      * @param joinPoint 方法信息
-     * @param e 异常信息
+     * @param e         异常信息
      */
     @AfterThrowing(pointcut = "@annotation(Loggable)", throwing = "e")
     public void afterThrowingMethod(JoinPoint joinPoint, Throwable e) {
