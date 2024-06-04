@@ -1,5 +1,6 @@
 package com.biz.web.log;
 
+import com.biz.common.spel.SpELUtils;
 import com.biz.common.utils.Common;
 import com.biz.web.log.recorder.LogRecorder;
 import lombok.extern.slf4j.Slf4j;
@@ -7,10 +8,8 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
@@ -21,8 +20,8 @@ import java.lang.reflect.Method;
  * @create 2024-05-31 16:27
  **/
 @Aspect
-@Component
 @Slf4j
+@ConditionalOnProperty(name = "biz.log.enable", havingValue = "true", matchIfMissing = true)
 public class LogAspect {
 
     /**
@@ -58,17 +57,11 @@ public class LogAspect {
             return;
         }
 
-        ExpressionParser parser = new SpelExpressionParser();
-        StandardEvaluationContext context = new StandardEvaluationContext();
-        Object[] args = joinPoint.getArgs();
-        String[] paramNames = signature.getParameterNames();
+        StandardEvaluationContext context = SpELUtils.createContext(signature.getParameterNames(), joinPoint.getArgs());
 
-        for (int i = 0; i < args.length; i++) {
-            context.setVariable(paramNames[i], args[i]);
-        }
+        String operatorId = SpELUtils.parseExpression(loggable.operatorId(), context, String.class);
+        String operatorName = SpELUtils.parseExpression(loggable.operatorName(), context, String.class);
 
-        String operatorId = parser.parseExpression(loggable.operatorId()).getValue(context, String.class);
-        String operatorName = parser.parseExpression(loggable.operatorName()).getValue(context, String.class);
 
         String content = loggable.content()
                 .replace("{userId}", operatorId)
@@ -76,7 +69,7 @@ public class LogAspect {
                 .replace("{logLargeType}", loggable.logLargeType())
                 .replace("{logSmallType}", loggable.logSmallType());
 
-        content = parser.parseExpression(content).getValue(context, String.class);
+        content = SpELUtils.parseExpression(content, context, String.class);
 
         operatorIdHolder.set(operatorId);
         operatorNameHolder.set(operatorName);

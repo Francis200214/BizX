@@ -27,7 +27,8 @@ biz:
 #    maxConnections: 10
   cache:
     redis-cache: true
-
+  log:
+    enable: true
 user:
   names: "张三"
   age: 18

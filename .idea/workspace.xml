@@ -4,15 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、修改了线程池工具类中根据当前机器的配置设置线程核心数；">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogLargeTypeDefaultHandler.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；">
+      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/spel/SpELUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/AddUserLogHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/LogTypeConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/bo/AddUserBo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/concurrent/ExecutorsUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogTypeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogTypeHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -91,7 +98,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Debug&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
@@ -347,7 +354,8 @@
       <workItem from="1717036274064" duration="1708000" />
       <workItem from="1717140646911" duration="9290000" />
       <workItem from="1717375259988" duration="154000" />
-      <workItem from="1717375436074" duration="8905000" />
+      <workItem from="1717375436074" duration="17018000" />
+      <workItem from="1717465189092" duration="605000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -692,7 +700,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <option name="localTasksCounter" value="130" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -722,8 +730,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修改了线程池工具类中的方法注释" />
-    <MESSAGE value="增加了AppPageResult" />
     <MESSAGE value="修复了构建固定线程池时内部最大线程数量问题" />
     <MESSAGE value="增加了分页助手工具类，主要提供数据分页的相关操作" />
     <MESSAGE value="更新了README，增加了感谢 JetBrains 提供的免费开源 License" />
@@ -747,7 +753,9 @@
     <MESSAGE value="修改：&#10;1、修改了文件压缩工具类；" />
     <MESSAGE value="新功能：&#10;1、增加了日志处理组件（能够自定义多样化的日志内容）；&#10;&#10;删除：&#10;1、删除了不需要的参数校验类；" />
     <MESSAGE value="修改：&#10;1、修改了线程池工具类中根据当前机器的配置设置线程核心数；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、修改了线程池工具类中根据当前机器的配置设置线程核心数；" />
+    <MESSAGE value="修改：&#10;1、改进了日志切面（LogAspect）中对于ThreadLocal的使用，以及删除内部数据的优化；" />
+    <MESSAGE value="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -756,6 +764,11 @@
           <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/response/TokenResponseBodyAdvice.java</url>
           <line>20</line>
           <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

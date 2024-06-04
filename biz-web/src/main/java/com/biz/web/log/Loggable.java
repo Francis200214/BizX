@@ -23,7 +23,7 @@ public @interface Loggable {
     /**
      * 业务日志小类型
      */
-    String logSmallType();
+    String logSmallType() default "";
 
     /**
      * 操作人

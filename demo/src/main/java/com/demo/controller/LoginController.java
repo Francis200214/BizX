@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
  **/
 @RestController
 @RequestMapping("/login")
-@BizAccessAllow
 public class LoginController {
 
     @Autowired
