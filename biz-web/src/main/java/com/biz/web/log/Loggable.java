@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * @author francis
  * @create 2024-05-31 15:39
  **/
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Loggable {
 

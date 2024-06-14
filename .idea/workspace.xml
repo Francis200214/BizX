@@ -4,22 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；">
-      <change afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/spel/SpELUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/AddUserLogHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/LogTypeConstant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/bo/AddUserBo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/impl/UserServiceImpl.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、日志记录器中获取所有的Bean，进而筛选出对于的日志；">
+      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LoggablePoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/DemoApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,40 +74,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
-    &quot;Maven.BizX [clean,compile,package,install...].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BizX [clean,compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BizX [deploy].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BizX [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.BizX [package].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.DemoApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/idea/BizX/biz-redis/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.117227316&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.23333333&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;a5184f5b652259a16a16645253ab095b&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "Maven.BizX [clean,compile,package,install...].executor": "Run",
+    "Maven.BizX [clean,compile].executor": "Run",
+    "Maven.BizX [deploy].executor": "Run",
+    "Maven.BizX [install].executor": "Run",
+    "Maven.BizX [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.DemoApplication.executor": "Debug",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "1.8",
+    "last_opened_file_path": "E:/idea/BizX/biz-redis/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.117227316",
+    "project.structure.side.proportion": "0.23333333",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "a5184f5b652259a16a16645253ab095b",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -145,11 +137,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.biz.web.log" />
       <recent name="com.biz.web.log.handler" />
       <recent name="com.demo.cocnfig" />
       <recent name="com.biz.cache.redis.config" />
       <recent name="com.biz.cache.redis.cache" />
-      <recent name="com.biz.common.utils" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -355,7 +347,11 @@
       <workItem from="1717140646911" duration="9290000" />
       <workItem from="1717375259988" duration="154000" />
       <workItem from="1717375436074" duration="17018000" />
-      <workItem from="1717465189092" duration="605000" />
+      <workItem from="1717465189092" duration="1250000" />
+      <workItem from="1717483368753" duration="149000" />
+      <workItem from="1717483541985" duration="1198000" />
+      <workItem from="1717485856454" duration="339000" />
+      <workItem from="1718334389836" duration="3975000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -700,7 +696,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,7 +726,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修复了构建固定线程池时内部最大线程数量问题" />
     <MESSAGE value="增加了分页助手工具类，主要提供数据分页的相关操作" />
     <MESSAGE value="更新了README，增加了感谢 JetBrains 提供的免费开源 License" />
     <MESSAGE value="修改了模块名称" />
@@ -755,7 +750,8 @@
     <MESSAGE value="修改：&#10;1、修改了线程池工具类中根据当前机器的配置设置线程核心数；" />
     <MESSAGE value="修改：&#10;1、改进了日志切面（LogAspect）中对于ThreadLocal的使用，以及删除内部数据的优化；" />
     <MESSAGE value="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；" />
+    <MESSAGE value="修改：&#10;1、日志记录器中获取所有的Bean，进而筛选出对于的日志；" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、日志记录器中获取所有的Bean，进而筛选出对于的日志；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -766,9 +762,14 @@
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="27" />
+          <url>file://$PROJECT_DIR$/demo/src/main/java/com/demo/controller/UserController.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/demo/src/main/java/com/demo/service/impl/UserServiceImpl.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -777,6 +778,11 @@
         <PinnedItemInfo parentTag="com.biz.cache.caffeine.manager.BizCaffeineCacheManagerAbstract" memberName="bizCaffeineCacheLoader" />
       </pinned-members>
     </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="LogAspect" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
@@ -21,7 +20,7 @@ import java.lang.reflect.Method;
  **/
 @Aspect
 @Slf4j
-@ConditionalOnProperty(name = "biz.log.enable", havingValue = "true", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "biz.log", name = "enable", havingValue = "true", matchIfMissing = false)
 public class LogAspect {
 
     /**
@@ -39,9 +38,16 @@ public class LogAspect {
      */
     private static final ThreadLocal<String> contentHolder = new ThreadLocal<>();
 
-    @Autowired
+
     private LogRecorder logRecorder;
 
+    public LogAspect() {
+        try {
+            logRecorder = new LogRecorder();
+        } catch (Exception e) {
+            log.error("Not found LogRecorder Bean in LogAspect");
+        }
+    }
 
     /**
      * 进入日志目标方法之前操作
@@ -49,32 +55,37 @@ public class LogAspect {
      * @param joinPoint 方法信息
      * @throws Throwable
      */
-    @Before("@annotation(Loggable)")
+    @Before("@annotation(com.biz.web.log.Loggable)")
     public void logMethod(JoinPoint joinPoint) throws Throwable {
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        Loggable loggable = this.getNowLoggable(joinPoint);
-        if (loggable == null) {
-            return;
+        try {
+            MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+            Loggable loggable = this.getNowLoggable(joinPoint);
+            if (loggable == null) {
+                return;
+            }
+
+            StandardEvaluationContext context = SpELUtils.createContext(signature.getParameterNames(), joinPoint.getArgs());
+
+            String operatorId = SpELUtils.parseExpression(loggable.operatorId(), context, String.class);
+            String operatorName = SpELUtils.parseExpression(loggable.operatorName(), context, String.class);
+
+
+            String content = loggable.content()
+                    .replace("{userId}", operatorId)
+                    .replace("{now()}", Common.now())
+                    .replace("{logLargeType}", loggable.logLargeType())
+                    .replace("{logSmallType}", loggable.logSmallType());
+
+            content = SpELUtils.parseExpression(content, context, String.class);
+
+            operatorIdHolder.set(operatorId);
+            operatorNameHolder.set(operatorName);
+            contentHolder.set(content);
+        } catch (Exception e) {
+            log.error("LogAspect error", e);
+            // 清空当前线程变量信息
+            this.flushThreadLocal();
         }
-
-        StandardEvaluationContext context = SpELUtils.createContext(signature.getParameterNames(), joinPoint.getArgs());
-
-        String operatorId = SpELUtils.parseExpression(loggable.operatorId(), context, String.class);
-        String operatorName = SpELUtils.parseExpression(loggable.operatorName(), context, String.class);
-
-
-        String content = loggable.content()
-                .replace("{userId}", operatorId)
-                .replace("{now()}", Common.now())
-                .replace("{logLargeType}", loggable.logLargeType())
-                .replace("{logSmallType}", loggable.logSmallType());
-
-        content = SpELUtils.parseExpression(content, context, String.class);
-
-        operatorIdHolder.set(operatorId);
-        operatorNameHolder.set(operatorName);
-        contentHolder.set(content);
-
     }
 
 
@@ -83,7 +94,7 @@ public class LogAspect {
      *
      * @param joinPoint 方法信息
      */
-    @AfterReturning(pointcut = "@annotation(Loggable)")
+    @AfterReturning(pointcut = "@annotation(com.biz.web.log.Loggable)")
     public void afterReturningMethod(JoinPoint joinPoint) {
         Loggable loggable = this.getNowLoggable(joinPoint);
         if (loggable == null) {
@@ -103,7 +114,7 @@ public class LogAspect {
      * @param joinPoint 方法信息
      * @param e         异常信息
      */
-    @AfterThrowing(pointcut = "@annotation(Loggable)", throwing = "e")
+    @AfterThrowing(pointcut = "@annotation(com.biz.web.log.Loggable)", throwing = "e")
     public void afterThrowingMethod(JoinPoint joinPoint, Throwable e) {
         Loggable loggable = this.getNowLoggable(joinPoint);
         if (loggable == null) {
@@ -122,7 +133,7 @@ public class LogAspect {
      *
      * @param joinPoint 方法信息
      */
-    @After("@annotation(Loggable)")
+    @After("@annotation(com.biz.web.log.Loggable)")
     public void afterMethod(JoinPoint joinPoint) {
         this.flushThreadLocal();
     }
