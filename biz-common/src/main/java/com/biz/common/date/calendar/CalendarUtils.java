@@ -1,5 +1,6 @@
 package com.biz.common.date.calendar;
 
+import com.biz.common.date.DateConstant;
 import com.biz.common.date.datetime.DateTimeUtils;
 
 import java.util.Calendar;
@@ -20,7 +21,7 @@ public final class CalendarUtils {
     public static String currentYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
     }
 
     /**
@@ -70,7 +71,7 @@ public final class CalendarUtils {
     public static String lastYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -1);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
     }
 
     /**
@@ -120,7 +121,7 @@ public final class CalendarUtils {
         currCal.add(Calendar.DATE, 1);
         currCal.add(Calendar.MONTH, 0);
         currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -131,7 +132,7 @@ public final class CalendarUtils {
         int currentYear = currCal.get(Calendar.YEAR);
         currCal.set(Calendar.YEAR, currentYear);
         currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -140,7 +141,7 @@ public final class CalendarUtils {
     public static String getFirstOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -149,7 +150,7 @@ public final class CalendarUtils {
     public static String getLastOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
 }

@@ -19,7 +19,11 @@ public class AddUserLogHandler implements LogHandler {
 
     @Override
     public void handleLog(String logLargeType, String logSmallType, String operatorId, String operatorName, String content, Throwable e) {
-        log.info("logLargeType {} logSmallType {} operatorId {} operatorName {} content {} e ", logLargeType, logSmallType, operatorId, operatorName, content, e);
+        if (e == null) {
+            log.info("logLargeType: {} logSmallType: {} operatorId: {} operatorName: {} content: {}", logLargeType, logSmallType, operatorId, operatorName, content);
+        } else {
+            log.info("logLargeType: {} logSmallType: {} operatorId: {} operatorName: {} content: {} e: ", logLargeType, logSmallType, operatorId, operatorName, content, e);
+        }
     }
 
 

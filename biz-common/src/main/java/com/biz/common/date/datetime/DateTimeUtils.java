@@ -1,6 +1,8 @@
 package com.biz.common.date.datetime;
 
 
+import com.biz.common.date.BizDateFormat;
+import com.biz.common.date.DateConstant;
 import com.biz.common.utils.Common;
 
 import java.text.DateFormat;
@@ -18,11 +20,7 @@ import java.util.Map;
  */
 public final class DateTimeUtils {
 
-    public static final String DEFAULT_DATE = "yyyy-MM-dd";
-    public static final String DEFAULT_TIME = "HH:mm:ss";
-    public static final String DEFAULT_DATETIME = DEFAULT_DATE + " " + DEFAULT_TIME;
-    public static final String DEFAULT_YEAR = "yyyy";
-    public static final String DEFAULT_MM = "MM";
+
 
     private static final ThreadLocal<Map<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
 
@@ -35,7 +33,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String calendarToStr(Calendar cal) {
-        return calendarToStr(cal, DEFAULT_DATETIME);
+        return calendarToStr(cal, DateConstant.DEFAULT_DATETIME);
     }
 
 
@@ -47,7 +45,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String calendarToStr(Calendar cal, String format) {
-        return getDateFormat(Common.isBlank(format) ? DEFAULT_DATETIME : format).format(cal.getTime());
+        return BizDateFormat.getDateFormat(Common.isBlank(format) ? DateConstant.DEFAULT_DATETIME : format).format(cal.getTime());
     }
 
 
@@ -59,7 +57,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String dateToStr(Date date) {
-        return getDateFormat(DEFAULT_DATETIME).format(date);
+        return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).format(date);
     }
 
     /**
@@ -70,7 +68,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String dateToStr(Date date, String format) {
-        return getDateFormat(format).format(date);
+        return BizDateFormat.getDateFormat(format).format(date);
     }
 
     /**
@@ -81,7 +79,7 @@ public final class DateTimeUtils {
      * @throws ParseException
      */
     public static Date strToDate(String date) throws ParseException {
-        return getDateFormat(DEFAULT_DATETIME).parse(date);
+        return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).parse(date);
     }
 
     /**
@@ -93,7 +91,7 @@ public final class DateTimeUtils {
      * @throws ParseException
      */
     public static Date strToDate(String date, String parse) throws ParseException {
-        return getDateFormat(parse).parse(date);
+        return BizDateFormat.getDateFormat(parse).parse(date);
     }
 
     /**
@@ -103,7 +101,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String longToDateStr(long timeMills) {
-        return getDateFormat(DEFAULT_DATETIME).format(getCalendar(timeMills).getTime());
+        return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).format(getCalendar(timeMills).getTime());
     }
 
     /**
@@ -114,29 +112,7 @@ public final class DateTimeUtils {
      * @return
      */
     public static String longToDateStr(long timeMills, String parse) {
-        return getDateFormat(parse).format(getCalendar(timeMills).getTime());
-    }
-
-    /**
-     * 获取 DateFormat
-     *
-     * @param format 时间转换格式
-     * @return
-     */
-    private static DateFormat getDateFormat(String format) {
-        Map<String, DateFormat> dateFormatMap = DATE_FORMAT_THREAD_LOCAL.get();
-        if (dateFormatMap == null) {
-            dateFormatMap = new HashMap<>();
-            dateFormatMap.put(format, new SimpleDateFormat(format));
-            DATE_FORMAT_THREAD_LOCAL.set(dateFormatMap);
-        }
-
-        if (!dateFormatMap.containsKey(format)) {
-            dateFormatMap.put(format, new SimpleDateFormat(format));
-            DATE_FORMAT_THREAD_LOCAL.set(dateFormatMap);
-        }
-
-        return DATE_FORMAT_THREAD_LOCAL.get().get(format);
+        return BizDateFormat.getDateFormat(parse).format(getCalendar(timeMills).getTime());
     }
 
 
@@ -161,7 +137,7 @@ public final class DateTimeUtils {
     public static String currentYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
     }
 
     /**
@@ -211,7 +187,7 @@ public final class DateTimeUtils {
     public static String lastYear() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.YEAR, -1);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
     }
 
     /**
@@ -261,7 +237,7 @@ public final class DateTimeUtils {
         currCal.add(Calendar.DATE, 1);
         currCal.add(Calendar.MONTH, 0);
         currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -272,7 +248,7 @@ public final class DateTimeUtils {
         int currentYear = currCal.get(Calendar.YEAR);
         currCal.set(Calendar.YEAR, currentYear);
         currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -281,7 +257,7 @@ public final class DateTimeUtils {
     public static String getFirstOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
     /**
@@ -290,7 +266,7 @@ public final class DateTimeUtils {
     public static String getLastOfMonth() {
         Calendar currCal = Calendar.getInstance();
         currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
     }
 
 }

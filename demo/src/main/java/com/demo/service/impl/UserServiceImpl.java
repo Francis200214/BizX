@@ -18,15 +18,16 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Override
-//    @Loggable(logLargeType = LogTypeConstant.USER_LOG, content = "用户 {operationName} 在 {now()} 操作了添加用户接口，" +
-//            "用户姓名 {#addUserBo.name} 年龄 {#addUserBo.age} 学校名称 {#addUserBo.school}")
+    @Loggable(logLargeType = LogTypeConstant.USER_LOG, content = "用户 operationName 在 now() 操作了添加用户接口，" +
+            "用户姓名 #{#addUserBo.name} 年龄 #{#addUserBo.age} 学校名称 #{#addUserBo.school}")
     public void addUser(AddUserBo addUserBo) {
-        log.info("addUser {}", addUserBo);
+//        log.info("addUser {}", addUserBo);
     }
 
+    @Loggable(logLargeType = LogTypeConstant.USER_LOG, content = "用户 operationName 在 now() 操作了删除用户接口，用户Id #{#userId}")
     @Override
     public void deleteUser(String userId) {
-        log.info("deleteUser {}", userId);
+//        log.info("deleteUser {}", userId);
     }
 
 }

@@ -100,7 +100,6 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor, Applica
         String header = request.getHeader("Biz-Token");
         if (!Common.isBlank(header)) {
             token.initAccount(header);
-//            throw new RuntimeException("token is null");
         }
     }
 

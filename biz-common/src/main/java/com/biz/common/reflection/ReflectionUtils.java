@@ -217,6 +217,45 @@ public class ReflectionUtils {
 
 
     /**
+     * 判断当前类是否包含注解
+     *
+     * @param clazz
+     * @param annotation
+     * @return
+     */
+    public static boolean checkAnnotationInClass(Class<?> clazz, Class<? extends Annotation> annotation) {
+        return clazz.isAnnotationPresent(annotation);
+    }
+
+
+    /***
+     * 获取类上的某个注解
+     *
+     * @param clazz      要获取注解的类
+     * @param annotation 注解的类型
+     * @param <A>        注解类型的泛型
+     * @return 注解实例，如果类上存在该注解，否则返回 null
+     */
+    public static <A extends Annotation> A getAnnotationInClass(Class<?> clazz, Class<A> annotation) {
+        return clazz.getAnnotation(annotation);
+    }
+
+
+    /**
+     * 获取类上的所有注解
+     *
+     * @param clazz Class
+     * @return 类上的所有注解
+     */
+    public static Annotation[] getClassAnnotations(Class<?> clazz) {
+        if (clazz == null) {
+            throw new RuntimeException("clazz is null");
+        }
+        return clazz.getAnnotations();
+    }
+
+
+    /**
      * 获取当前类的第一个泛型
      *
      * @param clazz Class

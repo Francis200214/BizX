@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import com.biz.web.rbac.BizAccessAllow;
 import com.demo.service.UserService;
 import com.demo.service.bo.AddUserBo;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,7 @@ import static com.demo.controller.UserController.USER_CACHE;
 @RequestMapping("/user")
 @Slf4j
 @CacheConfig(cacheNames = USER_CACHE)
+@BizAccessAllow
 public class UserController {
 
     public static final String USER_CACHE = "userCache";

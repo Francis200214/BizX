@@ -1,13 +1,19 @@
 package com.biz.web.log;
 
+import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.spel.SpELUtils;
 import com.biz.common.utils.Common;
+import com.biz.web.account.BizAccount;
 import com.biz.web.log.recorder.LogRecorder;
+import com.biz.web.token.Token;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.expression.ExpressionParser;
+import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 import java.lang.reflect.Method;
@@ -24,6 +30,11 @@ import java.lang.reflect.Method;
 public class LogAspect {
 
     /**
+     * 当前用户
+     */
+    private static final ThreadLocal<BizAccount<?>> accountHolder = new ThreadLocal<>();
+
+    /**
      * 当前操作人id
      */
     private static final ThreadLocal<String> operatorIdHolder = new ThreadLocal<>();
@@ -38,14 +49,28 @@ public class LogAspect {
      */
     private static final ThreadLocal<String> contentHolder = new ThreadLocal<>();
 
+    /**
+     * Token
+     */
+    private Token token;
 
+    /**
+     * 日志记录
+     */
     private LogRecorder logRecorder;
+
 
     public LogAspect() {
         try {
             logRecorder = new LogRecorder();
+            token = BizXBeanUtils.getBean(Token.class);
+
+        } catch (BeansException beansException) {
+            log.error("Not found BizAccountFactory Bean in LogAspect");
+
         } catch (Exception e) {
             log.error("Not found LogRecorder Bean in LogAspect");
+
         }
     }
 
@@ -63,20 +88,25 @@ public class LogAspect {
             if (loggable == null) {
                 return;
             }
+            this.setAccountHolder();
 
             StandardEvaluationContext context = SpELUtils.createContext(signature.getParameterNames(), joinPoint.getArgs());
-
-            String operatorId = SpELUtils.parseExpression(loggable.operatorId(), context, String.class);
-            String operatorName = SpELUtils.parseExpression(loggable.operatorName(), context, String.class);
+            ExpressionParser parser = new SpelExpressionParser();
+            String operatorId = SpELUtils.parseExpression(
+                    Common.isBlank(loggable.operatorId())
+                            ? Common.to(accountHolder.get().getId()) : loggable.operatorId(), context, parser, String.class);
+            String operatorName = SpELUtils.parseExpression(
+                    Common.isBlank(loggable.operatorName())
+                            ? "'" + Common.to(accountHolder.get().getName()) + "'" : loggable.operatorName(), context, parser, String.class);
 
 
             String content = loggable.content()
-                    .replace("{userId}", operatorId)
-                    .replace("{now()}", Common.now())
-                    .replace("{logLargeType}", loggable.logLargeType())
-                    .replace("{logSmallType}", loggable.logSmallType());
+                    .replace("operationName", operatorName)
+                    .replace("now()", Common.now())
+                    .replace("logLargeType", loggable.logLargeType())
+                    .replace("logSmallType", loggable.logSmallType());
 
-            content = SpELUtils.parseExpression(content, context, String.class);
+            content = parseSpelExpressions(content, context, parser);
 
             operatorIdHolder.set(operatorId);
             operatorNameHolder.set(operatorName);
@@ -153,6 +183,7 @@ public class LogAspect {
      * 清空当前线程变量
      */
     private void flushThreadLocal() {
+        accountHolder.remove();
         operatorIdHolder.remove();
         operatorNameHolder.remove();
         contentHolder.remove();
@@ -180,5 +211,43 @@ public class LogAspect {
         return null;
     }
 
+    /**
+     * 设置当前用户到当前线程变量中
+     */
+    private void setAccountHolder() {
+        accountHolder.set(token.getCurrentUser());
+    }
+
+
+    /**
+     * 解析 SpEL 表达式
+     *
+     * @param content 内容
+     * @param context 上下文
+     * @param parser  解析器
+     * @return
+     */
+    private static String parseSpelExpressions(String content, StandardEvaluationContext context, ExpressionParser parser) {
+        StringBuilder parsedContent = new StringBuilder();
+        int start = 0;
+        while (start < content.length()) {
+            int openIndex = content.indexOf("#{", start);
+            if (openIndex == -1) {
+                parsedContent.append(content.substring(start));
+                break;
+            }
+            parsedContent.append(content, start, openIndex);
+            int closeIndex = content.indexOf("}", openIndex);
+            if (closeIndex == -1) {
+                parsedContent.append(content.substring(openIndex));
+                break;
+            }
+            String expression = content.substring(openIndex + 2, closeIndex);
+            String value = SpELUtils.parseExpression(expression, context, parser, String.class);
+            parsedContent.append(value);
+            start = closeIndex + 1;
+        }
+        return parsedContent.toString();
+    }
 
 }

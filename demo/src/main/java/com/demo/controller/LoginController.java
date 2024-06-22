@@ -41,10 +41,12 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(@RequestParam("password") String password) {
+        BizAccount<String> bizAccount = accountFactory.getBizAccount("s");
+        token.setCurrentUser(bizAccount);
         UserAccount userAccount = Common.to(token.getCurrentUser());
         AVo aVo = new AVo();
-        aVo.setId("1");
-        aVo.setName("dsds");
+        aVo.setId(userAccount.getUserId());
+        aVo.setName(userAccount.getName());
         BVo copy = aVoBVoCopier.copy(aVo);
         System.out.println(copy);
         return password;

@@ -12,15 +12,16 @@ public interface BizAccount<ID extends Serializable> {
 
     /**
      * 用户Id
-     *
-     * @return
      */
     ID getId();
 
     /**
+     * 用户名称
+     */
+    String getName();
+
+    /**
      * 用户的角色
-     *
-     * @return
      */
     Set<String> getRoles();
 

@@ -1,7 +1,8 @@
 package com.biz.common.spel;
 
+import com.biz.common.utils.Common;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
@@ -10,9 +11,9 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * @author francis
  * @create 2024-06-03 13:58
  **/
+@Slf4j
 public class SpELUtils {
 
-    private static final ExpressionParser parser = new SpelExpressionParser();
 
     /**
      * 解析 SpEL 表达式
@@ -23,7 +24,10 @@ public class SpELUtils {
      * @param <T>        返回值类型
      * @return 解析后的值
      */
-    public static <T> T parseExpression(String expression, StandardEvaluationContext context, Class<T> clazz) {
+    public static <T> T parseExpression(String expression, StandardEvaluationContext context, ExpressionParser parser, Class<T> clazz) {
+        if (Common.isBlank(expression)) {
+            throw new RuntimeException("expressionString must not be null or blank");
+        }
         return parser.parseExpression(expression).getValue(context, clazz);
     }
 
