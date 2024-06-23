@@ -1,7 +1,6 @@
 package com.demo.log;
 
 import com.biz.web.log.handler.LogHandler;
-import com.biz.web.log.handler.LogLargeTypeDefaultHandler;
 import com.biz.web.log.handler.LogTypeHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,8 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @Slf4j
-@LogTypeHandler(largeType = LogTypeConstant.USER_LOG, smallType = LogTypeConstant.ADD_USER_LOG)
-public class AddUserLogHandler implements LogHandler {
+@LogTypeHandler(largeType = LogTypeConstant.USER_LOG, smallType = LogTypeConstant.DELETE_USER_LOG)
+public class DeleteUserLogHandler implements LogHandler {
 
 
     @Override
