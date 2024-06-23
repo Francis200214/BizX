@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -23,6 +25,12 @@ import static org.springframework.data.redis.cache.RedisCacheConfiguration.defau
 @ConditionalOnProperty(value = "biz.cache.redis-cache", havingValue = "true")
 public class BizRedisCacheConfiguration {
 
+    private final RedisConnectionFactory redisConnectionFactory;
+
+    public BizRedisCacheConfiguration(RedisConnectionFactory redisConnectionFactory) {
+        this.redisConnectionFactory = redisConnectionFactory;
+    }
+
     @Bean
     @DependsOn("getBizRedisCacheList")
     public RedisCacheManager redisRedisCacheManager(BizRedisCacheManager bizRedisCacheManager) {
@@ -38,7 +46,7 @@ public class BizRedisCacheConfiguration {
                             .disableCachingNullValues());
         }
 
-        return RedisCacheManager.builder()
+        return RedisCacheManager.builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
                 .cacheDefaults(defaultCacheConfig())
                 .withInitialCacheConfigurations(cacheConfigurationMap)
                 .transactionAware()

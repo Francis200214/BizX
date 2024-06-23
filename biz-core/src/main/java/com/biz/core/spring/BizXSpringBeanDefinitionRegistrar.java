@@ -1,7 +1,9 @@
 package com.biz.core.spring;
 
 import com.biz.core.annotaion.BizXComponent;
+import com.biz.core.banner.BizBanner;
 import com.biz.core.bean.BizXComponentBeanDefinitionScanner;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ResourceLoaderAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
@@ -16,13 +18,15 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
  * @author francis
  * @create: 2023-04-05 13:46
  **/
+@Slf4j
 public class BizXSpringBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {
 
     private ResourceLoader resourceLoader;
 
+
     public BizXSpringBeanDefinitionRegistrar() {
-        // 打印 Banner
-        printBanner();
+        // 打印 BizBanner
+        BizBanner.printBanner();
     }
 
 
@@ -52,17 +56,5 @@ public class BizXSpringBeanDefinitionRegistrar implements ImportBeanDefinitionRe
         scanner.doScan("com.biz");
     }
 
-    /**
-     * 打印 Banner 图
-     */
-    private static void printBanner() {
-        System.out.println("\n" +
-                "  ____  _    __  __\n" +
-                " | __ )(_)___\\ \\/ /\n" +
-                " |  _ \\| |_  /\\  / \n" +
-                " | |_) | |/ / /  \\ \n" +
-                " |____/|_/___/_/\\_\\\n" +
-                "                   \n");
-    }
 
 }
