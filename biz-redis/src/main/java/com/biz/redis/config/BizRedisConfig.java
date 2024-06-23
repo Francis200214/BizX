@@ -21,6 +21,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class BizRedisConfig {
 
+
     @Bean(name = "redisTemplate")
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Object> template = new RedisTemplate<>();
@@ -33,10 +34,10 @@ public class BizRedisConfig {
         // hash的key采用String的序列化方式
         template.setHashKeySerializer(stringSerializer);
 
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = jackson2JsonRedisSerializerConfig();
-        //value采用jackson序列化方式
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = jackson2JsonRedisSerializerConfig();
+        // value采用jackson序列化方式
         template.setValueSerializer(jackson2JsonRedisSerializer);
-        //hash的value也采用jackson序列化方式
+        // hash的value也采用jackson序列化方式
         template.setHashValueSerializer(jackson2JsonRedisSerializer);
 
         template.afterPropertiesSet();
@@ -51,9 +52,9 @@ public class BizRedisConfig {
     }
 
 
-    private Jackson2JsonRedisSerializer jackson2JsonRedisSerializerConfig() {
+    private Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializerConfig() {
         // jackson序列化所有的类
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
         // jackson序列化的一些配置
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
