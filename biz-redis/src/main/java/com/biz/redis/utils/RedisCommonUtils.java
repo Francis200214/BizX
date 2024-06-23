@@ -1,10 +1,9 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -17,11 +16,10 @@ import java.util.concurrent.TimeUnit;
  * @create 2024-04-02 17:28
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisCommonUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
 
     /**

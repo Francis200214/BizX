@@ -1,7 +1,6 @@
 # Auto Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.biz.redis.config.BizRedisConfig,\
-com.biz.redis.utils.RedisUtils,\
 com.biz.redis.utils.RedisStringUtils,\
 com.biz.redis.utils.RedisListUtils,\
 com.biz.redis.utils.RedisMapUtils,\

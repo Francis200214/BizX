@@ -1,10 +1,9 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.core.ListOperations;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +15,12 @@ import java.util.Optional;
  * @create 2024-04-02 17:17
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisListUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final ListOperations<String, Object> listOperations;
 
-    @Autowired
-    private RedisCommonUtils redisCommonUtils;
+    private final RedisCommonUtils redisCommonUtils;
 
     /**
      * 获取list缓存的内容
@@ -35,7 +32,7 @@ public class RedisListUtils {
      */
     public List<Object> lGet(@NonNull String key, long start, long end) {
         try {
-            return redisTemplate.opsForList().range(key, start, end);
+            return listOperations.range(key, start, end);
 
         } catch (Exception e) {
             log.error("获取list缓存的内容 出现异常 error {}", e.getMessage(), e);
@@ -52,7 +49,7 @@ public class RedisListUtils {
      */
     public long lGetListSize(@NonNull String key) {
         try {
-            return Optional.ofNullable(redisTemplate.opsForList().size(key))
+            return Optional.ofNullable(listOperations.size(key))
                     .orElse(0L);
 
         } catch (Exception e) {
@@ -71,7 +68,7 @@ public class RedisListUtils {
      */
     public Object lGetIndex(@NonNull String key, long index) {
         try {
-            return redisTemplate.opsForList().index(key, index);
+            return listOperations.index(key, index);
 
         } catch (Exception e) {
             log.error("通过索引 获取list中的值 出现异常 error {}", e.getMessage(), e);
@@ -89,7 +86,7 @@ public class RedisListUtils {
      */
     public boolean lSet(@NonNull String key, @NonNull Object value) {
         try {
-            redisTemplate.opsForList().rightPush(key, value);
+            listOperations.rightPush(key, value);
             return true;
 
         } catch (Exception e) {
@@ -109,7 +106,7 @@ public class RedisListUtils {
      */
     public boolean lSet(@NonNull String key, @NonNull Object value, long time) {
         try {
-            redisTemplate.opsForList().rightPush(key, value);
+            listOperations.rightPush(key, value);
             redisCommonUtils.expire(key, time);
             return true;
 
@@ -129,7 +126,7 @@ public class RedisListUtils {
      */
     public boolean lSet(@NonNull String key, @NonNull List<Object> value) {
         try {
-            redisTemplate.opsForList().rightPushAll(key, value);
+            listOperations.rightPushAll(key, value);
             return true;
 
         } catch (Exception e) {
@@ -149,7 +146,7 @@ public class RedisListUtils {
      */
     public boolean lSet(@NonNull String key, @NonNull List<Object> value, long time) {
         try {
-            redisTemplate.opsForList().rightPushAll(key, value);
+            listOperations.rightPushAll(key, value);
             redisCommonUtils.expire(key, time);
             return true;
 
@@ -170,7 +167,7 @@ public class RedisListUtils {
      */
     public boolean lUpdateIndex(@NonNull String key, long index, @NonNull Object value) {
         try {
-            redisTemplate.opsForList().set(key, index, value);
+            listOperations.set(key, index, value);
             return true;
         } catch (Exception e) {
             log.error("根据索引修改list中的某条数据 出现异常 error {}", e.getMessage(), e);
@@ -189,7 +186,7 @@ public class RedisListUtils {
      */
     public void lRemove(@NonNull String key, long count, @NonNull Object value) {
         try {
-            redisTemplate.opsForList().remove(key, count, value);
+            listOperations.remove(key, count, value);
 
         } catch (Exception e) {
             log.error("移除N个值为value 出现异常 error {}", e.getMessage(), e);

@@ -1,10 +1,9 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.concurrent.TimeUnit;
 
@@ -15,14 +14,12 @@ import java.util.concurrent.TimeUnit;
  * @create 2024-04-02 17:16
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisStringUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final ValueOperations<String, Object> valueOperations;
 
-    @Autowired
-    private RedisCommonUtils redisCommonUtils;
+    private final RedisCommonUtils redisCommonUtils;
 
 
     /**
@@ -32,7 +29,7 @@ public class RedisStringUtils {
      * @return 值
      */
     public Object get(@NonNull String key) {
-        return redisTemplate.opsForValue().get(key);
+        return valueOperations.get(key);
     }
 
     /**
@@ -44,7 +41,7 @@ public class RedisStringUtils {
      */
     public boolean set(@NonNull String key, @NonNull Object value) {
         try {
-            redisTemplate.opsForValue().set(key, value);
+            valueOperations.set(key, value);
             return true;
 
         } catch (Exception e) {
@@ -65,7 +62,7 @@ public class RedisStringUtils {
     public boolean set(@NonNull String key, @NonNull Object value, long time) {
         try {
             if (time > 0) {
-                redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
+                valueOperations.set(key, value, time, TimeUnit.SECONDS);
             } else {
                 set(key, value);
             }
@@ -94,7 +91,7 @@ public class RedisStringUtils {
         }
 
         try {
-            return redisTemplate.opsForValue().increment(key, delta);
+            return valueOperations.increment(key, delta);
 
         } catch (Exception e) {
             log.error("递增 error {}", e.getMessage(), e);
@@ -120,7 +117,7 @@ public class RedisStringUtils {
         }
 
         try {
-            return redisTemplate.opsForValue().decrement(key, delta);
+            return valueOperations.decrement(key, delta);
 
         } catch (Exception e) {
             log.error("递减 error {}", e.getMessage(), e);

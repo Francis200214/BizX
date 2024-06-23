@@ -1,6 +1,7 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -15,14 +16,12 @@ import java.util.Map;
  * @create 2024-04-02 17:16
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisMapUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
-    @Autowired
-    private RedisCommonUtils redisCommonUtils;
+    private final RedisCommonUtils redisCommonUtils;
 
 
     /**

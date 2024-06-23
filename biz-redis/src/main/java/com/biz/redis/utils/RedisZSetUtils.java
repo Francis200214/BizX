@@ -1,12 +1,10 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.core.ZSetOperations;
 
-import javax.annotation.PostConstruct;
 import java.util.Set;
 
 /**
@@ -16,18 +14,12 @@ import java.util.Set;
  * @create 2024-04-03 08:48
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisZSetUtils {
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
 
-    private static RedisTemplate<String, Object> redisTem;
+    private final ZSetOperations<String, Object> zSetOperations;
 
-    @PostConstruct
-    public void initRedisTem() {
-        redisTem = redisTemplate;
-    }
 
     /**
      * 存储有序集合
@@ -36,8 +28,8 @@ public class RedisZSetUtils {
      * @param value 值
      * @param score 排序
      */
-    public static void zSet(@NonNull String key, @NonNull Object value, double score) {
-        redisTem.opsForZSet().add(key, value, score);
+    public void zSet(@NonNull String key, @NonNull Object value, double score) {
+        zSetOperations.add(key, value, score);
     }
 
     /**
@@ -46,8 +38,8 @@ public class RedisZSetUtils {
      * @param key 键
      * @param set 集合
      */
-    public static void zSet(@NonNull String key, @NonNull Set set) {
-        redisTem.opsForZSet().add(key, set);
+    public void zSet(@NonNull String key, @NonNull Set set) {
+        zSetOperations.add(key, set);
     }
 
     /**
@@ -58,8 +50,8 @@ public class RedisZSetUtils {
      * @param end   结束位置
      * @return 返回set
      */
-    public static Set<Object> zGet(@NonNull String key, long start, long end) {
-        return redisTem.opsForZSet().range(key, start, end);
+    public Set<Object> zGet(@NonNull String key, long start, long end) {
+        return zSetOperations.range(key, start, end);
     }
 
     /**
@@ -68,8 +60,8 @@ public class RedisZSetUtils {
      * @param key 键
      * @return 返回set
      */
-    public static Set<Object> zGet(@NonNull String key) {
-        return redisTem.opsForZSet().range(key, 0, -1);
+    public Set<Object> zGet(@NonNull String key) {
+        return zSetOperations.range(key, 0, -1);
     }
 
     /**
@@ -78,8 +70,8 @@ public class RedisZSetUtils {
      * @param key 键
      * @return 键值大小
      */
-    public static Long zGetSize(@NonNull String key) {
-        return redisTem.opsForZSet().size(key);
+    public Long zGetSize(@NonNull String key) {
+        return zSetOperations.size(key);
     }
 
 }

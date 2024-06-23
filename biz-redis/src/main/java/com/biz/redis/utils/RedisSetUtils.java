@@ -1,10 +1,10 @@
 package com.biz.redis.utils;
 
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.core.SetOperations;
 
 import java.util.Set;
 
@@ -15,15 +15,12 @@ import java.util.Set;
  * @create 2024-04-02 17:17
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisSetUtils {
 
+    private final SetOperations<String, Object> setOperations;
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
-
-    @Autowired
-    private RedisCommonUtils redisCommonUtils;
+    private final RedisCommonUtils redisCommonUtils;
 
     /**
      * 根据key获取Set中的所有值
@@ -33,7 +30,7 @@ public class RedisSetUtils {
      */
     public Set<Object> sGet(@NonNull String key) {
         try {
-            return redisTemplate.opsForSet().members(key);
+            return setOperations.members(key);
 
         } catch (Exception e) {
             log.error("根据key获取Set中的所有值 出现异常 error {}", e.getMessage(), e);
@@ -51,7 +48,7 @@ public class RedisSetUtils {
      */
     public Boolean sHasKey(@NonNull String key, @NonNull Object value) {
         try {
-            return redisTemplate.opsForSet().isMember(key, value);
+            return setOperations.isMember(key, value);
 
         } catch (Exception e) {
             log.error("根据value从一个set中查询,是否存在 出现异常 error {}", e.getMessage(), e);
@@ -69,7 +66,7 @@ public class RedisSetUtils {
      */
     public Long sSet(@NonNull String key, @NonNull Object... values) {
         try {
-            return redisTemplate.opsForSet().add(key, values);
+            return setOperations.add(key, values);
         } catch (Exception e) {
             log.error("将数据放入set缓存 出现异常 error {}", e.getMessage(), e);
         }
@@ -87,7 +84,7 @@ public class RedisSetUtils {
      */
     public Long sSetAndTime(@NonNull String key, long time, @NonNull Object... values) {
         try {
-            Long count = redisTemplate.opsForSet().add(key, values);
+            Long count = setOperations.add(key, values);
             redisCommonUtils.expire(key, time);
             return count;
 
@@ -106,7 +103,7 @@ public class RedisSetUtils {
      */
     public Long sGetSetSize(@NonNull String key) {
         try {
-            return redisTemplate.opsForSet().size(key);
+            return setOperations.size(key);
 
         } catch (Exception e) {
             log.error("获取set缓存的长度 出现异常 error {}", e.getMessage(), e);
@@ -125,7 +122,7 @@ public class RedisSetUtils {
      */
     public Long setRemove(@NonNull String key, @NonNull Object... values) {
         try {
-            return redisTemplate.opsForSet().remove(key, values);
+            return setOperations.remove(key, values);
 
         } catch (Exception e) {
             log.error("移除值为value的 出现异常 error {}", e.getMessage(), e);

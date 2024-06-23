@@ -1,5 +1,6 @@
 package com.biz.redis.utils;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.geo.Circle;
 import org.springframework.data.geo.Distance;
@@ -7,8 +8,6 @@ import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Point;
 import org.springframework.data.redis.connection.RedisGeoCommands;
 import org.springframework.data.redis.core.GeoOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -19,22 +18,17 @@ import java.util.List;
  * @create 2024-04-03 13:20
  **/
 @Slf4j
-@Component
+@RequiredArgsConstructor
 public class RedisGeoUtils<K, M> {
 
-    private final RedisTemplate<K, M> redisTemplate;
     private final GeoOperations<K, M> geoOperations;
 
-    public RedisGeoUtils(RedisTemplate<K, M> redisTemplate) {
-        this.redisTemplate = redisTemplate;
-        this.geoOperations = redisTemplate.opsForGeo();
-    }
 
     /**
      * 添加一个成员经纬度
      *
-     * @param key key
-     * @param point 经纬度点
+     * @param key    key
+     * @param point  经纬度点
      * @param member 成员名称
      */
     public void add(K key, Point point, M member) {
@@ -44,7 +38,7 @@ public class RedisGeoUtils<K, M> {
     /**
      * 查询两个成员之间的距离
      *
-     * @param key key
+     * @param key     key
      * @param member1 成员1名称
      * @param member2 成员2名称
      * @return
@@ -56,7 +50,7 @@ public class RedisGeoUtils<K, M> {
     /**
      * 获取指定成员的地理位置的 Geohash 值
      *
-     * @param key key
+     * @param key     key
      * @param members 成员名称
      * @return
      */
@@ -68,7 +62,7 @@ public class RedisGeoUtils<K, M> {
     /**
      * 用于获取指定成员的地理位置坐标
      *
-     * @param key key
+     * @param key     key
      * @param members 成员名称...
      * @return
      */
