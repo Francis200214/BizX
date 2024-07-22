@@ -49,7 +49,7 @@ public class ShapefileToGeoJSON {
 
     /**
      * 将 .shp 文件转换为 .geojson 文件的方法
-     * 
+     *
      * @param shpFile
      */
     public static void convertShpToGeoJSON(File shpFile) {
