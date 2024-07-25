@@ -1,17 +1,18 @@
 package com.biz.web.log;
 
-import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.spel.SpELUtils;
 import com.biz.common.utils.Common;
-import com.biz.web.account.BizAccount;
 import com.biz.web.log.recorder.LogRecorder;
-import com.biz.web.token.Token;
+import com.biz.web.log.store.LocalUserStoreService;
+import com.biz.web.log.store.TraceStoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -27,22 +28,7 @@ import java.lang.reflect.Method;
 @Aspect
 @Slf4j
 @ConditionalOnProperty(prefix = "biz.log", name = "enable", havingValue = "true", matchIfMissing = false)
-public class LogAspect {
-
-    /**
-     * 当前用户
-     */
-    private static final ThreadLocal<BizAccount<?>> accountHolder = new ThreadLocal<>();
-
-    /**
-     * 当前操作人id
-     */
-    private static final ThreadLocal<String> operatorIdHolder = new ThreadLocal<>();
-
-    /**
-     * 当前操作人姓名
-     */
-    private static final ThreadLocal<String> operatorNameHolder = new ThreadLocal<>();
+public class LogAspect implements ApplicationContextAware {
 
     /**
      * 当前操作方法参数日志内容
@@ -50,29 +36,20 @@ public class LogAspect {
     private static final ThreadLocal<String> contentHolder = new ThreadLocal<>();
 
     /**
-     * Token
-     */
-    private Token token;
-
-    /**
      * 日志记录
      */
     private LogRecorder logRecorder;
 
+    /**
+     * 当前线程的用户
+     */
+    private LocalUserStoreService localUserStoreService;
 
-    public LogAspect() {
-        try {
-            logRecorder = new LogRecorder();
-            token = BizXBeanUtils.getBean(Token.class);
+    /**
+     * 追踪ID
+     */
+    private TraceStoreService traceStoreService;
 
-        } catch (BeansException beansException) {
-            log.error("Not found BizAccountFactory Bean in LogAspect");
-
-        } catch (Exception e) {
-            log.error("Not found LogRecorder Bean in LogAspect");
-
-        }
-    }
 
     /**
      * 进入日志目标方法之前操作
@@ -88,17 +65,11 @@ public class LogAspect {
             if (loggable == null) {
                 return;
             }
-            this.setAccountHolder();
 
             StandardEvaluationContext context = SpELUtils.createContext(signature.getParameterNames(), joinPoint.getArgs());
             ExpressionParser parser = new SpelExpressionParser();
-            String operatorId = SpELUtils.parseExpression(
-                    Common.isBlank(loggable.operatorId())
-                            ? Common.to(accountHolder.get().getId()) : loggable.operatorId(), context, parser, String.class);
             String operatorName = SpELUtils.parseExpression(
-                    Common.isBlank(loggable.operatorName())
-                            ? "'" + Common.to(accountHolder.get().getName()) + "'" : loggable.operatorName(), context, parser, String.class);
-
+                    "'" + localUserStoreService.getOperationUserName() + "'", context, parser, String.class);
 
             String content = loggable.content()
                     .replace("operationName", operatorName)
@@ -108,11 +79,10 @@ public class LogAspect {
 
             content = parseSpelExpressions(content, context, parser);
 
-            operatorIdHolder.set(operatorId);
-            operatorNameHolder.set(operatorName);
             contentHolder.set(content);
+
         } catch (Exception e) {
-            log.error("LogAspect error", e);
+            log.error("TraceLogAspect error", e);
             // 清空当前线程变量信息
             this.flushThreadLocal();
         }
@@ -176,16 +146,14 @@ public class LogAspect {
      * @param e        异常信息
      */
     private void pushLog(Loggable loggable, Throwable e) {
-        logRecorder.record(loggable, operatorIdHolder.get(), operatorNameHolder.get(), contentHolder.get(), e);
+        logRecorder.record(traceStoreService.getTraceId(), loggable, localUserStoreService.getOperationUserId(), localUserStoreService.getOperationUserName(), contentHolder.get(), e);
     }
 
     /**
      * 清空当前线程变量
      */
     private void flushThreadLocal() {
-        accountHolder.remove();
-        operatorIdHolder.remove();
-        operatorNameHolder.remove();
+        localUserStoreService.removeAll();
         contentHolder.remove();
     }
 
@@ -209,13 +177,6 @@ public class LogAspect {
         }
 
         return null;
-    }
-
-    /**
-     * 设置当前用户到当前线程变量中
-     */
-    private void setAccountHolder() {
-        accountHolder.set(token.getCurrentUser());
     }
 
 
@@ -248,6 +209,18 @@ public class LogAspect {
             start = closeIndex + 1;
         }
         return parsedContent.toString();
+    }
+
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        try {
+            this.localUserStoreService = applicationContext.getBean(LocalUserStoreService.class);
+            this.traceStoreService = applicationContext.getBean(TraceStoreService.class);
+            this.logRecorder = applicationContext.getBean(LogRecorder.class);
+        } catch (Exception e) {
+            log.error("Not found LocalUserStoreService Bean Or TraceStoreService Bean in TraceLogAspect");
+        }
     }
 
 }

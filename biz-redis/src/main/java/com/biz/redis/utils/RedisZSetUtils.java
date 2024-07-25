@@ -20,6 +20,8 @@ public class RedisZSetUtils {
 
     private final ZSetOperations<String, Object> zSetOperations;
 
+    private final RedisCommonUtils redisCommonUtils;
+
 
     /**
      * 存储有序集合

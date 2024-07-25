@@ -26,18 +26,6 @@ public @interface Loggable {
     String logSmallType() default "";
 
     /**
-     * 操作人
-     * 通过 SpEL表达式获取
-     */
-    String operatorId() default "";
-
-    /**
-     * 操作人
-     * 通过 SpEL表达式获取
-     */
-    String operatorName() default "";
-
-    /**
      * 日志内容
      * 通过 SpEL表达式获取
      */

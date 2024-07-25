@@ -4,6 +4,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class RedisMapUtils {
 
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final HashOperations<String, String, Object> hashOperations;
 
     private final RedisCommonUtils redisCommonUtils;
 
@@ -32,7 +33,7 @@ public class RedisMapUtils {
      * @return 值
      */
     public Object hget(@NonNull String key, @NonNull String item) {
-        return redisTemplate.opsForHash().get(key, item);
+        return hashOperations.get(key, item);
     }
 
     /**
@@ -41,8 +42,8 @@ public class RedisMapUtils {
      * @param key 键
      * @return 对应的多个键值
      */
-    public Map<Object, Object> hmget(@NonNull String key) {
-        return redisTemplate.opsForHash().entries(key);
+    public Map<String, Object> hmget(@NonNull String key) {
+        return hashOperations.entries(key);
     }
 
     /**
@@ -54,7 +55,7 @@ public class RedisMapUtils {
      */
     public boolean hmset(@NonNull String key, @NonNull Map<String, Object> map) {
         try {
-            redisTemplate.opsForHash().putAll(key, map);
+            hashOperations.putAll(key, map);
             return true;
 
         } catch (Exception e) {
@@ -74,7 +75,7 @@ public class RedisMapUtils {
      */
     public boolean hmset(@NonNull String key, @NonNull Map<String, Object> map, long time) {
         try {
-            redisTemplate.opsForHash().putAll(key, map);
+            hashOperations.putAll(key, map);
             redisCommonUtils.expire(key, time);
             return true;
 
@@ -95,7 +96,7 @@ public class RedisMapUtils {
      */
     public boolean hset(@NonNull String key, @NonNull String item, @NonNull Object value) {
         try {
-            redisTemplate.opsForHash().put(key, item, value);
+            hashOperations.put(key, item, value);
             return true;
 
         } catch (Exception e) {
@@ -116,7 +117,7 @@ public class RedisMapUtils {
      */
     public boolean hset(@NonNull String key, @NonNull String item, @NonNull Object value, long time) {
         try {
-            redisTemplate.opsForHash().put(key, item, value);
+            hashOperations.put(key, item, value);
             redisCommonUtils.expire(key, time);
             return true;
 
@@ -133,8 +134,8 @@ public class RedisMapUtils {
      * @param key  键 不能为null
      * @param item 项 可以使多个 不能为null
      */
-    public void hdel(@NonNull String key, @NonNull Object... item) {
-        redisTemplate.opsForHash().delete(key, item);
+    public void delete(@NonNull String key, @NonNull Object... item) {
+        hashOperations.delete(key, item);
     }
 
     /**
@@ -144,8 +145,8 @@ public class RedisMapUtils {
      * @param item 项 不能为null
      * @return true 存在 false不存在
      */
-    public boolean hHasKey(@NonNull String key, @NonNull String item) {
-        return redisTemplate.opsForHash().hasKey(key, item);
+    public boolean hasKey(@NonNull String key, @NonNull String item) {
+        return hashOperations.hasKey(key, item);
     }
 
     /**
@@ -156,8 +157,8 @@ public class RedisMapUtils {
      * @param by   要增加几(大于0)
      * @return
      */
-    public double hincr(@NonNull String key, @NonNull String item, double by) {
-        return redisTemplate.opsForHash().increment(key, item, by);
+    public double incr(@NonNull String key, @NonNull String item, double by) {
+        return hashOperations.increment(key, item, by);
     }
 
     /**
@@ -168,8 +169,8 @@ public class RedisMapUtils {
      * @param by   要减少记(小于0)
      * @return
      */
-    public double hdecr(@NonNull String key, @NonNull String item, double by) {
-        return redisTemplate.opsForHash().increment(key, item, -by);
+    public double decr(@NonNull String key, @NonNull String item, double by) {
+        return hashOperations.increment(key, item, -by);
     }
 
 }

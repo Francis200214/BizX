@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2023-08-18 15:24
  **/
 @Configuration
-@ConditionalOnProperty(prefix = "biz.rabbitmq")
+@ConditionalOnProperty(name = "biz.rabbitmq.enabled", havingValue = "true")
 @ComponentScan({"com.biz.rabbitmq.*"})
 public class BizRabbitMQConfiguration {
 }

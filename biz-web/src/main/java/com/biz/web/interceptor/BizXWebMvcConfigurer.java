@@ -19,6 +19,9 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     @SuppressWarnings("all")
     public void addInterceptors(InterceptorRegistry registry) {
+        // 链路追踪ID
+        registry.addInterceptor(traceInterceptor())
+                .addPathPatterns("/**");
         // 接口限时刷新
         registry.addInterceptor(accessLimitInterceptor())
                 .addPathPatterns("/**");
@@ -60,10 +63,21 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return CheckAuthorityInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(name = "biz.interceptor.auth",  havingValue = "true")
+    @ConditionalOnProperty(name = "biz.interceptor.auth", havingValue = "true")
     public CheckAuthorityInterceptor checkAuthorityInterceptor() {
         return new CheckAuthorityInterceptor();
     }
 
+
+    /**
+     * 链路追踪ID
+     *
+     * @return TraceInterceptor Bean
+     */
+    @Bean
+    @ConditionalOnProperty(name = "biz.interceptor.trace", havingValue = "true")
+    public TraceInterceptor traceInterceptor() {
+        return new TraceInterceptor();
+    }
 
 }

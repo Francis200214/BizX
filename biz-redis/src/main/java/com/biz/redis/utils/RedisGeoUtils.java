@@ -19,9 +19,11 @@ import java.util.List;
  **/
 @Slf4j
 @RequiredArgsConstructor
-public class RedisGeoUtils<K, M> {
+public class RedisGeoUtils {
 
-    private final GeoOperations<K, M> geoOperations;
+    private final GeoOperations<String, Object> geoOperations;
+
+    private final RedisCommonUtils redisCommonUtils;
 
 
     /**
@@ -31,7 +33,7 @@ public class RedisGeoUtils<K, M> {
      * @param point  经纬度点
      * @param member 成员名称
      */
-    public void add(K key, Point point, M member) {
+    public void add(String key, Point point, Object member) {
         geoOperations.add(key, point, member);
     }
 
@@ -43,7 +45,7 @@ public class RedisGeoUtils<K, M> {
      * @param member2 成员2名称
      * @return
      */
-    public Distance distance(K key, M member1, M member2) {
+    public Distance distance(String key, Object member1, Object member2) {
         return geoOperations.distance(key, member1, member2);
     }
 
@@ -55,7 +57,7 @@ public class RedisGeoUtils<K, M> {
      * @return
      */
     @SafeVarargs
-    public final List<String> hash(K key, M... members) {
+    public final List<String> hash(String key, Object... members) {
         return geoOperations.hash(key, members);
     }
 
@@ -67,7 +69,7 @@ public class RedisGeoUtils<K, M> {
      * @return
      */
     @SafeVarargs
-    public final List<Point> position(K key, M... members) {
+    public final List<Point> position(String key, Object... members) {
         return geoOperations.position(key, members);
     }
 
@@ -78,7 +80,7 @@ public class RedisGeoUtils<K, M> {
      * @param within
      * @return
      */
-    public GeoResults<RedisGeoCommands.GeoLocation<M>> radius(K key, Circle within) {
+    public GeoResults<RedisGeoCommands.GeoLocation<Object>> radius(String key, Circle within) {
         return geoOperations.radius(key, within);
     }
 

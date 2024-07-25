@@ -1,5 +1,6 @@
 package com.biz.redis.config;
 
+import com.biz.redis.utils.*;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -8,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -61,6 +62,71 @@ public class BizRedisConfig {
         om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance);
         jackson2JsonRedisSerializer.setObjectMapper(om);
         return jackson2JsonRedisSerializer;
+    }
+
+    @Bean
+    public ListOperations<String, Object> listOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForList();
+    }
+
+    @Bean
+    public HashOperations<String, String, Object> hashOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForHash();
+    }
+
+    @Bean
+    public ValueOperations<String, Object> valueOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForValue();
+    }
+
+    @Bean
+    public SetOperations<String, Object> setOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForSet();
+    }
+
+    @Bean
+    public ZSetOperations<String, Object> zSetOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForZSet();
+    }
+
+    @Bean
+    public GeoOperations<String, Object> geoOperations(RedisTemplate<String, Object> redisTemplate) {
+        return redisTemplate.opsForGeo();
+    }
+
+    @Bean
+    public RedisCommonUtils redisCommonUtils(RedisTemplate<String, Object> redisTemplate) {
+        return new RedisCommonUtils(redisTemplate);
+    }
+
+    @Bean
+    public RedisListUtils redisListUtils(ListOperations<String, Object> listOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisListUtils(listOperations, redisCommonUtils);
+    }
+
+    @Bean
+    public RedisMapUtils redisMapUtils(HashOperations<String, String, Object> hashOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisMapUtils(hashOperations, redisCommonUtils);
+    }
+
+    @Bean
+    public RedisStringUtils redisStringUtils(ValueOperations<String, Object> valueOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisStringUtils(valueOperations, redisCommonUtils);
+    }
+
+    @Bean
+    public RedisSetUtils redisSetUtils(SetOperations<String, Object> setOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisSetUtils(setOperations, redisCommonUtils);
+    }
+
+    @Bean
+    public RedisZSetUtils redisZSetUtils(ZSetOperations<String, Object> zSetOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisZSetUtils(zSetOperations, redisCommonUtils);
+    }
+
+    @Bean
+    public RedisGeoUtils redisGeoUtils(GeoOperations<String, Object> geoOperations, RedisCommonUtils redisCommonUtils) {
+        return new RedisGeoUtils(geoOperations, redisCommonUtils);
     }
 
 }
