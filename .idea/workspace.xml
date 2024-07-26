@@ -4,31 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、修改了ShapefileToGeoJSON工具类的方法注释；">
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/TraceInterceptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/operation/DefaultOperationLogHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/store/DefaultLocalUserStoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/store/DefaultTraceStoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/store/LocalUserStoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/store/TraceStoreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/trace/DefaultTraceIdServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/trace/TraceIdService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/trace/TraceLogUserService.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、修改了操作日志和Redis配置；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/BizRabbitMQConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/src/main/java/com/biz/rabbitmq/BizRabbitMQConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/config/BizRedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/config/BizRedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisGeoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisGeoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisMapUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisMapUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisZSetUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/src/main/java/com/biz/redis/utils/RedisZSetUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/interceptor/BizXWebMvcConfigurer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/LogAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/Loggable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/TraceLogHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/handler/LogLargeTypeDefaultHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/log/recorder/LogRecorder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/src/main/resources/META-INF/spring.factories" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/AddUserLogHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/LogHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/demo/log/DeleteUserLogHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -392,7 +370,7 @@
       <workItem from="1719882195601" duration="2299000" />
       <workItem from="1719899941498" duration="2271000" />
       <workItem from="1721625597244" duration="5738000" />
-      <workItem from="1721867695553" duration="4690000" />
+      <workItem from="1721867695553" duration="8934000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -737,7 +715,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="139" />
+    <option name="localTasksCounter" value="140" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -767,7 +745,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修改了JWT工具类中的默认密钥" />
     <MESSAGE value="修改了版本" />
     <MESSAGE value="1、JwtTokenUtils改名为JwtUtils；&#10;2、Jwt内部操作方法不再使用已经被弃用的方法；&#10;3、增加了JwtDecryptHelper，主要用于Jwt解析;&#10;4、增加了JwtSecurityHelper，主要用于Jwt和SpringSecurity的融合；" />
     <MESSAGE value="1、修改了JwtUtils中方法；&#10;2、完善了JwtSecurity；" />
@@ -792,7 +769,8 @@
     <MESSAGE value="修改：&#10;1、修改了Banner打印的内容和色彩；" />
     <MESSAGE value="修改：&#10;1、增加了geotools依赖和镜像配置；&#10;2、增加了Shapefile To GeoJSON文件的工具类；" />
     <MESSAGE value="修改：&#10;1、修改了ShapefileToGeoJSON工具类的方法注释；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、修改了ShapefileToGeoJSON工具类的方法注释；" />
+    <MESSAGE value="修改：&#10;1、修改了操作日志和Redis配置；" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、修改了操作日志和Redis配置；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
