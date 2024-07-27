@@ -24,21 +24,19 @@ BizX 是一个灵活且高效的业务开发框架, 主要提供业务开发中�
 引入biz-all可把所有的jar包都引入
 
 # biz-common 模块内部介绍
-
-## Bean 操作
-biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类进行操作 Bean 对象，避免了项目中需要实现 Spring 中的接口才能使用 Bean 的问题。
-BizBeanUtils 中主要提供了一些常用的 Bean 操作方法，如：
-- 获取单个Bean 对象 BizBeanUtils.getBean(class)
-- 获取所有的 Bean 对象集合 BizBeanUtils.getBeanDefinitionClasses()
-- 获取 Bean 对象上带某个直接的 Bean 对象集合 BizBeanUtils.getBeansWithAnnotation(annotation)
-
-## Bean 操作
-biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类进行操作 Bean 对象，避免了项目中需要实现 Spring 中的接口才能使用 Bean 的问题。
-BizBeanUtils 中主要提供了一些常用的 Bean 操作方法，如：
-- 获取单个Bean 对象 BizBeanUtils.getBean(class)
-- 获取所有的 Bean 对象集合 BizBeanUtils.getBeanDefinitionClasses()
-- 获取 Bean 对象上带某个直接的 Bean 对象集合 BizBeanUtils.getBeansWithAnnotation(annotation)
-
+- Bean 操作：biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类进行操作 Bean 对象，避免了项目中需要实现 Spring 中的接口才能使用 Bean 的问题。
+  BizBeanUtils 中主要提供了一些常用的 Bean 操作方法，如：
+  - 获取单个Bean 对象 BizBeanUtils.getBean(class)
+  - 获取所有的 Bean 对象集合 BizBeanUtils.getBeanDefinitionClasses()
+  - 获取 Bean 对象上带某个直接的 Bean 对象集合 BizBeanUtils.getBeansWithAnnotation(annotation)
+- 条形码工具类：对条形码的创建进行了封装，使用 BizBarCodeUtils 工具类进行操作。
+  - 主要方法 BarCodeUtils.generate(text, path)，text 为要生成条形码的文本，path 为要生成的条形码图片路径。
+- 中文转拼音工具类：对中文转拼音进行了封装，使用 ChineseCharactersUtils 工具类进行操作。主要方法：
+  - ChineseCharactersUtils.getPinyin(chinese)，中文转成拼音全拼，chinese 参数为要转换的中文。
+  - ChineseCharactersUtils.getPinyinFirst(chinese)，中文转成拼音后取拼音的第一个首字母，chinese 参数为要转换的中文。
+- ExecutorsUtils 线程池工具类：对使用的线程池进行了封装，在不指定线程池参数的情况下，根据本机器的配置自动调整线程池大小，保证线程池的效率。
+- BizScheduledFuture：当业务中使用到定时任务时，可以使用 BizScheduledFuture 工具类进行操作。其中提供了提交、取消和重置任务的能力，并封装了ScheduledExecutorService的使用，同时也对并发的情况做了处理。
+- 
 
 
 

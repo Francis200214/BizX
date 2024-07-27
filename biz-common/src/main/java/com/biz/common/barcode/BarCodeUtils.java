@@ -31,7 +31,7 @@ public final class BarCodeUtils {
      * 生成条形码文件
      *
      * @param text 条形码的文本内容
-     * @param path 生成条形码的文件路径
+     * @param path 生成条形码的文件目录
      * @return 返回生成的条形码文件
      */
     public static File generate(String text, String path) {
