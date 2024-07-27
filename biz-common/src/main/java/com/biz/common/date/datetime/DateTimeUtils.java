@@ -1,126 +1,112 @@
 package com.biz.common.date.datetime;
 
-
 import com.biz.common.date.BizDateFormat;
 import com.biz.common.date.DateConstant;
+import com.biz.common.date.calendar.CalendarUtils;
 import com.biz.common.utils.Common;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * 基础时间工具类
+ * 提供日期和时间相关的实用方法。
  *
  * @author francis
  */
 public final class DateTimeUtils {
 
-
-
-    private static final ThreadLocal<Map<String, DateFormat>> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<>();
-
-
     /**
-     * Calendar 转成时间字符串
-     * 格式：yyyy-MM-dd HH:mm:ss
+     * 将Calendar对象转换为默认格式的日期字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @param cal
-     * @return
+     * @param cal 要转换的Calendar对象
+     * @return 默认格式的日期字符串
      */
     public static String calendarToStr(Calendar cal) {
         return calendarToStr(cal, DateConstant.DEFAULT_DATETIME);
     }
 
-
     /**
-     * Calendar 转成时间字符串
+     * 将Calendar对象转换为指定格式的日期字符串。
      *
-     * @param cal
-     * @param format 时间格式
-     * @return
+     * @param cal       要转换的Calendar对象
+     * @param format    日期格式
+     * @return 指定格式的日期字符串
      */
     public static String calendarToStr(Calendar cal, String format) {
         return BizDateFormat.getDateFormat(Common.isBlank(format) ? DateConstant.DEFAULT_DATETIME : format).format(cal.getTime());
     }
 
-
     /**
-     * Date 转成 时间字符串
-     * 格式：yyyy-MM-dd HH:mm:ss
+     * 将Date对象转换为默认格式的日期字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @param date
-     * @return
+     * @param date 要转换的Date对象
+     * @return 默认格式的日期字符串
      */
     public static String dateToStr(Date date) {
         return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).format(date);
     }
 
     /**
-     * Date 转成 时间字符串
+     * 将Date对象转换为指定格式的日期字符串。
      *
-     * @param date   Date
-     * @param format 格式
-     * @return
+     * @param date   要转换的Date对象
+     * @param format 日期格式
+     * @return 指定格式的日期字符串
      */
     public static String dateToStr(Date date, String format) {
         return BizDateFormat.getDateFormat(format).format(date);
     }
 
     /**
-     * 时间字符串转成时间
+     * 将日期字符串转换为Date对象，默认格式为yyyy-MM-dd HH:mm:ss。
      *
      * @param date 时间字符串
-     * @return
-     * @throws ParseException
+     * @return 解析后的Date对象
+     * @throws ParseException 如果解析失败
      */
     public static Date strToDate(String date) throws ParseException {
         return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).parse(date);
     }
 
     /**
-     * 时间字符串转成时间
+     * 将日期字符串转换为Date对象，指定格式。
      *
      * @param date  时间字符串
-     * @param parse 转换格式
-     * @return
-     * @throws ParseException
+     * @param parse 日期格式
+     * @return 解析后的Date对象
+     * @throws ParseException 如果解析失败
      */
     public static Date strToDate(String date, String parse) throws ParseException {
         return BizDateFormat.getDateFormat(parse).parse(date);
     }
 
     /**
-     * 根据时间戳或者Date时间
+     * 将时间戳转换为默认格式的日期字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @param timeMills
-     * @return
+     * @param timeMills 时间戳
+     * @return 默认格式的日期字符串
      */
     public static String longToDateStr(long timeMills) {
         return BizDateFormat.getDateFormat(DateConstant.DEFAULT_DATETIME).format(getCalendar(timeMills).getTime());
     }
 
     /**
-     * 根据时间戳或者Date时间
+     * 将时间戳转换为指定格式的日期字符串。
      *
      * @param timeMills 时间戳
-     * @param parse 时间转换格式
-     * @return
+     * @param parse     日期格式
+     * @return 指定格式的日期字符串
      */
     public static String longToDateStr(long timeMills, String parse) {
         return BizDateFormat.getDateFormat(parse).format(getCalendar(timeMills).getTime());
     }
 
-
     /**
-     * 根据时间戳初始化 Calendar
+     * 根据时间戳创建一个Calendar对象。
      *
-     * @param timeMills
-     * @return
+     * @param timeMills 时间戳
+     * @return 创建的Calendar对象
      */
     public static Calendar getCalendar(long timeMills) {
         Calendar cal = Calendar.getInstance();
@@ -129,144 +115,85 @@ public final class DateTimeUtils {
     }
 
     /**
-     * 获取去年
-     * 【时间格式：yyyy】
+     * 获取当前年份的字符串表示。
      *
-     * @return
+     * @return 当前年份的字符串
      */
     public static String currentYear() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
+        return CalendarUtils.currentYear();
     }
 
     /**
-     * 获取今年开始时间
-     * 【时间格式：yyyy-MM-dd HH:mm:ss】
+     * 获取本年度开始的日期时间字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @return
+     * @return 本年度开始的日期时间字符串
      */
     public static String currentYearStartDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        cal.add(Calendar.DATE, 1);
-        cal.add(Calendar.MONTH, 0);
-        cal.set(Calendar.DAY_OF_YEAR, 1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        return CalendarUtils.currentYearStartDateTime();
     }
 
     /**
-     * 获取今年结束时间
-     * 【时间格式：yyyy-MM-dd HH:mm:ss】
+     * 获取本年度结束的日期时间字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @return
+     * @return 本年度结束的日期时间字符串
      */
     public static String currentYearEndDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        cal.set(Calendar.MONTH, Calendar.DECEMBER);
-        cal.set(Calendar.DATE, 31);
-        cal.set(Calendar.HOUR_OF_DAY, 23);
-        cal.set(Calendar.MINUTE, 59);
-        cal.set(Calendar.SECOND, 59);
-        cal.set(Calendar.MILLISECOND, 999);
-        cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        return CalendarUtils.currentYearEndDateTime();
     }
 
     /**
-     * 获取去年
-     * 【时间格式：yyyy】
+     * 获取去年的字符串表示。
      *
-     * @return
+     * @return 去年的字符串
      */
     public static String lastYear() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        return DateTimeUtils.calendarToStr(cal, DateConstant.DEFAULT_YEAR);
+        return CalendarUtils.lastYear();
     }
 
     /**
-     * 获取去年开始时间
-     * 【时间格式：yyyy-MM-dd HH:mm:ss】
+     * 获取去年开始的日期时间字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @return
+     * @return 去年开始的日期时间字符串
      */
     public static String lastYearStartDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        cal.add(Calendar.DATE, 1);
-        cal.add(Calendar.MONTH, 0);
-        cal.set(Calendar.DAY_OF_YEAR, 1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        return CalendarUtils.lastYearStartDateTime();
     }
 
     /**
-     * 获取去年结束时间
-     * 【时间格式：yyyy-MM-dd HH:mm:ss】
+     * 获取去年结束的日期时间字符串（yyyy-MM-dd HH:mm:ss）。
      *
-     * @return
+     * @return 去年结束的日期时间字符串
      */
     public static String lastYearEndDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        cal.set(Calendar.MONTH, Calendar.DECEMBER);
-        cal.set(Calendar.DATE, 31);
-        cal.set(Calendar.HOUR_OF_DAY, 23);
-        cal.set(Calendar.MINUTE, 59);
-        cal.set(Calendar.SECOND, 59);
-        cal.set(Calendar.MILLISECOND, 999);
-        cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        return CalendarUtils.lastYearEndDateTime();
     }
 
     /**
-     * 获取当年的第一天
+     * 获取今年的第一天日期字符串。
      */
     public static String getFirstOfYear() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.set(Calendar.YEAR, currCal.get(Calendar.YEAR));
-        currCal.add(Calendar.DATE, 1);
-        currCal.add(Calendar.MONTH, 0);
-        currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
+        return CalendarUtils.getFirstOfYear();
     }
 
     /**
-     * 获取当年的最后一天
+     * 获取今年的最后一天日期字符串。
      */
     public static String getLastOfYear() {
-        Calendar currCal = Calendar.getInstance();
-        int currentYear = currCal.get(Calendar.YEAR);
-        currCal.set(Calendar.YEAR, currentYear);
-        currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
+        return CalendarUtils.getLastOfYear();
     }
 
     /**
-     * 获取当月的第一天
+     * 获取当月的第一天日期字符串。
      */
     public static String getFirstOfMonth() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
+        return CalendarUtils.getFirstOfMonth();
     }
 
     /**
-     * 获取当月的最后一天
+     * 获取当月的最后一天日期字符串。
      */
     public static String getLastOfMonth() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateConstant.DEFAULT_DATE);
+        return CalendarUtils.getLastOfMonth();
     }
 
 }
