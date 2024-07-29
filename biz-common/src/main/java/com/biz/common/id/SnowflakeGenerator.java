@@ -47,7 +47,7 @@ public class SnowflakeGenerator {
      *                  必须在0到MAX_MACHINE_ID之间。
      */
     public SnowflakeGenerator(int machineId) {
-        if (machineId < 0 || machineId > MAX_MACHINE_ID) {
+        if (isMachineIdNotValid(machineId)) {
             throw new IllegalArgumentException("Invalid machine ID");
         }
         this.machineId = machineId;
@@ -90,6 +90,16 @@ public class SnowflakeGenerator {
         } finally {
             lock.unlock();
         }
+    }
+
+    /**
+     * 检查机器ID是否不合法。
+     *
+     * @param machineId 机器ID
+     * @return 机器ID是否不合法
+     */
+    public static boolean isMachineIdNotValid(int machineId) {
+        return machineId < 0 || machineId > MAX_MACHINE_ID;
     }
 
     /**
