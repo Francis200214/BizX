@@ -74,15 +74,25 @@
             <artifactId>aspectjweaver</artifactId>
         </dependency>
 
+        <!-- Shape File -->
         <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-shapefile</artifactId>
             <version>28.5</version>
         </dependency>
+
+        <!-- GeoJSON -->
         <dependency>
             <groupId>org.geotools</groupId>
             <artifactId>gt-geojson</artifactId>
             <version>28.5</version>
+        </dependency>
+
+        <!-- thumbnailator 图片压缩 -->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.20</version>
         </dependency>
 
 

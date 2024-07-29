@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、优化了时间转换工具类和获取时间的工具类；">
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="修改：&#10;1、优化了CalendarUtils代码；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/application/aware/ApplicationContextAwareUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/application/aware/ApplicationContextAwareUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/barcode/BarCodeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/barcode/BarCodeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/ImageCompressor.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/file/ImageCompressor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ImageCompressor.executor": "Run",
     "Application.ShapefileToGeoJSON.executor": "Run",
     "JavaClassFindUsagesOptions.isDerivedClasses": "true",
     "JavaClassFindUsagesOptions.isFieldsUsages": "true",
@@ -153,7 +154,20 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication">
+  <component name="RunManager" selected="Application.ImageCompressor">
+    <configuration name="ImageCompressor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.biz.common.file.ImageCompressor" />
+      <module name="biz-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.biz.common.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PhoneNumberUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.biz.common.random.PhoneNumberUtil" />
       <module name="biz-common" />
@@ -210,6 +224,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ImageCompressor" />
       <item itemvalue="Application.ShapefileToGeoJSON" />
       <item itemvalue="Application.PhoneNumberUtil" />
       <item itemvalue="JUnit.DemoTest.test" />
@@ -217,6 +232,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ImageCompressor" />
         <item itemvalue="Spring Boot.DemoApplication" />
         <item itemvalue="Application.ShapefileToGeoJSON" />
         <item itemvalue="JUnit.DemoTest.test" />
@@ -371,7 +387,7 @@
       <workItem from="1719882195601" duration="2299000" />
       <workItem from="1719899941498" duration="2271000" />
       <workItem from="1721625597244" duration="5738000" />
-      <workItem from="1721867695553" duration="17471000" />
+      <workItem from="1721867695553" duration="28798000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -716,7 +732,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="143" />
+    <option name="localTasksCounter" value="145" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -746,8 +762,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、创建了SymbolConstant常量类，主要用于存放标点符号；" />
-    <MESSAGE value="1、增加了Redis组件，主要负责快速使用Redis；&#10;2、增加了RedisCache；" />
     <MESSAGE value="1、增加了Redis相关类型操作工具类；" />
     <MESSAGE value="1、将Redis相关工具类进行拆分；" />
     <MESSAGE value="1、增加了RedisGeo工具类；" />
@@ -771,7 +785,9 @@
     <MESSAGE value="修改：&#10;1、修改了MD文档；" />
     <MESSAGE value="修改：&#10;1、优化了线程池工具类、BizScheduledFuture和Copier工具类，主要增加了详细的注释和优化了代码；" />
     <MESSAGE value="修改：&#10;1、优化了时间转换工具类和获取时间的工具类；" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、优化了时间转换工具类和获取时间的工具类；" />
+    <MESSAGE value="修改：&#10;1、优化了二维码工具类代码；" />
+    <MESSAGE value="修改：&#10;1、优化了CalendarUtils代码；" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改：&#10;1、优化了CalendarUtils代码；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

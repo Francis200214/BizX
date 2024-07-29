@@ -1,22 +1,15 @@
 package com.biz.common.file;
 
 import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnails;
 
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageOutputStream;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Iterator;
+import java.nio.file.Files;
 
 /**
  * 图像压缩
+ * 基于 thumbnailator 技术进行Api封装的工具类
  *
  * @author francis
  * @create 2024-05-29 19:40
@@ -24,115 +17,120 @@ import java.util.Iterator;
 @Slf4j
 public class ImageCompressor {
 
-    public static final String JPG = ".jpg";
-    public static final String JPEG = ".jpeg";
-    public static final String PNG = ".png";
-    public static final String GIF = ".gif";
-
+    /**
+     * 文件默认最大大小 1024KB
+     */
+    private static final int MAX_SIZE_KB = 1024;
 
     /**
-     * 图片压缩
+     * 压缩图片并保持宽高比
      *
-     * @param imageHttpPath
-     * @return
+     * @param sourcePath 源图片路径
+     * @param destPath   目标图片路径
+     * @param width      目标宽度
+     * @param height     目标高度
+     */
+    public static void compressImage(String sourcePath, String destPath, int width, int height) throws IOException {
+        Thumbnails.of(sourcePath)
+                .size(width, height)
+                .keepAspectRatio(true)
+                .toFile(destPath);
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param sourcePath 源图片路径
+     * @param destPath   目标图片路径
+     */
+    public static void compressImage(String sourcePath, String destPath) throws IOException {
+        handle(new File(sourcePath), new File(destPath), MAX_SIZE_KB);
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param sourcePath 源图片路径
+     * @param destPath   目标图片路径
+     */
+    public static void compressImage(String sourcePath, String destPath, int maxSizeKB) throws IOException {
+        handle(new File(sourcePath), new File(destPath), maxSizeKB);
+    }
+
+    /**
+     * 将图片转换为指定格式
+     *
+     * @param sourcePath 源图片路径
+     * @param destPath   目标图片路径
+     * @param format     目标格式，如"jpg", "png"
+     */
+    public static void convertImageFormat(String sourcePath, String destPath, String format) throws IOException {
+        Thumbnails.of(sourcePath)
+                .outputFormat(format)
+                .toFile(destPath);
+    }
+
+    /**
+     * 裁剪图片到指定尺寸
+     *
+     * @param sourcePath 源图片路径
+     * @param destPath   目标图片路径
+     * @param x          裁剪区域左上角x坐标
+     * @param y          裁剪区域左上角y坐标
+     * @param width      裁剪区域宽度
+     * @param height     裁剪区域高度
+     */
+    public static void cropImage(String sourcePath, String destPath, int x, int y, int width, int height) throws IOException {
+        Thumbnails.of(sourcePath)
+                .sourceRegion(x, y, width, height)
+                .size(width, height)
+                .toFile(destPath);
+    }
+
+    /**
+     * 压缩图片
+     *
+     * @param inputFile  输入图片文件
+     * @param outputFile 输出图片文件
+     * @param maxSizeKB  最大大小（KB）
      * @throws IOException
      */
-    public static byte[] compressor(String imageHttpPath) throws IOException {
-        URL imageUrl = new URL(imageHttpPath);
-        return handle(ImageIO.read(imageUrl), getFormatName(imageUrl));
-    }
+    private static void handle(File inputFile, File outputFile, int maxSizeKB) throws IOException {
+        // 获取输入图片的大小（字节）
+        long inputFileSize = Files.size(inputFile.toPath());
 
-    /**
-     * 图片压缩
-     *
-     * @param inputStream
-     * @param fileFormatName
-     * @return
-     * @throws IOException
-     */
-    public static byte[] compressor(InputStream inputStream, String fileFormatName) throws IOException {
-        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-        byte[] byteArray = new byte[1024];
-        int bytesRead;
-        while ((bytesRead = inputStream.read(byteArray, 0, byteArray.length)) != -1) {
-            buffer.write(byteArray, 0, bytesRead);
+        // 如果图片大小小于 maxSizeKB，则不需要压缩
+        if (inputFileSize <= maxSizeKB * 1024L) {
+            Files.copy(inputFile.toPath(), outputFile.toPath());
+            return;
         }
-        inputStream.close();
-        byte[] imageBytes = buffer.toByteArray();
-        InputStream byteArrayInputStream = new ByteArrayInputStream(imageBytes);
-        return handle(ImageIO.read(byteArrayInputStream), fileFormatName);
-    }
 
-    /**
-     * 压缩图形
-     *
-     * @param originalImage
-     * @return 字节流
-     */
-    private static byte[] handle(BufferedImage originalImage, String fileFormatName) {
-        ImageOutputStream ios = null;
-        ImageWriter writer = null;
-        try {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ios = ImageIO.createImageOutputStream(baos);
+        // 计算压缩比例
+        double scale = Math.sqrt((double) (maxSizeKB * 1024) / inputFileSize);
 
-            Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName(fileFormatName);
-            if (!writers.hasNext()) {
-                throw new IllegalStateException("No writers found");
-            }
-            writer = writers.next();
-            writer.setOutput(ios);
+        // 压缩图片
+        Thumbnails.of(inputFile)
+                .scale(scale)
+                .outputQuality(0.85)
+                .toFile(outputFile);
 
-            ImageWriteParam param = writer.getDefaultWriteParam();
-            if (param.canWriteCompressed()) {
-                param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-                // 质量在0到1之间，值越低压缩越高
-                param.setCompressionQuality(1f);
-            }
+        // 检查压缩后的图片大小
+        long outputFileSize = Files.size(outputFile.toPath());
 
-            // Step 3: 写入压缩图像到ByteArrayOutputStream
-            writer.write(null, new IIOImage(originalImage, null, null), param);
-
-
-            // 获取压缩后的图像字节流
-            return baos.toByteArray();
-
-        } catch (Exception e) {
-            if (log.isDebugEnabled()) {
-                log.error("图片压缩处理失败 ", e);
-            }
-
-        } finally {
-            if (writer != null) {
-                writer.dispose();
-            }
-
-            if (ios != null) {
-                try {
-                    ios.close();
-                } catch (IOException e) {
-                    if (log.isDebugEnabled()) {
-                        log.error("关闭 ImageOutputStream 流出现了异常 ", e);
-                    }
-                }
-            }
+        // 如果压缩后的图片大小仍然大于 maxSizeKB，则进一步压缩
+        while (outputFileSize > maxSizeKB * 1024L) {
+            scale *= 0.9;
+            Thumbnails.of(outputFile)
+                    .scale(scale)
+                    .outputQuality(0.85)
+                    .toFile(outputFile);
+            outputFileSize = Files.size(outputFile.toPath());
         }
-        return null;
     }
 
 
-    private static String getFormatName(URL imageUrl) {
-        String urlString = imageUrl.toString();
-        if (urlString.endsWith(JPG) || urlString.endsWith(JPEG)) {
-            return JPG;
-        } else if (urlString.endsWith(PNG)) {
-            return PNG;
-        } else if (urlString.endsWith(GIF)) {
-            return GIF;
-        } else {
-            throw new IllegalArgumentException("Unsupported image format: " + urlString);
-        }
+    public static void main(String[] args) throws IOException {
+        compressImage("C:\\Users\\DELL\\Pictures\\大杨管区\\1.png", "C:\\Users\\DELL\\Pictures\\大杨管区\\2.png");
     }
 
 }
-
