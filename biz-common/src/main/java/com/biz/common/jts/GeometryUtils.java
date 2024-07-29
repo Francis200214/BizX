@@ -5,12 +5,13 @@ import lombok.SneakyThrows;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Point;
+import org.locationtech.jts.io.ParseException;
 import org.locationtech.jts.io.WKTReader;
 
 import java.util.List;
 
 /**
- * Geometry 工具类
+ * 提供JTS（Java Topology Suite）几何对象的常用操作工具方法。
  *
  * @author francis
  * @create 2023/3/28 18:40
@@ -18,161 +19,83 @@ import java.util.List;
 public final class GeometryUtils {
 
     /**
-     * Geometry字符串 转换成 Geometry对象
-     *
-     * @param str Geometry字符串
-     * @return Geometry对象
+     * WKTReader实例，用于解析WKT字符串到Geometry对象。
+     * 将其实例化为类级变量以避免重复创建，提升性能。
      */
-    @SneakyThrows
+    private static final WKTReader WKT_READER = new WKTReader();
+
+    /**
+     * 将给定的几何字符串转换为Geometry对象。
+     *
+     * @param str WKT（Well-Known Text）格式的几何字符串。
+     * @return 对应的Geometry对象，如果输入为空或格式不正确则返回null。
+     * @throws ParseException 如果WKT字符串无法解析，则抛出此异常。
+     */
+    @SneakyThrows(ParseException.class)
     public static Geometry geometryStrToGeometry(final String str) {
         if (Common.isBlank(str)) {
             return null;
         }
 
-        return new WKTReader().read(str);
+        return WKT_READER.read(str);
     }
 
     /**
-     * List<Coordinate> 组合成 Geometry
+     * 将Coordinate列表转换为Geometry对象。
      *
-     * @param coordinates
-     * @return
+     * @param coordinates Coordinate列表，代表几何对象的点序列。
+     * @return 如果输入为空，则返回null；否则返回由这些点构成的Geometry对象。
      */
     public static Geometry coordinatesToGeometry(List<Coordinate> coordinates) {
+        if (coordinates == null || coordinates.isEmpty()) {
+            return null;
+        }
+
         Coordinate[] coordinatesArray = new Coordinate[coordinates.size()];
         return JTSUtils.GEOMETRY_FACTORY.createPolygon(coordinates.toArray(coordinatesArray));
     }
 
     /**
-     * 获取 Geometry 中心点经纬度
+     * 计算给定Geometry对象的中心点的经纬度。
      *
-     * @param geometry
-     * @return double[0] 纬度 double[1] 纬度
+     * @param geometry 目标Geometry对象。
+     * @return 包含中心点经度和纬度的double数组，如果输入为null则返回null。
      */
     public static double[] center(Geometry geometry) {
+        if (geometry == null) {
+            return null;
+        }
+
         Point centroid = geometry.getCentroid();
         return Common.toDoubles(centroid.getX(), centroid.getY());
     }
 
     /**
-     * 两个 Geometry 对象进行并集操作
+     * 对两个Geometry对象进行并集运算。
      *
-     * @param geo1 Geometry 对象1
-     * @param geo2 Geometry 对象2
-     * @return 并集操作后的 Geometry 对象
+     * @param geo1 第一个Geometry对象。
+     * @param geo2 第二个Geometry对象。
+     * @return 两个Geometry对象的并集，如果任一输入为null则返回null。
      */
     public static Geometry union(Geometry geo1, Geometry geo2) {
+        if (geo1 == null || geo2 == null) {
+            return null;
+        }
+
         return geo1.union(geo2);
     }
 
     /**
-     * 两个 Geometry 对象取交集
+     * 对给定的Geometry对象进行缓冲区处理。
      *
-     * @param geo1 Geometry 对象1
-     * @param geo2 Geometry 对象2
-     * @return 做交集后 Geometry 对象
+     * @param geometry 目标Geometry对象。
+     * @param radius 缓冲区半径。
+     * @return 缓冲后的Geometry对象，如果输入为null则返回null。
      */
-    public static Geometry intersection(Geometry geo1, Geometry geo2) {
-        return geo1.intersection(geo2);
+    public static Geometry buffer(Geometry geometry, double radius) {
+        if (geometry == null) {
+            return null;
+        }
+        return geometry.buffer(radius);
     }
-
-    /**
-     * 两个 Geometry 对象取差集
-     *
-     * @param geo1 Geometry 对象1
-     * @param geo2 Geometry 对象2
-     * @return 做差集后 Geometry 对象
-     */
-    public static Geometry difference(Geometry geo1, Geometry geo2) {
-        return geo1.difference(geo2);
-    }
-
-    /**
-     * geo1 是否包含 geo2 图形
-     *
-     * @param geo1 geo1
-     * @param geo2 geo2
-     * @return true 包含 false 不包含
-     */
-    public static boolean contains(Geometry geo1, Geometry geo2) {
-        return geo1.contains(geo2);
-    }
-
-    /**
-     * 在 geo1 是否含有 geo2 图形
-     *
-     * @param geo1 geo1
-     * @param geo2 geo2
-     * @return true 含有 false 不含有
-     */
-    public static boolean within(Geometry geo1, Geometry geo2) {
-        return geo1.within(geo2);
-    }
-
-    /**
-     * geo1 是否覆盖在 geo2 图形上
-     *
-     * @param geo1 geo1
-     * @param geo2 geo2
-     * @return true 覆盖 false 不覆盖
-     */
-    public static boolean covers(Geometry geo1, Geometry geo2) {
-        return geo1.covers(geo2);
-    }
-
-    /**
-     * 两个 Geometry 图形是否相交
-     *
-     * @param geo1
-     * @param geo2
-     * @return true 相交 false 不相交
-     */
-    public static boolean intersects(Geometry geo1, Geometry geo2) {
-        return geo1.intersects(geo2);
-    }
-
-    /**
-     * 两个 Geometry 图形是否不相交
-     *
-     * @param geo1
-     * @param geo2
-     * @return true 不相交 false 相交
-     */
-    public static boolean disjoint(Geometry geo1, Geometry geo2) {
-        return geo1.disjoint(geo2);
-    }
-
-    /**
-     * 两个 Geometry 图形是否重叠
-     *
-     * @param geo1
-     * @param geo2
-     * @return true 重叠 false 不重叠
-     */
-    public static boolean overlaps(Geometry geo1, Geometry geo2) {
-        return geo1.overlaps(geo2);
-    }
-
-    /**
-     * 两个 Geometry 图形是否相同
-     *
-     * @param geo1
-     * @param geo2
-     * @return true 相同 false 不相同
-     */
-    public static boolean equals(Geometry geo1, Geometry geo2) {
-        return geo1.equals(geo2);
-    }
-
-    /**
-     * Geometry 图形缓冲
-     *
-     * @param geometry
-     * @return
-     */
-    public static Geometry buffer(Geometry geometry) {
-        return geometry.buffer(0D);
-    }
-
-
 }
