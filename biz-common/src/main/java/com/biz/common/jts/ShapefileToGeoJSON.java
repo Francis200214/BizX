@@ -1,5 +1,6 @@
 package com.biz.common.jts;
 
+import com.biz.common.concurrent.ExecutorsUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.geotools.data.shapefile.ShapefileDataStore;
 import org.geotools.data.simple.SimpleFeatureCollection;
@@ -9,7 +10,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Shapefile To GeoJSON
@@ -23,6 +30,7 @@ public class ShapefileToGeoJSON {
     private static final String CHARSET = "GBK";
     private static final String SHP = ".shp";
     private static final String GEO_JSON = ".geojson";
+    private static final ExecutorService EXECUTOR_SERVICE = ExecutorsUtils.buildScheduledExecutorService();
 
 
     /**
@@ -30,20 +38,44 @@ public class ShapefileToGeoJSON {
      *
      * @param directory 文件夹
      */
-    public static void traverseDirectory(File directory) {
+    public static void traverseDirectory(File directory) throws IOException {
         // 获取文件夹下的所有文件和文件夹
-        File[] files = directory.listFiles();
+        List<File> files;
+        try (Stream<Path> paths = Files.list(directory.toPath())) {
+            files = paths.map(Path::toFile).collect(Collectors.toList());
+        } catch (IOException e) {
+            log.warn("Error listing files", e);
+            return;
+        }
 
-        if (files != null) {
-            for (File file : files) {
-                if (file.isDirectory()) {
-                    // 递归调用方法遍历子文件夹
-                    traverseDirectory(file);
-                } else if (file.getName().toLowerCase().endsWith(SHP)) {
-                    // 如果是 .shp 文件，执行转换操作
-                    convertShpToGeoJSON(file);
-                }
+        files.stream()
+                .filter(File::isDirectory)
+                .forEach(file -> EXECUTOR_SERVICE.submit(() -> {
+                    try {
+                        traverseDirectory(file);
+                    } catch (IOException e) {
+                        // 处理异常，例如记录错误
+                        log.error("Error traversing directory", e);
+                    }
+                }));
+
+
+        files.stream()
+                .filter(file -> file.getName().toLowerCase().endsWith(SHP))
+                .forEach(file -> EXECUTOR_SERVICE.submit(() -> convertShpToGeoJSON(file)));
+
+        EXECUTOR_SERVICE.shutdown();
+
+        try {
+            // 等待所有任务完成或超时
+            boolean terminated = EXECUTOR_SERVICE.awaitTermination(1, TimeUnit.HOURS);
+            if (!terminated) {
+                // 处理未成功终止的情况，例如记录日志或进行资源清理
+                System.err.println("ExecutorService did not terminate within the specified time.");
             }
+        } catch (InterruptedException e) {
+            log.error("The conversion process is interrupted", e);
+            Thread.currentThread().interrupt(); // 恢复中断状态
         }
     }
 
@@ -75,10 +107,7 @@ public class ShapefileToGeoJSON {
             // 释放数据存储资源
             dataStore.dispose();
         } catch (IOException e) {
-            log.error("Shapefile 转成 GeoJSON 失败", e);
+            log.error("Description Failed to convert Shapefile to GeoJSON", e);
         }
     }
-
-
 }
-

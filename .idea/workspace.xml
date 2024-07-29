@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="添加：&#10;1、添加了HttpRequestHelper，主要用于操作GET、POST、PUT和DELETE请求的工具类；">
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了SnowflakeHelper雪花ID增强其和SnowflakeGenerator雪花ID生成器，增加了详细的注释；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/id/SnowflakeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/id/SnowflakeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/ShapefileToGeoJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/jts/ShapefileToGeoJSON.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,7 +386,7 @@
       <workItem from="1719882195601" duration="2299000" />
       <workItem from="1719899941498" duration="2271000" />
       <workItem from="1721625597244" duration="5738000" />
-      <workItem from="1721867695553" duration="32260000" />
+      <workItem from="1721867695553" duration="34519000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -731,7 +731,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <option name="localTasksCounter" value="149" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -761,8 +761,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、增加了RedisGeo工具类；" />
-    <MESSAGE value="修改：&#10;1、修改了SpringBoot版本，升级到2.7.18；" />
     <MESSAGE value="增加：&#10;1、增加了文件压缩工具类；" />
     <MESSAGE value="修改：&#10;1、修改了文件压缩工具类；" />
     <MESSAGE value="新功能：&#10;1、增加了日志处理组件（能够自定义多样化的日志内容）；&#10;&#10;删除：&#10;1、删除了不需要的参数校验类；" />
@@ -786,7 +784,9 @@
     <MESSAGE value="修改：&#10;1、优化了CalendarUtils代码；" />
     <MESSAGE value="修改：&#10;1、图片压缩基于 thumbnailator 技术进行Api封装的工具类；" />
     <MESSAGE value="添加：&#10;1、添加了HttpRequestHelper，主要用于操作GET、POST、PUT和DELETE请求的工具类；" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加：&#10;1、添加了HttpRequestHelper，主要用于操作GET、POST、PUT和DELETE请求的工具类；" />
+    <MESSAGE value="优化：&#10;1、优化了SnowflakeGenerator雪花ID生成器，增加了详细的注释，和对生成时分布式机器上的特殊情况处理；" />
+    <MESSAGE value="优化：&#10;1、优化了SnowflakeHelper雪花ID增强其和SnowflakeGenerator雪花ID生成器，增加了详细的注释；" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了SnowflakeHelper雪花ID增强其和SnowflakeGenerator雪花ID生成器，增加了详细的注释；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
