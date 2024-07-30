@@ -20,8 +20,6 @@
         <spring.boot.version>2.6.3</spring.boot.version>
         <!-- FastJson -->
         <fastjson.version>1.2.79</fastjson.version>
-        <!-- hutool -->
-        <hutool.all.version>5.6.3</hutool.all.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>
         <!-- javax.inject -->
@@ -76,13 +74,6 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
-            </dependency>
-
-            <!-- hutool -->
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.all.version}</version>
             </dependency>
 
             <!-- javax.inject -->

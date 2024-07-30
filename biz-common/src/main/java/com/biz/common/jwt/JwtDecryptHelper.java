@@ -6,120 +6,106 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 /**
- * Jwt Token 解密
+ * Jwt Token 解密工具类
+ * 用于解密和解析 JWT Token
  *
  * @author francis
- * @create: 2024-01-04 10:03
- **/
+ * @date 2024-01-04
+ */
 public class JwtDecryptHelper {
 
-    /**
-     * 密钥
-     */
-    private final String SECRET;
+    // 密钥
+    private final String secret;
+
+    // 密钥算法
+    private final SignatureAlgorithm signatureAlgorithm;
+
+    // Token
+    private final String token;
+
+    // 是否已过期
+    private final boolean isExpired;
+
+    // Token 中的 Subject 信息
+    private final Object subject;
+
+    // Jws<Claims> 对象
+    private final Jws<Claims> jwsClaims;
 
     /**
-     * 密钥算法
+     * 构造函数
+     *
+     * @param token              JWT Token
+     * @param secret             密钥
+     * @param signatureAlgorithm 签名算法
      */
-    private SignatureAlgorithm SIGNATURE_ALGORITHM;
-
-    /**
-     * Token
-     */
-    private final String TOKEN;
-
-
-    /**
-     * 是否可用
-     */
-    private final boolean isExpire;
-
-    /**
-     * Token 中的 Subject 信息
-     */
-    private final Object SUBJECT;
-
-    /**
-     * Jws<Claims>
-     */
-    private final Jws<Claims> JWS_CLAIMS;
-
-
     public JwtDecryptHelper(String token, String secret, SignatureAlgorithm signatureAlgorithm) {
-        this.TOKEN = token;
-        this.SECRET = Common.isBlank(secret) ? JwtUtils.DEFAULT_SECRET : secret;
-        this.SIGNATURE_ALGORITHM = signatureAlgorithm == null ? JwtUtils.DEFAULT_SIGNATURE_ALGORITHM : signatureAlgorithm;
+        this.token = token;
+        this.secret = Common.isBlank(secret) ? JwtUtils.DEFAULT_SECRET : secret;
+        this.signatureAlgorithm = signatureAlgorithm == null ? JwtUtils.DEFAULT_SIGNATURE_ALGORITHM : signatureAlgorithm;
 
-        this.SUBJECT = JwtUtils.getSub(token, this.SECRET, this.SIGNATURE_ALGORITHM);
-        this.isExpire = JwtUtils.checkToken(this.TOKEN, this.SECRET, this.SIGNATURE_ALGORITHM);
-        this.JWS_CLAIMS = JwtUtils.getClaimsJws(this.TOKEN, this.SECRET, this.SIGNATURE_ALGORITHM);
+        this.subject = JwtUtils.getSub(token, this.secret, this.signatureAlgorithm);
+        this.isExpired = JwtUtils.checkToken(this.token, this.secret, this.signatureAlgorithm);
+        this.jwsClaims = JwtUtils.getClaimsJws(this.token, this.secret, this.signatureAlgorithm);
     }
 
-
     /**
-     * Token 是否有效
+     * 检查 Token 是否过期
      *
-     * @return 是否有效
+     * @return 是否过期
      */
-    public boolean isExpire() {
-        return isExpire;
+    public boolean isExpired() {
+        return isExpired;
     }
 
     /**
      * 获取 Subject
      *
-     * @param <T>
+     * @param <T> Subject 的类型
      * @return Subject 数据
      */
-    public <T> T subject() {
-        return (T) SUBJECT;
+    public <T> T getSubject() {
+        return Common.to(subject);
     }
 
     /**
-     * 获取 Token 中某个 Key 对应的数据
+     * 获取 Token 中指定 Key 对应的值
      *
-     * @param key key
-     * @return key 对应的数据
+     * @param <T> 值的类型
+     * @param key 键
+     * @return 键对应的值
      */
     public <T> T getByKey(String key) {
-        return (T) JWS_CLAIMS.getBody().get(key);
+        return Common.to(jwsClaims.getBody().get(key));
     }
 
-
     /**
-     * 创建 JwtToken 解密构建者
+     * 创建 JwtToken 解密构建器
      *
-     * @return JwtToken 解密构建者
+     * @return JwtToken 解密构建器
      */
     public static JwtDecryptBuilder decryptBuilder() {
         return new JwtDecryptBuilder();
     }
 
-
     /**
-     * JwtToken 解密构建者
+     * JwtToken 解密构建器
      */
     public static class JwtDecryptBuilder {
 
-        /**
-         * 密钥
-         */
+        // 密钥
         private String secret;
 
-        /**
-         * 需要解密的 Token 信息
-         */
+        // 需要解密的 Token
         private String token;
 
-        /**
-         * 需要解密的 密钥算法 信息
-         */
+        // 密钥算法
         private SignatureAlgorithm signatureAlgorithm;
 
         /**
-         * 设置需要解密的 Token 信息
+         * 设置需要解密的 Token
          *
-         * @param token token
+         * @param token Token
          * @return JwtDecryptBuilder
          */
         public JwtDecryptBuilder token(String token) {
@@ -128,7 +114,7 @@ public class JwtDecryptHelper {
         }
 
         /**
-         * 解密密钥
+         * 设置解密密钥
          *
          * @param secret 密钥
          * @return JwtDecryptBuilder
@@ -139,7 +125,7 @@ public class JwtDecryptHelper {
         }
 
         /**
-         * 密钥算法
+         * 设置密钥算法
          *
          * @param signatureAlgorithm 密钥算法
          * @return JwtDecryptBuilder
@@ -149,10 +135,13 @@ public class JwtDecryptHelper {
             return this;
         }
 
+        /**
+         * 构建 JwtDecryptHelper 对象
+         *
+         * @return JwtDecryptHelper 对象
+         */
         public JwtDecryptHelper build() {
             return new JwtDecryptHelper(this.token, this.secret, this.signatureAlgorithm);
         }
     }
-
-
 }

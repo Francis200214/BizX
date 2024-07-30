@@ -6,6 +6,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -16,51 +17,64 @@ import java.util.HashMap;
  *
  * @author francis
  */
+@Slf4j
 public final class QrCodeUtils {
 
     /**
-     * 图片的宽度
+     * 二维码图片的默认宽度
      */
     private static final int WIDTH = 300;
 
     /**
-     * 图片的高度
+     * 二维码图片的默认高度
      */
     private static final int HEIGHT = 300;
 
     /**
-     * 默认图片的格式
+     * 默认的图片格式
      */
     private static final String DEFAULT_IMAGE_FORMAT = "png";
 
     /**
-     * 字符集编码格式
+     * 编码格式
      */
     private static final String CHARACTER = "utf-8";
 
+    /**
+     * 生成二维码图片
+     *
+     * @param content  二维码内容
+     * @param path     保存二维码图片的路径
+     * @return boolean 生成成功返回true，失败返回false
+     */
+    public static boolean generateQrCode(String content, String path) {
+        // 输入验证
+        if (content == null || content.trim().isEmpty()) {
+            log.error("二维码内容不能为空");
+            return false;
+        }
+        if (path == null || !new File(path).getParentFile().exists()) {
+            log.error("指定的保存路径不存在: {}", path);
+            return false;
+        }
 
-    private boolean orCode(String content, String path) {
-        // 定义二维码的参数
+        // 设置编码提示类型和值，包括字符集、纠错级别和边距
         HashMap<EncodeHintType, Object> hints = new HashMap<>();
-        // 定义字符集编码格式
         hints.put(EncodeHintType.CHARACTER_SET, CHARACTER);
-        // 纠错的等级 L > M > Q > H 纠错的能力越高可存储的越少，一般使用M
         hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.M);
-        // 设置图片边距
         hints.put(EncodeHintType.MARGIN, 2);
 
         try {
-            // 最终生成 参数列表 （1.内容 2.格式 3.宽度 4.高度 5.二维码参数）
+            // 使用MultiFormatWriter编码内容为BitMatrix
             BitMatrix bitMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, hints);
-            // 写入到本地
+            // 将BitMatrix写入到指定路径的图片文件
             Path file = new File(path).toPath();
             MatrixToImageWriter.writeToPath(bitMatrix, DEFAULT_IMAGE_FORMAT, file);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("生成二维码失败, 内容: {}, 路径: {}", content, path, e);
             return false;
         }
     }
 
 }
-

@@ -32,8 +32,6 @@
         <spring.boot.version>2.7.18</spring.boot.version>
         <!-- FastJson -->
         <fastjson2.version>2.0.48</fastjson2.version>
-        <!-- hutool -->
-        <hutool.all.version>5.8.24</hutool.all.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>
         <!-- javax.inject -->

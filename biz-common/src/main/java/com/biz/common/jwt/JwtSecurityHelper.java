@@ -37,7 +37,7 @@ public final class JwtSecurityHelper {
      * @return Token 是否过期
      */
     public boolean isExpire() {
-        return JWT_TOKEN_DECRYPT_HELPER.isExpire();
+        return JWT_TOKEN_DECRYPT_HELPER.isExpired();
     }
 
 
@@ -56,7 +56,7 @@ public final class JwtSecurityHelper {
      * @return token
      */
     public String getSub() {
-        return this.JWT_TOKEN_DECRYPT_HELPER.subject();
+        return this.JWT_TOKEN_DECRYPT_HELPER.getSubject();
     }
 
 
