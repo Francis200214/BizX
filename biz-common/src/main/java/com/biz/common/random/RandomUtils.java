@@ -5,11 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * 生成随机数工具类
+ * 提供各种随机数生成工具方法的类。
+ * 包括生成整数、浮点数、布尔值、随机字符串等方法。
  *
  * @author francis
  * @create: 2023-04-17 17:04
@@ -18,120 +18,108 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class RandomUtils {
 
     /**
-     * 随机数数字
+     * 数字字符集合。
      */
     public static final String NUMBER = "0123456789";
 
     /**
-     * 随机数小写字符串
+     * 小写字母字符集合。
      */
     public static final String LOWER_CASE_CHAR = "abcdefghijklmnopqrstuvwxyz";
 
     /**
-     * 随机数大写字符串
+     * 大写字母字符集合。
      */
     public static final String UPPERCASE_CHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     /**
-     * 小写、大写、数字组合
+     * 数字、大小写字母字符集合。
      */
     public static final String ALL_CHAR_NUMBER = LOWER_CASE_CHAR + UPPERCASE_CHAR + NUMBER;
 
-
     /**
-     * 生成随机数
+     * 生成一个0到指定范围(end-1)的随机整数。
      *
-     * @param end 随机数结束范围
-     * @return
+     * @param end 随机数的上限，不包括在内。
+     * @return 生成的随机整数。
      */
     public static int generateNumber(int end) {
         return getThreadLocalRandom().nextInt(end);
     }
 
     /**
-     * 生成一个范围内的随机数
+     * 生成指定范围内的随机整数。
      *
-     * @param start 范围起始值
-     * @param end   范围结束值
-     * @return
+     * @param start 随机数的下限。
+     * @param end   随机数的上限，不包括在内。
+     * @return 生成的随机整数。
      */
     public static int generateNumber(int start, int end) {
         return getThreadLocalRandom().nextInt(start, end);
     }
 
     /**
-     * 生成一个范围内的随机树
+     * 生成指定范围内的随机浮点数。
      *
-     * @param start 范围起始值
-     * @param end   范围结束值
-     * @return
+     * @param start 随机数的下限。
+     * @param end   随机数的上限。
+     * @return 生成的随机浮点数。
      */
     public static double generateDouble(double start, double end) {
         return getThreadLocalRandom().nextDouble(start, end);
     }
 
-
     /**
-     * 生成随机 boolean
+     * 随机生成一个布尔值。
      *
-     * @return
+     * @return 生成的随机布尔值。
      */
     public static boolean generateBoolean() {
         return getThreadLocalRandom().nextBoolean();
     }
 
-
     /**
-     * 生成数字、小写、大写随机字符串
+     * 生成一个长度为10的随机字符串，包含数字、大小写字母。
      *
-     * @return
+     * @return 生成的随机字符串。
      */
     public static String generateStr() {
         return generateStr(10);
     }
 
     /**
-     * 生成规定长度数字、小写、大写随机字符串
+     * 生成指定长度的随机字符串，包含数字、大小写字母。
      *
-     * @param length 字符串长度
-     * @return
+     * @param length 随机字符串的长度。
+     * @return 生成的随机字符串。
      */
     public static String generateStr(int length) {
-        Random random = new SecureRandom();
+        ThreadLocalRandom random = getThreadLocalRandom();
         StringBuilder sb = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
             sb.append(ALL_CHAR_NUMBER.charAt(random.nextInt(ALL_CHAR_NUMBER.length())));
         }
-
         return sb.toString();
     }
 
-
     /**
-     * 获取 SHA1PRNG SecureRandom
+     * 获取一个使用SHA1PRNG算法的SecureRandom实例。
      *
-     * @return SecureRandom
+     * @return SecureRandom实例。
+     * @throws NoSuchAlgorithmException 如果指定的随机数生成算法不存在。
      */
-    public static SecureRandom getSHA1PRNGSecureRandom() {
-        SecureRandom random = null;
-        try {
-            random = SecureRandom.getInstance("SHA1PRNG");
-        } catch (NoSuchAlgorithmException e) {
-            if (log.isDebugEnabled()) {
-                log.error("getSHA1PRNGSecureRandom error ", e);
-            }
-        }
-
-        return random;
+    public static SecureRandom getSHA1PRNGSecureRandom() throws NoSuchAlgorithmException {
+        return SecureRandom.getInstance("SHA1PRNG");
     }
 
     /**
-     * 获取 ThreadLocalRandom
+     * 获取当前线程的ThreadLocalRandom实例。
      *
-     * @return ThreadLocalRandom
+     * @return ThreadLocalRandom实例。
      */
     public static ThreadLocalRandom getThreadLocalRandom() {
         return ThreadLocalRandom.current();
     }
 
 }
+
