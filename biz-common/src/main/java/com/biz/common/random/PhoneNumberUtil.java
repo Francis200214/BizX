@@ -3,16 +3,18 @@ package com.biz.common.random;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
+
 /**
- * 生成手机号
- *
- * @author francis
- * @create: 2023-07-20 10:15
- **/
+ * 本类提供生成随机手机号码的功能。
+ */
 public final class PhoneNumberUtil {
 
     /**
-     * 中国移动
+     * 中国移动的号段数组。
      */
     private static final String[] CHINA_MOBILE = {
             "134", "135", "136", "137", "138", "139", "150", "151", "152", "157", "158", "159",
@@ -20,129 +22,130 @@ public final class PhoneNumberUtil {
     };
 
     /**
-     * 中国联通
+     * 中国联通的号段数组。
      */
     private static final String[] CHINA_UNICOM = {"130", "131", "132", "145", "155", "156", "166", "171", "175", "176", "185", "186", "166"};
 
     /**
-     * 中国电信
+     * 中国电信的号段数组。
      */
     private static final String[] CHINA_TELECOM = {"133", "149", "153", "173", "177", "180", "181", "189", "199"};
 
     /**
-     * 生成手机号后8位数字
+     * 手机号码的后8位随机数字生成位数。
      */
     private static final int RANDOM_MOBILE_SUFFIX = 8;
 
+    /**
+     * 运营商前缀代码与号段数组的映射。
+     */
+    private static final Map<Integer, String[]> OPERATOR_PREFIX_MAP = new HashMap<>();
+    /**
+     * 运营商代码与枚举值的映射。
+     */
+    private static final Map<Integer, OperatorEnum> CODE_TO_ENUM_MAP = new HashMap<>();
+    /**
+     * 运营商代码与名称的映射。
+     */
+    private static final Map<Integer, String> CODE_TO_NAME_MAP = new HashMap<>();
 
     /**
-     * 生成手机号
+     * 静态初始化块，填充映射表。
+     */
+    static {
+        OPERATOR_PREFIX_MAP.put(0, CHINA_MOBILE);
+        OPERATOR_PREFIX_MAP.put(1, CHINA_UNICOM);
+        OPERATOR_PREFIX_MAP.put(2, CHINA_TELECOM);
+
+        for (OperatorEnum operator : OperatorEnum.values()) {
+            CODE_TO_ENUM_MAP.put(operator.code, operator);
+            CODE_TO_NAME_MAP.put(operator.code, operator.name);
+        }
+    }
+
+    /**
+     * 根据指定运营商生成一个随机的手机号码。
      *
-     * @param operator 运营商识别码
-     * @return 11位手机号
+     * @param operator 运营商枚举，指定生成哪个运营商的号码。
+     * @return 生成的11位手机号码。
+     * @throws IllegalArgumentException 如果运营商为null，则抛出此异常。
      */
     public static String createPhoneNumber(OperatorEnum operator) {
+        if (operator == null) {
+            throw new IllegalArgumentException("运营商不能为空");
+        }
         StringBuilder builder = new StringBuilder();
-        // 拼接手机号前三位
-        builder.append(createMobilePrefix(operator));
+        builder.append(getRandomMobilePrefix(operator));
         for (int i = 0; i < RANDOM_MOBILE_SUFFIX; i++) {
             builder.append(RandomUtils.generateNumber(10));
         }
         return builder.toString();
     }
 
-
     /**
-     * 创建手机号的前三位
+     * 根据运营商获取随机的手机号码前缀。
      *
-     * @param operator 运营商
-     * @return 手机号的前三位
+     * @param operator 运营商枚举。
+     * @return 随机的手机号码前缀。
+     * @throws IllegalArgumentException 如果指定的运营商无效，则抛出此异常。
      */
-    private static String createMobilePrefix(OperatorEnum operator) {
-        // 手机号前三位
-        String mobilePrefix = null;
-        // 随机生成指定运营商中的手机前三位
-        switch (operator) {
-            // 中国移动
-            case CHINA_MOBILE:
-                mobilePrefix = CHINA_MOBILE[RandomUtils.generateNumber(CHINA_MOBILE.length)];
-                break;
-            // 中国联通
-            case CHINA_UNICOM:
-                mobilePrefix = CHINA_UNICOM[RandomUtils.generateNumber(CHINA_UNICOM.length)];
-                break;
-            // 中国电信
-            case CHINA_TELECOM:
-                mobilePrefix = CHINA_TELECOM[RandomUtils.generateNumber(CHINA_TELECOM.length)];
-                break;
-            default:
-                throw new RuntimeException("无效的运营商!");
+    private static String getRandomMobilePrefix(OperatorEnum operator) {
+        String[] prefixes = OPERATOR_PREFIX_MAP.get(operator.code);
+        if (prefixes == null) {
+            throw new IllegalArgumentException("无效的运营商!");
         }
-        return mobilePrefix;
+        return prefixes[RandomUtils.generateNumber(prefixes.length)];
     }
 
-
+    /**
+     * 运营商枚举，定义了三大运营商及其代码。
+     */
     @Getter
     @AllArgsConstructor
     public enum OperatorEnum {
         /**
-         * 中国移动
+         * 中国移动。
          */
         CHINA_MOBILE(0, "中国移动"),
+
         /**
-         * 中国联通
+         * 中国联通。
          */
         CHINA_UNICOM(1, "中国联通"),
+
         /**
-         * 中国电信
+         * 中国电信。
          */
         CHINA_TELECOM(2, "中国电信");
 
         /**
-         * 运营商识别码
+         * 运营商代码。
          */
         private final Integer code;
-
         /**
-         * 运营商名称
+         * 运营商名称。
          */
         private final String name;
 
         /**
-         * 通过运营商识别码获取运营商名称
+         * 根据运营商代码获取运营商名称。
          *
-         * @param code 运营商识别码
-         * @return 运营商名称
+         * @param code 运营商代码。
+         * @return 运营商名称，如果代码无效则返回null。
          */
         public static String getOperateNameByCode(Integer code) {
-            // 循环遍历所有枚举
-            for (OperatorEnum value : OperatorEnum.values()) {
-                // 返回当前运营商名称
-                if (value.code.equals(code)) {
-                    return value.name;
-                }
-            }
-            return null;
+            return Optional.ofNullable(CODE_TO_NAME_MAP.get(code)).orElse(null);
         }
 
         /**
-         * 通过运营商识别码获取运营商名称
+         * 根据运营商代码获取运营商枚举值。
          *
-         * @param code 运营商识别码
-         * @return 运营商名称
+         * @param code 运营商代码。
+         * @return 运营商枚举值，如果代码无效则返回null。
          */
         public static OperatorEnum getOperateByCode(Integer code) {
-            // 循环遍历所有枚举
-            for (OperatorEnum value : OperatorEnum.values()) {
-                // 返回当前运营商名称
-                if (value.code.equals(code)) {
-                    return value;
-                }
-            }
-            return null;
+            return Optional.ofNullable(CODE_TO_ENUM_MAP.get(code)).orElse(null);
         }
-
     }
-
 
 }

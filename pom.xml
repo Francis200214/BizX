@@ -30,7 +30,7 @@
         <java.version>1.8</java.version>
         <!-- SpringBoot版本 -->
         <spring.boot.version>2.7.18</spring.boot.version>
-        <!-- FastJson -->
+        <!-- FastJson2 -->
         <fastjson2.version>2.0.48</fastjson2.version>
         <!-- lombook -->
         <lombook.version>1.18.22</lombook.version>

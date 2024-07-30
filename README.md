@@ -1,4 +1,11 @@
-# <center>BizX</center>
+<h1 align="center">BizX</h1>
+<p align="center">
+  <img src="https://img.shields.io/badge/Spring%20Boot-2.7.18-brightgreen" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/Java-8-blue" alt="Java"/>
+  <img src="https://img.shields.io/badge/Author-francis-orange" alt="Author" />
+</p>
+<hr>
+
 
 ## 简介
 
