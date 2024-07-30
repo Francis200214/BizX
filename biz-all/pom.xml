@@ -36,12 +36,6 @@
 
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-library</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
             <artifactId>biz-oss</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

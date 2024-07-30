@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了Common、MD5Utils、分页工具类和事务管理器中的代码和注释；">
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RangeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/utils/RangeUtils.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +53,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="customMavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
-        <option name="localRepository" value="E:\apache-maven-3.6.3\maven_repository" />
+        <option name="localRepository" value="E:\apache-maven-3.6.3\maven_bizx" />
         <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
         <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
@@ -355,7 +358,7 @@
       <workItem from="1719882195601" duration="2299000" />
       <workItem from="1719899941498" duration="2271000" />
       <workItem from="1721625597244" duration="5738000" />
-      <workItem from="1721867695553" duration="50142000" />
+      <workItem from="1721867695553" duration="51455000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -700,7 +703,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -730,7 +733,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修改：&#10;1、测试了多日志类型的转发问题；" />
     <MESSAGE value="修改：&#10;1、修改了Redis各个工具类注入Bean的模式；" />
     <MESSAGE value="修改：&#10;1、修改了Redis做为Cache时的配置；" />
     <MESSAGE value="修改：&#10;1、修改了Banner打印的内容和色彩；" />
@@ -755,7 +757,8 @@
     <MESSAGE value="优化：&#10;1、优化了SpEL (Spring Expression Language) 工具类中的代码和注释；" />
     <MESSAGE value="优化：&#10;1、优化了策略模式设计中的代码和注释；" />
     <MESSAGE value="优化：&#10;1、优化了Common、MD5Utils、分页工具类和事务管理器中的代码和注释；" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了Common、MD5Utils、分页工具类和事务管理器中的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
