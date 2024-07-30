@@ -24,7 +24,7 @@ import java.util.function.Supplier;
 @Slf4j
 public final class SingletonScheduledMap<K, V> {
 
-    private static final Singleton<ScheduledExecutorService> SCHEDULED_EXECUTOR_SERVICE_SINGLETON = Singleton.setSupplier(ExecutorsUtils::buildScheduledExecutorService);
+    private static final Singleton<ScheduledExecutorService> SCHEDULED_EXECUTOR_SERVICE_SINGLETON = Singleton.createWithSupplier(ExecutorsUtils::buildScheduledExecutorService);
     private static final AtomicLong VERSION = new AtomicLong(Long.MIN_VALUE);
     private long version = VERSION.get();
     private final Function<K, V> function;

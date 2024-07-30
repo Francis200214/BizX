@@ -15,7 +15,7 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  */
 public final class ChineseCharactersUtils {
 
-    private static final Singleton<HanyuPinyinOutputFormat> HANYU_PINYIN_OUTPUT_FORMAT_SINGLETON = Singleton.setSupplier(ChineseCharactersUtils::getHanyuPinyinOutputFormat);
+    private static final Singleton<HanyuPinyinOutputFormat> HANYU_PINYIN_OUTPUT_FORMAT_SINGLETON = Singleton.createWithSupplier(ChineseCharactersUtils::getHanyuPinyinOutputFormat);
 
     private static final short CHAR = 128;
 
