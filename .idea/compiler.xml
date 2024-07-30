@@ -14,7 +14,6 @@
         <module name="biz-redis" />
         <module name="biz-cache" />
         <module name="biz-oss" />
-        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -23,6 +22,7 @@
       <module name="biz-starter-test" target="1.8" />
       <module name="biz-web (1)" target="1.8" />
       <module name="biz-web (2)" target="1.8" />
+      <module name="demo" target="1.5" />
       <module name="junit-service" target="1.8" />
       <module name="web-annotation-service" target="1.8" />
       <module name="web-annotation-service-api" target="1.5" />

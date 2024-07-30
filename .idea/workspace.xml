@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-cache/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-rabbitmq/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-redis/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-redis/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +99,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.DemoApplication.executor": "Debug",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "snapshot",
     "jdk.selected.JAVA_MODULE": "1.8",
     "last_opened_file_path": "E:/idea/BizX/biz-web/src/main/java/com/biz/web/log/store",
     "node.js.detected.package.eslint": "true",
@@ -155,7 +163,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ImageCompressor">
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
     <configuration name="ImageCompressor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.biz.common.file.ImageCompressor" />
       <module name="biz-common" />
