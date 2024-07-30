@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了PhoneNumberUtil生成随机手机号工具类；">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/random/RandomUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/random/RandomUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/ReflectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/ConstructorMethodModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/ConstructorMethodModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/FieldModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/FieldModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/MethodModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/MethodModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/ParameterTypeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/reflection/model/ParameterTypeModel.java" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了反射工具类中的代码和注释；">
+      <change beforePath="$PROJECT_DIR$/biz-cache/src/main/java/com/biz/cache/map/SingletonScheduledMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-cache/src/main/java/com/biz/cache/map/SingletonScheduledMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/chinesecharacter/ChineseCharactersUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/chinesecharacter/ChineseCharactersUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/AbstractServiceLoaderProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/ApplicationContextAwareServiceLoaderImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/ApplicationContextAwareServiceLoaderImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/BizServiceLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/ServiceLoaderProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/serviceloader/ServiceLoaderProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/singleton/Singleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,7 +361,7 @@
       <workItem from="1719882195601" duration="2299000" />
       <workItem from="1719899941498" duration="2271000" />
       <workItem from="1721625597244" duration="5738000" />
-      <workItem from="1721867695553" duration="45062000" />
+      <workItem from="1721867695553" duration="46513000" />
     </task>
     <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
       <created>1682160242216</created>
@@ -706,7 +706,7 @@
       <option name="project" value="LOCAL" />
       <updated>1689845474051</updated>
     </task>
-    <option name="localTasksCounter" value="153" />
+    <option name="localTasksCounter" value="154" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -736,7 +736,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="修改：&#10;1、改进了日志切面（LogAspect）中对于ThreadLocal的使用，以及删除内部数据的优化；" />
     <MESSAGE value="修改：&#10;1、使用@Slf4j注解，替代成员变量的log对象；" />
     <MESSAGE value="修改：&#10;1、日志记录器中获取所有的Bean，进而筛选出对于的日志；" />
     <MESSAGE value="修改：&#10;1、破解了日志注解不能用的问题；" />
@@ -761,7 +760,8 @@
     <MESSAGE value="优化：&#10;1、优化了GeometryUtils，读取几何字符串和几何对象处理进行了优化；" />
     <MESSAGE value="优化：&#10;1、优化了JWT相关的工具类和Builder，以及二维码工具类的代码和注释；" />
     <MESSAGE value="优化：&#10;1、优化了PhoneNumberUtil生成随机手机号工具类；" />
-    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了PhoneNumberUtil生成随机手机号工具类；" />
+    <MESSAGE value="优化：&#10;1、优化了反射工具类中的代码和注释；" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了反射工具类中的代码和注释；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
