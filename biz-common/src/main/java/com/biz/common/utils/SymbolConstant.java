@@ -1,7 +1,7 @@
 package com.biz.common.utils;
 
 /**
- * 符号
+ * 符号常量
  *
  * @author francis
  * @create 2024-04-01 16:30
