@@ -1,60 +1,51 @@
 package com.biz.common.barcode;
 
-import cn.hutool.core.io.FileUtil;
+import com.biz.common.file.FileUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.krysalis.barcode4j.HumanReadablePlacement;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 
 import java.awt.image.BufferedImage;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
 
 /**
  * 条形码工具类
  *
  * @author francis
  */
+@Slf4j
 public final class BarCodeUtils {
 
-    /**
-     * 图片类型
-     */
     private static final String IMAGE_PNG = "image/png";
-    /**
-     * 分辨率
-     */
     private static final int RESOLUTION_RATIO = 150;
+    private static final double DEFAULT_BAR_HEIGHT = 9.0D;
+    private static final double DEFAULT_MODULE_WIDTH = 0.09D;
 
     /**
      * 生成条形码文件
      *
      * @param text 条形码的文本内容
-     * @param path 生成条形码的文件路径
+     * @param path 生成条形码的文件目录
      * @return 返回生成的条形码文件
      */
     public static File generate(String text, String path) {
+        if (text == null || path == null) {
+            throw new IllegalArgumentException("Text and path must not be null");
+        }
         File file = new File(path);
-        fileExists(file);
-        try {
-            OutputStream outputStream = new FileOutputStream(file);
-            generateBarCode128(text, 30.0, 0.09, true, true, outputStream);
+        FileUtils.createFileIfNotExists(file);
+        try (OutputStream outputStream = Files.newOutputStream(file.toPath())) {
+            generateBarCode128(text, 30.0, DEFAULT_MODULE_WIDTH, true, true, outputStream);
         } catch (Exception e) {
-            e.printStackTrace();
-
+            log.error("generate error", e);
+            // 根据实际情况，可以抛出自定义异常或进行其他错误处理
         }
         return file;
     }
-
-
-    /**
-     * 判断文件是否存在【自动生成父级目录和文件】
-     *
-     * @param file 文件
-     */
-    private static void fileExists(File file) {
-        // 创建文件及其父目录【这里使用hutool的方法】
-        FileUtil.touch(file);
-    }
-
 
     /**
      * 生成条形码【code128】
@@ -71,7 +62,7 @@ public final class BarCodeUtils {
         // 设置两侧是否留白
         code128Bean.doQuietZone(withQuietZone);
         // 设置条形码高度和宽度
-        code128Bean.setBarHeight(height != null ? height : 9.0D);
+        code128Bean.setBarHeight(height != null ? height : DEFAULT_BAR_HEIGHT);
         if (width != null) {
             code128Bean.setModuleWidth(width);
         }
@@ -79,17 +70,15 @@ public final class BarCodeUtils {
         if (hideText) {
             code128Bean.setMsgPosition(HumanReadablePlacement.HRP_NONE);
         }
-        BitmapCanvasProvider canvas = new BitmapCanvasProvider(outputStream, IMAGE_PNG, RESOLUTION_RATIO, BufferedImage.TYPE_BYTE_BINARY, false, 0);
-        // 生成条形码
-        code128Bean.generateBarcode(canvas, text);
+
         try {
+            BitmapCanvasProvider canvas = new BitmapCanvasProvider(outputStream, IMAGE_PNG, RESOLUTION_RATIO, BufferedImage.TYPE_BYTE_BINARY, false, 0);
+            // 生成条形码
+            code128Bean.generateBarcode(canvas, text);
             canvas.finish();
-
         } catch (IOException e) {
-            e.printStackTrace();
-
+            log.error("generateBarCode128 error", e);
+            throw new RuntimeException(e);
         }
     }
-
-
 }

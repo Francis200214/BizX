@@ -19,12 +19,12 @@ import java.util.Map;
  * @author francis
  * @create: 2023-04-08 17:05
  **/
-
 public class CheckParameterFactory implements InitializingBean, ApplicationContextAware, CheckParameterService {
 
     private static final Map<Class<?>, CheckParameterStrategy> CHECK_PARAMETER_STRATEGY_MAP = new HashMap<>();
 
     private ApplicationContext applicationContext;
+
 
     @Override
     public void afterPropertiesSet() {

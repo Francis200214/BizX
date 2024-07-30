@@ -1,15 +1,19 @@
 package com.biz.web.interceptor;
 
 import com.biz.common.bean.BizXBeanUtils;
+import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.utils.Common;
-import com.biz.web.rbac.BizVerification;
+import com.biz.web.error.BizXException;
+import com.biz.web.error.ErrorCode;
+import com.biz.web.error.IF;
+import com.biz.web.rbac.BizAccessAllow;
 import com.biz.web.token.Token;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.core.Ordered;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,61 +27,28 @@ import java.lang.reflect.Method;
  * @create 2023/4/1 16:29
  */
 @Slf4j
-public class CheckTokenHandlerInterceptor implements HandlerInterceptor, ApplicationListener<ContextRefreshedEvent> {
+public class CheckTokenHandlerInterceptor implements HandlerInterceptor, ApplicationListener<ContextRefreshedEvent>, Ordered {
 
     private static Token token;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        log.info("CheckTokenHandlerInterceptor preHandle");
         // Token 中设置 HttpServletResponse
-        setHttpServletResponse(response);
-
+        this.setHttpServletResponse(response);
         // 如果不是映射到Controller方法直接放行
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
-
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        Method method = handlerMethod.getMethod();
-
-        BizVerification verification = method.getAnnotation(BizVerification.class);
-        if (verification == null) {
+        // 检查类或方法上是否有注解
+        if (!checkAccessAllow(handler)) {
             return true;
         }
 
         // 根据请求头设置当前用户的信息
-        setAccountSession(request);
-        // 处理当前用户的角色
-
+        this.setAccountSession(request);
+        // 检查Token是否失效
+        this.checkTokenExpire();
         return true;
-    }
-
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) {
-        log.info("CheckTokenHandlerInterceptor postHandle");
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-        log.info("CheckTokenHandlerInterceptor afterCompletion");
-    }
-
-
-    /**
-     * 初始化
-     * @param response
-     */
-    private void setHttpServletResponse(HttpServletResponse response) {
-        token.setHttpServletResponse(response);
-    }
-
-    private void setAccountSession(HttpServletRequest request) {
-        String header = request.getHeader("Biz-Token");
-        if (Common.isBlank(header)) {
-            throw new RuntimeException("token is null");
-        }
-        token.initAccount(header);
     }
 
     @Override
@@ -88,4 +59,52 @@ public class CheckTokenHandlerInterceptor implements HandlerInterceptor, Applica
             throw new RuntimeException("Token bean is not definition");
         }
     }
+
+    @Override
+    public int getOrder() {
+        return 100;
+    }
+
+
+    private boolean checkAccessAllow(Object handler) {
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        Method method = handlerMethod.getMethod();
+        BizAccessAllow annotation = method.getAnnotation(BizAccessAllow.class);
+        if (annotation == null) {
+            // 检查当前方法的class是否存在BizAccessAllow注解
+            Class<?> declaringClass = method.getDeclaringClass();
+            BizAccessAllow accessAllow = declaringClass.getAnnotation(BizAccessAllow.class);
+            if (accessAllow == null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 初始化 HttpServletResponse
+     *
+     * @param response
+     */
+    private void setHttpServletResponse(HttpServletResponse response) {
+        if (token != null) {
+            token.setHttpServletResponse(response);
+        }
+    }
+
+    /**
+     * 获取请求头中 header 的 token 值
+     * @param request
+     */
+    private void setAccountSession(HttpServletRequest request) {
+        String header = request.getHeader("Biz-Token");
+        if (!Common.isBlank(header)) {
+            token.initAccount(header);
+        }
+    }
+
+    private void checkTokenExpire() {
+        IF.is(token.checkTokenIsExpire(), ErrorCode.NOT_LOGIN);
+    }
+
 }

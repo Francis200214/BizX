@@ -9,19 +9,20 @@
         <outputRelativeToContentRoot value="true" />
         <module name="biz-core" />
         <module name="biz-common" />
-        <module name="biz-catch" />
-        <module name="biz-library" />
+        <module name="biz-rabbitmq" />
         <module name="biz-web" />
+        <module name="biz-redis" />
+        <module name="biz-cache" />
         <module name="biz-oss" />
-        <module name="biz-all" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="biz-config" target="1.8" />
+      <module name="biz-library" target="1.8" />
       <module name="biz-starter-test" target="1.8" />
       <module name="biz-web (1)" target="1.8" />
       <module name="biz-web (2)" target="1.8" />
-      <module name="demo" target="1.8" />
       <module name="junit-service" target="1.8" />
       <module name="web-annotation-service" target="1.8" />
       <module name="web-annotation-service-api" target="1.5" />

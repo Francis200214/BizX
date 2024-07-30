@@ -69,7 +69,7 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     @Override
     @SneakyThrows
     public void putObject(String bucketName, String objectName, InputStream stream, String contextType) {
-        putObject(bucketName, objectName, stream, stream.available(), contextType);
+        this.putObject(bucketName, objectName, stream, stream.available(), contextType);
     }
 
     /**
@@ -82,7 +82,7 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     @Override
     @SneakyThrows
     public void putObject(String bucketName, String objectName, InputStream stream) {
-        putObject(bucketName, objectName, stream, stream.available(), "application/octet-stream");
+        this.putObject(bucketName, objectName, stream, stream.available(), "application/octet-stream");
     }
 
     /**

@@ -3,7 +3,7 @@ package com.biz.web.session;
 import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.utils.Common;
 import com.biz.common.id.UUIDGenerate;
-import com.biz.map.SingletonScheduledMap;
+import com.biz.cache.map.SingletonScheduledMap;
 import com.biz.web.account.BizAccount;
 import com.biz.web.token.TokenProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +33,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
 
     @Override
     public Optional<Serializable> getSession(String token) {
-        if (!SESSION_MAP.containsKey(token)) {
+        if (Common.isBlank(token) || !SESSION_MAP.containsKey(token)) {
             return Optional.empty();
         }
 
@@ -43,7 +43,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
     @Override
     public String createSession(BizAccount<?> account) {
         String id = UUIDGenerate.generate();
-        SESSION_MAP.put(id, Common.to(account.getId()));
+        SESSION_MAP.containsKeyAndPut(id, Common.to(account.getId()));
         return id;
     }
 

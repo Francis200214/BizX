@@ -1,6 +1,6 @@
 package com.biz.web.annotation.check;
 
-import com.biz.common.date.datetime.DateTimeUtils;
+import com.biz.common.date.DateConstant;
 import com.biz.web.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;
@@ -18,7 +18,7 @@ public @interface BizXApiCheckDateTime {
     /**
      * 时间格式
      */
-    String format() default DateTimeUtils.DEFAULT_DATETIME;
+    String format() default DateConstant.DEFAULT_DATETIME;
 
     /**
      * 异常信息

@@ -1,18 +1,34 @@
 server:
   port: 8001
 
+spring:
+  main:
+    allow-circular-references: true
+  redis:
+    jedis:
+      pool:
+        max-wait: 1000ms
+        max-active: 600
+        max-idle: 300
+    host: 127.0.0.1
+    port: 6379
+    password:
+
 biz:
   interceptor:
     access: true
     checkToken: true
-  oss:
-    endpoint: "localhost"
-    region: "1"
-    pathStyleAccess: true
-    accessKey: "1"
-    secretKey: "1"
+#  oss:
+#    endpoint: "localhost"
+#    region: "1"
+#    pathStyleAccess: true
+#    accessKey: "1"
+#    secretKey: "1"
 #    maxConnections: 10
-
+  cache:
+    redis-cache: true
+  log:
+    enable: true
 user:
   names: "张三"
   age: 18

@@ -1,9 +1,6 @@
 package com.biz.common.reflection.model;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -16,8 +13,11 @@ import java.lang.reflect.Field;
  */
 @Setter
 @Getter
+@ToString
 @Builder
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class FieldModel {
 
     /**

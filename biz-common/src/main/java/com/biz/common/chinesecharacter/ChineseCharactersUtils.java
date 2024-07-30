@@ -15,20 +15,20 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
  */
 public final class ChineseCharactersUtils {
 
-    private static final Singleton<HanyuPinyinOutputFormat> HANYU_PINYIN_OUTPUT_FORMAT_SINGLETON = Singleton.setSupplier(ChineseCharactersUtils::getHanyuPinyinOutputFormat);
-
+    private static final Singleton<HanyuPinyinOutputFormat> HANYU_PINYIN_OUTPUT_FORMAT_SINGLETON = Singleton.createWithSupplier(ChineseCharactersUtils::getHanyuPinyinOutputFormat);
 
     private static final short CHAR = 128;
 
     /**
      * 获取字符串拼音的第一个字母
      *
-     * @param chinese
-     * @return
+     * @param chinese 中文字符串
+     * @return 拼音的首字母
+     * @throws BadHanyuPinyinOutputFormatCombination 转换错误
      */
     public static String toFirstChar(String chinese) throws BadHanyuPinyinOutputFormatCombination {
         StringBuilder pinyinStr = new StringBuilder();
-        //转为单个字符
+        // 转为单个字符
         for (char c : chinese.toCharArray()) {
             if (c > CHAR) {
                 pinyinStr.append(PinyinHelper.toHanyuPinyinStringArray(c, HANYU_PINYIN_OUTPUT_FORMAT_SINGLETON.get())[0].charAt(0));
@@ -42,8 +42,9 @@ public final class ChineseCharactersUtils {
     /**
      * 汉字转为拼音全拼
      *
-     * @param chinese
-     * @return
+     * @param chinese 中文字符串
+     * @return 拼音全拼
+     * @throws BadHanyuPinyinOutputFormatCombination 转换错误
      */
     public static String toPinyin(String chinese) throws BadHanyuPinyinOutputFormatCombination {
         StringBuilder pinyinStr = new StringBuilder();

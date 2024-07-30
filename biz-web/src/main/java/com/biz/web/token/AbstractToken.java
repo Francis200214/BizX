@@ -23,10 +23,16 @@ import java.util.Optional;
 @Order(81)
 public class AbstractToken implements Token, ApplicationListener<ContextRefreshedEvent> {
 
+    /**
+     *
+     */
     private final ThreadLocal<String> token = new ThreadLocal<>();
 
     private final ThreadLocal<Boolean> set = ThreadLocal.withInitial(() -> false);
 
+    /**
+     * 当前线程本次请求的 HttpServletResponse 对象
+     */
     private final ThreadLocal<HttpServletResponse> responseThreadLocal = ThreadLocal.withInitial(() -> null);
 
     private SessionManage sessionManage;
@@ -42,7 +48,7 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
     @Override
     public BizAccount<?> getCurrentUser() {
         if (token.get() == null) {
-            throw new RuntimeException("current token id is null");
+            return null;
         }
         Optional<Serializable> session = sessionManage.getSession(token.get());
         if (!session.isPresent()) {
@@ -91,13 +97,18 @@ public class AbstractToken implements Token, ApplicationListener<ContextRefreshe
     }
 
     @Override
+    public boolean checkTokenIsExpire() {
+        Optional<Serializable> session = sessionManage.getSession(token.get());
+        return !session.isPresent();
+    }
+
+    @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         // 当所有的bean都被成功装载、初始化和刷新后，调用这里
         try {
-            SessionManage bean = BizXBeanUtils.getBean(SessionManage.class);
-            this.sessionManage = bean;
+            this.sessionManage = BizXBeanUtils.getBean(SessionManage.class);
         } catch (Exception e) {
-
+            throw new RuntimeException("not find sessionManage");
         }
     }
 

@@ -5,14 +5,13 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>1.4.6-release</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-web</artifactId>
     <name>${project.artifactId}</name>
-    <groupId>${project.parent.groupId}</groupId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.4.6-release</version>
     <packaging>jar</packaging>
 
 
@@ -25,13 +24,7 @@
 
         <dependency>
             <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-catch</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-library</artifactId>
+            <artifactId>biz-cache</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -50,7 +43,6 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>2.0.2</version>
         </dependency>
     </dependencies>
 

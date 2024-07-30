@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="1、">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BizX.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BizX.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="533d8b2a-30da-4637-bc67-03b51ef01819" name="Default Changelist" comment="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-all/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-all/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-catch/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-catch/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biz-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-library/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-library/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-oss/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-oss/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/biz-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/biz-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demo/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
         <option value="Enum" />
+        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -40,39 +31,41 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="snapshot" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLabMergeRequestsSettings">{}</component>
+  <component name="GithubPullRequestsUISettings">{}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/corretto-11.0.11/lib/src.zip!/java.base/java/util/concurrent/ThreadLocalRandom.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$PROJECT_DIR$/../../apache-maven-3.6.3/maven_repository/io/jsonwebtoken/jjwt-api/0.11.5/jjwt-api-0.11.5-sources.jar!/io/jsonwebtoken/Jwt.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="JRebelWorkspace">
     <option name="jrebelEnabledAutocompile" value="true" />
   </component>
+  <component name="KubernetesApiProvider">{}</component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="E:\apache-maven-3.6.3\maven_repository" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
-        <option name="useMavenConfig" value="true" />
-        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings_bizx.xml" />
+        <option name="customMavenHome" value="$PROJECT_DIR$/../../apache-maven-3.6.3" />
+        <option name="localRepository" value="E:\apache-maven-3.6.3\maven_bizx" />
+        <option name="mavenHomeTypeForPersistence" value="CUSTOM" />
+        <option name="userSettingsFile" value="E:\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
-    <option name="enabledProfiles">
-      <list>
-        <option value="release" />
-        <option value="ossrh" />
-      </list>
-    </option>
-    <option name="disabledProfiles">
-      <list>
-        <option value="bizx-maven-deploy" />
-        <option value="zny-maven-deploy" />
-      </list>
-    </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2N82f0wXWuZ5pJjhChv7Fau5VU9" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -80,16 +73,27 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ImageCompressor.executor": "Run",
+    "Application.ShapefileToGeoJSON.executor": "Run",
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "Maven.BizX [clean,compile,package,install...].executor": "Run",
+    "Maven.BizX [clean,compile].executor": "Run",
+    "Maven.BizX [deploy].executor": "Run",
+    "Maven.BizX [install].executor": "Run",
+    "Maven.BizX [package].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.DemoApplication.executor": "Debug",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "snapshot",
+    "git-widget-placeholder": "main",
     "jdk.selected.JAVA_MODULE": "1.8",
-    "last_opened_file_path": "E:/idea/BizX/demo",
+    "last_opened_file_path": "E:/idea/BizX/biz-web/src/main/java/com/biz/web/log/store",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -98,21 +102,27 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.117227316",
     "project.structure.side.proportion": "0.23333333",
-    "settings.editor.selected.configurable": "apifox_uploader.settings.ApifoxUploaderConfigurable",
-    "spring.configuration.checksum": "5af18841e8a7a7d79c14ac72e77de5b6",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "spring.configuration.checksum": "a5184f5b652259a16a16645253ab095b",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.biz.common.random" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\idea\BizX\demo" />
-      <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
-      <recent name="E:\idea\BizX\biz-core\src\main\resources" />
-      <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\annotation" />
-      <recent name="E:\idea\BizX" />
+      <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\log\store" />
+      <recent name="E:\idea\BizX\biz-web\src\main\java\com\biz\web\log\user" />
+      <recent name="E:\idea\BizX\biz-redis\src\main\resources" />
+      <recent name="E:\idea\BizX\biz-cache\src\main\resources\META-INF" />
+      <recent name="E:\idea\BizX\biz-cache\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\idea\BizX\biz-web\src\main\resources\META-INF" />
@@ -126,11 +136,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.biz.web.aop.handler" />
-      <recent name="com.biz.web.annotation.check" />
-      <recent name="com.biz.web.condition" />
-      <recent name="com.biz.web.annotation.verification" />
-      <recent name="com.biz.web.annotation" />
+      <recent name="com.biz.web.interceptor" />
+      <recent name="com.biz.web.log.handler" />
+      <recent name="com.biz.web.log.operation" />
+      <recent name="com.biz.web.log.trace" />
+      <recent name="com.demo.log" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -138,12 +148,32 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.DemoApplication (1)">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ImageCompressor">
+    <configuration name="ImageCompressor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.biz.common.file.ImageCompressor" />
+      <module name="biz-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.biz.common.file.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.demo.strategy.*" />
+          <option name="PATTERN" value="com.demo.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -151,51 +181,6 @@
       <option name="MAIN_CLASS_NAME" value="com.demo.test.DemoTest" />
       <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.strategy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.demo.test.DemoTest" />
-      <option name="METHOD_NAME" value="test1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDemo.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="demo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.strategy.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.demo.test" />
-      <option name="MAIN_CLASS_NAME" value="com.demo.test.TestDemo" />
-      <option name="METHOD_NAME" value="test" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
-      <module name="BizX" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.demo.DemoApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -214,21 +199,24 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TestDemo.test" />
+      <item itemvalue="Application.ImageCompressor" />
       <item itemvalue="JUnit.DemoTest.test" />
-      <item itemvalue="JUnit.DemoTest.test1" />
-      <item itemvalue="Spring Boot.DemoApplication (1)" />
       <item itemvalue="Spring Boot.DemoApplication" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.DemoApplication (1)" />
+        <item itemvalue="Application.ImageCompressor" />
         <item itemvalue="Spring Boot.DemoApplication" />
-        <item itemvalue="JUnit.TestDemo.test" />
-        <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -282,324 +270,440 @@
       <workItem from="1681438496696" duration="16427000" />
       <workItem from="1681461824269" duration="5709000" />
       <workItem from="1681467879746" duration="7338000" />
-      <workItem from="1681717117222" duration="3339000" />
+      <workItem from="1681717117222" duration="2984000" />
+      <workItem from="1681778615077" duration="10578000" />
+      <workItem from="1681864763968" duration="2496000" />
+      <workItem from="1682043533400" duration="10066000" />
+      <workItem from="1682296650138" duration="8543000" />
+      <workItem from="1682387092577" duration="29074000" />
+      <workItem from="1682561894057" duration="13816000" />
+      <workItem from="1682681933675" duration="75000" />
+      <workItem from="1683164371415" duration="8093000" />
+      <workItem from="1683428955526" duration="1158000" />
+      <workItem from="1683430454118" duration="585000" />
+      <workItem from="1683431716395" duration="1426000" />
+      <workItem from="1683448645689" duration="12000" />
+      <workItem from="1683540461479" duration="2004000" />
+      <workItem from="1683551098994" duration="2237000" />
+      <workItem from="1683679110325" duration="70000" />
+      <workItem from="1686103724184" duration="16235000" />
+      <workItem from="1686883325185" duration="5177000" />
+      <workItem from="1686993596506" duration="3220000" />
+      <workItem from="1687856325513" duration="21000" />
+      <workItem from="1688008059265" duration="703000" />
+      <workItem from="1688612410933" duration="3004000" />
+      <workItem from="1688697638554" duration="1199000" />
+      <workItem from="1688709950825" duration="3150000" />
+      <workItem from="1688717769739" duration="1288000" />
+      <workItem from="1688801065517" duration="3036000" />
+      <workItem from="1688869129615" duration="906000" />
+      <workItem from="1688888850080" duration="3247000" />
+      <workItem from="1689320987506" duration="1284000" />
+      <workItem from="1689322490181" duration="4562000" />
+      <workItem from="1689642791124" duration="16192000" />
+      <workItem from="1689736836989" duration="4238000" />
+      <workItem from="1689818981725" duration="8051000" />
+      <workItem from="1689899285586" duration="1352000" />
+      <workItem from="1691460257798" duration="4121000" />
+      <workItem from="1691481545936" duration="1283000" />
+      <workItem from="1692233616224" duration="853000" />
+      <workItem from="1692263828103" duration="1872000" />
+      <workItem from="1692328051789" duration="6567000" />
+      <workItem from="1692428222128" duration="12048000" />
+      <workItem from="1692580430207" duration="22545000" />
+      <workItem from="1692666173207" duration="6699000" />
+      <workItem from="1692674294944" duration="9399000" />
+      <workItem from="1693382191796" duration="926000" />
+      <workItem from="1693383328752" duration="398000" />
+      <workItem from="1693386425571" duration="632000" />
+      <workItem from="1702365363811" duration="336000" />
+      <workItem from="1703642482891" duration="165000" />
+      <workItem from="1703642673382" duration="305000" />
+      <workItem from="1703642992000" duration="793000" />
+      <workItem from="1703644266160" duration="265000" />
+      <workItem from="1703644545364" duration="3573000" />
+      <workItem from="1703832330632" duration="2153000" />
+      <workItem from="1704244220119" duration="8528000" />
+      <workItem from="1704337518181" duration="5743000" />
+      <workItem from="1704350472612" duration="4747000" />
+      <workItem from="1704937769394" duration="595000" />
+      <workItem from="1705020379011" duration="2491000" />
+      <workItem from="1706230042364" duration="56000" />
+      <workItem from="1708503261132" duration="4151000" />
+      <workItem from="1708567496132" duration="79000" />
+      <workItem from="1710829976389" duration="853000" />
+      <workItem from="1711356840253" duration="625000" />
+      <workItem from="1711959466976" duration="27128000" />
+      <workItem from="1713257946021" duration="178000" />
+      <workItem from="1713752305680" duration="2031000" />
+      <workItem from="1716776418204" duration="2584000" />
+      <workItem from="1716787688621" duration="7957000" />
+      <workItem from="1716856990984" duration="5761000" />
+      <workItem from="1716942558256" duration="7157000" />
+      <workItem from="1716982705037" duration="1418000" />
+      <workItem from="1717036274064" duration="1708000" />
+      <workItem from="1717140646911" duration="9290000" />
+      <workItem from="1717375259988" duration="154000" />
+      <workItem from="1717375436074" duration="17018000" />
+      <workItem from="1717465189092" duration="1250000" />
+      <workItem from="1717483368753" duration="149000" />
+      <workItem from="1717483541985" duration="1198000" />
+      <workItem from="1717485856454" duration="339000" />
+      <workItem from="1718334389836" duration="6071000" />
+      <workItem from="1719027882533" duration="21536000" />
+      <workItem from="1719108414298" duration="2475000" />
+      <workItem from="1719123360230" duration="10930000" />
+      <workItem from="1719194745334" duration="63000" />
+      <workItem from="1719827140065" duration="642000" />
+      <workItem from="1719882195601" duration="2299000" />
+      <workItem from="1719899941498" duration="2271000" />
+      <workItem from="1721625597244" duration="5738000" />
+      <workItem from="1721867695553" duration="51455000" />
     </task>
-    <task id="LOCAL-00001" summary="1、项目结构重构，biz-web下不在有子包；&#10;2、增加了实现WebMvcConfigurer和HandlerInterceptor的类。">
-      <created>1680346182350</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00053" summary="1、优化了Jwt工具类，不在使用Jwt工具类内部使用builder模式，该用单独一个Class构建；&#10;2、UUID生成使用静态方法；&#10;3、删除了引入了而不需要的Class；">
+      <created>1682160242216</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
-      <updated>1680346182350</updated>
+      <updated>1682160242216</updated>
     </task>
-    <task id="LOCAL-00002" summary="1、增加了反射工具类以及反射工具类返回的数据模型；&#10;2、测试策略模式；">
-      <created>1680440857400</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00054" summary="1、调整了Token、Session、Account包，使登录后设置当前用户并生成Token码的设计更加清晰化；&#10;2、Session内部使用JWT，目前考虑加一个缓存Map或者把缓存交给用户设置；">
+      <created>1682160359366</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1680440857400</updated>
+      <updated>1682160359366</updated>
     </task>
-    <task id="LOCAL-00003" summary="1、由注解BizX改成BizXEnable，其中使用Import注解，增加了注入Bean的实现类；&#10;2、增加了BizXComponent注解，使用该注解的Class注入到Bean中，并添加了BizXComponentBeanDefinitionScanner实现类；">
-      <created>1680677943126</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00055" summary="1、同步代码">
+      <created>1682160452682</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1680677943126</updated>
+      <updated>1682160452682</updated>
     </task>
-    <task id="LOCAL-00004" summary="1、CustomWebMvcConfigurer使用Configurer注解；">
-      <created>1680678224735</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00056" summary="1、增加了BizScheduledFuture，主要用于定时做某件事；">
+      <created>1682252018053</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
       <option name="project" value="LOCAL" />
-      <updated>1680678224735</updated>
+      <updated>1682252018053</updated>
     </task>
-    <task id="LOCAL-00005" summary="升级了版本，修改了工具类注释">
-      <created>1680876792640</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00057" summary="1、定义了CatchMap，做为顶层缓存Map；&#10;2、缓存Map内部优化了功能，主要添加了可以刷新某个Key的过期时间；">
+      <created>1682252164457</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
       <option name="project" value="LOCAL" />
-      <updated>1680876792640</updated>
+      <updated>1682252164457</updated>
     </task>
-    <task id="LOCAL-00006" summary="引入Vadidator做参数校验">
-      <created>1680876835227</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00058" summary="1、完善了Session管理，使用缓存Map做为缓存Session；">
+      <created>1682252203273</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
       <option name="project" value="LOCAL" />
-      <updated>1680876835227</updated>
+      <updated>1682252203273</updated>
     </task>
-    <task id="LOCAL-00007" summary="增加了操作Class工具类">
-      <created>1680928790942</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+    <task id="LOCAL-00059" summary="1、完善了延迟做某件事；&#10;2、完善了延迟清除Map中增加了时间重置功能；">
+      <created>1682331547007</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
       <option name="project" value="LOCAL" />
-      <updated>1680928790942</updated>
+      <updated>1682331547007</updated>
     </task>
-    <task id="LOCAL-00008" summary="增加了BizXApiCheck注解，该注解主要用到接口或方法上，主要功能是开启该接口或方法的参数校验；">
-      <created>1680928881905</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+    <task id="LOCAL-00060" summary="1、在ServiceLoader中增加了静态方法用来获取ServiceLoader中的Class；&#10;2、完善了Token信息；">
+      <created>1682332646826</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
       <option name="project" value="LOCAL" />
-      <updated>1680928881905</updated>
+      <updated>1682332646826</updated>
     </task>
-    <task id="LOCAL-00009" summary="1、增加了检查Float、Long、Short的注解；">
-      <created>1680948034011</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00061" summary="1、Common中清除掉使用缓存的地方；">
+      <created>1682504321151</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
       <option name="project" value="LOCAL" />
-      <updated>1680948034011</updated>
+      <updated>1682504321151</updated>
     </task>
-    <task id="LOCAL-00010" summary="1、使用单例工厂加策略模式实现检查入参数据规范；&#10;2、使用SPI机制对检查入参数据规范的工厂和策略进行注入；">
-      <created>1680948109103</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00062" summary="1、缓存Map中把remove方法改成公共的；&#10;2、demo中测试框架；">
+      <created>1682504371438</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
       <option name="project" value="LOCAL" />
-      <updated>1680948109103</updated>
+      <updated>1682504371438</updated>
     </task>
-    <task id="LOCAL-00011" summary="1、BeanUtils工具类中增加了获取所有BeanName、获取所有BeanClass的方法">
-      <created>1680965084638</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00063" summary="1、OSS中使用@ConditionalOnProperty设置执行Configuration的条件；">
+      <created>1682504441493</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
       <option name="project" value="LOCAL" />
-      <updated>1680965084638</updated>
+      <updated>1682504441493</updated>
     </task>
-    <task id="LOCAL-00012" summary="1、尝试实现JSR-330的@Inject注解">
-      <created>1680965118760</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+    <task id="LOCAL-00064" summary="1、完善了Session；&#10;2、完善了Token；">
+      <created>1682504476003</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
       <option name="project" value="LOCAL" />
-      <updated>1680965118760</updated>
+      <updated>1682504476003</updated>
     </task>
-    <task id="LOCAL-00013" summary="1、CheckParameterFactory使用BizXComponent进行注入">
-      <created>1681049337571</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+    <task id="LOCAL-00065" summary="1、测试当前用户；">
+      <created>1682505554001</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
       <option name="project" value="LOCAL" />
-      <updated>1681049337571</updated>
+      <updated>1682505554001</updated>
     </task>
-    <task id="LOCAL-00014" summary="1、ApplicationContextAwareBeanUtils更名为ApplicationContextAwareUtils，主要封装操作ApplicationContext的一些操作，不在封装获取Bean的操作；&#10;2、新增了BizXBeanUtils工具类，提供对Bean的操作；">
-      <created>1681050298202</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
+    <task id="LOCAL-00066" summary="1、清楚了不需要的引用；">
+      <created>1682577991891</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
       <option name="project" value="LOCAL" />
-      <updated>1681050298202</updated>
+      <updated>1682577991891</updated>
     </task>
-    <task id="LOCAL-00015" summary="1、在操作AOP校验数据使用Factory之前增加一层校验数据接口，由接口做隔离；">
-      <created>1681051024573</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
+    <task id="LOCAL-00067" summary="1、测试生成、获取当前用户信息；">
+      <created>1682578030967</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
       <option name="project" value="LOCAL" />
-      <updated>1681051024573</updated>
+      <updated>1682578030967</updated>
     </task>
-    <task id="LOCAL-00016" summary="1、添加@BizXApiCheckError注解，主要做自定义错误码和异常信息；">
-      <created>1681053640034</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
+    <task id="LOCAL-00068" summary="1、完善了Jwt工具和增强器；">
+      <created>1682589504819</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
       <option name="project" value="LOCAL" />
-      <updated>1681053640034</updated>
+      <updated>1682589504819</updated>
     </task>
-    <task id="LOCAL-00017" summary="1、解决了部分异常">
-      <created>1681053671215</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
+    <task id="LOCAL-00069" summary="1、修改了Common包中的目录结构和文件名称；">
+      <created>1683187491463</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
       <option name="project" value="LOCAL" />
-      <updated>1681053671215</updated>
+      <updated>1683187491463</updated>
     </task>
-    <task id="LOCAL-00018" summary="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；">
-      <created>1681053920567</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
+    <task id="LOCAL-00070" summary="1、更新了版本；">
+      <created>1683430177701</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
       <option name="project" value="LOCAL" />
-      <updated>1681053920567</updated>
+      <updated>1683430177701</updated>
     </task>
-    <task id="LOCAL-00019" summary="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块">
-      <created>1681109619856</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
+    <task id="LOCAL-00071" summary="1、BizXEnableApiCheck增加了Type类型；">
+      <created>1683446136900</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
       <option name="project" value="LOCAL" />
-      <updated>1681109619856</updated>
+      <updated>1683446136900</updated>
     </task>
-    <task id="LOCAL-00020" summary="biz-all模块pom增加了biz-library模块">
-      <created>1681109678514</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
+    <task id="LOCAL-00072" summary="1、增加了全局异常拦截；">
+      <created>1683541795495</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1681109678514</updated>
+      <updated>1683541795495</updated>
     </task>
-    <task id="LOCAL-00021" summary="重新定义了API检查入参注解">
-      <created>1681137499208</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
+    <task id="LOCAL-00073" summary="1、完善了全局异常拦截；">
+      <created>1683542331228</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
       <option name="project" value="LOCAL" />
-      <updated>1681137499208</updated>
+      <updated>1683542331228</updated>
     </task>
-    <task id="LOCAL-00022" summary="检查参数实现">
-      <created>1681140287905</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
+    <task id="LOCAL-00074" summary="1、增加了IF异常校验器；">
+      <created>1683553005383</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
       <option name="project" value="LOCAL" />
-      <updated>1681140287905</updated>
+      <updated>1683553005383</updated>
     </task>
-    <task id="LOCAL-00023" summary="查询不同的策略更改了方式">
-      <created>1681223364214</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
+    <task id="LOCAL-00075" summary="1、增加了检查接口权限拦截器；">
+      <created>1683629176604</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
       <option name="project" value="LOCAL" />
-      <updated>1681223364214</updated>
+      <updated>1683629176604</updated>
     </task>
-    <task id="LOCAL-00024" summary="不同策略实现修改了判断方式">
-      <created>1681223398020</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
+    <task id="LOCAL-00076" summary="1、增加了检查接口权限拦截器；">
+      <created>1683629210023</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
       <option name="project" value="LOCAL" />
-      <updated>1681223398020</updated>
+      <updated>1683629210023</updated>
     </task>
-    <task id="LOCAL-00025" summary="更新了README">
-      <created>1681303554458</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
+    <task id="LOCAL-00077" summary="1、检查Token的拦截器中去除了检查权限的代码；&#10;2、实现了检查用户权限的代码；&#10;3、WebMvc配置中拦截器的初始化使用SpringBoot的ConditionalOnProperty注解;">
+      <created>1686108263777</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
       <option name="project" value="LOCAL" />
-      <updated>1681303554458</updated>
+      <updated>1686108263777</updated>
     </task>
-    <task id="LOCAL-00026" summary="优化检查参数">
-      <created>1681379483215</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
+    <task id="LOCAL-00078" summary="1、修改了单例缓存Map中put时，如果之前有该Key值，则将旧值的定时任务暂停；">
+      <created>1686126435001</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
       <option name="project" value="LOCAL" />
-      <updated>1681379483215</updated>
+      <updated>1686126435001</updated>
     </task>
-    <task id="LOCAL-00027" summary="优化了AOP控制操作参数">
-      <created>1681381071956</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
+    <task id="LOCAL-00079" summary="接口防刷中创建了判断访问者的默认缓存方式">
+      <created>1686883999066</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
       <option name="project" value="LOCAL" />
-      <updated>1681381071956</updated>
+      <updated>1686883999066</updated>
     </task>
-    <task id="LOCAL-00028" summary="优化了AOP控制操作参数">
-      <created>1681381080097</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
+    <task id="LOCAL-00080" summary="1、创建了AccessLimitCatchService的SPI；&#10;2、接口防刷使用创建了AccessLimitCatchService；">
+      <created>1686884261521</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
       <option name="project" value="LOCAL" />
-      <updated>1681381080097</updated>
+      <updated>1686884261521</updated>
     </task>
-    <task id="LOCAL-00029" summary="优化了判断String类型参数">
-      <created>1681381221641</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
+    <task id="LOCAL-00081" summary="升级到1.4.5-release">
+      <created>1686885573535</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
       <option name="project" value="LOCAL" />
-      <updated>1681381221641</updated>
+      <updated>1686885573535</updated>
     </task>
-    <task id="LOCAL-00030" summary="优化了判断Collection类型参数">
-      <created>1681382068079</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
+    <task id="LOCAL-00082" summary="Common中增加了当前时间函数">
+      <created>1686995940568</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
       <option name="project" value="LOCAL" />
-      <updated>1681382068079</updated>
+      <updated>1686995940568</updated>
     </task>
-    <task id="LOCAL-00031" summary="实现了所有的注解校验">
-      <created>1681383284807</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
+    <task id="LOCAL-00083" summary="增加了PageRequest和PageResult，为了接口的分页入参和出参">
+      <created>1688614705530</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
       <option name="project" value="LOCAL" />
-      <updated>1681383284807</updated>
+      <updated>1688614705531</updated>
     </task>
-    <task id="LOCAL-00032" summary="BizComponent注解移到core包下">
-      <created>1681437709605</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
+    <task id="LOCAL-00084" summary="修复了BizXWebMvcConfigurer中不恰当使用@ConditionalOnProperty的用法；&#10;去除了Web的spring.factories文件中的引入">
+      <created>1688711180076</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
       <option name="project" value="LOCAL" />
-      <updated>1681437709605</updated>
+      <updated>1688711180076</updated>
     </task>
-    <task id="LOCAL-00033" summary="删除demo">
-      <created>1681438032603</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
+    <task id="LOCAL-00085" summary="解决了检查Token拦截器中设置Response的值">
+      <created>1688718339241</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
       <option name="project" value="LOCAL" />
-      <updated>1681438032603</updated>
+      <updated>1688718339241</updated>
     </task>
-    <task id="LOCAL-00034" summary="添加了demo">
-      <created>1681438209932</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
+    <task id="LOCAL-00086" summary="增加了雪花生成器">
+      <created>1688868622075</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
       <option name="project" value="LOCAL" />
-      <updated>1681438209932</updated>
+      <updated>1688868622075</updated>
     </task>
-    <task id="LOCAL-00035" summary="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入">
-      <created>1681466363846</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
+    <task id="LOCAL-00087" summary="修改了雪花增强器中的builder参数方法">
+      <created>1688875607560</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
       <option name="project" value="LOCAL" />
-      <updated>1681466363846</updated>
+      <updated>1688875607561</updated>
     </task>
-    <task id="LOCAL-00036" summary="更新了版本">
-      <created>1681468253890</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
+    <task id="LOCAL-00088" summary="后期使用SNAPSHOT版本">
+      <created>1689322237326</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
       <option name="project" value="LOCAL" />
-      <updated>1681468253890</updated>
+      <updated>1689322237326</updated>
     </task>
-    <task id="LOCAL-00037" summary="反射工具类补充了新的方法">
-      <created>1681650918195</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
+    <task id="LOCAL-00089" summary="修复了全局异常拦截不到异常信息；">
+      <created>1689328099352</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
       <option name="project" value="LOCAL" />
-      <updated>1681650918195</updated>
+      <updated>1689328099352</updated>
     </task>
-    <task id="LOCAL-00038" summary="更新了gitignore">
-      <created>1681651403961</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
+    <task id="LOCAL-00090" summary="全局异常类增加了日志打印；&#10;修复了Copier无法生成泛型对象问题；">
+      <created>1689646534233</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
       <option name="project" value="LOCAL" />
-      <updated>1681651403961</updated>
+      <updated>1689646534233</updated>
     </task>
-    <task id="LOCAL-00039" summary="更新了gitignore">
-      <created>1681691661258</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
+    <task id="LOCAL-00091" summary="升级到1.0.6-SNAPSHOT版本">
+      <created>1689647442020</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
       <option name="project" value="LOCAL" />
-      <updated>1681691661258</updated>
+      <updated>1689647442020</updated>
     </task>
-    <task id="LOCAL-00040" summary="更新了gitignore">
-      <created>1681692080178</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
+    <task id="LOCAL-00092" summary="添加了BizAccessAllow注解，用于校验是否登录">
+      <created>1689649489917</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
       <option name="project" value="LOCAL" />
-      <updated>1681692080178</updated>
+      <updated>1689649489917</updated>
     </task>
-    <task id="LOCAL-00041" summary="实现了策略模式封装代码">
-      <created>1681710670167</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
+    <task id="LOCAL-00093" summary="升级到1.0.7">
+      <created>1689649591798</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
       <option name="project" value="LOCAL" />
-      <updated>1681710670167</updated>
+      <updated>1689649591798</updated>
     </task>
-    <task id="LOCAL-00042" summary="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；">
-      <created>1681713412963</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
+    <task id="LOCAL-00094" summary="单例定时清除Map使用Lock锁；">
+      <created>1689666815226</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
       <option name="project" value="LOCAL" />
-      <updated>1681713412963</updated>
+      <updated>1689666815226</updated>
     </task>
-    <task id="LOCAL-00043" summary="1、升级了版本；">
-      <created>1681714215635</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
+    <task id="LOCAL-00095" summary="优化了定时清除Map">
+      <created>1689673543089</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
       <option name="project" value="LOCAL" />
-      <updated>1681714215635</updated>
+      <updated>1689673543089</updated>
     </task>
-    <task id="LOCAL-00044" summary="1、升级了版本；">
-      <created>1681714366381</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
+    <task id="LOCAL-00096" summary="修改了异常返回数据的code和message字段名称">
+      <created>1689737536533</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
       <option name="project" value="LOCAL" />
-      <updated>1681714366381</updated>
+      <updated>1689737536533</updated>
     </task>
-    <task id="LOCAL-00045" summary="升级到快照版">
-      <created>1681720355478</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
+    <task id="LOCAL-00097" summary="获取当前用户token时如果没有返回null">
+      <created>1689766683634</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
       <option name="project" value="LOCAL" />
-      <updated>1681720355478</updated>
+      <updated>1689766683634</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00098" summary="获取当前用户token时如果没有返回null">
+      <created>1689766715612</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1689766715612</updated>
+    </task>
+    <task id="LOCAL-00099" summary="增加了创建随机手机号工具类；&#10;DateTime工具类修复了当前线程第一次操作时出现错误情况；">
+      <created>1689837270833</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1689837270833</updated>
+    </task>
+    <task id="LOCAL-00100" summary="修改了线程池工具类中的方法注释">
+      <created>1689842690761</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1689842690761</updated>
+    </task>
+    <task id="LOCAL-00101" summary="增加了AppPageResult">
+      <created>1689845474051</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1689845474051</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -629,47 +733,53 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="1、解决了部分异常" />
-    <MESSAGE value="1、修改了BizXApiCheck注解名称，改成BizXApiEnableCheck注解；" />
-    <MESSAGE value="biz-all模块pom文件打包方式改成jar，引入biz-all就相当于引入所有模块" />
-    <MESSAGE value="biz-all模块pom增加了biz-library模块" />
-    <MESSAGE value="重新定义了API检查入参注解" />
-    <MESSAGE value="检查参数实现" />
-    <MESSAGE value="查询不同的策略更改了方式" />
-    <MESSAGE value="不同策略实现修改了判断方式" />
-    <MESSAGE value="更新了README" />
-    <MESSAGE value="优化检查参数" />
-    <MESSAGE value="优化了AOP控制操作参数" />
-    <MESSAGE value="优化了判断String类型参数" />
-    <MESSAGE value="优化了判断Collection类型参数" />
-    <MESSAGE value="实现了所有的注解校验" />
-    <MESSAGE value="BizComponent注解移到core包下" />
-    <MESSAGE value="删除demo" />
-    <MESSAGE value="添加了demo" />
-    <MESSAGE value="原先使用BizComponent注入的Bean，全部改成使用spring.factories方式注入" />
-    <MESSAGE value="更新了版本" />
-    <MESSAGE value="反射工具类补充了新的方法" />
-    <MESSAGE value="更新了gitignore" />
-    <MESSAGE value="实现了策略模式封装代码" />
-    <MESSAGE value="1、时间工具类增加了部分转换时间功能；&#10;2、增加了检查时间注解；" />
-    <MESSAGE value="1、升级了版本；" />
-    <MESSAGE value="升级到快照版" />
-    <option name="LAST_COMMIT_MESSAGE" value="升级到快照版" />
+    <MESSAGE value="修改：&#10;1、修改了Redis各个工具类注入Bean的模式；" />
+    <MESSAGE value="修改：&#10;1、修改了Redis做为Cache时的配置；" />
+    <MESSAGE value="修改：&#10;1、修改了Banner打印的内容和色彩；" />
+    <MESSAGE value="修改：&#10;1、增加了geotools依赖和镜像配置；&#10;2、增加了Shapefile To GeoJSON文件的工具类；" />
+    <MESSAGE value="修改：&#10;1、修改了ShapefileToGeoJSON工具类的方法注释；" />
+    <MESSAGE value="修改：&#10;1、修改了操作日志和Redis配置；" />
+    <MESSAGE value="修改：&#10;1、修改了MD文档；" />
+    <MESSAGE value="修改：&#10;1、优化了线程池工具类、BizScheduledFuture和Copier工具类，主要增加了详细的注释和优化了代码；" />
+    <MESSAGE value="修改：&#10;1、优化了时间转换工具类和获取时间的工具类；" />
+    <MESSAGE value="修改：&#10;1、优化了二维码工具类代码；" />
+    <MESSAGE value="修改：&#10;1、优化了CalendarUtils代码；" />
+    <MESSAGE value="修改：&#10;1、图片压缩基于 thumbnailator 技术进行Api封装的工具类；" />
+    <MESSAGE value="添加：&#10;1、添加了HttpRequestHelper，主要用于操作GET、POST、PUT和DELETE请求的工具类；" />
+    <MESSAGE value="优化：&#10;1、优化了SnowflakeGenerator雪花ID生成器，增加了详细的注释，和对生成时分布式机器上的特殊情况处理；" />
+    <MESSAGE value="优化：&#10;1、优化了SnowflakeHelper雪花ID增强其和SnowflakeGenerator雪花ID生成器，增加了详细的注释；" />
+    <MESSAGE value="优化：&#10;1、优化了ShapefileToGeoJSON，使用高并发处理文件夹下的文件；" />
+    <MESSAGE value="优化：&#10;1、优化了GeometryUtils，读取几何字符串和几何对象处理进行了优化；" />
+    <MESSAGE value="优化：&#10;1、优化了JWT相关的工具类和Builder，以及二维码工具类的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了PhoneNumberUtil生成随机手机号工具类；" />
+    <MESSAGE value="优化：&#10;1、优化了反射工具类中的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了单例管理器类中的代码和注释，对初始化的方法名称进行了修改，更加符合见名知意；" />
+    <MESSAGE value="优化：&#10;1、优化了SpEL (Spring Expression Language) 工具类中的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了策略模式设计中的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了Common、MD5Utils、分页工具类和事务管理器中的代码和注释；" />
+    <MESSAGE value="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化：&#10;1、优化了纬度范围的计算工具中的代码和注释；" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/biz-common/src/main/java/com/biz/common/strategy/SelectableStrategyService.java</url>
-          <line>10</line>
-          <properties class="com.biz.common.strategy.SelectableStrategyService">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="1" />
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/biz-web/src/main/java/com/biz/web/response/TokenResponseBodyAdvice.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="26" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.biz.cache.caffeine.manager.BizCaffeineCacheManagerAbstract" memberName="bizCaffeineCacheLoader" />
+      </pinned-members>
+    </pin-to-top-manager>
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="LogAspect" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

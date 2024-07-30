@@ -15,6 +15,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/biz-config/pom.xml" />
+        <option value="$PROJECT_DIR$/biz-library/pom.xml" />
         <option value="$PROJECT_DIR$/biz-starter-test/pom.xml" />
         <option value="$PROJECT_DIR$/biz-web/web-annotation-service/pom.xml" />
         <option value="$PROJECT_DIR$/biz-web/web-annotation-service/web-annotation-service-api/pom.xml" />

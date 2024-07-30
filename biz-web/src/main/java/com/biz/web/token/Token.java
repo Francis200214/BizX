@@ -55,7 +55,16 @@ public interface Token extends Serializable {
 
     /**
      * 设置 HttpServletResponse
+     *
+     * @param response 响应对象
      */
     void setHttpServletResponse(HttpServletResponse response);
+
+    /**
+     * token 是否到期
+     *
+     * @return true 到期 false 未到期
+     */
+    boolean checkTokenIsExpire();
 
 }

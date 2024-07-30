@@ -3,12 +3,15 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.biz.web.aop.AbstractBizXCheckParameter,\
 com.biz.web.aop.CheckParameterFactory,\
 com.biz.web.interceptor.BizXWebMvcConfigurer,\
-com.biz.web.interceptor.yml.BizInterceptorProperties,\
-com.biz.web.interceptor.condition.AccessLimitConditionConfiguration,\
-com.biz.web.interceptor.condition.CheckTokenConditionConfiguration,\
 com.biz.web.token.TokenProperties,\
 com.biz.web.session.AbstractSessionManage,\
-com.biz.web.token.AbstractToken
+com.biz.web.token.AbstractToken,\
+com.biz.web.error.GlobalExceptionHandler,\
+com.biz.web.log.LogAspect,\
+com.biz.web.log.recorder.LogRecorder,\
+com.biz.web.log.store.DefaultLocalUserStoreService,\
+com.biz.web.log.trace.DefaultTraceIdServiceImpl,\
+com.biz.web.log.store.DefaultTraceStoreService
 
 
 

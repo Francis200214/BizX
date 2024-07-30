@@ -15,7 +15,7 @@ public class AccountFactory implements BizAccountFactory<String> {
     public BizAccount<String> getBizAccount(String s) {
         UserAccount userAccount = new UserAccount();
         userAccount.setUserId("111111");
-
+        userAccount.setName("张三");
         return userAccount;
     }
 

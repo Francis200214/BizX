@@ -1,8 +1,13 @@
 package com.biz.common.date.calendar;
 
+import com.biz.common.date.DateConstant;
 import com.biz.common.date.datetime.DateTimeUtils;
 
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Calendar 时间工具类
@@ -11,6 +16,9 @@ import java.util.Calendar;
  */
 public final class CalendarUtils {
 
+    private static final DateTimeFormatter DEFAULT_DATE_FORMATTER = DateTimeFormatter.ofPattern(DateConstant.DEFAULT_DATE);
+    private static final DateTimeFormatter DEFAULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(DateConstant.DEFAULT_DATETIME);
+
     /**
      * 获取去年
      * 【时间格式：yyyy】
@@ -18,9 +26,7 @@ public final class CalendarUtils {
      * @return
      */
     public static String currentYear() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return String.valueOf(LocalDate.now().getYear());
     }
 
     /**
@@ -30,16 +36,8 @@ public final class CalendarUtils {
      * @return
      */
     public static String currentYearStartDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        cal.add(Calendar.DATE, 1);
-        cal.add(Calendar.MONTH, 0);
-        cal.set(Calendar.DAY_OF_YEAR, 1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        LocalDate startOfYear = LocalDate.now().withDayOfYear(1);
+        return LocalDateTime.of(startOfYear, LocalTime.MIN).format(DEFAULT_DATE_TIME_FORMATTER);
     }
 
     /**
@@ -49,16 +47,8 @@ public final class CalendarUtils {
      * @return
      */
     public static String currentYearEndDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, 0);
-        cal.set(Calendar.MONTH, Calendar.DECEMBER);
-        cal.set(Calendar.DATE, 31);
-        cal.set(Calendar.HOUR_OF_DAY, 23);
-        cal.set(Calendar.MINUTE, 59);
-        cal.set(Calendar.SECOND, 59);
-        cal.set(Calendar.MILLISECOND, 999);
-        cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        LocalDate endOfYear = LocalDate.now().withDayOfYear(LocalDate.now().isLeapYear() ? 366 : 365);
+        return LocalDateTime.of(endOfYear, LocalTime.MAX).format(DEFAULT_DATE_TIME_FORMATTER);
     }
 
     /**
@@ -68,9 +58,7 @@ public final class CalendarUtils {
      * @return
      */
     public static String lastYear() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        return DateTimeUtils.calendarToStr(cal, DateTimeUtils.DEFAULT_YEAR);
+        return String.valueOf(LocalDate.now().minusYears(1).getYear());
     }
 
     /**
@@ -80,16 +68,8 @@ public final class CalendarUtils {
      * @return
      */
     public static String lastYearStartDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        cal.add(Calendar.DATE, 1);
-        cal.add(Calendar.MONTH, 0);
-        cal.set(Calendar.DAY_OF_YEAR, 1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
-        cal.set(Calendar.MINUTE, 0);
-        cal.set(Calendar.SECOND, 0);
-        cal.set(Calendar.MILLISECOND, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        LocalDate startOfYear = LocalDate.now().minusYears(1).withDayOfYear(1);
+        return LocalDateTime.of(startOfYear, LocalTime.MIN).format(DEFAULT_DATE_TIME_FORMATTER);
     }
 
     /**
@@ -99,57 +79,40 @@ public final class CalendarUtils {
      * @return
      */
     public static String lastYearEndDateTime() {
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.YEAR, -1);
-        cal.set(Calendar.MONTH, Calendar.DECEMBER);
-        cal.set(Calendar.DATE, 31);
-        cal.set(Calendar.HOUR_OF_DAY, 23);
-        cal.set(Calendar.MINUTE, 59);
-        cal.set(Calendar.SECOND, 59);
-        cal.set(Calendar.MILLISECOND, 999);
-        cal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(cal);
+        LocalDate endOfYear = LocalDate.now().minusYears(1).withDayOfYear(LocalDate.now().minusYears(1).isLeapYear() ? 366 : 365);
+        return LocalDateTime.of(endOfYear, LocalTime.MAX).format(DEFAULT_DATE_TIME_FORMATTER);
     }
 
     /**
      * 获取当年的第一天
      */
     public static String getFirstOfYear() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.set(Calendar.YEAR, currCal.get(Calendar.YEAR));
-        currCal.add(Calendar.DATE, 1);
-        currCal.add(Calendar.MONTH, 0);
-        currCal.set(Calendar.DAY_OF_YEAR, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        LocalDate firstOfYear = LocalDate.now().withDayOfYear(1);
+        return firstOfYear.format(DEFAULT_DATE_FORMATTER);
     }
 
     /**
      * 获取当年的最后一天
      */
     public static String getLastOfYear() {
-        Calendar currCal = Calendar.getInstance();
-        int currentYear = currCal.get(Calendar.YEAR);
-        currCal.set(Calendar.YEAR, currentYear);
-        currCal.roll(Calendar.DAY_OF_YEAR, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        LocalDate lastOfYear = LocalDate.now().withDayOfYear(LocalDate.now().isLeapYear() ? 366 : 365);
+        return lastOfYear.format(DEFAULT_DATE_FORMATTER);
     }
 
     /**
      * 获取当月的第一天
      */
     public static String getFirstOfMonth() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.set(Calendar.DAY_OF_MONTH, 1);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        LocalDate firstOfMonth = LocalDate.now().withDayOfMonth(1);
+        return firstOfMonth.format(DEFAULT_DATE_FORMATTER);
     }
 
     /**
      * 获取当月的最后一天
      */
     public static String getLastOfMonth() {
-        Calendar currCal = Calendar.getInstance();
-        currCal.roll(Calendar.DAY_OF_MONTH, 0);
-        return DateTimeUtils.calendarToStr(currCal, DateTimeUtils.DEFAULT_DATE);
+        LocalDate lastOfMonth = LocalDate.now().plusMonths(1).minusDays(1);
+        return lastOfMonth.format(DEFAULT_DATE_FORMATTER);
     }
 
 }

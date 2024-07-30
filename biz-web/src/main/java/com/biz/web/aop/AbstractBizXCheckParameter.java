@@ -27,10 +27,9 @@ public class AbstractBizXCheckParameter {
 
     /**
      * 使用构造器注入
-     * 由 ServiceLoader 方式注入
+     * 使用 ServiceLoader 方式注入
      */
     public AbstractBizXCheckParameter() {
-
         ServiceLoader<CheckParameterService> load = ServiceLoader.load(CheckParameterService.class);
         for (CheckParameterService parameterService : load) {
             if (parameterService != null && checkParameterService == null) {
