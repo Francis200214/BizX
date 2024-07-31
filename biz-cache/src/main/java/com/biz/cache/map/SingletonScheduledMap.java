@@ -17,65 +17,142 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 单例定时清除 Map
+ * 定时任务缓存Map，用于存储具有过期时间的键值对。
+ * 提供了put和get操作，以及根据键查询是否存在并进行更新的能力。
+ * 使用SingletonMapBuilder进行构建。
  *
  * @author francis
  */
 @Slf4j
 public final class SingletonScheduledMap<K, V> {
 
+    /**
+     * 内部Map用于存储键值对
+     */
     private static final Singleton<ScheduledExecutorService> SCHEDULED_EXECUTOR_SERVICE_SINGLETON = Singleton.createWithSupplier(ExecutorsUtils::buildScheduledExecutorService);
+
+    /**
+     * 版本号
+     */
     private static final AtomicLong VERSION = new AtomicLong(Long.MIN_VALUE);
+
+    /**
+     * 当前版本号，用于控制缓存的生命周期
+     */
     private long version = VERSION.get();
+
+    /**
+     * 没有数据时执行的函数
+     */
     private final Function<K, V> function;
+
+    /**
+     * 键值对过期时间
+     */
     private final long died;
-    private final Map<K, Value<V>> map;
+
+    /**
+     * 缓存Map
+     */
+    private final ConcurrentHashMap<K, Value<V>> map;
+
+    /**
+     * 锁，用于控制并发访问
+     */
     private final Lock lock = new ReentrantLock(true);
 
-    public SingletonScheduledMap(Supplier<Map<K, Value<V>>> supplier, Function<K, V> function, long died) {
+    /**
+     * 构造函数
+     */
+    public SingletonScheduledMap(Supplier<ConcurrentHashMap<K, Value<V>>> supplier, Function<K, V> function, long died) {
         this.map = supplier == null ? new ConcurrentHashMap<>() : supplier.get();
         this.function = function;
         this.died = died;
     }
 
+    /**
+     * 存储键值对到缓存中，如果键已存在，则直接返回值。
+     *
+     * @param k 键
+     * @param v 值
+     * @return 存储的值
+     */
     public V put(K k, V v) {
-        return putCatch(k, v, died);
+        return putCache(k, v, died);
     }
 
-
+    /**
+     * 存储键值对到缓存中，并指定过期时间，如果键已存在，则直接返回值。
+     *
+     * @param k    键
+     * @param v    值
+     * @param died 过期时间，单位是毫秒
+     * @return 存储的值
+     */
     public V put(K k, V v, long died) {
-        return putCatch(k, v, died);
+        return putCache(k, v, died);
     }
 
-
+    /**
+     * 如果键已存在，则更新键对应的值并返回旧值；否则，添加新键值对并返回null。
+     *
+     * @param k 键
+     * @param v 值
+     * @return 旧值或null
+     */
     public V containsKeyAndPut(K k, V v) {
-        return containsKeyAndPutCatch(k, v, died);
+        return containsKeyAndPutCache(k, v, died);
     }
 
-
+    /**
+     * 如果键已存在，则更新键对应的值并返回旧值；否则，添加新键值对并返回null，并指定过期时间。
+     *
+     * @param k    键
+     * @param v    值
+     * @param died 过期时间
+     * @return 旧值或null
+     */
     public V containsKeyAndPut(K k, V v, long died) {
-        return containsKeyAndPutCatch(k, v, died);
+        return containsKeyAndPutCache(k, v, died);
     }
 
-
+    /**
+     * 根据键获取值，如果键不存在，则使用提供的函数生成新值并存储。
+     *
+     * @param k        键
+     * @param supplier 用于生成新值的函数
+     * @return 值
+     */
     public V get(K k, Supplier<V> supplier) {
         return get(k, (v) -> Objects.requireNonNull(supplier, "supplier is null").get());
     }
 
+    /**
+     * 根据键获取值，如果键不存在，则使用默认函数生成新值并存储。
+     *
+     * @param k 键
+     * @return 值
+     */
     public V get(K k) {
         return getCache(k, () -> function);
     }
 
+    /**
+     * 根据键获取值，如果键不存在，则使用提供的函数生成新值并存储。
+     *
+     * @param k        键
+     * @param function 用于生成新值的函数
+     * @return 值
+     */
     public V get(K k, Function<K, V> function) {
         return getCache(k, () -> function);
     }
 
-
     /**
-     * 判断 Map 中是否存在 key
+     * 检查缓存中是否存在指定的键。
      *
-     * @param k key
-     * @return true 存在 false 不存在
+     * @param k 键
+     * @return true表示存在，false表示不存在
      */
     public boolean containsKey(K k) {
         if (k == null) {
@@ -84,14 +161,14 @@ public final class SingletonScheduledMap<K, V> {
         return map.containsKey(k);
     }
 
-
     /**
-     * 设置定时时间，清除 Map 中的 Key
+     * 重置指定键的过期时间。
      *
-     * @param k    key
-     * @param died 过期时间
+     * @param k    键
+     * @param died 新的过期时间
+     * @throws RuntimeException 如果键不存在
      */
-    public void resetDiedCatch(K k, long died) throws RuntimeException {
+    public void resetDiedCache(K k, long died) throws RuntimeException {
         if (!map.containsKey(k)) {
             throw new RuntimeException("This key is not in the map");
         }
@@ -110,9 +187,9 @@ public final class SingletonScheduledMap<K, V> {
     }
 
     /**
-     * 删除 Map 中的 Key
+     * 从缓存中移除指定的键。
      *
-     * @param k
+     * @param k 键
      */
     public void remove(K k) {
         if (k == null) {
@@ -129,18 +206,25 @@ public final class SingletonScheduledMap<K, V> {
 
 
     /**
-     * 获取缓存 Map 创建者
+     * 获取缓存Map的构建者。
      *
-     * @param <K>
-     * @param <V>
-     * @return Map 创建者
+     * @param <K> 键的类型
+     * @param <V> 值的类型
+     * @return 构建者实例
      */
     public static <K, V> SingletonMapBuilder<K, V> builder() {
         return new SingletonMapBuilder<>();
     }
 
-
-    private V putCatch(K k, V v, long died) {
+    /**
+     * 实际存储键值对的方法，如果键不存在，则加锁确保线程安全后添加新键值对。
+     *
+     * @param k    键
+     * @param v    值
+     * @param died 过期时间
+     * @return 值
+     */
+    private V putCache(K k, V v, long died) {
         if (k == null) {
             return null;
         }
@@ -158,21 +242,43 @@ public final class SingletonScheduledMap<K, V> {
         return v;
     }
 
-
-    private V containsKeyAndPutCatch(K k, V v, long died) {
+    /**
+     * 如果键已存在，则取消其定时任务并更新值；否则，添加新键值对。
+     *
+     * @param k    键
+     * @param v    值
+     * @param died 过期时间
+     * @return 值
+     */
+    private V containsKeyAndPutCache(K k, V v, long died) {
         if (map.containsKey(k)) {
-            synchronized (map) {
+            lock.lock();
+            try {
                 if (map.containsKey(k)) {
                     Value<V> vValue = map.get(k);
                     vValue.scheduledFuture.cancel();
                 }
+            } catch (Exception e) {
+                if (log.isDebugEnabled()) {
+                    log.error("containsKeyAndPutCache error", e);
+                }
+                throw e;
+            } finally {
+                lock.unlock();
             }
         }
         map.put(k, buildValue(k, v, died));
         return v;
     }
 
-
+    /**
+     * 构建Value对象，包含实际的值和一个定时任务，用于在过期时间到达时移除该键值对。
+     *
+     * @param k    键
+     * @param v    值
+     * @param died 过期时间
+     * @return Value对象
+     */
     private Value<V> buildValue(K k, V v, long died) {
         Value<V> value = new Value<>();
         value.v = v;
@@ -192,18 +298,33 @@ public final class SingletonScheduledMap<K, V> {
         return value;
     }
 
-
+    /**
+     * 从缓存中获取值，如果键不存在或缓存已过期，则根据提供的函数生成新值并存储。
+     *
+     * @param k                键
+     * @param functionSupplier 用于生成新值的函数
+     * @return 值
+     */
     private V getCache(K k, Supplier<Function<K, V>> functionSupplier) {
         if (k == null) {
             return null;
         }
 
         if (version != VERSION.get()) {
-            synchronized (map) {
+            lock.lock();
+            try {
                 if (version != VERSION.get()) {
                     clear();
                     version = VERSION.get();
                 }
+            } catch (Exception e) {
+                if (log.isDebugEnabled()) {
+                    log.error("getCache error", e);
+                }
+                throw e;
+
+            } finally {
+                lock.unlock();
             }
         }
 
@@ -224,21 +345,32 @@ public final class SingletonScheduledMap<K, V> {
         return map.get(k).v;
     }
 
-
+    /**
+     * 清空缓存中的所有键值对。
+     */
     private void clear() {
-        synchronized (map) {
-            if (!map.isEmpty()) {
-                map.clear();
+        if (!map.isEmpty()) {
+            lock.lock();
+            try {
+                if (!map.isEmpty()) {
+                    map.clear();
+                }
+            } catch (Exception e) {
+                if (log.isDebugEnabled()) {
+                    log.error("clear error", e);
+                }
+                throw e;
+            } finally {
+                lock.unlock();
             }
         }
     }
 
 
     /**
-     * Map 的 Value 值
-     * 内部封装了 ScheduledFuture，用于定时删除 Map 中的 key
+     * Value对象，包含实际的值和一个定时任务，用于在过期时间到达时移除该键值对。
      *
-     * @param <V>
+     * @param <V> 值的类型
      */
     private static class Value<V> {
         private BizScheduledFuture scheduledFuture;
@@ -247,35 +379,74 @@ public final class SingletonScheduledMap<K, V> {
 
 
     /**
-     * 内置缓存 Map 创建者
+     * 单例映射构建器类，用于构建具有特定配置的SingletonScheduledMap实例。
+     * 该构建器允许指定映射的生成方式、值的生成函数以及元素的过期时间。
      *
-     * @param <K>
-     * @param <V>
+     * @param <K> 键的类型
+     * @param <V> 值的类型
      */
     public static class SingletonMapBuilder<K, V> {
+
+        /**
+         * 用于提供Map实例的供应商。
+         */
         private Supplier<Map<K, Value<V>>> supplier;
+
+        /**
+         * 用于根据键生成值的函数。
+         */
         private Function<K, V> function;
-        // 默认十分钟
+
+        /**
+         * 映射中元素的过期时间，以毫秒为单位。
+         * 默认十分钟
+         */
         private long died = 1000 * 60 * 10L;
 
+        /**
+         * 构造函数，初始化构建器。
+         */
         public SingletonMapBuilder() {
         }
 
+        /**
+         * 设置用于生成值的函数。
+         *
+         * @param function 值生成函数
+         * @return 当前构建器实例，以便进行链式调用。
+         */
         public SingletonMapBuilder<K, V> function(Function<K, V> function) {
             this.function = function;
             return this;
         }
 
+        /**
+         * 设置用于生成Map实例的供应商。
+         *
+         * @param supplier Map供应商
+         * @return 当前构建器实例，以便进行链式调用。
+         */
         public SingletonMapBuilder<K, V> map(Supplier<Map<K, Value<V>>> supplier) {
             this.supplier = supplier;
             return this;
         }
 
+        /**
+         * 设置键值对的过期时间。
+         *
+         * @param died 过期时间
+         * @return 当前构建器实例，以便进行链式调用。
+         */
         public SingletonMapBuilder<K, V> died(long died) {
             this.died = died;
             return this;
         }
 
+        /**
+         * 使用当前配置构建并返回SingletonScheduledMap实例。
+         *
+         * @return 新构建的SingletonScheduledMap实例。
+         */
         public SingletonScheduledMap build() {
             return new SingletonScheduledMap(supplier, function, died);
         }

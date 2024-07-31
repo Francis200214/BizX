@@ -9,7 +9,7 @@ import java.util.function.Supplier;
  * @author francis
  * @create: 2023-04-23 17:20
  **/
-public interface CatchMap<K, V> {
+public interface CacheMap<K, V> {
 
     /**
      * 设置 Key-Value 值

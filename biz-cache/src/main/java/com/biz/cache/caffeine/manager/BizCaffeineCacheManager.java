@@ -5,8 +5,7 @@ import org.springframework.cache.caffeine.CaffeineCache;
 import java.util.Collection;
 
 /**
- * CaffeineCache 管理器
- * 用于管理 CaffeineCache
+ * CaffeineCache 管理器接口，用于提供对多个 CaffeineCache 实例的集中管理功能。
  *
  * @author francis
  * @create: 2023-08-21 11:27
@@ -14,9 +13,9 @@ import java.util.Collection;
 public interface BizCaffeineCacheManager {
 
     /**
-     * 获取所有的 CaffeineCache
+     * 获取所有当前管理的 CaffeineCache 实例集合。
      *
-     * @return
+     * @return Collection<CaffeineCache> 包含所有 CaffeineCache 实例的集合
      */
     Collection<CaffeineCache> getCaffeineCaches();
 

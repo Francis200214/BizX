@@ -46,7 +46,7 @@ public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {
      * @return CaffeineCache实例的集合。
      */
     @Bean
-    private Collection<CaffeineCache> getBizCaffeineCacheList(List<BizCaffeineCacheLoader> bizCaffeineCacheManagers) {
+    private Collection<CaffeineCache> bizCaffeineCacheList(List<BizCaffeineCacheLoader> bizCaffeineCacheManagers) {
         for (BizCaffeineCacheLoader bizCaffeineCacheManager : bizCaffeineCacheManagers) {
             this.convertAndCheckCacheName(bizCaffeineCacheManager.getCaches());
         }
@@ -65,7 +65,7 @@ public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {
             this.checkCacheName(bizCaffeineCache.getCacheName());
 
             CaffeineCache caffeineCache = CaffeineBuilder.builder().setBizCaffeineCache(bizCaffeineCache);
-            CAFFEINE_CACHE_CONCURRENT_MAP.put(bizCaffeineCache.getCacheName(), caffeineCache);
+            CAFFEINE_CACHE_CONCURRENT_MAP.putIfAbsent(bizCaffeineCache.getCacheName(), caffeineCache);
         }
     }
 

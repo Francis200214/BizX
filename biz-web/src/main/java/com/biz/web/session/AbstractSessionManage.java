@@ -50,7 +50,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
     @Override
     public void resetSessionDiedTime(String token) {
         try {
-            SESSION_MAP.resetDiedCatch(token, getDiedTime());
+            SESSION_MAP.resetDiedCache(token, getDiedTime());
         } catch (RuntimeException e) {
             log.error("reset key appear error in map ", e);
         }

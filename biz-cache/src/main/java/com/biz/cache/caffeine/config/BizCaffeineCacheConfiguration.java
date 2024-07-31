@@ -25,7 +25,7 @@ public class BizCaffeineCacheConfiguration {
      * @return 返回配置好的SimpleCacheManager实例，用于Spring应用上下文中。
      */
     @Bean
-    @DependsOn("getBizCaffeineCacheList")
+    @DependsOn("bizCaffeineCacheList")
     public CacheManager caffeineCacheManager(BizCaffeineCacheManager bizCaffeineCacheManager) {
         SimpleCacheManager simpleCacheManager = new SimpleCacheManager();
         simpleCacheManager.setCaches(bizCaffeineCacheManager.getCaffeineCaches());
