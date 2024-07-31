@@ -1,9 +1,6 @@
 package com.biz.cache.caffeine.cache;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -17,6 +14,8 @@ import java.io.Serializable;
 @Getter
 @ToString
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BizCaffeineCache implements Serializable {
 
     /**

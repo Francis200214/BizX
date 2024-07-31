@@ -13,8 +13,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * CaffeineCache 抽象管理器
- * 获取 CaffeineCache 并保存本地
+ * Caffeine缓存的管理者，负责创建和管理CaffeineCache实例。
+ * 该管理者只在属性“biz.cache.caffeine-cache”为true时被条件化地启用。
  *
  * @author francis
  * @create: 2023-08-21 11:28
@@ -23,17 +23,28 @@ import java.util.concurrent.ConcurrentMap;
 public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {
 
     /**
-     * CaffeineCache 存储Map
+     * 用于存储CaffeineCache实例的并发映射。
+     * 使用ConcurrentHashMap以确保线程安全和高并发性能。
      */
     private static final ConcurrentMap<String, CaffeineCache> CAFFEINE_CACHE_CONCURRENT_MAP = new ConcurrentHashMap<>(32);
 
-
+    /**
+     * 返回所有已创建的CaffeineCache实例。
+     *
+     * @return CaffeineCache实例的集合。
+     */
     @Override
     public Collection<CaffeineCache> getCaffeineCaches() {
         return CAFFEINE_CACHE_CONCURRENT_MAP.values();
     }
 
-
+    /**
+     * 根据BizCaffeineCacheLoader列表创建并返回CaffeineCache实例的集合。
+     * 此方法使用@Bean注解，表明它是一个Spring Bean，由Spring容器管理。
+     *
+     * @param bizCaffeineCacheManagers BizCaffeineCacheLoader的列表，用于配置和创建CaffeineCache。
+     * @return CaffeineCache实例的集合。
+     */
     @Bean
     private Collection<CaffeineCache> getBizCaffeineCacheList(List<BizCaffeineCacheLoader> bizCaffeineCacheManagers) {
         for (BizCaffeineCacheLoader bizCaffeineCacheManager : bizCaffeineCacheManagers) {
@@ -44,11 +55,10 @@ public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {
 
 
     /**
-     * BizCaffeineCache 转换成 CaffeineCache
-     * 并检查并存储到 CAFFEINE_CACHE_CONCURRENT_MAP 中
+     * 将BizCaffeineCache实例转换为CaffeineCache，并检查是否存在重复的缓存名称。
+     * 此方法负责实际的缓存创建和映射到CAFFEINE_CACHE_CONCURRENT_MAP中。
      *
-     * @param caffeineCacheList
-     * @return
+     * @param caffeineCacheList BizCaffeineCache实例的列表。
      */
     private void convertAndCheckCacheName(List<BizCaffeineCache> caffeineCacheList) {
         for (BizCaffeineCache bizCaffeineCache : caffeineCacheList) {
@@ -61,10 +71,11 @@ public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {
 
 
     /**
-     * 检查缓存Map中是否已经有了该缓存名称, 有的话抛出 RuntimeException("duplicate caffeine cache key") 错误
+     * 检查指定的缓存名称是否已存在于CAFFEINE_CACHE_CONCURRENT_MAP中。
+     * 如果存在，则抛出RuntimeException，指出缓存名称重复。
      *
-     * @param cacheName 缓存名称
-     * @throws RuntimeException 缓存Map中已经有了该缓存名称
+     * @param cacheName 要检查的缓存名称。
+     * @throws RuntimeException 如果缓存名称已存在。
      */
     private void checkCacheName(String cacheName) throws RuntimeException {
         if (CAFFEINE_CACHE_CONCURRENT_MAP.containsKey(cacheName)) {
