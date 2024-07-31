@@ -30,7 +30,7 @@ public class TimedDeletionMapTest {
     void setUp() {
         mockMap = spy(new ConcurrentHashMap<>());
         mockExecutorService = Executors.newSingleThreadScheduledExecutor();
-        timedDeletionMap = new TimedDeletionMap<>(mockMap, mockExecutorService, 1, TimeUnit.MILLISECONDS);
+        timedDeletionMap = new TimedDeletionMap<>(mockMap, mockExecutorService, null, 1, TimeUnit.MILLISECONDS);
         log.info("Setup complete");
     }
 

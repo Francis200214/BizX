@@ -12,7 +12,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Redis Cache Local 管理器
+ * Redis缓存本地管理器，实现BizRedisCacheManager接口。
+ * 该类负责管理Redis缓存实体，在Spring Boot自动配置的条件下激活。
  *
  * @author francis
  * @create 2024-04-02 11:05
@@ -21,19 +22,30 @@ import java.util.concurrent.ConcurrentMap;
 public class BizRedisCacheLocalManager implements BizRedisCacheManager {
 
     /**
-     * Redis Cache 存储Map
+     * 使用ConcurrentMap来存储Redis缓存实体，以保证线程安全。
+     * 初始化容量为32，以提高并发性能。
      */
     private static final ConcurrentMap<String, BizRedisCacheEntity> CAFFEINE_CACHE_CONCURRENT_MAP = new ConcurrentHashMap<>(32);
 
-
+    /**
+     * 获取所有缓存实体。
+     *
+     * @return 所有缓存实体的集合。
+     */
     @Override
     public Collection<BizRedisCacheEntity> getAll() {
         return CAFFEINE_CACHE_CONCURRENT_MAP.values();
     }
 
-
+    /**
+     * 根据提供的BizRedisCacheLoader列表初始化缓存实体集合。
+     * 此方法被Spring Boot自动配置为一个Bean。
+     *
+     * @param redisCacheEntityList Redis缓存实体的列表。
+     * @return 初始化后的缓存实体集合。
+     */
     @Bean
-    private Collection<BizRedisCacheEntity> getBizRedisCacheList(List<BizRedisCacheLoader> redisCacheEntityList) {
+    private Collection<BizRedisCacheEntity> bizRedisCacheList(List<BizRedisCacheLoader> redisCacheEntityList) {
         for (BizRedisCacheLoader bizRedisCacheLoader : redisCacheEntityList) {
             this.convertAndCheckCacheNameAndSave(bizRedisCacheLoader.getCaches());
         }
@@ -41,9 +53,10 @@ public class BizRedisCacheLocalManager implements BizRedisCacheManager {
     }
 
     /**
-     * 遍历 List<BizRedisCacheEntity> 并保存在 CAFFEINE_CACHE_CONCURRENT_MAP 中
+     * 将给定的Redis缓存实体列表转换并保存到ConcurrentMap中。
+     * 此方法用于验证和保存Redis缓存配置。
      *
-     * @param redisCacheList
+     * @param redisCacheList 待保存的Redis缓存实体列表。
      */
     private void convertAndCheckCacheNameAndSave(List<BizRedisCacheEntity> redisCacheList) {
         for (BizRedisCacheEntity bizRedisCacheEntity : redisCacheList) {

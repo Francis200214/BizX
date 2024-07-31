@@ -5,7 +5,8 @@ import com.biz.cache.redis.cache.BizRedisCacheEntity;
 import java.util.Collection;
 
 /**
- * Biz Redis 缓存管理
+ * BizRedisCacheManager接口定义了业务Redis缓存的管理操作。
+ * 它提供方法来获取所有的BizRedisCacheEntity实例。
  *
  * @author francis
  * @create 2024-04-02 11:00
@@ -13,9 +14,11 @@ import java.util.Collection;
 public interface BizRedisCacheManager {
 
     /**
-     * 获取所有的BizRedisCacheEntity
+     * 获取当前缓存中所有的BizRedisCacheEntity对象。
+     * <p>
+     * 该方法用于获取缓存中的所有实体，以便进行批量处理或查询。
      *
-     * @return
+     * @return 所有缓存的BizRedisCacheEntity对象的集合。
      */
     Collection<BizRedisCacheEntity> getAll();
 
