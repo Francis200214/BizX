@@ -22,8 +22,14 @@
     <dependencies>
 
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
+            <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.francis200214</groupId>
+            <artifactId>biz-redis</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
 
@@ -45,13 +51,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>${project.parent.groupId}</groupId>
-            <artifactId>biz-redis</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
-
     </dependencies>
 
 </project>

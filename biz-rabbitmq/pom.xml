@@ -9,7 +9,7 @@
         <version>1.4.6-release</version>
     </parent>
 
-    <groupId>${project.parent.groupId}</groupId>
+    <groupId>io.github.francis200214</groupId>
     <artifactId>biz-rabbitmq</artifactId>
     <version>1.4.6-release</version>
 
@@ -21,7 +21,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
+            <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

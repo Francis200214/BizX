@@ -16,7 +16,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
+            <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

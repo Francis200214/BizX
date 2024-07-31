@@ -13,10 +13,10 @@
     <url>https://github.com/Francis200214/BizX.git</url>
 
     <modules>
+        <module>biz-all</module>
         <module>biz-common</module>
         <module>biz-web</module>
         <module>biz-core</module>
-        <module>biz-all</module>
         <module>biz-oss</module>
         <module>biz-cache</module>
         <module>biz-rabbitmq</module>
@@ -37,26 +37,10 @@
         <javax.inject.version>1</javax.inject.version>
         <!-- Junit -->
         <junit.version>4.12</junit.version>
-        <!-- JTS(Java Topology Suite 几何对象) -->
-        <jts.core.version>1.19.0</jts.core.version>
+
         <!-- Aspectj -->
         <aspectj.version>1.9.19</aspectj.version>
-        <!-- AmazonS3 -->
-        <aws.version>1.12.726</aws.version>
-        <!-- JWT(Json Web Token) -->
-        <jsonwebtoken.version>0.11.5</jsonwebtoken.version>
-        <!-- Barcode4j(条形码) -->
-        <barcode4j.version>2.0</barcode4j.version>
-        <!-- Google Zxing Core(二维码) -->
-        <google.zxing.core.version>3.3.0</google.zxing.core.version>
-        <!-- Google Zxing JavaSE(二维码) -->
-        <google.zxing.javase.version>3.5.3</google.zxing.javase.version>
-        <!-- belerweb(汉字转换成全拼) -->
-        <belerweb.version>2.5.1</belerweb.version>
-        <!-- Shape File And GeoJSON(shapefile文件解析和GeoJSON文件转换) -->
-        <geotools.version>28.5</geotools.version>
-        <!-- thumbnailator(图片压缩) -->
-        <thumbnailator.version>0.4.20</thumbnailator.version>
+
 
         <!-- Maven插件版本 -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -127,13 +111,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <!-- JTS -->
-            <dependency>
-                <groupId>org.locationtech.jts</groupId>
-                <artifactId>jts-core</artifactId>
-                <version>${jts.core.version}</version>
-            </dependency>
-
             <!-- AOP -->
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -141,80 +118,7 @@
                 <version>${aspectj.version}</version>
             </dependency>
 
-            <!-- AmazonS3 -->
-            <dependency>
-                <groupId>com.amazonaws</groupId>
-                <artifactId>aws-java-sdk-s3</artifactId>
-                <version>${aws.version}</version>
-            </dependency>
 
-
-            <!-- JWT -->
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-api</artifactId>
-                <version>${jsonwebtoken.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-impl</artifactId>
-                <version>${jsonwebtoken.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt-jackson</artifactId>
-                <scope>runtime</scope>
-                <version>${jsonwebtoken.version}</version>
-            </dependency>
-
-            <!-- 条形码 -->
-            <dependency>
-                <groupId>net.sf.barcode4j</groupId>
-                <artifactId>barcode4j-light</artifactId>
-                <version>${barcode4j.version}</version>
-            </dependency>
-
-            <!-- 二维码 -->
-            <dependency>
-                <groupId>com.google.zxing</groupId>
-                <artifactId>core</artifactId>
-                <version>${google.zxing.core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.zxing</groupId>
-                <artifactId>javase</artifactId>
-                <version>${google.zxing.javase.version}</version>
-            </dependency>
-
-            <!-- 汉字转换成全拼 -->
-            <dependency>
-                <groupId>com.belerweb</groupId>
-                <artifactId>pinyin4j</artifactId>
-                <version>${belerweb.version}</version>
-            </dependency>
-
-            <!-- Shape File -->
-            <dependency>
-                <groupId>org.geotools</groupId>
-                <artifactId>gt-shapefile</artifactId>
-                <version>${geotools.version}</version>
-            </dependency>
-
-            <!-- GeoJSON -->
-            <dependency>
-                <groupId>org.geotools</groupId>
-                <artifactId>gt-geojson</artifactId>
-                <version>${geotools.version}</version>
-            </dependency>
-
-            <!-- thumbnailator 图片压缩 -->
-            <dependency>
-                <groupId>net.coobird</groupId>
-                <artifactId>thumbnailator</artifactId>
-                <version>${thumbnailator.version}</version>
-            </dependency>
 
         </dependencies>
     </dependencyManagement>
@@ -245,10 +149,20 @@
     </developers>
 
     <distributionManagement>
+
+        <repository>
+            <id>bizx-maven</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
         <snapshotRepository>
-            <id>BizX-Snapshot</id>
-            <url>http://39.106.78.90:8999/repository/BizX-Snapshot/</url>
+            <id>bizx-maven</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
         </snapshotRepository>
+
+<!--        <snapshotRepository>-->
+<!--            <id>BizX-Snapshot</id>-->
+<!--            <url>http://39.106.78.90:8999/repository/BizX-Snapshot/</url>-->
+<!--        </snapshotRepository>-->
 
         <!--        <repository>-->
         <!--            <id>BizX-Release</id>-->
@@ -260,6 +174,16 @@
     <profiles>
         <profile>
             <id>release</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>bizx-maven</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+                </snapshotRepository>
+                <repository>
+                    <id>bizx-maven</id>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
@@ -274,12 +198,14 @@
                         </configuration>
                     </plugin>
 
+                    <!-- Source -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>2.2.1</version>
+                        <version>3.0.1</version>
                         <executions>
                             <execution>
+                                <id>attach-sources</id>
                                 <phase>package</phase>
                                 <goals>
                                     <goal>jar-no-fork</goal>
@@ -315,19 +241,19 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-source-plugin</artifactId>
-                        <version>3.0.1</version>
-                        <executions>
-                            <execution>
-                                <id>attach-sources</id>
-                                <goals>
-                                    <goal>jar-no-fork</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
+<!--                    <plugin>-->
+<!--                        <groupId>org.apache.maven.plugins</groupId>-->
+<!--                        <artifactId>maven-source-plugin</artifactId>-->
+<!--                        <version>3.0.1</version>-->
+<!--                        <executions>-->
+<!--                            <execution>-->
+<!--                                <id>attach-sources</id>-->
+<!--                                <goals>-->
+<!--                                    <goal>jar-no-fork</goal>-->
+<!--                                </goals>-->
+<!--                            </execution>-->
+<!--                        </executions>-->
+<!--                    </plugin>-->
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -364,16 +290,7 @@
 
                 </plugins>
             </build>
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>bizx-maven</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
-                </snapshotRepository>
-                <repository>
-                    <id>bizx-maven</id>
-                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
+
         </profile>
     </profiles>
 
