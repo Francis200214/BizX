@@ -12,7 +12,7 @@ import org.springframework.context.annotation.DependsOn;
  * 当属性"biz.cache.caffeine-cache"为true时，此配置类生效。
  *
  * @author francis
- * @create: 2023-08-19 15:08
+ * @since 2023-08-19 15:08
  **/
 @ConditionalOnProperty(value = "biz.cache.caffeine-cache", havingValue = "true")
 public class BizCaffeineCacheConfiguration {

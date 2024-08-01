@@ -4,7 +4,7 @@ package com.biz.web.log.store;
  * 当前用户存储
  *
  * @author francis
- * @create 2024-07-04 17:40
+ * @since 2024-07-04 17:40
  **/
 public interface LocalUserStoreService {
 

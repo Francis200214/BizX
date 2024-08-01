@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentMap;
  * 该管理者只在属性“biz.cache.caffeine-cache”为true时被条件化地启用。
  *
  * @author francis
- * @create: 2023-08-21 11:28
+ * @since 2023-08-21 11:28
  **/
 @ConditionalOnProperty(value = "biz.cache.caffeine-cache", havingValue = "true")
 public class BizCaffeineCacheLocalManager implements BizCaffeineCacheManager {

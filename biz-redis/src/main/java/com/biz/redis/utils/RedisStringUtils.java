@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * Redis String Utils
  *
  * @author francis
- * @create 2024-04-02 17:16
+ * @since 2024-04-02 17:16
  **/
 @Slf4j
 @RequiredArgsConstructor

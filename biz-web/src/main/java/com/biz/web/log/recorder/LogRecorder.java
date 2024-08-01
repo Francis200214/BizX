@@ -21,7 +21,7 @@ import java.util.Map;
  * 日志记录器
  *
  * @author francis
- * @create 2024-05-31 16:30
+ * @since 2024-05-31 16:30
  **/
 @Slf4j
 public class LogRecorder implements ApplicationContextAware {

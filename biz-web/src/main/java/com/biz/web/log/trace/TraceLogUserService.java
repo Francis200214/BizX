@@ -5,7 +5,7 @@ package com.biz.web.log.trace;
  * 日志跟踪用户信息服务
  *
  * @author francis
- * @create 2024-07-02 13:52
+ * @since 2024-07-02 13:52
  **/
 public interface TraceLogUserService {
 

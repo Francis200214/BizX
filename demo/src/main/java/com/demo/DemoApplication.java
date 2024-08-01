@@ -10,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author francis
- * @create: 2023-04-17 09:09
+ * @since 2023-04-17 09:09
  **/
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.**"})

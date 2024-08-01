@@ -4,7 +4,7 @@ package com.biz.web.log.store;
  * 日志追踪存储
  *
  * @author francis
- * @create 2024-07-04 16:32
+ * @since 2024-07-04 16:32
  **/
 public interface TraceStoreService {
 

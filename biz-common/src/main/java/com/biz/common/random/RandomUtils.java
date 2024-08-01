@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * 包括生成整数、浮点数、布尔值、随机字符串等方法。
  *
  * @author francis
- * @create: 2023-04-17 17:04
+ * @since 2023-04-17 17:04
  **/
 @Slf4j
 public final class RandomUtils {

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * RabbitMQ 请求消息实体
  *
  * @author francis
- * @create: 2023-08-18 15:07
+ * @since 2023-08-18 15:07
  **/
 @Setter
 @Getter

@@ -8,7 +8,7 @@ import java.util.List;
  * BizCaffeineCache 缓存加载器
  *
  * @author francis
- * @create: 2023-08-21 09:46
+ * @since 2023-08-21 09:46
  **/
 public interface BizCaffeineCacheLoader {
 

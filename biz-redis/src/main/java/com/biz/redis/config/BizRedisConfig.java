@@ -17,7 +17,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * Redis 配置
  *
  * @author francis
- * @create 2024-04-02 08:28
+ * @since 2024-04-02 08:28
  **/
 @Configuration
 public class BizRedisConfig {

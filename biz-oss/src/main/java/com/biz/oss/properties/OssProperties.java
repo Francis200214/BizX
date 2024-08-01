@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 配置文件实体
  *
  * @author francis
- * @create: 2023-04-21 11:19
+ * @since 2023-04-21 11:19
  **/
 @Setter
 @Getter

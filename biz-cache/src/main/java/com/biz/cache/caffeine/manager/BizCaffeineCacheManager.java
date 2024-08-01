@@ -8,7 +8,7 @@ import java.util.Collection;
  * CaffeineCache 管理器接口，用于提供对多个 CaffeineCache 实例的集中管理功能。
  *
  * @author francis
- * @create: 2023-08-21 11:27
+ * @since 2023-08-21 11:27
  **/
 public interface BizCaffeineCacheManager {
 

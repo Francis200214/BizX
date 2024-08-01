@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * 日志类型处理
  *
  * @author francis
- * @create 2024-05-31 16:29
+ * @since 2024-05-31 16:29
  **/
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

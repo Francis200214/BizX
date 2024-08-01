@@ -4,7 +4,7 @@ package com.biz.web.error;
  * 异常接口
  *
  * @author francis
- * @create: 2023-05-08 18:10
+ * @since 2023-05-08 18:10
  **/
 public interface ErrorBaseInterface {
 

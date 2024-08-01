@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
  * 4. exchange到queue失败,则回调return
  *
  * @author francis
- * @create: 2023-08-18 15:00
+ * @since 2023-08-18 15:00
  **/
 @Slf4j
 @Configuration

@@ -9,7 +9,7 @@ import java.lang.reflect.Field;
  * 通过反射获得Class的属性信息实体
  *
  * @author francis
- * @create 2023/4/2 10:04
+ * @since 2023/4/2 10:04
  */
 @Setter
 @Getter

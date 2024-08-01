@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Async;
  * 默认操作日志推送接口
  *
  * @author francis
- * @create 2024-07-23 10:27
+ * @since 2024-07-23 10:27
  **/
 public interface DefaultOperationLogHandler {
 

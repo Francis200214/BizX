@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * 日志追踪
  *
  * @author francis
- * @create 2024-07-04 17:11
+ * @since 2024-07-04 17:11
  **/
 @Slf4j
 public class TraceInterceptor implements HandlerInterceptor, ApplicationContextAware, Ordered {

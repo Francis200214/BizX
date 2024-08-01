@@ -21,7 +21,7 @@ import org.springframework.context.annotation.Configuration;
  * OSS 自动配置
  *
  * @author francis
- * @create: 2023-04-21 13:22
+ * @since 2023-04-21 13:22
  **/
 @Configuration
 @ConditionalOnProperty(prefix = "biz.oss", name = {"endpoint", "accessKey", "secretKey"})

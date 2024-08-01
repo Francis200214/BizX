@@ -10,7 +10,7 @@ import java.util.Collection;
  * 检查 Collection 是否为空 具体实现
  *
  * @author francis
- * @create: 2023-04-08 16:45
+ * @since 2023-04-08 16:45
  **/
 
 public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStrategy {

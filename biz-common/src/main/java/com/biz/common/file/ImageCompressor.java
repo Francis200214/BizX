@@ -12,7 +12,7 @@ import java.nio.file.Files;
  * 基于 thumbnailator 技术进行Api封装的工具类
  *
  * @author francis
- * @create 2024-05-29 19:40
+ * @since 2024-05-29 19:40
  **/
 @Slf4j
 public class ImageCompressor {

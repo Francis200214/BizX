@@ -11,7 +11,7 @@ import org.springframework.context.annotation.PropertySource;
  * Token 配置实体
  *
  * @author francis
- * @create: 2023-04-22 13:15
+ * @since 2023-04-22 13:15
  **/
 @Setter
 @Getter

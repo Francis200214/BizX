@@ -12,7 +12,7 @@ import java.util.Random;
  * BizBanner 打印
  *
  * @author francis
- * @create 2024-06-23 17:33
+ * @since 2024-06-23 17:33
  **/
 @Slf4j
 public final class BizBanner {

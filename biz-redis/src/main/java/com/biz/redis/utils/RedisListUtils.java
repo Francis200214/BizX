@@ -12,7 +12,7 @@ import java.util.Optional;
  * Redis List Utils
  *
  * @author francis
- * @create 2024-04-02 17:17
+ * @since 2024-04-02 17:17
  **/
 @Slf4j
 @RequiredArgsConstructor

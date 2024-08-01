@@ -6,7 +6,7 @@ import java.lang.annotation.Annotation;
  * 入参检查
  *
  * @author francis
- * @create: 2023-04-08 16:25
+ * @since 2023-04-08 16:25
  **/
 public interface CheckParameterStrategy {
 

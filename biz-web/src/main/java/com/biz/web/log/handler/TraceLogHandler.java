@@ -4,7 +4,7 @@ package com.biz.web.log.handler;
  * 日志处理器
  *
  * @author francis
- * @create 2024-05-31 16:28
+ * @since 2024-05-31 16:28
  **/
 public interface TraceLogHandler {
 

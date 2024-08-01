@@ -4,7 +4,7 @@ package com.biz.common.id;
  * 雪花ID生成器的帮助类，提供雪花ID的创建和配置。
  *
  * @author francis
- * @create: 2023-07-09 09:52
+ * @since 2023-07-09 09:52
  **/
 public class SnowflakeHelper {
 

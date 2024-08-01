@@ -11,7 +11,7 @@ import java.util.Base64;
  * 该类提供生成JWT密钥Key的工具方法。
  *
  * @author francis
- * @create: 2024-01-04 13:37
+ * @since 2024-01-04 13:37
  **/
 public final class KeyUtils {
 

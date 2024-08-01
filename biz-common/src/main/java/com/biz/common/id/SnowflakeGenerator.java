@@ -8,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 使用Snowflake算法，基于时间戳、机器ID和序列号生成ID。
  *
  * @author francis
- * @create 2023-07-09 09:49
+ * @since 2023-07-09 09:49
  **/
 public class SnowflakeGenerator {
 

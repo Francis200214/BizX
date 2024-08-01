@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContextAware;
  * 默认存储实现
  *
  * @author francis
- * @create 2024-07-04 16:34
+ * @since 2024-07-04 16:34
  **/
 @Slf4j
 public class DefaultTraceStoreService implements TraceStoreService, ApplicationContextAware {

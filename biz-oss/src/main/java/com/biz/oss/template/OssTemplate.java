@@ -11,7 +11,7 @@ import java.util.List;
  * OSS 操作模板
  *
  * @author francis
- * @create: 2023-04-21 11:27
+ * @since 2023-04-21 11:27
  **/
 public interface OssTemplate {
 

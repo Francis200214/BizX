@@ -22,7 +22,7 @@ import java.util.Set;
  * 检查用户权限
  *
  * @author francis
- * @create: 2023-05-09 18:45
+ * @since 2023-05-09 18:45
  **/
 @Slf4j
 public class CheckAuthorityInterceptor implements HandlerInterceptor, ApplicationListener<ContextRefreshedEvent>, Ordered {

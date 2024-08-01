@@ -4,7 +4,7 @@ package com.biz.common.date;
  * 时间常量
  *
  * @author francis
- * @create 2024-06-22 11:56
+ * @since 2024-06-22 11:56
  **/
 public final class DateConstant {
 

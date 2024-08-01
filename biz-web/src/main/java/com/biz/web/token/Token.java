@@ -9,7 +9,7 @@ import java.io.Serializable;
  * token
  *
  * @author francis
- * @create: 2023-04-18 08:47
+ * @since 2023-04-18 08:47
  **/
 public interface Token extends Serializable {
 

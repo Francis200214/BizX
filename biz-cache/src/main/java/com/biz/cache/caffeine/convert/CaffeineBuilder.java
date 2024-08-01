@@ -11,7 +11,7 @@ import org.springframework.cache.caffeine.CaffeineCache;
  * 使用Caffeine构建Cache对象
  *
  * @author francis
- * @create: 2023-08-21 14:26
+ * @since 2023-08-21 14:26
  **/
 public class CaffeineBuilder {
 

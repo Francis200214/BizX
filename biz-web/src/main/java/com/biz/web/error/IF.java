@@ -6,7 +6,7 @@ import java.util.function.Supplier;
  * 异常校验器
  *
  * @author francis
- * @create: 2023-05-08 21:06
+ * @since 2023-05-08 21:06
  **/
 public class IF {
 

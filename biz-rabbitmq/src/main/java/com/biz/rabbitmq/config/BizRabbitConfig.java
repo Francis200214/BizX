@@ -13,7 +13,7 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
  * RabbitMQ 配置类
  *
  * @author francis
- * @create: 2023-08-18 13:23
+ * @since 2023-08-18 13:23
  **/
 @Configuration
 public class BizRabbitConfig implements RabbitListenerConfigurer {

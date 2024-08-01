@@ -4,7 +4,7 @@ package com.biz.oss.api;
  * OSS 服务
  *
  * @author francis
- * @create 2024-06-22 11:48
+ * @since 2024-06-22 11:48
  **/
 public interface OSSService {
 

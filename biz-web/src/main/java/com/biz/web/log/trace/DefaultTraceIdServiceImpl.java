@@ -7,7 +7,7 @@ import com.biz.common.id.SnowflakeHelper;
  * 默认日志追踪Id实现
  *
  * @author francis
- * @create 2024-07-04 15:54
+ * @since 2024-07-04 15:54
  **/
 public class DefaultTraceIdServiceImpl implements TraceIdService {
 

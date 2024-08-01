@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * RabbitMQ总配置类
  *
  * @author francis
- * @create: 2023-08-18 15:24
+ * @since 2023-08-18 15:24
  **/
 @Configuration
 @ConditionalOnProperty(name = "biz.rabbitmq.enabled", havingValue = "true")

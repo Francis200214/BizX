@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 获取访问限制缓存
  *
  * @author francis
- * @create: 2023-06-07 16:40
+ * @since 2023-06-07 16:40
  **/
 public interface AccessLimitCatchService {
 

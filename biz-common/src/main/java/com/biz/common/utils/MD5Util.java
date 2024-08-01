@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
  * MD5工具类，提供字符串和文件的MD5加密计算功能。
  *
  * @author francis
- * @create 2024-05-28 11:07
+ * @since 2024-05-28 11:07
  **/
 public class MD5Util {
 

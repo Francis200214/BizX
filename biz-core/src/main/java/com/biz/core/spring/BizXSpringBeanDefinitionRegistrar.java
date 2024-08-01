@@ -16,7 +16,7 @@ import org.springframework.core.type.filter.AnnotationTypeFilter;
  * Spring bean definition
  *
  * @author francis
- * @create: 2023-04-05 13:46
+ * @since 2023-04-05 13:46
  **/
 @Slf4j
 public class BizXSpringBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware {

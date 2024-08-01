@@ -24,7 +24,7 @@ import java.lang.reflect.Method;
  * 当接口上带有 X 注解时，判断接口入参Header中的token值是否在该系统中存在
  *
  * @author francis
- * @create 2023/4/1 16:29
+ * @since 2023/4/1 16:29
  */
 @Slf4j
 public class CheckTokenHandlerInterceptor implements HandlerInterceptor, ApplicationListener<ContextRefreshedEvent>, Ordered {
