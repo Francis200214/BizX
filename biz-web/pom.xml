@@ -5,13 +5,13 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.7</version>
+        <version>1.4.11</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-web</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.7</version>
+    <version>1.4.11</version>
     <packaging>jar</packaging>
 
 
@@ -19,13 +19,13 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-cache</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
@@ -44,6 +44,12 @@
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -1,6 +1,7 @@
 package com.biz.web.log.store;
 
 import com.biz.common.utils.Common;
+import com.biz.web.log.trace.DefaultTraceIdServiceImpl;
 import com.biz.web.log.trace.TraceIdService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
@@ -52,6 +53,7 @@ public class DefaultTraceStoreService implements TraceStoreService, ApplicationC
             traceIdService = applicationContext.getBean(TraceIdService.class);
         } catch (Exception e) {
             log.error("获取 TraceId Bean 失败", e);
+            traceIdService = new DefaultTraceIdServiceImpl();
         }
     }
 

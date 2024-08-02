@@ -5,20 +5,20 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.7</version>
+        <version>1.4.11</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-core</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.7</version>
+    <version>1.4.11</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>

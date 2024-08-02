@@ -5,14 +5,14 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.7</version>
+        <version>1.4.11</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-all</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.7</version>
+    <version>1.4.11</version>
 
     <packaging>jar</packaging>
 
@@ -22,44 +22,43 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-cache</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-core</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-oss</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-rabbitmq</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-redis</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
-
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-web</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
     </dependencies>

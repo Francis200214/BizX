@@ -24,12 +24,6 @@ public class ApplicationContextAwareUtils implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        if (applicationContext == null) {
-            if (log.isDebugEnabled()) {
-                log.error("试图设置一个空的ApplicationContext");
-            }
-            throw new IllegalArgumentException("applicationContext不能为null");
-        }
         if (ApplicationContextAwareUtils.applicationContext != null) {
             log.warn("ApplicationContext已经被设置，此次设置将覆盖之前的实例");
         }

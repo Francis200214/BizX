@@ -1,6 +1,6 @@
 # Auto Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.biz.rabbitmq.BizRabbitMQConfiguration
+com.biz.rabbitmq.BizAMQPConfiguration
 
 
 

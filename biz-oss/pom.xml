@@ -6,12 +6,12 @@
     <parent>
         <groupId>io.github.francis200214</groupId>
         <artifactId>BizX</artifactId>
-        <version>1.4.7</version>
+        <version>1.4.11</version>
     </parent>
 
     <artifactId>biz-oss</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.7</version>
+    <version>1.4.11</version>
     <packaging>jar</packaging>
     <description>biz-oss模块，是基于AmazonS3协议，实现开箱即用的oss服务</description>
 
@@ -26,7 +26,7 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>

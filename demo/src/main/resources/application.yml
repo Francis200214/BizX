@@ -4,6 +4,7 @@ server:
 spring:
   main:
     allow-circular-references: true
+    allow-bean-definition-overriding: true
   redis:
     jedis:
       pool:
@@ -13,6 +14,12 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
 
 biz:
   interceptor:
@@ -28,6 +35,8 @@ biz:
   cache:
     redis-cache: true
   log:
+    enable: true
+  rabbitmq:
     enable: true
 user:
   names: "张三"

@@ -5,22 +5,38 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.7</version>
+        <version>1.4.11</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>demo</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.7</version>
+    <version>1.4.11</version>
     <packaging>jar</packaging>
 
 
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--AMQP依赖，包含RabbitMQ-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-all</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.4.11</version>
         </dependency>
 
         <dependency>

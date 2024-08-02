@@ -1,5 +1,7 @@
 package com.biz.web.interceptor;
 
+import com.biz.common.bean.BizXBeanUtils;
+import com.biz.web.log.store.DefaultTraceStoreService;
 import com.biz.web.log.store.TraceStoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.MDC;
@@ -21,9 +23,18 @@ import javax.servlet.http.HttpServletResponse;
  * @since 2024-07-04 17:11
  **/
 @Slf4j
-public class TraceInterceptor implements HandlerInterceptor, ApplicationContextAware, Ordered {
+public class TraceInterceptor implements HandlerInterceptor, Ordered {
 
     private TraceStoreService traceStoreService;
+
+    public TraceInterceptor() {
+        try {
+            this.traceStoreService = BizXBeanUtils.getBean(TraceStoreService.class);
+        } catch (Exception e) {
+            log.warn("TraceStoreService not found, use DefaultTraceStoreService");
+            this.traceStoreService = new DefaultTraceStoreService();
+        }
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,9 +57,5 @@ public class TraceInterceptor implements HandlerInterceptor, ApplicationContextA
         return 99;
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.traceStoreService = applicationContext.getBean(TraceStoreService.class);
-    }
 
 }

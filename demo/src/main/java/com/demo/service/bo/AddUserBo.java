@@ -1,8 +1,6 @@
 package com.demo.service.bo;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * 添加用户信息
@@ -13,6 +11,9 @@ import lombok.ToString;
 @Setter
 @Getter
 @ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class AddUserBo {
 
     /**
