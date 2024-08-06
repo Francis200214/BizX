@@ -21,6 +21,7 @@
         <module>biz-cache</module>
         <module>biz-rabbitmq</module>
         <module>biz-redis</module>
+        <module>biz-verification</module>
     </modules>
 
 
