@@ -1,13 +1,16 @@
 package com.biz.rabbitmq.config;
 
+import com.biz.common.bean.BizXBeanUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +24,12 @@ import org.springframework.util.StringUtils;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+@Slf4j
 @Configuration
-public class DynamicRabbitMQConfig implements ApplicationListener<ContextRefreshedEvent> {
+public class DynamicRabbitMQConfig implements ApplicationListener<ContextRefreshedEvent>, ApplicationContextAware {
 
-    @Autowired
     private RabbitAdmin rabbitAdmin;
 
-    @Autowired
     private ApplicationContext applicationContext;
 
 
@@ -71,5 +73,15 @@ public class DynamicRabbitMQConfig implements ApplicationListener<ContextRefresh
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         createQueuesAndBindings();
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+        try {
+            this.rabbitAdmin = BizXBeanUtils.getBean(RabbitAdmin.class);
+        } catch (Exception e) {
+            log.error("获取RabbitAdmin失败", e);
+        }
     }
 }

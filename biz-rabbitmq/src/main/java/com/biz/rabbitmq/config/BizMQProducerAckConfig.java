@@ -34,6 +34,8 @@ import org.springframework.context.annotation.Configuration;
  * </ul>
  * </p>
  *
+ * @author francis
+ * @version 1.4.11
  * @see RabbitTemplate.ConfirmCallback
  * @see RabbitTemplate.ReturnCallback
  * @see RabbitTemplate
@@ -44,8 +46,6 @@ import org.springframework.context.annotation.Configuration;
  * @see Configuration
  * @see ApplicationContextAware
  * @since 2023-08-18
- * @version 1.4.11
- * @author francis
  */
 @Slf4j
 @Configuration
@@ -82,24 +82,11 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
     }
 
     /**
-     * 配置RabbitAdmin，用于管理RabbitMQ相关信息。
-     *
-     * @param createConnectionFactory 连接工厂实例
-     * @return 配置完成的RabbitAdmin实例
-     */
-    @Bean
-    public RabbitAdmin rabbitAdmin(final ConnectionFactory createConnectionFactory) {
-        RabbitAdmin rabbitAdmin = new RabbitAdmin(createConnectionFactory);
-        rabbitAdmin.setAutoStartup(true);
-        return rabbitAdmin;
-    }
-
-    /**
      * 消息确认回调方法。只保证消息到达Exchange，不保证消息可以路由到正确的Queue。
      *
      * @param correlationData 相关数据
-     * @param ack 确认标志
-     * @param cause 原因
+     * @param ack             确认标志
+     * @param cause           原因
      */
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {
@@ -116,10 +103,10 @@ public class BizMQProducerAckConfig implements RabbitTemplate.ConfirmCallback, R
     /**
      * Return消息回调方法。处理不可路由的消息。
      *
-     * @param message 消息实例
-     * @param replyCode 回复码
-     * @param replyText 回复文本
-     * @param exchange 交换器
+     * @param message    消息实例
+     * @param replyCode  回复码
+     * @param replyText  回复文本
+     * @param exchange   交换器
      * @param routingKey 路由键
      */
     @Override

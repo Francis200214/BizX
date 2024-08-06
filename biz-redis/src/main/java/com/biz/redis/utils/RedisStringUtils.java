@@ -8,56 +8,70 @@ import org.springframework.data.redis.core.ValueOperations;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Redis String Utils
+ * Redis String Utils 提供对Redis字符串（String）数据结构的常用操作方法。
+ * 包括获取和设置字符串值、设置带过期时间的值、以及对值进行递增和递减操作等。
  *
+ * <p>该类依赖于{@link ValueOperations}和{@link RedisCommonUtils}。</p>
+ *
+ * <pre>
+ * 示例：
+ * RedisStringUtils redisStringUtils = new RedisStringUtils(valueOperations, redisCommonUtils);
+ * redisStringUtils.set("key", value);
+ * </pre>
+ *
+ * <p>注意：所有操作均假定键和值不为null，且对于可能出现的异常进行了日志记录。</p>
+ *
+ * @see ValueOperations
+ * @see RedisCommonUtils
+ * @see <a href="https://redis.io/commands#string">Redis String Commands</a>
  * @author francis
- * @since 2024-04-02 17:16
- **/
+ * @version 1.4.11
+ * @since 2024-04-02
+ */
 @Slf4j
 @RequiredArgsConstructor
 public class RedisStringUtils {
 
     private final ValueOperations<String, Object> valueOperations;
-
     private final RedisCommonUtils redisCommonUtils;
 
-
     /**
-     * 普通缓存获取
+     * 获取缓存中的值。
      *
-     * @param key 键
-     * @return 值
+     * @param key 缓存键，不能为空
+     * @return 缓存中的值
+     * @see ValueOperations#get(Object)
      */
     public Object get(@NonNull String key) {
         return valueOperations.get(key);
     }
 
     /**
-     * 普通缓存放入
+     * 将值放入缓存中。
      *
-     * @param key   键
-     * @param value 值
-     * @return true成功 false失败
+     * @param key   缓存键，不能为空
+     * @param value 缓存中的值，不能为空
+     * @return true表示成功，false表示失败
+     * @see ValueOperations#set(Object, Object)
      */
     public boolean set(@NonNull String key, @NonNull Object value) {
         try {
             valueOperations.set(key, value);
             return true;
-
         } catch (Exception e) {
-            log.error("普通缓存放入 error {}", e.getMessage(), e);
+            log.error("将值放入缓存中时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * 普通缓存放入并设置时间
+     * 将值放入缓存中，并设置过期时间。
      *
-     * @param key   键
-     * @param value 值
-     * @param time  时间(秒) time要大于0 如果time小于等于0 将设置无限期
-     * @return true成功 false 失败
+     * @param key   缓存键，不能为空
+     * @param value 缓存中的值，不能为空
+     * @param time  过期时间（秒），time要大于0，如果time小于等于0，将设置为无限期
+     * @return true表示成功，false表示失败
+     * @see ValueOperations#set(Object, Object, long, TimeUnit)
      */
     public boolean set(@NonNull String key, @NonNull Object value, long time) {
         try {
@@ -67,64 +81,57 @@ public class RedisStringUtils {
                 set(key, value);
             }
             return true;
-
         } catch (Exception e) {
-            log.error("普通缓存放入并设置时间 出现异常 error {}", e.getMessage(), e);
+            log.error("将值放入缓存并设置过期时间时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * 递增
+     * 递增缓存中的值。
      *
-     * @param key   键
-     * @param delta 要增加几(大于0)
-     * @return 返回 Null 则表示 Value 不是数字类型
+     * @param key   缓存键，不能为空
+     * @param delta 要增加的值，必须大于0
+     * @return 增加后的值，返回null则表示值不是数字类型
+     * @throws RuntimeException 如果delta小于等于0或key不存在
+     * @see ValueOperations#increment(Object, long)
      */
-    public Long incr(@NonNull String key, long delta) {
+    public Long increment(@NonNull String key, long delta) {
         if (delta <= 0) {
             throw new RuntimeException("递增因子必须大于0");
         }
-        if (!redisCommonUtils.hasKey(key)) {
+        if (!redisCommonUtils.exists(key)) {
             throw new RuntimeException("key不存在");
         }
-
         try {
             return valueOperations.increment(key, delta);
-
         } catch (Exception e) {
-            log.error("递增 error {}", e.getMessage(), e);
+            log.error("递增时发生异常 error {}", e.getMessage(), e);
         }
-
         return null;
     }
 
     /**
-     * 递减
+     * 递减缓存中的值。
      *
-     * @param key   键
-     * @param delta 要减少几(小于0)
-     * @return
+     * @param key   缓存键，不能为空
+     * @param delta 要减少的值，必须大于0
+     * @return 减少后的值，返回null则表示值不是数字类型
+     * @throws RuntimeException 如果delta小于等于0或key不存在
+     * @see ValueOperations#decrement(Object, long)
      */
-    public Long decr(@NonNull String key, long delta) {
-        if (delta < 0) {
+    public Long decrement(@NonNull String key, long delta) {
+        if (delta <= 0) {
             throw new RuntimeException("递减因子必须大于0");
         }
-
-        if (!redisCommonUtils.hasKey(key)) {
+        if (!redisCommonUtils.exists(key)) {
             throw new RuntimeException("key不存在");
         }
-
         try {
             return valueOperations.decrement(key, delta);
-
         } catch (Exception e) {
-            log.error("递减 error {}", e.getMessage(), e);
+            log.error("递减时发生异常 error {}", e.getMessage(), e);
         }
-
         return null;
     }
-
-
 }

@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class SimpleQueueConsumer {
 
-    @RabbitListener(queues = SimpleQueueConstant.SIMPLE_QUEUE)
-    public void listenSimpleQueueMessage(AddUserBo msg) throws InterruptedException {
-        log.info("simple queue message: {}", msg);
-    }
-
-    @RabbitListener(queues = SimpleQueueConstant.SIMPLE_QUEUE1)
-    public void listenSimpleQueue1Message(AddUserBo msg) throws InterruptedException {
-        log.info("simple queue1 message: {}", msg);
-    }
+//    @RabbitListener(queues = SimpleQueueConstant.SIMPLE_QUEUE, autoStartup = "true")
+//    public void listenSimpleQueueMessage(AddUserBo msg) throws InterruptedException {
+//        log.info("simple queue message: {}", msg);
+//    }
+//
+//    @RabbitListener(queues = SimpleQueueConstant.SIMPLE_QUEUE1, autoStartup = "true")
+//    public void listenSimpleQueue1Message(AddUserBo msg) throws InterruptedException {
+//        log.info("simple queue1 message: {}", msg);
+//    }
 
 }

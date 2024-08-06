@@ -21,6 +21,8 @@ spring:
     password: guest
     virtual-host: /
 
+
+
 biz:
   interceptor:
     access: true
@@ -37,10 +39,9 @@ biz:
   log:
     enable: true
   rabbitmq:
-    enable: true
-user:
-  names: "张三"
-  age: 18
-  hobbies:
-    - "看书"
-    - "写代码"
+    enable: false
+
+
+
+
+

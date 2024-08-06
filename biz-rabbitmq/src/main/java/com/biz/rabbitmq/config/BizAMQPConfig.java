@@ -1,6 +1,8 @@
 package com.biz.rabbitmq.config;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListenerConfigurer;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.listener.RabbitListenerEndpointRegistrar;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,8 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
  * 用于配置RabbitMQ监听器端点的消息处理工厂。
  * </p>
  *
+ * @author francis
+ * @version 1.4.11
  * @see RabbitListenerConfigurer
  * @see Jackson2JsonMessageConverter
  * @see MappingJackson2MessageConverter
@@ -23,12 +27,24 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
  * @see MessageHandlerMethodFactory
  * @see RabbitListenerEndpointRegistrar
  * @see Configuration
- * @author francis
  * @since 2023-08-18 13:23
- * @version 1.4.11
  **/
 @Configuration
 public class BizAMQPConfig implements RabbitListenerConfigurer {
+
+
+    /**
+     * 配置RabbitAdmin，用于管理RabbitMQ相关信息。
+     *
+     * @param createConnectionFactory 连接工厂实例
+     * @return 配置完成的RabbitAdmin实例
+     */
+    @Bean
+    public RabbitAdmin rabbitAdmin(final ConnectionFactory createConnectionFactory) {
+        RabbitAdmin rabbitAdmin = new RabbitAdmin(createConnectionFactory);
+        rabbitAdmin.setAutoStartup(true);
+        return rabbitAdmin;
+    }
 
     /**
      * 创建用于将Java对象转换为JSON格式的消息转换器。

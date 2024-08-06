@@ -3,173 +3,185 @@ package com.biz.redis.utils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
 /**
  * Redis Map Utils
+ * <p>提供对Redis哈希（Hash）数据结构的常用操作方法，包括获取和设置哈希值、删除哈希项、判断哈希项是否存在以及哈希值的递增和递减操作等。</p>
  *
+ * <p>该类依赖于{@link HashOperations}和{@link RedisCommonUtils}。</p>
+ *
+ * <pre>
+ * 示例：
+ * RedisMapUtils redisMapUtils = new RedisMapUtils(hashOperations, redisCommonUtils);
+ * redisMapUtils.hset("key", "item", value);
+ * </pre>
+ *
+ * <p>注意：所有操作均假定键和项不为null，且对于可能出现的异常进行了日志记录。</p>
+ *
+ * @see HashOperations
+ * @see RedisCommonUtils
+ * @see <a href="https://redis.io/commands#hash">Redis Hash Commands</a>
  * @author francis
- * @since 2024-04-02 17:16
- **/
+ * @version 1.4.11
+ * @since 2024-04-02
+ */
 @Slf4j
 @RequiredArgsConstructor
 public class RedisMapUtils {
 
     private final HashOperations<String, String, Object> hashOperations;
-
     private final RedisCommonUtils redisCommonUtils;
 
-
     /**
-     * HashGet
+     * 获取哈希表中的某个值。
      *
-     * @param key  键 不能为null
-     * @param item 项 不能为null
-     * @return 值
+     * @param key  哈希表的键，不能为空
+     * @param item 哈希表项的键，不能为空
+     * @return 哈希表中的值
+     * @see HashOperations#get(Object, Object)
      */
     public Object hget(@NonNull String key, @NonNull String item) {
         return hashOperations.get(key, item);
     }
 
     /**
-     * 获取hashKey对应的所有键值
+     * 获取哈希表中所有的键值对。
      *
-     * @param key 键
-     * @return 对应的多个键值
+     * @param key 哈希表的键，不能为空
+     * @return 哈希表中所有的键值对
+     * @see HashOperations#entries(Object)
      */
     public Map<String, Object> hmget(@NonNull String key) {
         return hashOperations.entries(key);
     }
 
     /**
-     * 往某一个 key 中插入多条数据
+     * 向哈希表中添加多个键值对。
      *
-     * @param key 键
-     * @param map 对应多个键值
-     * @return true 成功 false 失败
+     * @param key 哈希表的键，不能为空
+     * @param map 键值对映射，不能为空
+     * @return true表示成功，false表示失败
+     * @see HashOperations#putAll(Object, Map)
      */
     public boolean hmset(@NonNull String key, @NonNull Map<String, Object> map) {
         try {
             hashOperations.putAll(key, map);
             return true;
-
         } catch (Exception e) {
-            log.error("error {}", e.getMessage(), e);
+            log.error("向哈希表中添加多个键值对时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * hash 并设置时间
+     * 向哈希表中添加多个键值对，并设置过期时间。
      *
-     * @param key  键
-     * @param map  对应多个键值
-     * @param time 时间(秒)
-     * @return true成功 false失败
+     * @param key  哈希表的键，不能为空
+     * @param map  键值对映射，不能为空
+     * @param time 过期时间（秒）
+     * @return true表示成功，false表示失败
+     * @see HashOperations#putAll(Object, Map)
      */
     public boolean hmset(@NonNull String key, @NonNull Map<String, Object> map, long time) {
         try {
             hashOperations.putAll(key, map);
-            redisCommonUtils.expire(key, time);
+            redisCommonUtils.setExpire(key, time);
             return true;
-
         } catch (Exception e) {
-            log.error("HashSet设置时间 出现异常 error {}", e.getMessage(), e);
+            log.error("向哈希表中添加多个键值对并设置过期时间时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * 向一张hash表中放入数据,如果不存在将创建
+     * 向哈希表中添加一个键值对，如果不存在将创建。
      *
-     * @param key   键
-     * @param item  项
-     * @param value 值
-     * @return true 成功 false失败
+     * @param key   哈希表的键，不能为空
+     * @param item  哈希表项的键，不能为空
+     * @param value 哈希表中的值，不能为空
+     * @return true表示成功，false表示失败
+     * @see HashOperations#put(Object, Object, Object)
      */
     public boolean hset(@NonNull String key, @NonNull String item, @NonNull Object value) {
         try {
             hashOperations.put(key, item, value);
             return true;
-
         } catch (Exception e) {
-            log.error("向一张hash表中放入数据,如果不存在将创建 出现异常 error {}", e.getMessage(), e);
+            log.error("向哈希表中添加一个键值对时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * 向一张hash表中放入数据,如果不存在将创建
+     * 向哈希表中添加一个键值对，并设置过期时间。
      *
-     * @param key   键
-     * @param item  项
-     * @param value 值
-     * @param time  时间(秒) 注意:如果已存在的hash表有时间,这里将会替换原有的时间
-     * @return true 成功 false失败
+     * @param key   哈希表的键，不能为空
+     * @param item  哈希表项的键，不能为空
+     * @param value 哈希表中的值，不能为空
+     * @param time  过期时间（秒）
+     * @return true表示成功，false表示失败
+     * @see HashOperations#put(Object, Object, Object)
      */
     public boolean hset(@NonNull String key, @NonNull String item, @NonNull Object value, long time) {
         try {
             hashOperations.put(key, item, value);
-            redisCommonUtils.expire(key, time);
+            redisCommonUtils.setExpire(key, time);
             return true;
-
         } catch (Exception e) {
-            log.error("向一张hash表中放入数据,如果不存在将创建 出现异常 error {}", e.getMessage(), e);
+            log.error("向哈希表中添加一个键值对并设置过期时间时发生异常 error {}", e.getMessage(), e);
         }
-
         return false;
     }
 
     /**
-     * 删除hash表中的值
+     * 删除哈希表中的值。
      *
-     * @param key  键 不能为null
-     * @param item 项 可以使多个 不能为null
+     * @param key  哈希表的键，不能为空
+     * @param item 哈希表项的键，可以为多个，不能为空
+     * @see HashOperations#delete(Object, Object...)
      */
     public void delete(@NonNull String key, @NonNull Object... item) {
         hashOperations.delete(key, item);
     }
 
     /**
-     * 判断hash表中是否有该项的值
+     * 判断哈希表中是否存在某个项的值。
      *
-     * @param key  键 不能为null
-     * @param item 项 不能为null
-     * @return true 存在 false不存在
+     * @param key  哈希表的键，不能为空
+     * @param item 哈希表项的键，不能为空
+     * @return true表示存在，false表示不存在
+     * @see HashOperations#hasKey(Object, Object)
      */
     public boolean hasKey(@NonNull String key, @NonNull String item) {
         return hashOperations.hasKey(key, item);
     }
 
     /**
-     * hash递增 如果不存在,就会创建一个 并把新增后的值返回
+     * 哈希值递增操作，如果不存在，将创建一个新的哈希项。
      *
-     * @param key  键
-     * @param item 项
-     * @param by   要增加几(大于0)
-     * @return
+     * @param key  哈希表的键，不能为空
+     * @param item 哈希表项的键，不能为空
+     * @param by   增加的值，必须大于0
+     * @return 增加后的值
+     * @see HashOperations#increment(Object, Object, double)
      */
-    public double incr(@NonNull String key, @NonNull String item, double by) {
+    public double increment(@NonNull String key, @NonNull String item, double by) {
         return hashOperations.increment(key, item, by);
     }
 
     /**
-     * hash递减
+     * 哈希值递减操作。
      *
-     * @param key  键
-     * @param item 项
-     * @param by   要减少记(小于0)
-     * @return
+     * @param key  哈希表的键，不能为空
+     * @param item 哈希表项的键，不能为空
+     * @param by   减少的值，必须小于0
+     * @return 减少后的值
+     * @see HashOperations#increment(Object, Object, double)
      */
-    public double decr(@NonNull String key, @NonNull String item, double by) {
+    public double decrement(@NonNull String key, @NonNull String item, double by) {
         return hashOperations.increment(key, item, -by);
     }
 
