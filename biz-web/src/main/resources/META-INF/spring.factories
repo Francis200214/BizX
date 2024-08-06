@@ -1,7 +1,5 @@
 # Auto Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.biz.web.aop.AbstractBizXCheckParameter,\
-com.biz.web.aop.CheckParameterFactory,\
 com.biz.web.interceptor.BizXWebMvcConfigurer,\
 com.biz.web.token.TokenProperties,\
 com.biz.web.session.AbstractSessionManage,\
