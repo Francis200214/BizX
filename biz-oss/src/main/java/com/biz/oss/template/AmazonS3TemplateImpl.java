@@ -4,110 +4,125 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.*;
 import com.amazonaws.util.IOUtils;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
+ * Amazon S3 操作实现类。
+ * <p>该类提供了对 Amazon S3 的常见操作，包括创建和删除桶、上传和下载对象、获取对象的 URL 等。</p>
+ *
  * @author francis
- * @since 2023-04-21 13:18
- **/
+ * @version 1.4.11
+ * @since 2023-04-21
+ */
 @RequiredArgsConstructor
 public class AmazonS3TemplateImpl implements OssTemplate {
 
     private final AmazonS3 amazonS3;
 
     /**
-     * 创建Bucket
+     * 创建 Bucket。
      *
-     * @param bucketName bucket名称
+     * @param bucketName Bucket 名称
+     * @throws RuntimeException 如果创建 Bucket 失败
      */
     @Override
-    @SneakyThrows
     public void createBucket(String bucketName) {
         if (!amazonS3.doesBucketExistV2(bucketName)) {
-            amazonS3.createBucket((bucketName));
+            amazonS3.createBucket(bucketName);
         }
     }
 
     /**
-     * 获取所有的buckets
+     * 获取所有的 Buckets。
      *
-     * @return
+     * @return 所有的 Buckets
      */
     @Override
-    @SneakyThrows
     public List<Bucket> getAllBuckets() {
         return amazonS3.listBuckets();
     }
 
     /**
-     * 通过Bucket名称删除Bucket
+     * 检查 Bucket 是否存在。
      *
-     * @param bucketName
+     * @param bucketName Bucket 名称
+     * @return true 如果 Bucket 存在，否则返回 false
      */
     @Override
-    @SneakyThrows
+    public boolean bucketExists(String bucketName) {
+        return amazonS3.doesBucketExistV2(bucketName);
+    }
+
+    /**
+     * 删除 Bucket。
+     *
+     * @param bucketName Bucket 名称
+     * @throws RuntimeException 如果删除 Bucket 失败
+     */
+    @Override
     public void removeBucket(String bucketName) {
         amazonS3.deleteBucket(bucketName);
     }
 
     /**
-     * 上传对象
+     * 上传对象。
      *
-     * @param bucketName  bucket名称
+     * @param bucketName  Bucket 名称
      * @param objectName  文件名称
      * @param stream      文件流
      * @param contextType 文件类型
+     * @throws RuntimeException 如果上传对象失败
      */
     @Override
-    @SneakyThrows
-    public void putObject(String bucketName, String objectName, InputStream stream, String contextType) {
+    public void putObject(String bucketName, String objectName, InputStream stream, String contextType) throws IOException {
         this.putObject(bucketName, objectName, stream, stream.available(), contextType);
     }
 
     /**
-     * 上传对象
+     * 上传对象。
      *
-     * @param bucketName bucket名称
+     * @param bucketName Bucket 名称
      * @param objectName 文件名称
      * @param stream     文件流
+     * @throws RuntimeException 如果上传对象失败
      */
     @Override
-    @SneakyThrows
-    public void putObject(String bucketName, String objectName, InputStream stream) {
+    public void putObject(String bucketName, String objectName, InputStream stream) throws IOException {
         this.putObject(bucketName, objectName, stream, stream.available(), "application/octet-stream");
     }
 
     /**
-     * 通过bucketName和objectName获取对象
+     * 获取对象。
      *
-     * @param bucketName bucket名称
+     * @param bucketName Bucket 名称
      * @param objectName 文件名称
-     * @return
+     * @return S3 对象
+     * @throws RuntimeException 如果获取对象失败
      */
     @Override
-    @SneakyThrows
     public S3Object getObject(String bucketName, String objectName) {
         return amazonS3.getObject(bucketName, objectName);
     }
 
     /**
-     * 获取对象的url
+     * 获取对象的 URL。
      *
-     * @param bucketName
-     * @param objectName
-     * @param expires
-     * @return
+     * @param bucketName Bucket 名称
+     * @param objectName 文件名称
+     * @param expires    URL 过期时间（天）
+     * @return 对象的 URL
+     * @throws RuntimeException 如果获取对象 URL 失败
      */
     @Override
-    @SneakyThrows
     public String getObjectURL(String bucketName, String objectName, Integer expires) {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
@@ -118,46 +133,63 @@ public class AmazonS3TemplateImpl implements OssTemplate {
     }
 
     /**
-     * 通过bucketName和objectName删除对象
+     * 获取对象的 URL。
      *
-     * @param bucketName
-     * @param objectName
+     * @param bucketName Bucket 名称
+     * @param objectName 文件名称
+     * @param expires    URL 过期时间
+     * @param timeUnit   时间单位
+     * @return 对象的 URL
+     * @throws RuntimeException 如果获取对象 URL 失败
      */
     @Override
-    @SneakyThrows
+    public String getObjectURL(String bucketName, String objectName, Integer expires, TimeUnit timeUnit) {
+        if (timeUnit != null) {
+            return getObjectURL(bucketName, objectName, (int) timeUnit.toDays(expires));
+        }
+        return "";
+    }
+
+    /**
+     * 删除对象。
+     *
+     * @param bucketName Bucket 名称
+     * @param objectName 文件名称
+     * @throws RuntimeException 如果删除对象失败
+     */
+    @Override
     public void removeObject(String bucketName, String objectName) {
         amazonS3.deleteObject(bucketName, objectName);
     }
 
     /**
-     * 根据bucketName和prefix获取对象集合
+     * 根据前缀获取对象集合。
      *
-     * @param bucketName bucket名称
+     * @param bucketName Bucket 名称
      * @param prefix     前缀
      * @param recursive  是否递归查询
-     * @return
+     * @return 对象集合
+     * @throws RuntimeException 如果获取对象集合失败
      */
     @Override
-    @SneakyThrows
     public List<S3ObjectSummary> getAllObjectsByPrefix(String bucketName, String prefix, boolean recursive) {
         ObjectListing objectListing = amazonS3.listObjects(bucketName, prefix);
         return objectListing.getObjectSummaries();
     }
 
-
     /**
-     * 上传文件
+     * 上传文件。
      *
-     * @param bucketName  bucket名称
+     * @param bucketName  Bucket 名称
      * @param objectName  文件名称
-     * @param stream      stream流
-     * @param size
-     * @param contextType
-     * @return
+     * @param stream      文件流
+     * @param size        文件大小
+     * @param contextType 文件类型
+     * @return 上传结果
+     * @throws RuntimeException 如果上传文件失败
      */
-    @SneakyThrows
     private PutObjectResult putObject(String bucketName, String objectName, InputStream stream, long size,
-                                      String contextType) {
+                                      String contextType) throws IOException {
         byte[] bytes = IOUtils.toByteArray(stream);
         ObjectMetadata objectMetadata = new ObjectMetadata();
         objectMetadata.setContentLength(size);
@@ -165,7 +197,5 @@ public class AmazonS3TemplateImpl implements OssTemplate {
         ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
         // 上传
         return amazonS3.putObject(bucketName, objectName, byteArrayInputStream, objectMetadata);
-
     }
-
 }
