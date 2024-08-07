@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckIsNull;
+import com.biz.verification.annotation.check.BizXCheckIsNull;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,13 +17,13 @@ import java.lang.annotation.Annotation;
 public class CheckParameterIsNullHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckIsNull.class;
+        return BizXCheckIsNull.class;
     }
 
     @Override
     public void check(Annotation annotation, Object o) throws Exception {
-        if (annotation instanceof BizXApiCheckIsNull) {
-            BizXApiCheckIsNull check = Common.to(annotation);
+        if (annotation instanceof BizXCheckIsNull) {
+            BizXCheckIsNull check = Common.to(annotation);
             if (!check.isNull() && isNull(o)) {
                 throw new RuntimeException(check.error().message());
             }

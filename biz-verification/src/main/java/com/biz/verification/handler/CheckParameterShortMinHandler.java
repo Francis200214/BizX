@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckShortMin;
+import com.biz.verification.annotation.check.BizXCheckShortMin;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 public class CheckParameterShortMinHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckShortMin.class;
+        return BizXCheckShortMin.class;
     }
 
     @Override
@@ -26,8 +26,8 @@ public class CheckParameterShortMinHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckShortMin) {
-            BizXApiCheckShortMin check = Common.to(annotation);
+        if (annotation instanceof BizXCheckShortMin) {
+            BizXCheckShortMin check = Common.to(annotation);
             if (o instanceof Short) {
                 Short num = Common.to(o);
                 if (num < check.min()) {

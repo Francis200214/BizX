@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckDoubleMax;
+import com.biz.verification.annotation.check.BizXCheckDoubleMax;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ public class CheckParameterDoubleMaxHandler implements CheckParameterStrategy {
 
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckDoubleMax.class;
+        return BizXCheckDoubleMax.class;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class CheckParameterDoubleMaxHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckDoubleMax) {
-            BizXApiCheckDoubleMax check = Common.to(annotation);
+        if (annotation instanceof BizXCheckDoubleMax) {
+            BizXCheckDoubleMax check = Common.to(annotation);
             if (o instanceof Double) {
                 Double num = Common.to(o);
                 if (num > check.max()) {

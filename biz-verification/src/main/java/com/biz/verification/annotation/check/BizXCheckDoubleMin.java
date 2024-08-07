@@ -6,20 +6,19 @@ import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 import java.lang.annotation.*;
 
 /**
- * 检查是否为Null
+ * 检查 Double 类型最小值
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-//@Constraint(validatedBy = {AbstractCheckStringValidator.class})
-public @interface BizXApiCheckIsNull {
+public @interface BizXCheckDoubleMin {
 
     /**
-     * 是否可以为null
+     * 最小值
      */
-    boolean isNull() default true;
+    double min() default Double.MIN_VALUE;
 
     /**
      * 异常信息

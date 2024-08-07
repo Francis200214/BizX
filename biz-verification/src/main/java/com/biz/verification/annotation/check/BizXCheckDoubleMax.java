@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckDoubleMax {
+public @interface BizXCheckDoubleMax {
 
     /**
      * 最大值

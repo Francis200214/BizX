@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckDoubleMin;
+import com.biz.verification.annotation.check.BizXCheckDoubleMin;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ public class CheckParameterDoubleMinHandler implements CheckParameterStrategy {
 
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckDoubleMin.class;
+        return BizXCheckDoubleMin.class;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class CheckParameterDoubleMinHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckDoubleMin) {
-            BizXApiCheckDoubleMin check = Common.to(annotation);
+        if (annotation instanceof BizXCheckDoubleMin) {
+            BizXCheckDoubleMin check = Common.to(annotation);
             if (o instanceof Double) {
                 Double num = Common.to(o);
                 if (num < check.min()) {

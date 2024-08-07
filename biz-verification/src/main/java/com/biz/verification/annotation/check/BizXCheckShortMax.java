@@ -1,24 +1,23 @@
 package com.biz.verification.annotation.check;
 
-
 import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;
 
 /**
- * 检查 Double 类型最小值
+ * 检查 Short 类型最大值
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckDoubleMin {
+public @interface BizXCheckShortMax {
 
     /**
-     * 最小值
+     * 最大值
      */
-    double min() default Double.MIN_VALUE;
+    short max() default Short.MAX_VALUE;
 
     /**
      * 异常信息

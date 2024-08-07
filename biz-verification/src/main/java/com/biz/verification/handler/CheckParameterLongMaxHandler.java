@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckLongMax;
+import com.biz.verification.annotation.check.BizXCheckLongMax;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 public class CheckParameterLongMaxHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckLongMax.class;
+        return BizXCheckLongMax.class;
     }
 
     @Override
@@ -26,8 +26,8 @@ public class CheckParameterLongMaxHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckLongMax) {
-            BizXApiCheckLongMax check = Common.to(annotation);
+        if (annotation instanceof BizXCheckLongMax) {
+            BizXCheckLongMax check = Common.to(annotation);
             if (o instanceof Long) {
                 Long num = Common.to(o);
                 if (num > check.max()) {

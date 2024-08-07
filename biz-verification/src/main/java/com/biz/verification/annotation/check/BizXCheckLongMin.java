@@ -5,19 +5,19 @@ import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 import java.lang.annotation.*;
 
 /**
- * 检查 Short 类型最大值
+ * 检查 Long 类型最小值
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckShortMax {
+public @interface BizXCheckLongMin {
 
     /**
-     * 最大值
+     * 最小值
      */
-    short max() default Short.MAX_VALUE;
+    long min() default Long.MIN_VALUE;
 
     /**
      * 异常信息

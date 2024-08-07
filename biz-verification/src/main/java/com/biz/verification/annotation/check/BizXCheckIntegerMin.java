@@ -1,24 +1,23 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.common.date.DateConstant;
 import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;
 
 /**
- * 检查时间格式
+ * 检查Integer类型最小值
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckDateTime {
+public @interface BizXCheckIntegerMin {
 
     /**
-     * 时间格式
+     * 最小值
      */
-    String format() default DateConstant.DEFAULT_DATETIME;
+    int min() default Integer.MIN_VALUE;
 
     /**
      * 异常信息

@@ -3,6 +3,7 @@ package com.biz.verification.configuration;
 import com.biz.verification.AbstractBizXCheckParameter;
 import com.biz.verification.condition.CheckScanPackageCondition;
 import com.biz.verification.factory.CheckParameterFactory;
+import com.biz.verification.handler.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +19,12 @@ import org.springframework.context.annotation.Configuration;
  * biz.verification.enabled=true
  * </pre>
  *
+ * @author francis
+ * @version 1.0
  * @see AbstractBizXCheckParameter
  * @see CheckParameterFactory
  * @see CheckScanPackageCondition
- *
- * @version 1.0
  * @since 2024-08-06
- * @author francis
  */
 @ConditionalOnProperty(prefix = "biz.verification", name = "enabled", havingValue = "true")
 @Configuration
@@ -58,6 +58,80 @@ public class BizXVerificationConfiguration {
     @Bean
     public CheckScanPackageCondition checkScanPackageCondition() {
         return new CheckScanPackageCondition();
+    }
+
+
+    @Bean
+    public CheckParameterCollectionIsEmptyHandler checkParameterCollectionIsEmptyHandler() {
+        return new CheckParameterCollectionIsEmptyHandler();
+    }
+
+    @Bean
+    public CheckParameterDoubleMaxHandler checkParameterDoubleMaxHandler() {
+        return new CheckParameterDoubleMaxHandler();
+    }
+
+
+    @Bean
+    public CheckParameterDoubleMinHandler checkParameterDoubleMinHandler() {
+        return new CheckParameterDoubleMinHandler();
+    }
+
+
+    @Bean
+    public CheckParameterFloatMaxHandler checkParameterFloatMaxHandler() {
+        return new CheckParameterFloatMaxHandler();
+    }
+
+
+    @Bean
+    public CheckParameterFloatMinHandler checkParameterFloatMinHandler() {
+        return new CheckParameterFloatMinHandler();
+    }
+
+
+    @Bean
+    public CheckParameterIntegerMaxHandler checkParameterIntegerMaxHandler() {
+        return new CheckParameterIntegerMaxHandler();
+    }
+
+    @Bean
+    public CheckParameterIntegerMinHandler checkParameterIntegerMinHandler() {
+        return new CheckParameterIntegerMinHandler();
+    }
+
+    @Bean
+    public CheckParameterIsNullHandler checkParameterIsNullHandler() {
+        return new CheckParameterIsNullHandler();
+    }
+
+
+    @Bean
+    public CheckParameterLongMaxHandler checkParameterLongMaxHandler() {
+        return new CheckParameterLongMaxHandler();
+    }
+
+
+    @Bean
+    public CheckParameterLongMinHandler checkParameterLongMinHandler() {
+        return new CheckParameterLongMinHandler();
+    }
+
+
+    @Bean
+    public CheckParameterShortMaxHandler checkParameterShortMaxHandler() {
+        return new CheckParameterShortMaxHandler();
+    }
+
+
+    @Bean
+    public CheckParameterShortMinHandler checkParameterShortMinHandler() {
+        return new CheckParameterShortMinHandler();
+    }
+
+    @Bean
+    public CheckParameterSizeHandler checkParameterSizeHandler() {
+        return new CheckParameterSizeHandler();
     }
 
 }

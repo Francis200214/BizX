@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckIntegerMax;
+import com.biz.verification.annotation.check.BizXCheckIntegerMax;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 public class CheckParameterIntegerMaxHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckIntegerMax.class;
+        return BizXCheckIntegerMax.class;
     }
 
     @Override
@@ -26,8 +26,8 @@ public class CheckParameterIntegerMaxHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckIntegerMax) {
-            BizXApiCheckIntegerMax check = Common.to(annotation);
+        if (annotation instanceof BizXCheckIntegerMax) {
+            BizXCheckIntegerMax check = Common.to(annotation);
             if (o instanceof Integer) {
                 Integer num = Common.to(o);
                 if (num > check.max()) {

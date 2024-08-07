@@ -5,19 +5,19 @@ import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 import java.lang.annotation.*;
 
 /**
- * 检查Integer类型最小值
+ * 检查 Integer 类型最大值
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckIntegerMin {
+public @interface BizXCheckIntegerMax {
 
     /**
-     * 最小值
+     * 最大值
      */
-    int min() default Integer.MIN_VALUE;
+    int max() default Integer.MAX_VALUE;
 
     /**
      * 异常信息

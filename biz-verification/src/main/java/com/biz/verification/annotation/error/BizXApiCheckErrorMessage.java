@@ -1,5 +1,7 @@
 package com.biz.verification.annotation.error;
 
+import com.biz.common.utils.ErrorCodeConstant;
+
 import java.lang.annotation.*;
 
 /**
@@ -15,7 +17,7 @@ public @interface BizXApiCheckErrorMessage {
     /**
      * 错误码
      */
-    int code() default 99999;
+    int code() default ErrorCodeConstant.DEFAULT_ERROR_CODE;
 
     /**
      * 错误信息

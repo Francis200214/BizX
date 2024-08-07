@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckSize;
+import com.biz.verification.annotation.check.BizXCheckSize;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,7 +18,7 @@ import java.util.Collection;
 public class CheckParameterSizeHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckSize.class;
+        return BizXCheckSize.class;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class CheckParameterSizeHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckSize) {
-            BizXApiCheckSize check = Common.to(annotation);
+        if (annotation instanceof BizXCheckSize) {
+            BizXCheckSize check = Common.to(annotation);
             if (o instanceof Collection) {
                 Collection num = Common.to(o);
                 if ((num.size() < check.min()) || num.size() > check.max()) {

@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckCollectionIsEmpty;
+import com.biz.verification.annotation.check.BizXCheckCollectionIsEmpty;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +19,7 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
 
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckCollectionIsEmpty.class;
+        return BizXCheckCollectionIsEmpty.class;
     }
 
     @Override
@@ -27,8 +27,8 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
         if (o == null) {
             return;
         }
-        if (annotation instanceof BizXApiCheckCollectionIsEmpty) {
-            BizXApiCheckCollectionIsEmpty check = Common.to(annotation);
+        if (annotation instanceof BizXCheckCollectionIsEmpty) {
+            BizXCheckCollectionIsEmpty check = Common.to(annotation);
             if (o instanceof Collection) {
                 if (!check.isEmpty() && isEmpty(Common.to(o))) {
                     throw new RuntimeException(check.error().message());
@@ -38,7 +38,7 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
     }
 
 
-    public static boolean isEmpty(Collection collection) {
+    private static boolean isEmpty(Collection<?> collection) {
         return Common.isEmpty(collection);
     }
 

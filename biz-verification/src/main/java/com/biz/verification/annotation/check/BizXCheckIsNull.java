@@ -6,19 +6,19 @@ import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 import java.lang.annotation.*;
 
 /**
- * 检查 Float 类型最小值
+ * 检查是否为Null
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckFloatMin {
+public @interface BizXCheckIsNull {
 
     /**
-     * 最小值
+     * 是否可以为null
      */
-    float min() default Float.MIN_VALUE;
+    boolean isNull() default true;
 
     /**
      * 异常信息

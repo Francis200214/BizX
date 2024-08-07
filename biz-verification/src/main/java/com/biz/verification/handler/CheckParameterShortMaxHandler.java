@@ -1,7 +1,7 @@
 package com.biz.verification.handler;
 
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckShortMax;
+import com.biz.verification.annotation.check.BizXCheckShortMax;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 public class CheckParameterShortMaxHandler implements CheckParameterStrategy {
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckShortMax.class;
+        return BizXCheckShortMax.class;
     }
 
     @Override
@@ -26,8 +26,8 @@ public class CheckParameterShortMaxHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckShortMax) {
-            BizXApiCheckShortMax check = Common.to(annotation);
+        if (annotation instanceof BizXCheckShortMax) {
+            BizXCheckShortMax check = Common.to(annotation);
             if (o instanceof Short) {
                 Short num = Common.to(o);
                 if (num > check.max()) {

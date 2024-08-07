@@ -1,21 +1,27 @@
 package com.biz.verification.annotation.check;
 
+
 import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 
 import java.lang.annotation.*;
 
 /**
- * 检查 Long 类型最大值
+ * 检查长度
  *
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckLongMax {
+public @interface BizXCheckSize {
 
     /**
-     * 最大值
+     * 长度最小值
+     */
+    long min() default Long.MIN_VALUE;
+
+    /**
+     * 长度最大值
      */
     long max() default Long.MAX_VALUE;
 

@@ -2,7 +2,7 @@ package com.biz.verification.handler;
 
 import com.biz.common.date.datetime.DateTimeUtils;
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXApiCheckDateTime;
+import com.biz.verification.annotation.check.BizXCheckDateTime;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,7 +19,7 @@ public class CheckParameterDateTimeHandler implements CheckParameterStrategy {
 
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXApiCheckDateTime.class;
+        return BizXCheckDateTime.class;
     }
 
     @Override
@@ -28,8 +28,8 @@ public class CheckParameterDateTimeHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXApiCheckDateTime) {
-            BizXApiCheckDateTime check = Common.to(annotation);
+        if (annotation instanceof BizXCheckDateTime) {
+            BizXCheckDateTime check = Common.to(annotation);
             if (o instanceof String) {
                 String str = Common.to(o);
                 try {
