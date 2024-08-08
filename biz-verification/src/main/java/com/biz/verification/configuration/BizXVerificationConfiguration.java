@@ -60,75 +60,142 @@ public class BizXVerificationConfiguration {
         return new CheckScanPackageCondition();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterCollectionIsEmptyHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterCollectionIsEmptyHandler} 实例
+     */
     @Bean
     public CheckParameterCollectionIsEmptyHandler checkParameterCollectionIsEmptyHandler() {
         return new CheckParameterCollectionIsEmptyHandler();
     }
 
+    /**
+     * 创建并配置 {@link CheckParameterDateTimeHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterDateTimeHandler} 实例
+     */
+    @Bean
+    public CheckParameterDateTimeHandler checkParameterDateTimeHandler() {
+        return new CheckParameterDateTimeHandler();
+    }
+
+
+    /**
+     * 创建并配置 {@link CheckParameterDoubleMaxHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterDoubleMaxHandler} 实例
+     */
     @Bean
     public CheckParameterDoubleMaxHandler checkParameterDoubleMaxHandler() {
         return new CheckParameterDoubleMaxHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterDoubleMinHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterDoubleMinHandler} 实例
+     */
     @Bean
     public CheckParameterDoubleMinHandler checkParameterDoubleMinHandler() {
         return new CheckParameterDoubleMinHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterFloatMaxHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterFloatMaxHandler} 实例
+     */
     @Bean
     public CheckParameterFloatMaxHandler checkParameterFloatMaxHandler() {
         return new CheckParameterFloatMaxHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterFloatMinHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterFloatMinHandler} 实例
+     */
     @Bean
     public CheckParameterFloatMinHandler checkParameterFloatMinHandler() {
         return new CheckParameterFloatMinHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterIntegerMaxHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterIntegerMaxHandler} 实例
+     */
     @Bean
     public CheckParameterIntegerMaxHandler checkParameterIntegerMaxHandler() {
         return new CheckParameterIntegerMaxHandler();
     }
 
+    /**
+     * 创建并配置 {@link CheckParameterIntegerMinHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterIntegerMinHandler} 实例
+     */
     @Bean
     public CheckParameterIntegerMinHandler checkParameterIntegerMinHandler() {
         return new CheckParameterIntegerMinHandler();
     }
 
+    /**
+     * 创建并配置 {@link CheckParameterIsNullHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterIsNullHandler} 实例
+     */
     @Bean
     public CheckParameterIsNullHandler checkParameterIsNullHandler() {
         return new CheckParameterIsNullHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterLongMaxHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterLongMaxHandler} 实例
+     */
     @Bean
     public CheckParameterLongMaxHandler checkParameterLongMaxHandler() {
         return new CheckParameterLongMaxHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterLongMinHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterLongMinHandler} 实例
+     */
     @Bean
     public CheckParameterLongMinHandler checkParameterLongMinHandler() {
         return new CheckParameterLongMinHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterShortMaxHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterShortMaxHandler} 实例
+     */
     @Bean
     public CheckParameterShortMaxHandler checkParameterShortMaxHandler() {
         return new CheckParameterShortMaxHandler();
     }
 
-
+    /**
+     * 创建并配置 {@link CheckParameterShortMinHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterShortMinHandler} 实例
+     */
     @Bean
     public CheckParameterShortMinHandler checkParameterShortMinHandler() {
         return new CheckParameterShortMinHandler();
     }
 
+    /**
+     * 创建并配置 {@link CheckParameterSizeHandler} 校验处理器。
+     *
+     * @return {@link CheckParameterSizeHandler} 实例
+     */
     @Bean
     public CheckParameterSizeHandler checkParameterSizeHandler() {
         return new CheckParameterSizeHandler();

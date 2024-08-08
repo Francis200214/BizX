@@ -23,7 +23,7 @@ import java.util.Map;
  * @since 2023-04-08
  **/
 @Slf4j
-public class CheckParameterFactory implements InitializingBean, CheckParameterService {
+public class CheckParameterFactory implements InitializingBean {
 
     /**
      * 缓存校验策略的 Map，key 为 {@link Annotation}注解类型，value 为对应的校验策略 {@link CheckParameterStrategy} 实现类。
@@ -47,7 +47,6 @@ public class CheckParameterFactory implements InitializingBean, CheckParameterSe
      * @param args       参数值
      * @throws Throwable 如果校验失败或处理过程中出现异常
      */
-    @Override
     public void handle(@NotNull Annotation annotation, Object args) throws Throwable {
         // 从缓存 Map 中获取对应的处理实现
         CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());

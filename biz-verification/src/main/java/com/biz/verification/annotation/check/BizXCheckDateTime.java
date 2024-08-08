@@ -6,8 +6,27 @@ import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
 import java.lang.annotation.*;
 
 /**
- * 检查时间格式
+ * 检查时间格式的注解。
+ * <p>用于标注字段或方法参数，指定该字段或参数的时间格式是否符合要求。</p>
+ * <p>目前支持字符串类型的时间、java.util.Date和Calendar</p>
  *
+ * <pre>
+ * 示例用法：
+ * {@code
+ * public class Example {
+ *     @BizXCheckDateTime(
+ *         format = "yyyy-MM-dd HH:mm:ss",
+ *         error = @BizXApiCheckErrorMessage(code = 1001, message = "Invalid date format")
+ *     )
+ *     private String dateTime;
+ * }
+ * }
+ * </pre>
+ *
+ * @see DateConstant
+ * @see BizXApiCheckErrorMessage
+ * @since 2024-08-07
+ * @version 1.0.0
  * @author francis
  **/
 @Target({ElementType.FIELD, ElementType.PARAMETER})
@@ -16,12 +35,17 @@ import java.lang.annotation.*;
 public @interface BizXCheckDateTime {
 
     /**
-     * 时间格式
+     * 时间格式。
+     * <p>默认值为 {@link DateConstant#DEFAULT_DATETIME}。</p>
+     *
+     * @return 时间格式字符串
      */
     String format() default DateConstant.DEFAULT_DATETIME;
 
     /**
-     * 异常信息
+     * 自定义异常信息。
+     *
+     * @return 异常信息
      */
     BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
 

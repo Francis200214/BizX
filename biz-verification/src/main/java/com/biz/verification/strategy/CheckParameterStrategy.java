@@ -1,5 +1,7 @@
 package com.biz.verification.strategy;
 
+import com.biz.verification.error.BizXVerificationException;
+
 import java.lang.annotation.Annotation;
 
 /**
@@ -19,13 +21,15 @@ import java.lang.annotation.Annotation;
  *     }
  *
  *     @Override
- *     public void check(Annotation annotation, Object o) throws Exception {
+ *     public void check(Annotation annotation, Object o) throws BizXVerificationException {
  *         // 实现自定义参数校验注解的检查逻辑
  *     }
  * }
  * }
  * </pre>
  *
+ * @see Annotation
+ * @see BizXVerificationException
  * @author francis
  * @since 2023-04-08
  * @version 1.0.0
@@ -44,7 +48,7 @@ public interface CheckParameterStrategy {
      *
      * @param annotation 需要检查的注解实例
      * @param o          入参数据
-     * @throws Exception 如果检查失败则抛出异常
+     * @throws BizXVerificationException 如果检查失败则抛出异常
      */
-    void check(Annotation annotation, Object o) throws Exception;
+    void check(Annotation annotation, Object o) throws BizXVerificationException;
 }

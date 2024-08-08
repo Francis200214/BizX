@@ -5,7 +5,7 @@ import com.biz.common.reflection.model.FieldModel;
 import com.biz.common.utils.Common;
 import com.biz.verification.annotation.BizXEnableApiCheck;
 import com.biz.verification.condition.CheckScanPackageCondition;
-import com.biz.verification.factory.CheckParameterService;
+import com.biz.verification.factory.CheckParameterFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,7 +13,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Parameter;
-import java.util.ServiceLoader;
 
 /**
  * 校验入参的 AOP 切面类。
@@ -21,33 +20,27 @@ import java.util.ServiceLoader;
  *
  * <p>使用 {@link BizXEnableApiCheck} 注解的方法将触发参数校验逻辑。</p>
  *
+ * @author francis
+ * @version 1.0
  * @see BizXEnableApiCheck
- * @see CheckParameterService
  * @see ReflectionUtils
  * @see ProceedingJoinPoint
  * @see CheckScanPackageCondition
- * @author francis
- * @version 1.0
  * @since 2023-04-08
  **/
 @Aspect
 public class AbstractBizXCheckParameter {
 
     /**
-     * 校验服务，用于处理参数校验逻辑。
+     * 校验工厂，用于处理参数校验逻辑。
      */
-    private CheckParameterService checkParameterService;
+    private final CheckParameterFactory checkParameterFactory;
 
     /**
-     * 构造器，通过 ServiceLoader 注入 {@link CheckParameterService} 实现。
+     * 构造器。
      */
     public AbstractBizXCheckParameter() {
-        ServiceLoader<CheckParameterService> load = ServiceLoader.load(CheckParameterService.class);
-        for (CheckParameterService parameterService : load) {
-            if (parameterService != null && checkParameterService == null) {
-                checkParameterService = parameterService;
-            }
-        }
+        this.checkParameterFactory = new CheckParameterFactory();
     }
 
     /**
@@ -83,7 +76,7 @@ public class AbstractBizXCheckParameter {
             if (type.getClassLoader() == null) {
                 Object arg = args[i];
                 for (Annotation annotation : type.getAnnotations()) {
-                    checkParameterService.handle(annotation, arg);
+                    checkParameterFactory.handle(annotation, arg);
                 }
             } else {
                 Object arg = args[i];
@@ -92,7 +85,7 @@ public class AbstractBizXCheckParameter {
                     // 属性字段中的值
                     Object byFieldValue = ReflectionUtils.getByFieldValue(field.getField(), arg);
                     for (Annotation annotation : field.getAnnotations()) {
-                        checkParameterService.handle(annotation, byFieldValue);
+                        checkParameterFactory.handle(annotation, byFieldValue);
                     }
                 }
             }

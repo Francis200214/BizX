@@ -11,7 +11,11 @@ import java.lang.annotation.*;
  * 示例用法：
  * {@code
  * public class Example {
- *     @BizXCheckCollectionIsEmpty(isEmpty = false, error = @BizXApiCheckErrorMessage("Collection cannot be empty"))
+ *     @BizXCheckCollectionIsEmpty(
+ *         isEmpty = false,
+ *         // 异常Code码和信息定义
+ *         error = @BizXApiCheckErrorMessage(code = 1000, message = "Collection cannot be empty")
+ *     )
  *     private List<String> names;
  * }
  * }

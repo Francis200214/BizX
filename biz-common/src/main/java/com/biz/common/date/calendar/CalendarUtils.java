@@ -3,11 +3,14 @@ package com.biz.common.date.calendar;
 import com.biz.common.date.DateConstant;
 import com.biz.common.date.datetime.DateTimeUtils;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Calendar 时间工具类
@@ -113,6 +116,36 @@ public final class CalendarUtils {
     public static String getLastOfMonth() {
         LocalDate lastOfMonth = LocalDate.now().plusMonths(1).minusDays(1);
         return lastOfMonth.format(DEFAULT_DATE_FORMATTER);
+    }
+
+
+    /**
+     * 判断 Calendar 对象是否符合指定的时间格式。
+     *
+     * @param calendar 需要检查的 Calendar 对象
+     * @param format   指定的时间格式，例如 "yyyy-MM-dd"
+     * @return 如果 Calendar 对象符合指定的时间格式，返回 true；否则返回 false
+     */
+    public static boolean isValidFormat(Calendar calendar, String format) {
+        if (calendar == null || format == null || format.isEmpty()) {
+            return false;
+        }
+
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        sdf.setLenient(false);
+        String formattedDate = sdf.format(calendar.getTime());
+
+        try {
+            Date parsedDate = sdf.parse(formattedDate);
+            Calendar parsedCalendar = Calendar.getInstance();
+            parsedCalendar.setTime(parsedDate);
+
+            return calendar.get(Calendar.YEAR) == parsedCalendar.get(Calendar.YEAR) &&
+                    calendar.get(Calendar.MONTH) == parsedCalendar.get(Calendar.MONTH) &&
+                    calendar.get(Calendar.DAY_OF_MONTH) == parsedCalendar.get(Calendar.DAY_OF_MONTH);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
