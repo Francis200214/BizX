@@ -34,18 +34,18 @@ public @interface BizXApiCheckErrorMessage {
 
     /**
      * 错误码。
-     * <p>默认值为 {@link ErrorCodeConstant#DEFAULT_ERROR_CODE}。</p>
+     * <p>默认值为 {@link ErrorCodeConstant.DEFAULT_ERROR#CODE}。</p>
      *
      * @return 错误码
      */
-    int code() default ErrorCodeConstant.DEFAULT_ERROR_CODE;
+    int code() default ErrorCodeConstant.DEFAULT_ERROR.CODE;
 
     /**
      * 错误信息。
-     * <p>默认值为 "未知异常"。</p>
+     * <p>默认值为 {@link ErrorCodeConstant.DEFAULT_ERROR#MESSAGE}。</p>
      *
      * @return 错误信息
      */
-    String message() default "未知异常";
+    String message() default ErrorCodeConstant.DEFAULT_ERROR.MESSAGE;
 
 }
