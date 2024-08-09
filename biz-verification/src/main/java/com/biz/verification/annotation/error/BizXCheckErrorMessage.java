@@ -14,7 +14,7 @@ import java.lang.annotation.*;
  *     // 检查参数注解
  *     @BizXCheck...(
  *         ...,
- *         error = @BizXApiCheckErrorMessage(code = 400, message = "参数不能为空")
+ *         error = @BizXCheckErrorMessage(code = 400, message = "参数不能为空")
  *     )
  *
  *     private String name;
@@ -30,7 +30,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXApiCheckErrorMessage {
+public @interface BizXCheckErrorMessage {
 
     /**
      * 错误码。

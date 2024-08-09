@@ -38,8 +38,10 @@ public class BizXVerificationException extends BizXException {
      * <p>使用默认异常Code码和信息。</p>
      */
     public BizXVerificationException() {
+        super(ErrorCodeConstant.DEFAULT_ERROR.MESSAGE);
         this.code = ErrorCodeConstant.DEFAULT_ERROR.CODE;
         this.message = ErrorCodeConstant.DEFAULT_ERROR.MESSAGE;
+
     }
 
     /**
@@ -49,6 +51,7 @@ public class BizXVerificationException extends BizXException {
      * @param message 错误信息
      */
     public BizXVerificationException(int code, String message) {
+        super(message);
         this.code = code;
         this.message = message;
     }

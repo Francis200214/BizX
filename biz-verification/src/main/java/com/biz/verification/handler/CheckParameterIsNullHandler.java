@@ -48,7 +48,7 @@ public class CheckParameterIsNullHandler implements CheckParameterStrategy {
         if (annotation instanceof BizXCheckIsNull) {
             BizXCheckIsNull check = Common.to(annotation);
             if (!check.isNull() && isNull(o)) {
-                throw new RuntimeException(check.error().message());
+                throw new BizXVerificationException(check.error().code(), check.error().message());
             }
         }
     }

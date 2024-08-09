@@ -1,6 +1,7 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
 
 import java.lang.annotation.*;
 
@@ -14,14 +15,14 @@ import java.lang.annotation.*;
  * public class Example {
  *     @BizXCheckIsNull(
  *         isNull = false,
- *         error = @BizXApiCheckErrorMessage(code = 1008, message = "Value cannot be null")
+ *         error = @BizXCheckErrorMessage(code = 1008, message = "Value cannot be null")
  *     )
  *     private String value;
  * }
  * }
  * </pre>
  *
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2024-08-07
  * @version 1.0.0
  * @author francis
@@ -43,6 +44,8 @@ public @interface BizXCheckIsNull {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckIsNullError.CODE,
+            message = VerificationErrorConstant.CheckIsNullError.MESSAGE);
 
 }

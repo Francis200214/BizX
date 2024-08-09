@@ -56,7 +56,7 @@ public class CheckParameterSizeHandler implements CheckParameterStrategy {
             if (o instanceof Collection) {
                 Collection<?> num = Common.to(o);
                 if (num.size() < check.min() || num.size() > check.max()) {
-                    throw new BizXVerificationException(check.error().code(), check.error().message());
+                    throwError(check);
                 }
                 return;
             }
@@ -64,9 +64,14 @@ public class CheckParameterSizeHandler implements CheckParameterStrategy {
             if (o instanceof String) {
                 String num = Common.to(o);
                 if (num.length() < check.min() || num.length() > check.max()) {
-                    throw new BizXVerificationException(check.error().code(), check.error().message());
+                    throwError(check);
                 }
             }
         }
     }
+
+    private static void throwError(BizXCheckSize check) throws BizXVerificationException {
+        throw new BizXVerificationException(check.error().code(), check.error().message());
+    }
+
 }

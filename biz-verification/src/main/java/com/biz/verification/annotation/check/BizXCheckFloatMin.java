@@ -1,6 +1,7 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
 
 import java.lang.annotation.*;
 
@@ -14,14 +15,14 @@ import java.lang.annotation.*;
  * public class Example {
  *     @BizXCheckFloatMin(
  *         min = 0.1f,
- *         error = @BizXApiCheckErrorMessage(code = 1005, message = "Value is below the minimum allowed")
+ *         error = @BizXCheckErrorMessage(code = 1005, message = "Value is below the minimum allowed")
  *     )
  *     private Float value;
  * }
  * }
  * </pre>
  *
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2024-08-07
  * @version 1.0.0
  * @author francis
@@ -43,6 +44,8 @@ public @interface BizXCheckFloatMin {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckFloatMinError.CODE,
+            message = VerificationErrorConstant.CheckFloatMinError.MESSAGE);
 
 }

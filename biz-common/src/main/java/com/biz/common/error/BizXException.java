@@ -23,4 +23,12 @@ public abstract class BizXException extends Exception {
      */
     public abstract String getMessage();
 
+    public BizXException() {
+        super();
+    }
+
+    public BizXException(String message) {
+        super(message);
+    }
+
 }

@@ -3,18 +3,17 @@ package com.biz.verification.handler;
 import com.biz.common.date.calendar.CalendarUtils;
 import com.biz.common.date.datetime.DateTimeUtils;
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.check.BizXCheckDateTime;
+import com.biz.verification.annotation.check.BizXCheckDateTimeFormat;
 import com.biz.verification.error.BizXVerificationException;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.annotation.Annotation;
-import java.text.ParseException;
 import java.util.Calendar;
 
 /**
  * 检查时间格式的具体实现类。
- * <p>实现了 {@link CheckParameterStrategy} 接口，提供了对 {@link BizXCheckDateTime} 注解的处理逻辑。</p>
+ * <p>实现了 {@link CheckParameterStrategy} 接口，提供了对 {@link BizXCheckDateTimeFormat} 注解的处理逻辑。</p>
  *
  * <pre>
  * 示例用法：
@@ -22,7 +21,7 @@ import java.util.Calendar;
  * public class Example {
  *     @BizXCheckDateTime(
  *         format = "yyyy-MM-dd",
- *         error = @BizXApiCheckErrorMessage(code = 1002, message = "Invalid date format")
+ *         error = @BizXCheckErrorMessage(code = 1002, message = "Invalid date format")
  *     )
  *     private String date;
  * }
@@ -31,22 +30,22 @@ import java.util.Calendar;
  *
  * @author francis
  * @version 1.0.0
- * @see BizXCheckDateTime
+ * @see BizXCheckDateTimeFormat
  * @see BizXVerificationException
  * @see CheckParameterStrategy
  * @since 2023-04-17
  **/
 @Slf4j
-public class CheckParameterDateTimeHandler implements CheckParameterStrategy {
+public class CheckParameterDateTimeFormatHandler implements CheckParameterStrategy {
 
     /**
      * 获取检查的注解类型。
      *
-     * @return 需要检查的注解类型 {@link BizXCheckDateTime}
+     * @return 需要检查的注解类型 {@link BizXCheckDateTimeFormat}
      */
     @Override
     public Class<? extends Annotation> getCheckAnnotation() {
-        return BizXCheckDateTime.class;
+        return BizXCheckDateTimeFormat.class;
     }
 
     /**
@@ -62,8 +61,8 @@ public class CheckParameterDateTimeHandler implements CheckParameterStrategy {
             return;
         }
 
-        if (annotation instanceof BizXCheckDateTime) {
-            BizXCheckDateTime check = Common.to(annotation);
+        if (annotation instanceof BizXCheckDateTimeFormat) {
+            BizXCheckDateTimeFormat check = Common.to(annotation);
             try {
                 if (o instanceof String) {
                     String str = Common.to(o);
@@ -80,9 +79,6 @@ public class CheckParameterDateTimeHandler implements CheckParameterStrategy {
                     CalendarUtils.isValidFormat(Common.to(o), check.format());
 
                 }
-            } catch (ParseException e) {
-                throw new BizXVerificationException();
-
             } catch (Exception e) {
                 throw new BizXVerificationException(check.error().code(), check.error().message());
             }

@@ -3,7 +3,7 @@ package com.biz.verification;
 import com.biz.common.reflection.ReflectionUtils;
 import com.biz.common.reflection.model.FieldModel;
 import com.biz.common.utils.Common;
-import com.biz.verification.annotation.BizXEnableApiCheck;
+import com.biz.verification.annotation.BizXEnableCheck;
 import com.biz.verification.condition.CheckScanPackageCondition;
 import com.biz.verification.factory.CheckParameterFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,11 +18,11 @@ import java.lang.reflect.Parameter;
  * 校验入参的 AOP 切面类。
  * <p>该类通过 AOP 切面技术，在方法调用前对方法参数进行校验。</p>
  *
- * <p>使用 {@link BizXEnableApiCheck} 注解的方法将触发参数校验逻辑。</p>
+ * <p>使用 {@link BizXEnableCheck} 注解的方法将触发参数校验逻辑。</p>
  *
  * @author francis
  * @version 1.0
- * @see BizXEnableApiCheck
+ * @see BizXEnableCheck
  * @see ReflectionUtils
  * @see ProceedingJoinPoint
  * @see CheckScanPackageCondition
@@ -39,20 +39,20 @@ public class AbstractBizXCheckParameter {
     /**
      * 构造器。
      */
-    public AbstractBizXCheckParameter() {
-        this.checkParameterFactory = new CheckParameterFactory();
+    public AbstractBizXCheckParameter(CheckParameterFactory checkParameterFactory) {
+        this.checkParameterFactory = checkParameterFactory;
     }
 
     /**
-     * 检查接口上有 {@link BizXEnableApiCheck} 注解的方法，并进行参数校验。
+     * 检查接口上有 {@link BizXEnableCheck} 注解的方法，并进行参数校验。
      *
      * @param joinPoint 切入点
-     * @param check     {@link BizXEnableApiCheck} 注解实例
+     * @param check     {@link BizXEnableCheck} 注解实例
      * @return 方法执行结果
      * @throws Throwable 如果在方法执行或参数校验过程中出现异常
      */
     @Around("@annotation(check)")
-    public Object paramCheck(ProceedingJoinPoint joinPoint, BizXEnableApiCheck check) throws Throwable {
+    public Object paramCheck(ProceedingJoinPoint joinPoint, BizXEnableCheck check) throws Throwable {
         // 获取方法的类名
         String className = joinPoint.getTarget().getClass().getName();
 
@@ -101,7 +101,10 @@ public class AbstractBizXCheckParameter {
      * @return 如果类名在配置的包路径下，返回 true；否则返回 false
      */
     private boolean isScanPackage(String className) {
-        return CheckScanPackageCondition.hasText() || CheckScanPackageCondition.classNameInPackage(className);
+        if (CheckScanPackageCondition.hasText()) {
+            return CheckScanPackageCondition.classNameInPackage(className);
+        }
+        return true;
     }
 
 }

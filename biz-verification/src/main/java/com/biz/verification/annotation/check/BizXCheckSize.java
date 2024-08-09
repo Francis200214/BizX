@@ -1,6 +1,7 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
 
 import java.lang.annotation.*;
 
@@ -15,14 +16,14 @@ import java.lang.annotation.*;
  *     @BizXCheckSize(
  *         min = 1,
  *         max = 10,
- *         error = @BizXApiCheckErrorMessage(code = 1013, message = "Length must be between 1 and 10")
+ *         error = @BizXCheckErrorMessage(code = 1013, message = "Length must be between 1 and 10")
  *     )
  *     private String value;
  * }
  * }
  * </pre>
  *
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2024-08-07
  * @version 1.0.0
  * @author francis
@@ -51,6 +52,8 @@ public @interface BizXCheckSize {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckSizeError.CODE,
+            message = VerificationErrorConstant.CheckSizeError.MESSAGE);
 
 }

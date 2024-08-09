@@ -4,11 +4,15 @@ import com.biz.common.bean.BizXBeanUtils;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ServiceLoader;
 
 /**
  * 检查参数工厂。
@@ -23,19 +27,21 @@ import java.util.Map;
  * @since 2023-04-08
  **/
 @Slf4j
-public class CheckParameterFactory implements InitializingBean {
+public class CheckParameterFactory implements InitializingBean, ApplicationContextAware {
 
     /**
      * 缓存校验策略的 Map，key 为 {@link Annotation}注解类型，value 为对应的校验策略 {@link CheckParameterStrategy} 实现类。
      */
     private static final Map<Class<?>, CheckParameterStrategy> CHECK_PARAMETER_STRATEGY_MAP = new HashMap<>();
 
+    private static ApplicationContext applicationContext;
+
     /**
      * 在 Bean 属性设置后进行初始化，将所有实现 {@link CheckParameterStrategy} 接口的实现类注册到 {@link #CHECK_PARAMETER_STRATEGY_MAP} 中。
      */
     @Override
     public void afterPropertiesSet() {
-        for (CheckParameterStrategy handler : BizXBeanUtils.getBeansOfType(CheckParameterStrategy.class).values()) {
+        for (CheckParameterStrategy handler : applicationContext.getBeansOfType(CheckParameterStrategy.class).values()) {
             CHECK_PARAMETER_STRATEGY_MAP.put(handler.getCheckAnnotation(), handler);
         }
     }
@@ -56,5 +62,10 @@ public class CheckParameterFactory implements InitializingBean {
         }
         // 处理具体类型的参数
         checkParameterStrategy.check(annotation, args);
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
     }
 }

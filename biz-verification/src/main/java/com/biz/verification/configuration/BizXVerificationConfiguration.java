@@ -7,6 +7,7 @@ import com.biz.verification.handler.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 
 /**
  * BizX 校验入参配置类。
@@ -31,36 +32,6 @@ import org.springframework.context.annotation.Configuration;
 public class BizXVerificationConfiguration {
 
     /**
-     * 创建并配置 {@link AbstractBizXCheckParameter} Bean。
-     *
-     * @return {@link AbstractBizXCheckParameter} 实例
-     */
-    @Bean
-    public AbstractBizXCheckParameter bizXCheckParameter() {
-        return new AbstractBizXCheckParameter();
-    }
-
-    /**
-     * 创建并配置 {@link CheckParameterFactory} 校验参数工厂 Bean。
-     *
-     * @return {@link CheckParameterFactory} 实例
-     */
-    @Bean
-    public CheckParameterFactory checkParameterFactory() {
-        return new CheckParameterFactory();
-    }
-
-    /**
-     * 创建并配置 {@link CheckScanPackageCondition} 校验扫描包条件 Bean。
-     *
-     * @return {@link CheckScanPackageCondition} 实例
-     */
-    @Bean
-    public CheckScanPackageCondition checkScanPackageCondition() {
-        return new CheckScanPackageCondition();
-    }
-
-    /**
      * 创建并配置 {@link CheckParameterCollectionIsEmptyHandler} 校验处理器。
      *
      * @return {@link CheckParameterCollectionIsEmptyHandler} 实例
@@ -71,15 +42,14 @@ public class BizXVerificationConfiguration {
     }
 
     /**
-     * 创建并配置 {@link CheckParameterDateTimeHandler} 校验处理器。
+     * 创建并配置 {@link CheckParameterDateTimeFormatHandler} 校验处理器。
      *
-     * @return {@link CheckParameterDateTimeHandler} 实例
+     * @return {@link CheckParameterDateTimeFormatHandler} 实例
      */
     @Bean
-    public CheckParameterDateTimeHandler checkParameterDateTimeHandler() {
-        return new CheckParameterDateTimeHandler();
+    public CheckParameterDateTimeFormatHandler checkParameterDateTimeHandler() {
+        return new CheckParameterDateTimeFormatHandler();
     }
-
 
     /**
      * 创建并配置 {@link CheckParameterDoubleMaxHandler} 校验处理器。
@@ -199,6 +169,53 @@ public class BizXVerificationConfiguration {
     @Bean
     public CheckParameterSizeHandler checkParameterSizeHandler() {
         return new CheckParameterSizeHandler();
+    }
+
+    /**
+     * 创建并配置 {@link CheckParameterFactory} 校验参数工厂 Bean。
+     *
+     * @return {@link CheckParameterFactory} 实例
+     */
+    @Bean
+    @DependsOn({
+            "checkParameterCollectionIsEmptyHandler",
+            "checkParameterDateTimeHandler",
+            "checkParameterDoubleMaxHandler",
+            "checkParameterDoubleMinHandler",
+            "checkParameterFloatMaxHandler",
+            "checkParameterFloatMinHandler",
+            "checkParameterIntegerMaxHandler",
+            "checkParameterIntegerMinHandler",
+            "checkParameterIsNullHandler",
+            "checkParameterLongMaxHandler",
+            "checkParameterLongMinHandler",
+            "checkParameterShortMaxHandler",
+            "checkParameterShortMinHandler",
+            "checkParameterSizeHandler"
+    })
+    public CheckParameterFactory checkParameterFactory() {
+        return new CheckParameterFactory();
+    }
+
+
+    /**
+     * 创建并配置 {@link AbstractBizXCheckParameter} Bean。
+     *
+     * @return {@link AbstractBizXCheckParameter} 实例
+     */
+    @Bean
+    public AbstractBizXCheckParameter bizXCheckParameter(CheckParameterFactory checkParameterFactory) {
+        return new AbstractBizXCheckParameter(checkParameterFactory);
+    }
+
+    /**
+     * 创建并配置 {@link CheckScanPackageCondition} 校验扫描包条件 Bean。
+     *
+     * @return {@link CheckScanPackageCondition} 实例
+     */
+    @Bean
+    public CheckScanPackageCondition checkScanPackageCondition() {
+        return new CheckScanPackageCondition();
     }
 
 }

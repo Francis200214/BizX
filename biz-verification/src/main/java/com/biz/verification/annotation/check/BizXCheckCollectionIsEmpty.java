@@ -1,6 +1,9 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.common.utils.ErrorCodeConstant;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
+
 import java.lang.annotation.*;
 
 /**
@@ -14,14 +17,14 @@ import java.lang.annotation.*;
  *     @BizXCheckCollectionIsEmpty(
  *         isEmpty = false,
  *         // 异常Code码和信息定义
- *         error = @BizXApiCheckErrorMessage(code = 1000, message = "Collection cannot be empty")
+ *         error = @BizXCheckErrorMessage(code = 1000, message = "Collection cannot be empty")
  *     )
  *     private List<String> names;
  * }
  * }
  * </pre>
  *
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2023-04-08
  * @version 1.0.0
  * @author francis
@@ -43,6 +46,8 @@ public @interface BizXCheckCollectionIsEmpty {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckCollectionIsEmptyError.CODE,
+            message = VerificationErrorConstant.CheckCollectionIsEmptyError.MESSAGE);
 
 }

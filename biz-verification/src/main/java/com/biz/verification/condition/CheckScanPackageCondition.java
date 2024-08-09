@@ -47,7 +47,7 @@ public class CheckScanPackageCondition {
     /**
      * 是否配置了自定义校验包路径。
      *
-     * @return 如果配置了自定义校验包路径，返回 true；否则返回 false
+     * @return 如果配置了自定义校验包路径返回 true；否则返回 false
      */
     public static boolean hasText() {
         return !Common.isEmpty(packageList);
@@ -60,7 +60,7 @@ public class CheckScanPackageCondition {
      * @return 如果类名在配置的包路径下，返回 true；否则返回 false
      */
     public static boolean classNameInPackage(String className) {
-        if (packageList == null) {
+        if (Common.isEmpty(packageList)) {
             return false;
         }
         for (String scanPackage : packageList) {

@@ -1,6 +1,7 @@
 package com.biz.verification.annotation.check;
 
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
 
 import java.lang.annotation.*;
 
@@ -14,14 +15,14 @@ import java.lang.annotation.*;
  * public class Example {
  *     @BizXCheckDoubleMax(
  *         max = 100.0,
- *         error = @BizXApiCheckErrorMessage(code = 1002, message = "Value exceeds the maximum allowed")
+ *         error = @BizXCheckErrorMessage(code = 1002, message = "Value exceeds the maximum allowed")
  *     )
  *     private Double value;
  * }
  * }
  * </pre>
  *
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2024-08-07
  * @version 1.0.0
  * @author francis
@@ -43,6 +44,8 @@ public @interface BizXCheckDoubleMax {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckDoubleMaxError.CODE,
+            message = VerificationErrorConstant.CheckDoubleMaxError.MESSAGE);
 
 }

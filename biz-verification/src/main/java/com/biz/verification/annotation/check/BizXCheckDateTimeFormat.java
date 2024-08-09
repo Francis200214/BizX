@@ -1,7 +1,8 @@
 package com.biz.verification.annotation.check;
 
 import com.biz.common.date.DateConstant;
-import com.biz.verification.annotation.error.BizXApiCheckErrorMessage;
+import com.biz.verification.annotation.error.BizXCheckErrorMessage;
+import com.biz.verification.error.constant.VerificationErrorConstant;
 
 import java.lang.annotation.*;
 
@@ -16,7 +17,7 @@ import java.lang.annotation.*;
  * public class Example {
  *     @BizXCheckDateTime(
  *         format = "yyyy-MM-dd HH:mm:ss",
- *         error = @BizXApiCheckErrorMessage(code = 1001, message = "Invalid date format")
+ *         error = @BizXCheckErrorMessage(code = 1001, message = "Invalid date format")
  *     )
  *     private String dateTime;
  * }
@@ -24,7 +25,7 @@ import java.lang.annotation.*;
  * </pre>
  *
  * @see DateConstant
- * @see BizXApiCheckErrorMessage
+ * @see BizXCheckErrorMessage
  * @since 2024-08-07
  * @version 1.0.0
  * @author francis
@@ -32,7 +33,7 @@ import java.lang.annotation.*;
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface BizXCheckDateTime {
+public @interface BizXCheckDateTimeFormat {
 
     /**
      * 时间格式。
@@ -47,6 +48,8 @@ public @interface BizXCheckDateTime {
      *
      * @return 异常信息
      */
-    BizXApiCheckErrorMessage error() default @BizXApiCheckErrorMessage;
+    BizXCheckErrorMessage error() default @BizXCheckErrorMessage(
+            code = VerificationErrorConstant.CheckDateTimeFormatError.CODE,
+            message = VerificationErrorConstant.CheckDateTimeFormatError.MESSAGE);
 
 }
