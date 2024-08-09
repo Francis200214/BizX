@@ -4,7 +4,6 @@ import com.biz.common.spel.SpELUtils;
 import com.biz.common.utils.Common;
 import com.biz.web.log.recorder.LogRecorder;
 import com.biz.web.log.store.LocalUserStoreService;
-import com.biz.web.log.store.TraceStoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -48,7 +47,7 @@ public class LogAspect implements ApplicationContextAware {
     /**
      * 追踪ID
      */
-    private TraceStoreService traceStoreService;
+//    private TraceStoreService traceStoreService;
 
 
     /**
@@ -146,7 +145,7 @@ public class LogAspect implements ApplicationContextAware {
      * @param e        异常信息
      */
     private void pushLog(Loggable loggable, Throwable e) {
-        logRecorder.record(traceStoreService.getTraceId(), loggable, localUserStoreService.getOperationUserId(), localUserStoreService.getOperationUserName(), contentHolder.get(), e);
+        logRecorder.record(null, loggable, localUserStoreService.getOperationUserId(), localUserStoreService.getOperationUserName(), contentHolder.get(), e);
     }
 
     /**
@@ -216,7 +215,6 @@ public class LogAspect implements ApplicationContextAware {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         try {
             this.localUserStoreService = applicationContext.getBean(LocalUserStoreService.class);
-            this.traceStoreService = applicationContext.getBean(TraceStoreService.class);
             this.logRecorder = applicationContext.getBean(LogRecorder.class);
         } catch (Exception e) {
             log.error("Not found LocalUserStoreService Bean Or TraceStoreService Bean in TraceLogAspect");

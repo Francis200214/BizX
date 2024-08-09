@@ -33,6 +33,7 @@ public class UserController {
 //    @CacheEvict
     @GetMapping("/addUser")
     public String addUser() {
+        log.info("进入 addUser 接口...");
         AddUserBo addUserBo = new AddUserBo();
         addUserBo.setName("张三");
         addUserBo.setAge(18);

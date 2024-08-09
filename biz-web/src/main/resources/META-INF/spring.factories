@@ -7,9 +7,7 @@ com.biz.web.token.AbstractToken,\
 com.biz.web.error.GlobalExceptionHandler,\
 com.biz.web.log.LogAspect,\
 com.biz.web.log.recorder.LogRecorder,\
-com.biz.web.log.store.DefaultLocalUserStoreService,\
-com.biz.web.log.trace.DefaultTraceIdServiceImpl,\
-com.biz.web.log.store.DefaultTraceStoreService
+com.biz.web.log.store.DefaultLocalUserStoreService
 
 
 

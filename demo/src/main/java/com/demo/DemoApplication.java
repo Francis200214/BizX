@@ -1,9 +1,7 @@
 package com.demo;
 
-import com.biz.common.bean.BizXBeanUtils;
 import com.biz.core.BizXEnable;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -25,8 +23,6 @@ public class DemoApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
-        RabbitAdmin bean = BizXBeanUtils.getBean(RabbitAdmin.class);
-        log.info("bean:{}", bean);
     }
 
 }

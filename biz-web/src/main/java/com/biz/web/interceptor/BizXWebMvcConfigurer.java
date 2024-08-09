@@ -1,7 +1,6 @@
 package com.biz.web.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -27,10 +26,6 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
     @Override
     @SuppressWarnings("all")
     public void addInterceptors(InterceptorRegistry registry) {
-        if (env.getProperty("biz.interceptor.trace", Boolean.class, false)) {
-            registry.addInterceptor(traceInterceptor())
-                    .addPathPatterns("/**");
-        }
 
         if (env.getProperty("biz.interceptor.access", Boolean.class, false)) {
             registry.addInterceptor(accessLimitInterceptor())
@@ -56,7 +51,6 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return AccessLimitInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(name = "biz.interceptor.access", havingValue = "true")
     public AccessLimitInterceptor accessLimitInterceptor() {
         return new AccessLimitInterceptor();
     }
@@ -67,7 +61,6 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return CheckTokenHandlerInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(name = "biz.interceptor.checkToken", havingValue = "true")
     public CheckTokenHandlerInterceptor checkTokenHandlerInterceptor() {
         return new CheckTokenHandlerInterceptor();
     }
@@ -79,21 +72,9 @@ public class BizXWebMvcConfigurer implements WebMvcConfigurer {
      * @return CheckAuthorityInterceptor Bean
      */
     @Bean
-    @ConditionalOnProperty(name = "biz.interceptor.auth", havingValue = "true")
     public CheckAuthorityInterceptor checkAuthorityInterceptor() {
         return new CheckAuthorityInterceptor();
     }
 
-
-    /**
-     * 链路追踪ID
-     *
-     * @return TraceInterceptor Bean
-     */
-    @Bean
-    @ConditionalOnProperty(name = "biz.interceptor.trace", havingValue = "true")
-    public TraceInterceptor traceInterceptor() {
-        return new TraceInterceptor();
-    }
 
 }

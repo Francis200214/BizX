@@ -1,0 +1,7 @@
+# Auto Config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.biz.trace.config.TraceConfigurer,\
+com.biz.trace.config.WebMvcTraceConfigurer
+
+
+

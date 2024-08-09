@@ -1,6 +1,5 @@
 package com.biz.rabbitmq.config;
 
-import com.biz.common.bean.BizXBeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -28,9 +27,13 @@ import java.util.Map;
 @Configuration
 public class DynamicRabbitMQConfig implements ApplicationListener<ContextRefreshedEvent>, ApplicationContextAware {
 
-    private RabbitAdmin rabbitAdmin;
+    private final RabbitAdmin rabbitAdmin;
 
     private ApplicationContext applicationContext;
+
+    public DynamicRabbitMQConfig(RabbitAdmin rabbitAdmin) {
+        this.rabbitAdmin = rabbitAdmin;
+    }
 
 
     private void createQueuesAndBindings() {
@@ -78,10 +81,5 @@ public class DynamicRabbitMQConfig implements ApplicationListener<ContextRefresh
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
-        try {
-            this.rabbitAdmin = BizXBeanUtils.getBean(RabbitAdmin.class);
-        } catch (Exception e) {
-            log.error("获取RabbitAdmin失败", e);
-        }
     }
 }

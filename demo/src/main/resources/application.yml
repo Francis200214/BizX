@@ -21,25 +21,18 @@ spring:
     password: guest
     virtual-host: /
 
-
+logging:
+  level:
+    root: info
+  pattern:
+    # 控制台输出
+    console: "%clr([%X{traceId}]){faint} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %highlight(%-5level) %clr(%logger{36}){cyan} : %msg%n"
+    # 文件输出
+    file: "[%X{traceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
 
 biz:
-  interceptor:
-    access: true
-    checkToken: true
-#  oss:
-#    endpoint: "localhost"
-#    region: "1"
-#    pathStyleAccess: true
-#    accessKey: "1"
-#    secretKey: "1"
-#    maxConnections: 10
-  cache:
-    redis-cache: true
-  log:
-    enable: true
-  rabbitmq:
-    enable: false
+  trace:
+    enabled: false
 
 
 

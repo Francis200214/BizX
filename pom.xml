@@ -22,6 +22,7 @@
         <module>biz-rabbitmq</module>
         <module>biz-redis</module>
         <module>biz-verification</module>
+        <module>biz-trace</module>
     </modules>
 
 
