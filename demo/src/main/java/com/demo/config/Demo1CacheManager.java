@@ -1,4 +1,4 @@
-package com.demo.cocnfig;
+package com.demo.config;
 
 import com.biz.cache.caffeine.cache.BizCaffeineCache;
 import com.biz.cache.caffeine.loader.BizCaffeineCacheLoader;

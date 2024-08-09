@@ -17,7 +17,7 @@ package com.biz.trace.store;
  * </pre>
  *
  * @see com.biz.trace.interceptor.TraceInterceptor
- * @see com.biz.trace.store.DefaultTraceStoreService
+ * @see DefaultTraceStoreServiceImpl
  *
  * @author francis
  * @since 2024-07-04 16:32

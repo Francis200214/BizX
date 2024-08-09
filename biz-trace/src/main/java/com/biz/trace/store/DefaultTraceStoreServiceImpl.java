@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 2024-07-04 16:34
  **/
 @Slf4j
-public class DefaultTraceStoreService implements TraceStoreService {
+public class DefaultTraceStoreServiceImpl implements TraceStoreService {
 
     /**
      * 当前线程追踪Id的存储容器。
@@ -41,7 +41,7 @@ public class DefaultTraceStoreService implements TraceStoreService {
     /**
      * 构造函数，尝试从 Spring 容器中获取 {@link TraceIdService} 的 Bean 实例。
      */
-    public DefaultTraceStoreService(TraceIdService traceIdService) {
+    public DefaultTraceStoreServiceImpl(TraceIdService traceIdService) {
         this.traceIdService = traceIdService;
     }
 

@@ -1,4 +1,4 @@
-package com.demo.cocnfig;
+package com.demo.config;
 
 import com.biz.cache.redis.cache.BizRedisCacheEntity;
 import com.biz.cache.redis.loader.BizRedisCacheLoader;
