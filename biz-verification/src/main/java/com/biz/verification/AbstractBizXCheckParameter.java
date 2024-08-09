@@ -94,6 +94,8 @@ public class AbstractBizXCheckParameter {
         return joinPoint.proceed();
     }
 
+
+
     /**
      * 判断是否扫描该类的包路径。
      *
