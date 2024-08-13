@@ -14,9 +14,39 @@ import java.util.*;
  * 提供关于类、字段、方法等的反射工具方法。
  *
  * @author francis
- * @since 2023/4/2 9:47
+ * @since 2023-4-2 9:47
  */
 public class ReflectionUtils {
+
+    private static final Set<Class<?>> WRAPPER_TYPES = new HashSet<Class<?>>() {{
+        add(String.class);
+        add(Boolean.class);
+        add(Byte.class);
+        add(Character.class);
+        add(Double.class);
+        add(Float.class);
+        add(Integer.class);
+        add(Long.class);
+        add(Short.class);
+        add(Void.class);
+    }};
+
+
+    /**
+     * 判断给定的字段是否为类类型。
+     *
+     * @param field 待检查的字段
+     * @return 如果字段为类类型返回true，否则返回false
+     */
+    public static boolean isClassType(Field field) {
+        Class<?> fieldType = field.getType();
+        // 检查是否是基本类型
+        if (fieldType.isPrimitive()) {
+            return false;
+        }
+        // 检查是否是包装类型，如果既不是基本类型也不是包装类型，则认为是类类型
+        return !WRAPPER_TYPES.contains(fieldType);
+    }
 
     /**
      * 判断给定类是否为原始类型。

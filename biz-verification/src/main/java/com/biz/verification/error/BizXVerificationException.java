@@ -33,25 +33,32 @@ public class BizXVerificationException extends BizXException {
      */
     private final String message;
 
+
     /**
      * 构造参数校验异常。
      * <p>使用默认异常Code码和信息。</p>
      */
-    public BizXVerificationException() {
+    private BizXVerificationException() {
         super(ErrorCodeConstant.DEFAULT_ERROR.MESSAGE);
         this.code = ErrorCodeConstant.DEFAULT_ERROR.CODE;
         this.message = ErrorCodeConstant.DEFAULT_ERROR.MESSAGE;
-
     }
 
     /**
      * 构造参数校验异常。
      *
+     * <p>
+     *
+     * </p>
+     *
      * @param code    错误码
      * @param message 错误信息
+     * @param className 出现错误的类名称
+     * @param methodName 出现错误的方法名称
+     * @param fieldName 出现错误的字段名称
      */
-    public BizXVerificationException(int code, String message) {
-        super(message);
+    public BizXVerificationException(int code, String message, String className, String methodName, String fieldName) {
+        super(className + " " + methodName + " " + fieldName + " " + message);
         this.code = code;
         this.message = message;
     }

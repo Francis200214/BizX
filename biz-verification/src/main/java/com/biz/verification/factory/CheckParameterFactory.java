@@ -1,6 +1,5 @@
 package com.biz.verification.factory;
 
-import com.biz.common.bean.BizXBeanUtils;
 import com.biz.verification.strategy.CheckParameterStrategy;
 import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +11,6 @@ import org.springframework.context.ApplicationContextAware;
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ServiceLoader;
 
 /**
  * 检查参数工厂。
@@ -50,10 +48,13 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
      * 处理数据，校验接口中的参数。
      *
      * @param annotation 参数上的注解，不能为空
-     * @param args       参数值
+     * @param byFieldValue       参数值
+     * @param className 类名
+     * @param methodName 方法名
+     * @param fieldName 参数名称
      * @throws Throwable 如果校验失败或处理过程中出现异常
      */
-    public void handle(@NotNull Annotation annotation, Object args) throws Throwable {
+    public void handle(@NotNull Annotation annotation, Object byFieldValue, String className, String methodName, String fieldName) throws Throwable {
         // 从缓存 Map 中获取对应的处理实现
         CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());
         if (checkParameterStrategy == null) {
@@ -61,11 +62,11 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
             return;
         }
         // 处理具体类型的参数
-        checkParameterStrategy.check(annotation, args);
+        checkParameterStrategy.check(annotation, byFieldValue, className, methodName, fieldName);
     }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+        CheckParameterFactory.applicationContext = applicationContext;
     }
 }

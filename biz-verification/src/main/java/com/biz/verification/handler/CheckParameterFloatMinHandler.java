@@ -41,21 +41,24 @@ public class CheckParameterFloatMinHandler implements CheckParameterStrategy {
      * 检查注解和参数是否满足注解的要求
      *
      * @param annotation 注解实例
-     * @param o          被检查的参数
+     * @param value          被检查的参数
+     * @param className 类名称
+     * @param methodName 方法名称
+     * @param fieldName 参数名称
      * @throws BizXVerificationException 如果参数不满足注解的要求，则抛出此异常
      */
     @Override
-    public void check(Annotation annotation, Object o) throws BizXVerificationException {
-        if (o == null) {
+    public void check(Annotation annotation, Object value, String className, String methodName, String fieldName) throws BizXVerificationException {
+        if (value == null) {
             return;
         }
 
         if (annotation instanceof BizXCheckFloatMin) {
             BizXCheckFloatMin check = Common.to(annotation);
-            if (o instanceof Float) {
-                Float num = Common.to(o);
+            if (value instanceof Float) {
+                Float num = Common.to(value);
                 if (num < check.min()) {
-                    throw new BizXVerificationException(check.error().code(), check.error().message());
+                    throw new BizXVerificationException(check.error().code(), check.error().message(), className, methodName, fieldName);
                 }
             }
         }

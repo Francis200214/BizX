@@ -37,20 +37,23 @@ public class CheckParameterCollectionIsEmptyHandler implements CheckParameterStr
      * 检查参数是否符合注解的要求。
      *
      * @param annotation 需要检查的注解实例
-     * @param o          需要检查的对象
+     * @param value          需要检查的对象
+     * @param className 类名
+     * @param methodName 方法名
+     * @param fieldName 参数名称
      * @throws BizXVerificationException 如果检查不通过，则抛出此异常
      */
     @Override
-    public void check(Annotation annotation, Object o) throws BizXVerificationException {
+    public void check(Annotation annotation, Object value, String className, String methodName, String fieldName) throws BizXVerificationException {
         // 为 null 时不做处理
-        if (o == null) {
+        if (value == null) {
             return;
         }
         if (annotation instanceof BizXCheckCollectionIsEmpty) {
             BizXCheckCollectionIsEmpty check = Common.to(annotation);
-            if (o instanceof Collection) {
-                if (!check.isEmpty() && isEmpty(Common.to(o))) {
-                    throw new BizXVerificationException(check.error().code(), check.error().message());
+            if (value instanceof Collection) {
+                if (!check.isEmpty() && isEmpty(Common.to(value))) {
+                    throw new BizXVerificationException(check.error().code(), check.error().message(), className, methodName, fieldName);
                 }
             }
         }

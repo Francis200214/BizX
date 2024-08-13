@@ -52,35 +52,38 @@ public class CheckParameterDateTimeFormatHandler implements CheckParameterStrate
      * 检查参数是否符合注解的要求。
      *
      * @param annotation 需要检查的注解实例
-     * @param o          需要检查的对象
+     * @param value          需要检查的对象
+     * @param className 类名称
+     * @param methodName 方法名称
+     * @param fieldName 参数名称
      * @throws BizXVerificationException 如果检查不通过，则抛出此异常
      */
     @Override
-    public void check(Annotation annotation, Object o) throws BizXVerificationException {
-        if (o == null) {
+    public void check(Annotation annotation, Object value, String className, String methodName, String fieldName) throws BizXVerificationException {
+        if (value == null) {
             return;
         }
 
         if (annotation instanceof BizXCheckDateTimeFormat) {
             BizXCheckDateTimeFormat check = Common.to(annotation);
             try {
-                if (o instanceof String) {
-                    String str = Common.to(o);
+                if (value instanceof String) {
+                    String str = Common.to(value);
                     if (Common.isBlank(check.format())) {
                         DateTimeUtils.strToDate(str);
                     } else {
                         DateTimeUtils.strToDate(str, check.format());
                     }
 
-                } else if (o instanceof java.util.Date) {
-                    DateTimeUtils.dateToStr(Common.to(o), check.format());
+                } else if (value instanceof java.util.Date) {
+                    DateTimeUtils.dateToStr(Common.to(value), check.format());
 
-                } else if (o instanceof Calendar) {
-                    CalendarUtils.isValidFormat(Common.to(o), check.format());
+                } else if (value instanceof Calendar) {
+                    CalendarUtils.isValidFormat(Common.to(value), check.format());
 
                 }
             } catch (Exception e) {
-                throw new BizXVerificationException(check.error().code(), check.error().message());
+                throw new BizXVerificationException(check.error().code(), check.error().message(), className, methodName, fieldName);
             }
 
         }

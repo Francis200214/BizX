@@ -36,21 +36,24 @@ public class CheckParameterFloatMaxHandler implements CheckParameterStrategy {
      * 检查参数是否符合注解的要求。
      *
      * @param annotation 需要检查的注解实例
-     * @param o          需要检查的对象
+     * @param value          需要检查的对象
+     * @param className 类名称
+     * @param methodName 方法名称
+     * @param fieldName 参数名称
      * @throws BizXVerificationException 如果检查不通过，则抛出此异常
      */
     @Override
-    public void check(Annotation annotation, Object o) throws BizXVerificationException {
-        if (o == null) {
+    public void check(Annotation annotation, Object value, String className, String methodName, String fieldName) throws BizXVerificationException {
+        if (value == null) {
             return;
         }
 
         if (annotation instanceof BizXCheckFloatMax) {
             BizXCheckFloatMax check = Common.to(annotation);
-            if (o instanceof Float) {
-                Float num = Common.to(o);
+            if (value instanceof Float) {
+                Float num = Common.to(value);
                 if (num > check.max()) {
-                    throw new BizXVerificationException(check.error().code(), check.error().message());
+                    throw new BizXVerificationException(check.error().code(), check.error().message(), className, methodName, fieldName);
                 }
             }
         }
