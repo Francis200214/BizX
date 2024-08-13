@@ -34,6 +34,7 @@ public class BizXVerificationException extends BizXException {
     private final String message;
 
 
+
     /**
      * 构造参数校验异常。
      * <p>使用默认异常Code码和信息。</p>
@@ -47,9 +48,29 @@ public class BizXVerificationException extends BizXException {
     /**
      * 构造参数校验异常。
      *
-     * <p>
+     * @param code    错误码
+     */
+    public BizXVerificationException(int code) {
+        super(ErrorCodeConstant.DEFAULT_ERROR.MESSAGE);
+        this.code = code;
+        this.message = ErrorCodeConstant.DEFAULT_ERROR.MESSAGE;
+    }
+
+
+    /**
+     * 构造参数校验异常。
      *
-     * </p>
+     * @param code    错误码
+     * @param message 错误信息
+     */
+    public BizXVerificationException(int code, String message) {
+        super(message);
+        this.code = code;
+        this.message = message;
+    }
+
+    /**
+     * 构造参数校验异常。
      *
      * @param code    错误码
      * @param message 错误信息
