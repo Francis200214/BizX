@@ -1,4 +1,4 @@
-package com.biz.web.log.operation;
+package com.biz.operation.log.handler;
 
 import org.springframework.scheduling.annotation.Async;
 
@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.Async;
  * @author francis
  * @since 2024-07-23 10:27
  **/
-public interface DefaultOperationLogHandler {
+public interface OperationLogHandler {
 
     /**
      * 日志处理

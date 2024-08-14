@@ -1,4 +1,4 @@
-package com.biz.web.log.store;
+package com.biz.operation.log.store;
 
 /**
  * 当前用户存储
@@ -6,7 +6,7 @@ package com.biz.web.log.store;
  * @author francis
  * @since 2024-07-04 17:40
  **/
-public interface LocalUserStoreService {
+public interface OperationLogUserStore {
 
     /**
      * 获取操作人id

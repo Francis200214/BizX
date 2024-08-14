@@ -5,9 +5,9 @@ com.biz.web.token.TokenProperties,\
 com.biz.web.session.AbstractSessionManage,\
 com.biz.web.token.AbstractToken,\
 com.biz.web.error.GlobalExceptionHandler,\
-com.biz.web.log.LogAspect,\
-com.biz.web.log.recorder.LogRecorder,\
-com.biz.web.log.store.DefaultLocalUserStoreService
+com.biz.operation.log.OperationLogAspect,\
+com.biz.operation.log.recorder.LogRecorder,\
+com.biz.operation.log.store.DefaultOperationLogUserStore
 
 
 

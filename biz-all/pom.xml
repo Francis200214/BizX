@@ -73,6 +73,12 @@
             <version>1.4.11</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.francis200214</groupId>
+            <artifactId>biz-operation-log</artifactId>
+            <version>1.4.11</version>
+        </dependency>
+
     </dependencies>
 
 

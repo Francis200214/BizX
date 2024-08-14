@@ -41,6 +41,16 @@ public final class BizXBeanUtils {
     }
 
     /**
+     * 获取指定类型的 Bean 实例。
+     *
+     * @param clazz 要获取的 Bean 的名称
+     * @return 指定类型的 Bean 实例
+     */
+    public static Object getBean(String clazz) {
+        return getApplicationContext().getBean(clazz);
+    }
+
+    /**
      * 获取带有指定注解的所有 Bean。
      *
      * @param clazz 注解类型

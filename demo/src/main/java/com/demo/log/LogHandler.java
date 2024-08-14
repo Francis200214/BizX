@@ -1,8 +1,8 @@
 package com.demo.log;
 
-import com.biz.web.log.operation.DefaultOperationLogHandler;
+import com.biz.operation.log.handler.OperationLogHandler;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * 添加用户信息日志
@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
  * @author francis
  * @since 2024-06-03 13:51
  **/
-@Service
+@Component
 @Slf4j
-public class LogHandler implements DefaultOperationLogHandler {
+public class LogHandler implements OperationLogHandler {
 
     @Override
     public void push(String traceId, String logLargeType, String logSmallType, String operatorId, String operatorName, String content, Throwable e) {

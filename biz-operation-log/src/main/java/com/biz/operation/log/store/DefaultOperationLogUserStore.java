@@ -1,7 +1,7 @@
-package com.biz.web.log.store;
+package com.biz.operation.log.store;
 
 import com.biz.common.utils.Common;
-import com.biz.web.log.trace.TraceLogUserService;
+import com.biz.operation.log.trace.TraceLogUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -17,7 +17,7 @@ import java.util.Optional;
  * @since 2024-07-04 17:40
  **/
 @Slf4j
-public class DefaultLocalUserStoreService implements LocalUserStoreService, ApplicationContextAware {
+public class DefaultOperationLogUserStore implements OperationLogUserStore, ApplicationContextAware {
 
     /**
      * 当前操作人id

@@ -23,6 +23,7 @@
         <module>biz-redis</module>
         <module>biz-verification</module>
         <module>biz-trace</module>
+        <module>biz-operation-log</module>
     </modules>
 
 
