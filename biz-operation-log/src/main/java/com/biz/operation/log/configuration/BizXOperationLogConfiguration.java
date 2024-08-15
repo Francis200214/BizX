@@ -4,54 +4,69 @@ import com.biz.operation.log.OperationLogAspect;
 import com.biz.operation.log.handler.DefaultOperationLogHandler;
 import com.biz.operation.log.handler.OperationLogHandler;
 import com.biz.operation.log.handler.OperationLogHandlerFactory;
-import com.biz.operation.log.manager.OperationLogManager;
-import com.biz.operation.log.recorder.LogRecorder;
+import com.biz.operation.log.processor.OperationLogProcessor;
+import com.biz.operation.log.recorder.OperationLogRecorder;
 import com.biz.operation.log.replace.ContentReplacer;
 import com.biz.operation.log.replace.DefaultContentReplacer;
-import com.biz.operation.log.store.DefaultOperationLogUserStore;
-import com.biz.operation.log.store.OperationLogUserStore;
+import com.biz.operation.log.store.DefaultOperationLogUserSession;
+import com.biz.operation.log.store.OperationLogUserSession;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 
 /**
  * 配置类，负责操作日志的自动配置。
  *
  * <p>该配置类提供了默认的操作日志处理器、用户存储服务以及日志记录器的Bean。</p>
  *
+ * <p>当配置文件中设置了 {@code biz.operation.log.enabled=true} 时，
+ * 本配置类中的Bean才会生效。</p>
+ *
+ * <p>此配置类主要包含以下几个核心Bean：</p>
+ * <ul>
+ *     <li>{@link OperationLogUserSession}：用户存储服务接口的默认实现。</li>
+ *     <li>{@link OperationLogHandler}：操作日志处理器接口的默认实现。</li>
+ *     <li>{@link ContentReplacer}：日志内容替换器的默认实现。</li>
+ *     <li>{@link OperationLogHandlerFactory}：操作日志处理器工厂。</li>
+ *     <li>{@link OperationLogRecorder}：操作日志记录器。</li>
+ *     <li>{@link OperationLogProcessor}：日志处理前的操作处理器。</li>
+ *     <li>{@link OperationLogAspect}：操作日志拦截器，用于记录操作日志。</li>
+ * </ul>
+ *
  * @see DefaultOperationLogHandler
- * @see DefaultOperationLogUserStore
- * @see LogRecorder
+ * @see DefaultOperationLogUserSession
  * @see OperationLogAspect
+ * @author francis
+ * @since 1.0.0
+ * @version 1.0.0
  */
 @Configuration
 @ConditionalOnProperty(prefix = "biz.operation.log", name = "enabled", havingValue = "true")
 public class BizXOperationLogConfiguration {
 
     /**
-     * 创建一个默认的LocalUserStoreService实例。
+     * 创建一个默认的 OperationLogUserSession 实例。
      *
-     * <p>如果Spring上下文中不存在自定义的LocalUserStoreService Bean，
+     * <p>如果 Spring 上下文中不存在自定义的 OperationLogUserSession Bean，
      * 则会使用该方法提供的默认实现。</p>
      *
-     * @return 默认的LocalUserStoreService实例
-     * @see DefaultOperationLogUserStore
+     * @return 默认的 OperationLogUserSession 实例
+     * @see DefaultOperationLogUserSession
      */
     @Bean
-    @ConditionalOnMissingBean(OperationLogUserStore.class)
-    public OperationLogUserStore localUserStoreService() {
-        return new DefaultOperationLogUserStore();
+    @ConditionalOnMissingBean(OperationLogUserSession.class)
+    public OperationLogUserSession operationLogUserStore() {
+        return new DefaultOperationLogUserSession();
     }
 
     /**
-     * 创建一个默认的OperationLogHandler实例。
+     * 创建一个默认的 OperationLogHandler 实例。
      *
-     * <p>如果Spring上下文中不存在自定义的OperationLogHandler Bean，
+     * <p>如果 Spring 上下文中不存在自定义的 OperationLogHandler Bean，
      * 则会使用该方法提供的默认实现。</p>
      *
-     * @return 默认的OperationLogHandler实例
+     * @return 默认的 OperationLogHandler 实例
      * @see DefaultOperationLogHandler
      */
     @Bean
@@ -60,11 +75,14 @@ public class BizXOperationLogConfiguration {
         return new DefaultOperationLogHandler();
     }
 
-
     /**
-     * 创建一个ContentReplacer实例，用于替换日志内容中的信息。
+     * 创建一个 ContentReplacer 实例，用于替换日志内容中的信息。
      *
-     * @return
+     * <p>如果 Spring 上下文中不存在自定义的 ContentReplacer Bean，
+     * 则会使用该方法提供的默认实现。</p>
+     *
+     * @return 默认的 ContentReplacer 实例
+     * @see DefaultContentReplacer
      */
     @Bean
     @ConditionalOnMissingBean(ContentReplacer.class)
@@ -72,47 +90,54 @@ public class BizXOperationLogConfiguration {
         return new DefaultContentReplacer();
     }
 
-
+    /**
+     * 创建一个 OperationLogHandlerFactory 实例，用于管理和提供操作日志处理器。
+     *
+     * @param operationLogHandler 默认的操作日志处理器
+     * @return OperationLogHandlerFactory 实例
+     * @see OperationLogHandlerFactory
+     */
     @Bean
     public OperationLogHandlerFactory operationLogHandlerFactory(OperationLogHandler operationLogHandler) {
         return new OperationLogHandlerFactory(operationLogHandler);
     }
 
     /**
-     * 创建一个LogRecorder实例，用于记录操作日志。
+     * 创建一个 OperationLogRecorder 实例，用于记录操作日志。
      *
-     * <p>该方法会依赖注入OperationLogHandler实例，
-     * 并通过LogRecorder进行操作日志的记录。</p>
-     *
-     * @param operationLogHandler 操作日志处理器
-     * @return LogRecorder实例
-     * @see LogRecorder
+     * @param operationLogHandlerFactory 日志处理器工厂
+     * @param operationLogUserSession 用户存储服务
+     * @return OperationLogRecorder 实例
+     * @see OperationLogRecorder
      */
     @Bean
-    public LogRecorder logRecorder(OperationLogHandlerFactory operationLogHandlerFactory) {
-        return new LogRecorder(operationLogHandlerFactory);
+    public OperationLogRecorder operationLogRecorder(OperationLogHandlerFactory operationLogHandlerFactory, OperationLogUserSession operationLogUserSession) {
+        return new OperationLogRecorder(operationLogHandlerFactory, operationLogUserSession);
     }
-
-    @Bean
-    public OperationLogManager operationLogManager(LogRecorder logRecorder, OperationLogUserStore operationLogUserStore, ContentReplacer contentReplacer) {
-        return new OperationLogManager(logRecorder, operationLogUserStore, contentReplacer);
-    }
-
 
     /**
-     * 创建一个操作日志切面，用于拦截和记录操作日志。
+     * 创建一个 OperationLogProcessor 实例，用于处理日志记录前的操作。
      *
-     * <p>该切面会在指定的操作发生时拦截并记录日志，依赖注入的
-     * LogRecorder和LocalUserStoreService实例会用于记录和存储日志信息。</p>
+     * @param operationLogRecorder 日志记录器
+     * @param contentReplacer 内容替换器
+     * @return OperationLogProcessor 实例
+     * @see OperationLogProcessor
+     */
+    @Bean
+    public OperationLogProcessor operationLogProcessor(OperationLogRecorder operationLogRecorder, ContentReplacer contentReplacer) {
+        return new OperationLogProcessor(operationLogRecorder, contentReplacer);
+    }
+
+    /**
+     * 创建一个 OperationLogAspect 实例，用于拦截和记录操作日志。
      *
-     * @param logRecorder           日志记录器
-     * @param operationLogUserStore 本地用户存储服务
-     * @param contentReplacer       内容替换器
-     * @return OperationLogAspect实例
+     * @param operationLogProcessor 日志处理器
+     * @return OperationLogAspect 实例
      * @see OperationLogAspect
      */
     @Bean
-    public OperationLogAspect operationLogAspect(@Lazy OperationLogManager operationLogManager) {
-        return new OperationLogAspect(operationLogManager);
+    public OperationLogAspect operationLogAspect(OperationLogProcessor operationLogProcessor) {
+        return new OperationLogAspect(operationLogProcessor);
     }
+
 }

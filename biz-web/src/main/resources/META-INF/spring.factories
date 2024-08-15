@@ -4,10 +4,7 @@ com.biz.web.interceptor.BizXWebMvcConfigurer,\
 com.biz.web.token.TokenProperties,\
 com.biz.web.session.AbstractSessionManage,\
 com.biz.web.token.AbstractToken,\
-com.biz.web.error.GlobalExceptionHandler,\
-com.biz.operation.log.OperationLogAspect,\
-com.biz.operation.log.recorder.LogRecorder,\
-com.biz.operation.log.store.DefaultOperationLogUserStore
+com.biz.web.error.GlobalExceptionHandler
 
 
 

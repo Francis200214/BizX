@@ -31,8 +31,9 @@ logging:
     file: "[%X{traceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
 
 biz:
-  verification:
-    enabled: true
+  operation:
+    log:
+      enabled: true
 
 
 

@@ -99,7 +99,7 @@ public final class BizXBeanUtils {
      *
      * @return ApplicationContext 实例
      */
-    private static ApplicationContext getApplicationContext() {
+    public static ApplicationContext getApplicationContext() {
         return ApplicationContextAwareUtils.getApplicationContext();
     }
 }
