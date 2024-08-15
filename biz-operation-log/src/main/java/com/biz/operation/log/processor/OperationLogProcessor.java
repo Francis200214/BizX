@@ -75,6 +75,7 @@ public class OperationLogProcessor {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         OperationLog operationLog = signature.getMethod().getAnnotation(OperationLog.class);
         StandardEvaluationContext context = new StandardEvaluationContext();
+        context.setVariable("parameterNames", signature.getParameterNames());
         context.setVariable("args", joinPoint.getArgs());
         String content = contentReplacer.replace(operationLog.content(), context);
         operationLogRecorder.setContent(content);

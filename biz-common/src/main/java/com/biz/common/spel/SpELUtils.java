@@ -41,14 +41,28 @@ public class SpELUtils {
      * @throws IllegalArgumentException 如果参数名称和参数值数组长度不一致，则抛出运行时异常
      */
     public static StandardEvaluationContext createContext(String[] paramNames, Object[] args) {
+        StandardEvaluationContext context = new StandardEvaluationContext();
+        setVariable(context, paramNames, args);
+        return context;
+    }
+
+
+    /**
+     * 根据参数名称和值设置变量。
+     *
+     * @param standardEvaluationContext StandardEvaluationContext 实例
+     * @param paramNames                参数名称数组
+     * @param args                      参数值数组
+     * @throws IllegalArgumentException 如果参数名称和参数值数组长度不一致，则抛出运行时异常
+     */
+    public static void setVariable(StandardEvaluationContext standardEvaluationContext, String[] paramNames, Object[] args) {
         if (paramNames.length != args.length) {
             throw new IllegalArgumentException("The lengths of paramNames and args must be equal");
         }
-
-        StandardEvaluationContext context = new StandardEvaluationContext();
         for (int i = 0; i < args.length; i++) {
-            context.setVariable(paramNames[i], args[i]);
+            standardEvaluationContext.setVariable(paramNames[i], args[i]);
         }
-        return context;
     }
+
+
 }

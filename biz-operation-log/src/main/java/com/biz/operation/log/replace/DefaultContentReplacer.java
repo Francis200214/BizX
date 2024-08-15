@@ -64,17 +64,36 @@ public class DefaultContentReplacer implements ContentReplacer {
             throw new IllegalArgumentException("Context must be an instance of StandardEvaluationContext");
         }
         StandardEvaluationContext evalContext = (StandardEvaluationContext) context;
+        Object[] args = (Object[]) evalContext.lookupVariable("args");
+        String[] parameterNames = (String[])evalContext.lookupVariable("parameterNames");
+
+        SpELUtils.setVariable(evalContext, parameterNames, args);
         SpELContentReplacerHelper helper = SpELContentReplacerHelper.builder()
                 .content(content)
                 .context(context)
                 .parser(parser)
                 .build();
+
+        // 替换默认的关键字和值
+        this.replaceDefaultKey(helper, evalContext, parser);
+        return parseSpelExpressions(helper.toContent(), evalContext, parser);
+    }
+
+
+    /**
+     * 默认替换关键字。
+     *
+     * <p>该方法是替换框架默认的关键字信息。</p>
+     *
+     * @param helper SpEl内容替换器
+     * @param context context 上下文，用于提供替换所需的数据
+     * @param parser 表达式解析器，用于解析SpEL表达式
+     */
+    private void replaceDefaultKey(SpELContentReplacerHelper helper, StandardEvaluationContext context, ExpressionParser parser) {
         helper.replaceByKey("category", "category");
         helper.replaceByKey("subcategory", "subcategory");
         helper.replaceByValue("{now}", Common.now());
-        helper.replaceByValue("operationName", SpELUtils.parseExpression("'"+evalContext.lookupVariable("operationName")+"'", evalContext, parser, String.class));
-
-        return parseSpelExpressions(helper.toContent(), evalContext, parser);
+        helper.replaceByValue("operationName", SpELUtils.parseExpression("'"+context.lookupVariable("operationName")+"'", context, parser, String.class));
     }
 
     /**
@@ -103,7 +122,7 @@ public class DefaultContentReplacer implements ContentReplacer {
                 break;
             }
             String expression = content.substring(openIndex + 2, closeIndex);
-            String value = SpELUtils.parseExpression(expression, context, parser, String.class);
+            Object value = SpELUtils.parseExpression(expression, context, parser, Object.class);
             parsedContent.append(value);
             start = closeIndex + 1;
         }
