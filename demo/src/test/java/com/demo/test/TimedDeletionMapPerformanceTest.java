@@ -15,7 +15,7 @@ import java.util.function.Consumer;
  * 包含并发执行 put、get 和 remove 操作的测试。
  *
  * @author francis
- * @since 2024-07-31 15:18
+ * @since 1.0.1
  **/
 @Slf4j
 public class TimedDeletionMapPerformanceTest {

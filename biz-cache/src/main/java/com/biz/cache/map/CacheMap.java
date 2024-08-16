@@ -7,7 +7,7 @@ import java.util.function.Supplier;
  * 缓存 Map 接口
  *
  * @author francis
- * @since 2023-04-23 17:20
+ * @since 1.0.1
  **/
 public interface CacheMap<K, V> {
 

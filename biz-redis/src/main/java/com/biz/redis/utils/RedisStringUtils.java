@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * @see <a href="https://redis.io/commands#string">Redis String Commands</a>
  * @author francis
  * @version 1.4.11
- * @since 2024-04-02
+ * @since 1.0.1
  */
 @Slf4j
 @RequiredArgsConstructor

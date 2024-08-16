@@ -21,7 +21,7 @@ import static org.springframework.data.redis.cache.RedisCacheConfiguration.defau
  * Redis缓存配置类，条件注解确保只有在配置属性biz.cache.redis-cache为true时才加载该配置。
  *
  * @author francis
- * @since 2024-04-01 17:23
+ * @since 1.0.1
  **/
 @ConditionalOnProperty(value = "biz.cache.redis-cache", havingValue = "true")
 public class BizRedisCacheConfiguration {

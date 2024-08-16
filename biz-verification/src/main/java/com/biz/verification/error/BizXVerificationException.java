@@ -18,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author francis
  * @version 1.0.0
  * @see BizXException
- * @since 2024-08-08
+ * @since 1.0.1
  **/
 @Slf4j
 public class BizXVerificationException extends BizXException {

@@ -2,7 +2,7 @@ package com.demo.constant;
 
 /**
  * @author francis
- * @since 2024-08-02 16:54
+ * @since 1.0.1
  **/
 public class SimpleQueueConstant {
 

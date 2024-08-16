@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * 主要控制打开关闭各项业务的拦截器
  *
  * @author francis
- * @since 2023/4/1 16:30
+ * @since 1.0.1
  */
 @Slf4j
 public class BizXWebMvcConfigurer implements WebMvcConfigurer {

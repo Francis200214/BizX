@@ -26,7 +26,7 @@ import java.util.Set;
  * @see <a href="https://redis.io/commands#set">Redis Set Commands</a>
  * @author francis
  * @version 1.4.11
- * @since 2024-04-02
+ * @since 1.0.1
  */
 @Slf4j
 @RequiredArgsConstructor

@@ -6,7 +6,7 @@ import com.demo.service.bo.AddUserBo;
  * 用户服务
  *
  * @author francis
- * @since 2024-06-03 13:50
+ * @since 1.0.1
  **/
 public interface IUserService {
 

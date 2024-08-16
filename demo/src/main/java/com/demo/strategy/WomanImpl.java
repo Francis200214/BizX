@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author francis
- * @since 2023-04-17 09:16
+ * @since 1.0.1
  **/
 @Service
 public class WomanImpl implements PeopleStrategyService {

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * 检查是否登录
  *
  * @author francis
- * @since 2023-07-18 10:52
+ * @since 1.0.1
  **/
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)

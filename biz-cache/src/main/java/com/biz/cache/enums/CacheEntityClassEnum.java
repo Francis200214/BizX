@@ -6,7 +6,7 @@ import lombok.Getter;
  * 缓存实体类型枚举
  *
  * @author francis
- * @since 2023-08-21 10:20
+ * @since 1.0.1
  **/
 @Getter
 public enum CacheEntityClassEnum {

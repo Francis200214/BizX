@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author francis
  * @version 1.4.11
- * @since 2024-06-22
+ * @since 1.0.1
  */
 @Slf4j
 @RequiredArgsConstructor

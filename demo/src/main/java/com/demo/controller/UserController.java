@@ -14,7 +14,7 @@ import static com.demo.controller.UserController.USER_CACHE;
 
 /**
  * @author francis
- * @since 2023-08-19 15:57
+ * @since 1.0.1
  **/
 @RestController
 @RequestMapping("/user")

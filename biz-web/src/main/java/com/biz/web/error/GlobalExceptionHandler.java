@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * 全局异常处理
  *
  * @author francis
- * @since 2023-05-08 18:08
+ * @since 1.0.1
  **/
 @ControllerAdvice
 @Slf4j

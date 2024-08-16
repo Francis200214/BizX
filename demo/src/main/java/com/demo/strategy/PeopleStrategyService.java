@@ -4,7 +4,7 @@ import com.biz.common.strategy.StrategyService;
 
 /**
  * @author francis
- * @since 2023-04-16 20:23
+ * @since 1.0.1
  **/
 public interface PeopleStrategyService extends StrategyService<PeopleEnum> {
 

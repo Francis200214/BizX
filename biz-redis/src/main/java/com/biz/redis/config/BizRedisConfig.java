@@ -18,7 +18,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * 提供了对Redis各种数据结构的操作支持，包括字符串、哈希、列表、集合、有序集合和地理位置。
  *
  * @author francis
- * @since 2024-04-02 08:28
+ * @since 1.0.1
  * @version 1.4.11
  **/
 @Configuration

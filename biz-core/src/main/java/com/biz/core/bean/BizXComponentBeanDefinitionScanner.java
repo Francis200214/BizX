@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * @author francis
  * @BizXComponent Bean注入实现类
- * @since 2023-04-05 14:29
+ * @since 1.0.1
  **/
 public class BizXComponentBeanDefinitionScanner extends ClassPathBeanDefinitionScanner {
 

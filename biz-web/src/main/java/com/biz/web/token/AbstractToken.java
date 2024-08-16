@@ -18,7 +18,7 @@ import java.util.Optional;
  * Token
  *
  * @author francis
- * @since 2023-04-18 09:23
+ * @since 1.0.1
  **/
 @Order(81)
 public class AbstractToken implements Token, ApplicationListener<ContextRefreshedEvent> {

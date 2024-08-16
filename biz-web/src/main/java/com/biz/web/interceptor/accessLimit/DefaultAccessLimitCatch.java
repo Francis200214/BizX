@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 默认接口访问次数缓存
  *
  * @author francis
- * @since 2023-06-07 16:51
+ * @since 1.0.1
  **/
 
 public class DefaultAccessLimitCatch extends AbstractAccessLimitCatch {

@@ -6,28 +6,66 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 提供线程池及相关工具方法的类。
+ *
+ * <p>该类封装了一些常用的线程池创建方法，以及线程池关闭和管理工具。</p>
+ * <p>通过使用这些工具方法，您可以更轻松地创建和管理适合不同场景的线程池。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ *     ThreadPoolExecutor executor = ExecutorsUtils.buildThreadPoolExecutor();
+ *     executor.execute(() -> System.out.println("Task executed"));
+ *     ExecutorsUtils.shutdownThreadPool(executor);
+ * }
+ * </pre>
+ *
+ * @author francis
+ * @version 1.0.1
+ * @since 1.0.1
  */
 @Slf4j
 public final class ExecutorsUtils {
 
-    // 核心线程数，等于可用处理器数量
+    /**
+     * 核心线程数，等于可用处理器数量
+     */
     private static final int CORE_SIZE = Runtime.getRuntime().availableProcessors();
-    // 最大线程数，为核心线程数的两倍
+
+    /**
+     * 最大线程数，为核心线程数的两倍
+     */
     private static final int MAX_SIZE = CORE_SIZE * 2;
-    // 线程保持活跃时间，单位秒
+
+    /**
+     * 线程保持活跃时间，单位秒
+     */
     private static final long ALIVE_TIME = 60L;
-    // 时间单位为毫秒
+
+    /**
+     * 时间单位为毫秒
+     */
     private static final TimeUnit MILLISECONDS = TimeUnit.MILLISECONDS;
-    // 队列大小根据JVM最大内存计算得到，最大值为10000
+
+    /**
+     * 队列大小根据JVM最大内存计算得到，最大值为10000
+     */
     private static final int QUEUE_SIZE = calculateQueueSize();
-    // 使用有界队列，避免过度膨胀
+
+    /**
+     * 使用有界队列，避免过度膨胀
+     */
     private static final LinkedBlockingQueue<Runnable> LINKED_BLOCKING_QUEUE = new LinkedBlockingQueue<>(QUEUE_SIZE);
 
-    // 私有构造方法，防止实例化
+    /**
+     * 私有构造方法，防止实例化
+     */
     private ExecutorsUtils() {
     }
 
-    // 计算队列大小，根据JVM最大内存平均分配每个任务的空间
+    /**
+     * 计算队列大小，根据JVM最大内存平均分配每个任务的空间
+     *
+     * @return 计算得到的队列大小
+     */
     private static int calculateQueueSize() {
         long maxMemory = Runtime.getRuntime().maxMemory();
         // 以每 1MB 对应 1 个任务的策略
@@ -39,9 +77,10 @@ public final class ExecutorsUtils {
     /**
      * 创建一个ScheduledFuture任务。
      *
-     * @param task 要执行的任务
+     * @param task 要执行的任务，不能为空
      * @param millisecond 任务延迟时间，单位毫秒
      * @return ScheduledFuture任务的未来结果
+     * @see ScheduledExecutorService#schedule(Runnable, long, TimeUnit)
      */
     public static ScheduledFuture<?> buildScheduledFuture(Runnable task, long millisecond) {
         return buildScheduledExecutorService().schedule(task, millisecond, TimeUnit.MILLISECONDS);
@@ -51,6 +90,7 @@ public final class ExecutorsUtils {
      * 获取一个ScheduledExecutorService实例。
      *
      * @return ScheduledExecutorService实例
+     * @see Executors#newScheduledThreadPool(int)
      */
     public static ScheduledExecutorService buildScheduledExecutorService() {
         return buildScheduledExecutorService(CORE_SIZE);
@@ -59,8 +99,9 @@ public final class ExecutorsUtils {
     /**
      * 根据给定的核心线程数获取一个ScheduledExecutorService实例。
      *
-     * @param coreSize 核心线程数
+     * @param coreSize 核心线程数，不能为空
      * @return ScheduledExecutorService实例
+     * @see Executors#newScheduledThreadPool(int)
      */
     public static ScheduledExecutorService buildScheduledExecutorService(int coreSize) {
         return Executors.newScheduledThreadPool(Math.max(coreSize, 1), new CustomThreadFactory());
@@ -70,6 +111,7 @@ public final class ExecutorsUtils {
      * 创建一个ThreadPoolExecutor实例。
      *
      * @return ThreadPoolExecutor实例
+     * @see ThreadPoolExecutor
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor() {
         return buildThreadPoolExecutor(CORE_SIZE, MAX_SIZE, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
@@ -78,8 +120,9 @@ public final class ExecutorsUtils {
     /**
      * 创建一个具有指定核心池大小的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小
+     * @param corePoolSize 核心池大小，不能为空
      * @return ThreadPoolExecutor实例
+     * @see ThreadPoolExecutor
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize) {
         return buildThreadPoolExecutor(corePoolSize, corePoolSize + CORE_SIZE, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
@@ -88,9 +131,10 @@ public final class ExecutorsUtils {
     /**
      * 创建一个具有指定核心池大小和最大池大小的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小
-     * @param maximumPoolSize 最大池大小
+     * @param corePoolSize 核心池大小，不能为空
+     * @param maximumPoolSize 最大池大小，不能为空
      * @return ThreadPoolExecutor实例
+     * @see ThreadPoolExecutor
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize) {
         return buildThreadPoolExecutor(corePoolSize, maximumPoolSize, ALIVE_TIME, LINKED_BLOCKING_QUEUE);
@@ -99,10 +143,11 @@ public final class ExecutorsUtils {
     /**
      * 创建一个具有指定核心池大小、最大池大小和线程保持活跃时间的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小
-     * @param maximumPoolSize 最大池大小
-     * @param keepAliveTime 线程保持活跃时间
+     * @param corePoolSize 核心池大小，不能为空
+     * @param maximumPoolSize 最大池大小，不能为空
+     * @param keepAliveTime 线程保持活跃时间，不能为空
      * @return ThreadPoolExecutor实例
+     * @see ThreadPoolExecutor
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime) {
         return buildThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, LINKED_BLOCKING_QUEUE);
@@ -111,11 +156,12 @@ public final class ExecutorsUtils {
     /**
      * 创建一个完全自定义的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小
-     * @param maximumPoolSize 最大池大小
-     * @param keepAliveTime 线程保持活跃时间
-     * @param workQueue 工作队列
+     * @param corePoolSize 核心池大小，不能为空
+     * @param maximumPoolSize 最大池大小，不能为空
+     * @param keepAliveTime 线程保持活跃时间，不能为空
+     * @param workQueue 工作队列，不能为空
      * @return ThreadPoolExecutor实例
+     * @see ThreadPoolExecutor
      */
     public static ThreadPoolExecutor buildThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, BlockingQueue<Runnable> workQueue) {
         return new ThreadPoolExecutor(
@@ -132,7 +178,9 @@ public final class ExecutorsUtils {
     /**
      * 关闭给定的ThreadPoolExecutor。
      *
-     * @param executor 要关闭的线程池
+     * @param executor 要关闭的线程池，不能为空
+     * @see ThreadPoolExecutor#shutdown()
+     * @see ThreadPoolExecutor#shutdownNow()
      */
     public static void shutdownThreadPool(ThreadPoolExecutor executor) {
         if (executor != null) {
@@ -154,7 +202,9 @@ public final class ExecutorsUtils {
     /**
      * 关闭给定的ScheduledExecutorService。
      *
-     * @param executor 要关闭的计划任务执行器
+     * @param executor 要关闭的计划任务执行器，不能为空
+     * @see ScheduledExecutorService#shutdown()
+     * @see ScheduledExecutorService#shutdownNow()
      */
     public static void shutdownScheduledExecutor(ScheduledExecutorService executor) {
         if (executor != null) {
@@ -188,7 +238,7 @@ public final class ExecutorsUtils {
         /**
          * 创建并返回一个新线程。
          *
-         * @param r 线程要执行的任务
+         * @param r 线程要执行的任务，不能为空
          * @return 新创建的线程
          */
         @Override
@@ -211,8 +261,8 @@ public final class ExecutorsUtils {
         /**
          * 当尝试提交的任务被拒绝时调用。
          *
-         * @param r 被拒绝的任务
-         * @param executor 线程池执行器
+         * @param r 被拒绝的任务，不能为空
+         * @param executor 线程池执行器，不能为空
          */
         @Override
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {

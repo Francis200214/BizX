@@ -20,7 +20,7 @@ import java.util.function.Supplier;
  * @param <K> Map 中键的类型
  * @param <V> Map 中值的类型
  * @author francis
- * @since 2023-04-23 17:14
+ * @since 1.0.1
  */
 @Slf4j
 public class TimedDeletionMap<K, V> implements AutoCloseable {

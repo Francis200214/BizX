@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author francis
- * @since 2023-08-21 17:03
+ * @since 1.0.1
  **/
 @Component
 public class Demo1CacheManager implements BizCaffeineCacheLoader {

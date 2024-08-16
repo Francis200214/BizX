@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * 添加用户信息日志
  *
  * @author francis
- * @since 2024-06-03 13:51
+ * @since 1.0.1
  **/
 @Component
 @Slf4j

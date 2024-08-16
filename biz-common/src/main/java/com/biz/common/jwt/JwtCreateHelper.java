@@ -10,7 +10,7 @@ import java.util.Optional;
  * 用于生成和管理 JWT Token
  *
  * @author francis
- * @since 2023-04-22 14:02
+ * @since 1.0.1
  **/
 public final class JwtCreateHelper {
     /**

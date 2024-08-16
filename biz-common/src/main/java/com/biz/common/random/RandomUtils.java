@@ -10,10 +10,28 @@ import java.util.concurrent.ThreadLocalRandom;
  * 提供各种随机数生成工具方法的类。
  * 包括生成整数、浮点数、布尔值、随机字符串等方法。
  *
+ * <p>
+ * 示例用法：
+ * </p>
+ * <pre>{@code
+ * // 生成一个 0（含）到 100（不含）之间的随机整数
+ * int randomNumber = RandomUtils.generateNumber(100);
+ *
+ * // 生成一个 0.0 到 10.0 之间的随机浮点数
+ * double randomDouble = RandomUtils.generateDouble(0.0, 10.0);
+ *
+ * // 生成一个长度为 10 的随机字符串，包含数字、大小写字母
+ * String randomString = RandomUtils.generateStr(10);
+ *
+ * // 随机生成一个布尔值
+ * boolean randomBoolean = RandomUtils.generateBoolean();
+ * }
+ * </pre>
+ *
  * @author francis
- * @since 2023-04-17 17:04
+ * @since 1.0.1
  * @version 1.0.1
- **/
+ */
 @Slf4j
 public final class RandomUtils {
 
@@ -53,7 +71,7 @@ public final class RandomUtils {
     }
 
     /**
-     * 生成一个0到指定范围(end-1)的随机整数。
+     * 生成一个 0 到指定范围（end-1）的随机整数。
      *
      * @param end 随机数的上限，不包括在内。
      * @return 生成的随机整数。
@@ -94,7 +112,7 @@ public final class RandomUtils {
     }
 
     /**
-     * 生成一个长度为10的随机字符串，包含数字、大小写字母。
+     * 生成一个长度为 10 的随机字符串，包含数字、大小写字母。
      *
      * @return 生成的随机字符串。
      */
@@ -118,18 +136,18 @@ public final class RandomUtils {
     }
 
     /**
-     * 获取一个使用SHA1PRNG算法的SecureRandom实例。
+     * 获取一个使用 SHA1PRNG 算法的 SecureRandom 实例。
      *
-     * @return SecureRandom实例。
+     * @return SecureRandom 实例。
      */
     public static SecureRandom getSHA1PRNGSecureRandom() {
         return SecureRandomHolder.INSTANCE;
     }
 
     /**
-     * 获取当前线程的ThreadLocalRandom实例。
+     * 获取当前线程的 ThreadLocalRandom 实例。
      *
-     * @return ThreadLocalRandom实例。
+     * @return ThreadLocalRandom 实例。
      */
     public static ThreadLocalRandom getThreadLocalRandom() {
         return ThreadLocalRandom.current();

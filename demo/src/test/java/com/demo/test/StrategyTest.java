@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * @author francis
- * @since 2023-04-16 20:27
+ * @since 1.0.1
  **/
 public class StrategyTest {
 

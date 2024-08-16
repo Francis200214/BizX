@@ -9,7 +9,7 @@ import java.util.Optional;
  * token 会话管理
  *
  * @author francis
- * @since 2023-04-18 10:09
+ * @since 1.0.1
  **/
 public interface SessionManage {
 

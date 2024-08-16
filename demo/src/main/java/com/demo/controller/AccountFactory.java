@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author francis
- * @since 2023-04-26 14:28
+ * @since 1.0.1
  **/
 @Component
 public class AccountFactory implements BizAccountFactory<String> {

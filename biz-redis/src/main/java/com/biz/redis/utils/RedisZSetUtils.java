@@ -26,7 +26,7 @@ import java.util.Set;
  * @see <a href="https://redis.io/commands#zset">Redis ZSet Commands</a>
  * @author francis
  * @version 1.4.11
- * @since 2024-04-03
+ * @since 1.0.1
  */
 @Slf4j
 @RequiredArgsConstructor

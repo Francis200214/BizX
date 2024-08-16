@@ -4,7 +4,7 @@ package com.biz.web.error;
  * 系统异常枚举
  *
  * @author francis
- * @since 2023-05-08 18:14
+ * @since 1.0.1
  **/
 public enum ErrorCode implements ErrorBaseInterface {
     /**

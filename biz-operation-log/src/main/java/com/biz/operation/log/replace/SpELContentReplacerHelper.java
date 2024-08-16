@@ -6,19 +6,19 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
- * {@code SpELContentReplacerHelper}类用于处理内容替换操作。
+ * {@code SpELContentReplacerHelper} 类用于处理内容替换操作。
  *
- * <p>该类提供了基于SpEL表达式的内容替换功能，支持通过键值或直接值进行字符串替换。
- * 通过构造函数或构建器模式创建实例时，可以指定自定义的表达式解析器和上下文。</p>
+ * <p>该类提供了基于 SpEL 表达式的内容替换功能，支持通过键值或直接值进行字符串替换。</p>
+ *
+ * <p>可以通过构造函数或构建器模式创建实例，允许指定自定义的表达式解析器和上下文。</p>
  *
  * <p>主要功能包括：</p>
  * <ul>
  *     <li>{@link #replaceByKey(String, String)}：根据指定的键在上下文中查找对应的值，并替换内容中的指定键。</li>
  *     <li>{@link #replaceByValue(String, String)}：直接用指定的值替换内容中的指定键。</li>
+ *     <li>{@link #replaceForSpEl()}：使用 SpEL 表达式替换内容中的占位符。</li>
  *     <li>{@link #toContent()}：返回替换后的内容。</li>
  * </ul>
- *
- * <p>该类还提供了一个静态内部类{@link ContentReplaceBuilder}，用于构建{@code SpELContentReplacerHelper}实例。</p>
  *
  * <p>使用示例：</p>
  * <pre>{@code
@@ -32,7 +32,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * String result = helper.toContent();
  * }</pre>
  *
- * <p>在以上示例中，"key"会被替换为上下文中对应的值。</p>
+ * <p>在以上示例中，"key" 会被替换为上下文中对应的值。</p>
  *
  * @author francis
  * @since 1.0.0
@@ -41,7 +41,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 public class SpELContentReplacerHelper {
 
     /**
-     * 表达式解析器，用于解析SpEL表达式。
+     * 表达式解析器，用于解析 SpEL 表达式。
      */
     private final ExpressionParser parser;
 
@@ -51,16 +51,16 @@ public class SpELContentReplacerHelper {
     private String content;
 
     /**
-     * SpEL解析上下文，用于提供表达式解析所需的数据。
+     * SpEL 解析上下文，用于提供表达式解析所需的数据。
      */
     private final StandardEvaluationContext context;
 
     /**
-     * 构造一个新的{@code SpELContentReplacerHelper}实例。
+     * 构造一个新的 {@code SpELContentReplacerHelper} 实例。
      *
      * @param content 需要替换的原始内容
-     * @param context SpEL解析上下文，用于提供表达式解析所需的数据
-     * @param parser  表达式解析器，用于解析SpEL表达式，如果为{@code null}，则使用默认的{@link SpelExpressionParser}
+     * @param context SpEL 解析上下文，用于提供表达式解析所需的数据
+     * @param parser  表达式解析器，用于解析 SpEL 表达式，如果为 {@code null}，则使用默认的 {@link SpelExpressionParser}
      */
     public SpELContentReplacerHelper(String content, StandardEvaluationContext context, ExpressionParser parser) {
         this.content = content;
@@ -92,7 +92,7 @@ public class SpELContentReplacerHelper {
     }
 
     /**
-     * 使用SpEL表达式替换内容中的占位符。
+     * 使用 SpEL 表达式替换内容中的占位符。
      */
     public void replaceForSpEl() {
         content = String.valueOf(SpELUtils.parseExpression(content, context, parser, Object.class));
@@ -108,21 +108,21 @@ public class SpELContentReplacerHelper {
     }
 
     /**
-     * 创建并返回一个新的{@link ContentReplaceBuilder}实例，用于构建{@link SpELContentReplacerHelper}对象。
+     * 创建并返回一个新的 {@link ContentReplaceBuilder} 实例，用于构建 {@link SpELContentReplacerHelper} 对象。
      *
-     * @return 一个新的{@link ContentReplaceBuilder}实例
+     * @return 一个新的 {@link ContentReplaceBuilder} 实例
      */
     public static ContentReplaceBuilder builder() {
         return new ContentReplaceBuilder();
     }
 
     /**
-     * {@code ContentReplaceBuilder}类是一个构建器类，用于构建{@link SpELContentReplacerHelper}实例。
+     * {@code ContentReplaceBuilder} 类是一个构建器类，用于构建 {@link SpELContentReplacerHelper} 实例。
      */
     public static class ContentReplaceBuilder {
 
         /**
-         * 表达式解析器，用于解析SpEL表达式。
+         * 表达式解析器，用于解析 SpEL 表达式。
          */
         private ExpressionParser parser;
 
@@ -132,7 +132,7 @@ public class SpELContentReplacerHelper {
         private String content;
 
         /**
-         * SpEL解析上下文，用于提供表达式解析所需的数据。
+         * SpEL 解析上下文，用于提供表达式解析所需的数据。
          */
         private StandardEvaluationContext context;
 
@@ -140,7 +140,7 @@ public class SpELContentReplacerHelper {
          * 设置表达式解析器。
          *
          * @param parser 表达式解析器
-         * @return 当前的{@link ContentReplaceBuilder}实例
+         * @return 当前的 {@link ContentReplaceBuilder} 实例
          */
         public ContentReplaceBuilder parser(ExpressionParser parser) {
             this.parser = parser;
@@ -151,7 +151,7 @@ public class SpELContentReplacerHelper {
          * 设置原始内容。
          *
          * @param content 原始内容
-         * @return 当前的{@link ContentReplaceBuilder}实例
+         * @return 当前的 {@link ContentReplaceBuilder} 实例
          */
         public ContentReplaceBuilder content(String content) {
             this.content = content;
@@ -159,20 +159,20 @@ public class SpELContentReplacerHelper {
         }
 
         /**
-         * 设置SpEL解析上下文。
+         * 设置 SpEL 解析上下文。
          *
-         * @param context SpEL解析上下文
-         * @return 当前的{@link ContentReplaceBuilder}实例
+         * @param context SpEL 解析上下文
+         * @return 当前的 {@link ContentReplaceBuilder} 实例
          */
-        public ContentReplaceBuilder context(Object context) {
-            this.context = (StandardEvaluationContext) context;
+        public ContentReplaceBuilder context(StandardEvaluationContext context) {
+            this.context = context;
             return this;
         }
 
         /**
-         * 构建并返回一个新的{@link SpELContentReplacerHelper}实例。
+         * 构建并返回一个新的 {@link SpELContentReplacerHelper} 实例。
          *
-         * @return 一个新的{@link SpELContentReplacerHelper}实例
+         * @return 一个新的 {@link SpELContentReplacerHelper} 实例
          */
         public SpELContentReplacerHelper build() {
             return new SpELContentReplacerHelper(content, context, parser);

@@ -10,38 +10,57 @@ import java.util.concurrent.locks.ReentrantLock;
 
 
 /**
- * 用于定时执行任务的工具类
- * 提供了提交、取消和重置任务的能力，并封装了ScheduledExecutorService的使用。
+ * 用于定时执行任务的工具类。
+ * <p>提供了提交、取消和重置任务的能力，并封装了 {@link ScheduledExecutorService} 的使用。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ *     BizScheduledFuture bizScheduledFuture = BizScheduledFuture.builder()
+ *         .runnable(() -> System.out.println("Task executed"))
+ *         .time(5000)
+ *         .build();
+ *     bizScheduledFuture.submit();
+ * }
+ * </pre>
  *
  * @author francis
- * @since 2023-04-23 18:17
- **/
+ * @since 1.0.1
+ * @version 1.0.1
+ */
 @Slf4j
-public class BizScheduledFuture {
+public final class BizScheduledFuture {
 
+    /**
+     * 用于执行任务的 {@link ScheduledExecutorService} 实例。
+     */
     private final ScheduledExecutorService scheduledExecutorService;
 
     /**
-     * 执行的事件
+     * 要执行的任务。
      */
     private final Runnable runnable;
+
     /**
-     * 多久执行
+     * 任务执行的延迟时间，单位为毫秒。
      */
     private final long time;
+
     /**
-     * 执行
+     * 当前计划的任务。
      */
     private ScheduledFuture<?> scheduledFuture;
 
+    /**
+     * 锁，用于确保任务提交、取消和重置操作的线程安全性。
+     */
     private final ReentrantLock lock = new ReentrantLock();
 
     /**
-     * 构造函数初始化BizScheduledFuture。
+     * 构造函数初始化 {@code BizScheduledFuture}。
      *
-     * @param scheduledExecutorService 用于执行任务的ScheduledExecutorService，如果为null，则创建一个新的。
-     * @param runnable 要执行的任务。
-     * @param time 任务执行的延迟时间。
+     * @param scheduledExecutorService 用于执行任务的 {@link ScheduledExecutorService}，如果为null，则创建一个新的。
+     * @param runnable 要执行的任务，不能为空。
+     * @param time 任务执行的延迟时间，单位为毫秒。
      */
     public BizScheduledFuture(ScheduledExecutorService scheduledExecutorService, Runnable runnable, long time) {
         this.scheduledExecutorService = scheduledExecutorService == null
@@ -52,8 +71,8 @@ public class BizScheduledFuture {
     }
 
     /**
-     * 提交任务给ScheduledExecutorService执行。
-     * 在提交之前，会尝试取消任何当前计划的任务，以避免资源浪费。
+     * 提交任务给 {@link ScheduledExecutorService} 执行。
+     * <p>在提交之前，会尝试取消任何当前计划的任务，以避免资源浪费。</p>
      */
     public void submit() {
         lock.lock();
@@ -63,11 +82,11 @@ public class BizScheduledFuture {
                 try {
                     runnable.run();
                 } catch (Exception e) {
-                    // 日志记录或其他异常处理机制
+                    log.error("任务执行过程中出现异常：", e);
                 }
             }, time, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
-            log.error("取消计划任务的时候出现了异常错误：", e);
+            log.error("提交计划任务时出现异常错误：", e);
         } finally {
             lock.unlock();
         }
@@ -75,7 +94,7 @@ public class BizScheduledFuture {
 
     /**
      * 取消当前计划的任务。
-     * 如果任务正在执行，允许它完成。
+     * <p>如果任务正在执行，允许它完成。</p>
      */
     public void cancel() {
         lock.lock();
@@ -91,7 +110,7 @@ public class BizScheduledFuture {
 
     /**
      * 重置并重新提交任务。
-     * 先取消当前任务，然后以新的延迟时间提交任务。
+     * <p>先取消当前任务，然后以新的延迟时间提交任务。</p>
      */
     public void resetDied(long time) {
         lock.lock();
@@ -104,10 +123,9 @@ public class BizScheduledFuture {
     }
 
     /**
-     * 关闭ScheduledExecutorService。
-     * 应在不再需要执行任务时调用，以释放资源。
+     * 关闭 {@link ScheduledExecutorService}。
+     * <p>应在不再需要执行任务时调用，以释放资源。</p>
      */
-    // 提供一个适当的关闭方法来关闭ExecutorService，可能需要在适当的时候调用它
     public void shutdownExecutorService() {
         if (scheduledExecutorService != null) {
             scheduledExecutorService.shutdown();
@@ -115,19 +133,16 @@ public class BizScheduledFuture {
     }
 
     /**
-     * 获取一个构建器，用于逐步构建BizScheduledFuture实例。
+     * 获取一个构建器，用于逐步构建 {@code BizScheduledFuture} 实例。
      *
-     * @return ScheduledFutureBuilder 构建器实例。
+     * @return {@link ScheduledFutureBuilder} 构建器实例。
      */
     public static ScheduledFutureBuilder builder() {
         return new ScheduledFutureBuilder();
     }
 
     /**
-     * 构建器类，用于简化BizScheduledFuture的创建。
-     */
-    /**
-     * 内置 Builder
+     * 构建器类，用于简化 {@code BizScheduledFuture} 的创建。
      */
     public static class ScheduledFutureBuilder {
 
@@ -141,8 +156,8 @@ public class BizScheduledFuture {
         /**
          * 设置要执行的任务。
          *
-         * @param runnable 要执行的任务。
-         * @return ScheduledFutureBuilder 以便进行链式调用。
+         * @param runnable 要执行的任务，不能为空。
+         * @return {@link ScheduledFutureBuilder} 以便进行链式调用。
          */
         public ScheduledFutureBuilder runnable(Runnable runnable) {
             this.runnable = runnable;
@@ -152,8 +167,8 @@ public class BizScheduledFuture {
         /**
          * 设置任务执行的延迟时间。
          *
-         * @param time 任务执行的延迟时间。
-         * @return ScheduledFutureBuilder 以便进行链式调用。
+         * @param time 任务执行的延迟时间，单位为毫秒。
+         * @return {@link ScheduledFutureBuilder} 以便进行链式调用。
          */
         public ScheduledFutureBuilder time(long time) {
             this.time = time;
@@ -161,10 +176,10 @@ public class BizScheduledFuture {
         }
 
         /**
-         * 设置用于执行任务的ScheduledExecutorService。
+         * 设置用于执行任务的 {@link ScheduledExecutorService}。
          *
-         * @param scheduledExecutorService 用于执行任务的ScheduledExecutorService。
-         * @return ScheduledFutureBuilder 以便进行链式调用。
+         * @param scheduledExecutorService 用于执行任务的 {@link ScheduledExecutorService}。
+         * @return {@link ScheduledFutureBuilder} 以便进行链式调用。
          */
         public ScheduledFutureBuilder scheduledExecutorService(ScheduledExecutorService scheduledExecutorService) {
             this.scheduledExecutorService = scheduledExecutorService;
@@ -172,9 +187,9 @@ public class BizScheduledFuture {
         }
 
         /**
-         * 使用当前设置构建BizScheduledFuture实例。
+         * 使用当前设置构建 {@code BizScheduledFuture} 实例。
          *
-         * @return BizScheduledFuture 构建的实例。
+         * @return {@link BizScheduledFuture} 构建的实例。
          */
         public BizScheduledFuture build() {
             return new BizScheduledFuture(scheduledExecutorService, runnable, time);

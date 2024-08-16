@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 接口防刷拦截处理
  *
  * @author francis
- * @since 2023-04-06 21:35
+ * @since 1.0.1
  **/
 @Slf4j
 public class AccessLimitInterceptor implements HandlerInterceptor, Ordered {

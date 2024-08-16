@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 接口访问限制抽象类
  *
  * @author francis
- * @since 2023-06-07 16:49
+ * @since 1.0.1
  **/
 public abstract class AbstractAccessLimitCatch implements AccessLimitCatchService {
 

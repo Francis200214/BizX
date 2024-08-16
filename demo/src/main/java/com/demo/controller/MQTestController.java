@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * MQ测试
  *
  * @author francis
- * @since 2024-08-02 16:43
+ * @since 1.0.1
  **/
 @RestController
 @RequestMapping("/mq/test")

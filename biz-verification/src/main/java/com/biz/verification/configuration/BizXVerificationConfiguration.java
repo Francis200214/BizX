@@ -25,7 +25,7 @@ import org.springframework.context.annotation.DependsOn;
  * @see AbstractBizXCheckParameter
  * @see CheckParameterFactory
  * @see CheckScanPackageCondition
- * @since 2024-08-06
+ * @since 1.0.1
  */
 @ConditionalOnProperty(prefix = "biz.verification", name = "enabled", havingValue = "true")
 @Configuration

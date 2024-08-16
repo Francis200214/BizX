@@ -11,7 +11,7 @@ import java.io.Serializable;
  * BizCaffeineCache 实体
  *
  * @author francis
- * @since 2023-08-20 11:14
+ * @since 1.0.1
  **/
 @Setter
 @Getter

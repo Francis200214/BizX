@@ -2,7 +2,7 @@ package com.demo.strategy;
 
 /**
  * @author francis
- * @since 2023-04-17 09:16
+ * @since 1.0.1
  **/
 public enum ABEnum {
     AAA,

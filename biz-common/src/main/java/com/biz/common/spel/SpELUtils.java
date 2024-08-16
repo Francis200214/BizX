@@ -6,24 +6,33 @@ import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
- * SpEL (Spring Expression Language) 工具类，提供解析表达式和创建上下文的功能。
+ * {@code SpELUtils} 是一个用于处理 Spring Expression Language (SpEL) 表达式的工具类。
+ *
+ * <p>该类提供了解析 SpEL 表达式、创建 SpEL 上下文以及设置上下文变量的功能。</p>
+ *
+ * <p>该工具类的主要功能包括：</p>
+ * <ul>
+ *     <li>{@link #parseExpression(String, StandardEvaluationContext, ExpressionParser, Class)}：解析并评估 SpEL 表达式，返回指定类型的结果。</li>
+ *     <li>{@link #createContext(String[], Object[])}：创建一个 {@link StandardEvaluationContext} 实例，并设置变量。</li>
+ *     <li>{@link #setVariable(StandardEvaluationContext, String[], Object[])}：根据参数名称和值设置 SpEL 上下文中的变量。</li>
+ * </ul>
  *
  * @author francis
- * @since 2024-06-03 13:58
+ * @since 1.0.1
  **/
 @Slf4j
 public class SpELUtils {
 
     /**
-     * 解析给定的SpEL表达式，在给定的上下文中评估表达式并返回结果。
+     * 解析给定的 SpEL 表达式，并在指定的上下文中评估表达式，返回结果。
      *
-     * @param expression 表达式字符串
-     * @param context    表达式评估的上下文
+     * @param expression 表达式字符串，不能为 {@code null} 或空字符串
+     * @param context    表达式评估的上下文，包含变量和函数定义
      * @param parser     用于解析表达式的解析器
      * @param clazz      期望的结果类型
      * @param <T>        结果的泛型类型
-     * @return 表达式解析和评估后的结果
-     * @throws IllegalArgumentException 如果表达式字符串为空或白名单，则抛出运行时异常
+     * @return 解析和评估后的结果，类型为 {@code clazz}
+     * @throws IllegalArgumentException 如果表达式字符串为空或为 {@code null}，则抛出该异常
      */
     public static <T> T parseExpression(String expression, StandardEvaluationContext context, ExpressionParser parser, Class<T> clazz) {
         if (Common.isBlank(expression)) {
@@ -33,12 +42,12 @@ public class SpELUtils {
     }
 
     /**
-     * 创建一个StandardEvaluationContext实例，并根据参数名称和值设置变量。
+     * 创建一个 {@link StandardEvaluationContext} 实例，并根据给定的参数名称和值设置变量。
      *
-     * @param paramNames 参数名称数组
-     * @param args       参数值数组
-     * @return 创建的StandardEvaluationContext实例
-     * @throws IllegalArgumentException 如果参数名称和参数值数组长度不一致，则抛出运行时异常
+     * @param paramNames 参数名称数组，每个元素表示一个变量的名称
+     * @param args       参数值数组，每个元素对应 {@code paramNames} 中的一个变量
+     * @return 创建的 {@link StandardEvaluationContext} 实例，包含设置好的变量
+     * @throws IllegalArgumentException 如果参数名称数组和参数值数组的长度不一致，则抛出该异常
      */
     public static StandardEvaluationContext createContext(String[] paramNames, Object[] args) {
         StandardEvaluationContext context = new StandardEvaluationContext();
@@ -46,14 +55,13 @@ public class SpELUtils {
         return context;
     }
 
-
     /**
-     * 根据参数名称和值设置变量。
+     * 根据参数名称和值设置 {@link StandardEvaluationContext} 实例中的变量。
      *
-     * @param standardEvaluationContext StandardEvaluationContext 实例
-     * @param paramNames                参数名称数组
-     * @param args                      参数值数组
-     * @throws IllegalArgumentException 如果参数名称和参数值数组长度不一致，则抛出运行时异常
+     * @param standardEvaluationContext 要设置变量的 {@link StandardEvaluationContext} 实例
+     * @param paramNames                参数名称数组，每个元素表示一个变量的名称
+     * @param args                      参数值数组，每个元素对应 {@code paramNames} 中的一个变量
+     * @throws IllegalArgumentException 如果参数名称数组和参数值数组的长度不一致，则抛出该异常
      */
     public static void setVariable(StandardEvaluationContext standardEvaluationContext, String[] paramNames, Object[] args) {
         if (paramNames.length != args.length) {
@@ -63,6 +71,5 @@ public class SpELUtils {
             standardEvaluationContext.setVariable(paramNames[i], args[i]);
         }
     }
-
 
 }

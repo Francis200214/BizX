@@ -4,7 +4,7 @@ package com.demo.log;
  * 日志常量
  *
  * @author francis
- * @since 2024-06-03 13:52
+ * @since 1.0.1
  **/
 public class LogTypeConstant {
 
