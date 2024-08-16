@@ -7,9 +7,26 @@ import java.util.Optional;
 
 /**
  * Jwt 创建者
- * 用于生成和管理 JWT Token
+ * <p>用于生成和管理 JWT Token。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * JwtCreateHelper jwtHelper = new JwtCreateHelper("mySecret", 3600000, SignatureAlgorithm.HS256, null);
+ * String token = jwtHelper.createToken();
+ *
+ * // 使用构建器模式创建JwtCreateHelper
+ * JwtCreateHelper customHelper = JwtCreateHelper.builder()
+ *     .secret("mySecret")
+ *     .expire(3600000)
+ *     .signatureAlgorithm(SignatureAlgorithm.HS256)
+ *     .build();
+ * }
+ * </pre>
+ *
+ * <p>该类提供了创建JWT Token、管理载荷数据和验证Token有效性的方法。</p>
  *
  * @author francis
+ * @version 1.0.1
  * @since 1.0.1
  **/
 public final class JwtCreateHelper {

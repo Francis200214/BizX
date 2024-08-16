@@ -7,9 +7,27 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Jwt 与 Spring Security 之间融合的工具类
+ * <p>该工具类提供了从 HttpServletRequest 中提取 JWT Token，并结合 Spring Security 对其进行解密和处理的功能。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * JwtSecurityHelper helper = JwtSecurityHelper.jwtSecurityBuilder()
+ *     .httpServletRequest(request)
+ *     .secret("your-secret")
+ *     .signatureAlgorithm(SignatureAlgorithm.HS256)
+ *     .build();
+ *
+ * if (helper.isToken()) {
+ *     String subject = helper.getSub();
+ *     boolean isExpired = helper.isExpire();
+ * }
+ * }</pre>
+ *
+ * <p>该类依赖于 {@link JwtDecryptHelper} 和 {@link Common} 类提供的工具方法。</p>
  *
  * @author francis
- * @since 2024-01-04 09:27
+ * @version 1.0.1
+ * @since 1.0.1
  **/
 public final class JwtSecurityHelper {
 
@@ -19,7 +37,13 @@ public final class JwtSecurityHelper {
 
     private final String TOKEN;
 
-
+    /**
+     * 私有构造函数，初始化 JwtSecurityHelper 对象。
+     *
+     * @param request            HttpServletRequest 对象，用于从请求头中提取 JWT Token。
+     * @param secret             密钥，用于解密 JWT Token。
+     * @param signatureAlgorithm 签名算法，用于验证 JWT Token。
+     */
     private JwtSecurityHelper(HttpServletRequest request, String secret, SignatureAlgorithm signatureAlgorithm) {
         this.TOKEN = subJwtTokenFromRequest(request);
         this.JWT_TOKEN_DECRYPT_HELPER = JwtDecryptHelper.decryptBuilder()
@@ -29,59 +53,57 @@ public final class JwtSecurityHelper {
                 .build();
     }
 
-
-
     /**
-     * 检查 Token 是否过期
+     * 检查 Token 是否过期。
      *
-     * @return Token 是否过期
+     * @return 如果 Token 已过期，返回 true；否则返回 false。
      */
     public boolean isExpire() {
         return JWT_TOKEN_DECRYPT_HELPER.isExpired();
     }
 
-
     /**
-     * 检查是否有 Token
+     * 检查是否存在 Token。
      *
-     * @return 是否有 Token
+     * @return 如果存在 Token，返回 true；否则返回 false。
      */
     public boolean isToken() {
         return Common.isNotBlank(TOKEN);
     }
 
     /**
-     * 获取 Subject
+     * 获取 Token 中的 Subject 信息。
      *
-     * @return token
+     * @return Token 中的 Subject 信息。
      */
     public String getSub() {
         return this.JWT_TOKEN_DECRYPT_HELPER.getSubject();
     }
 
-
     /**
-     * 获取 Token 中某个 Key 的对应值
+     * 获取 Token 中指定 Key 对应的值。
      *
-     * @param key Key
-     * @return 值
+     * @param key 指定的键。
+     * @return 键对应的值。
      */
     public String getDataByKey(String key) {
         return this.JWT_TOKEN_DECRYPT_HELPER.getByKey(key);
     }
 
-
-
+    /**
+     * 创建 JwtSecurityHelper 的构建器。
+     *
+     * @return JwtSecurityBuilder 实例。
+     */
     public static JwtSecurityBuilder jwtSecurityBuilder() {
         return new JwtSecurityBuilder();
     }
 
-
     /**
-     * 从 HttpServletRequest 中取出 Token
+     * 从 HttpServletRequest 中提取 JWT Token。
      *
-     * @param request HttpServletRequest 对象
-     * @return Token, 如果是 Null 则代表没有 Token
+     * @param request HttpServletRequest 对象。
+     * @return 提取到的 Token，如果没有则返回 null。
      */
     private String subJwtTokenFromRequest(HttpServletRequest request) {
         if (request == null) {
@@ -96,39 +118,42 @@ public final class JwtSecurityHelper {
         return null;
     }
 
-
-
     /**
-     * Jwt Security 构建者
+     * Jwt Security 构建器，用于构建 JwtSecurityHelper 对象。
      */
     public static class JwtSecurityBuilder {
 
         /**
-         * HttpServletRequest
+         * HttpServletRequest 对象。
          */
         private HttpServletRequest request;
 
         /**
-         * 密钥
+         * 密钥，用于解密 JWT Token。
          */
         private String secret;
 
         /**
-         * 需要解密的 密钥算法 信息
+         * 签名算法，用于验证 JWT Token。
          */
         private SignatureAlgorithm signatureAlgorithm;
 
-
+        /**
+         * 设置 HttpServletRequest 对象。
+         *
+         * @param request HttpServletRequest 对象。
+         * @return 当前构建器实例。
+         */
         public JwtSecurityBuilder httpServletRequest(HttpServletRequest request) {
             this.request = request;
             return this;
         }
 
         /**
-         * 解密密钥
+         * 设置解密密钥。
          *
-         * @param secret 密钥
-         * @return JwtDecryptBuilder
+         * @param secret 密钥。
+         * @return 当前构建器实例。
          */
         public JwtSecurityBuilder secret(String secret) {
             this.secret = secret;
@@ -136,16 +161,21 @@ public final class JwtSecurityHelper {
         }
 
         /**
-         * 密钥算法
+         * 设置签名算法。
          *
-         * @param signatureAlgorithm 密钥算法
-         * @return JwtDecryptBuilder
+         * @param signatureAlgorithm 签名算法。
+         * @return 当前构建器实例。
          */
         public JwtSecurityBuilder signatureAlgorithm(SignatureAlgorithm signatureAlgorithm) {
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
 
+        /**
+         * 构建 JwtSecurityHelper 对象。
+         *
+         * @return 构建的 JwtSecurityHelper 对象。
+         */
         public JwtSecurityHelper build() {
             return new JwtSecurityHelper(request, this.secret, this.signatureAlgorithm);
         }

@@ -19,10 +19,20 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Shapefile To GeoJSON
+ * Shapefile 转换为 GeoJSON 的工具类。
+ * <p>该类提供了递归遍历目录下的 .shp 文件，并将其转换为 .geojson 文件的功能。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * File directory = new File("/path/to/directory");
+ * ShapefileToGeoJSON.traverseDirectory(directory);
+ * }</pre>
+ *
+ * <p>注意：该类依赖于 GeoTools 库和自定义的 ExecutorsUtils 工具类。</p>
  *
  * @author francis
- * @since 2024-07-22 13:20
+ * @version 1.0.1
+ * @since 1.0.1
  **/
 @Slf4j
 public class ShapefileToGeoJSON {
@@ -32,11 +42,11 @@ public class ShapefileToGeoJSON {
     private static final String GEO_JSON = ".geojson";
     private static final ExecutorService EXECUTOR_SERVICE = ExecutorsUtils.buildScheduledExecutorService();
 
-
     /**
-     * 递归遍历目录下所有的.shp文件，然后将内容转成 GeoJSON 文件的方法
+     * 递归遍历目录下所有的.shp文件，并将其转换为 .geojson 文件。
      *
-     * @param directory 文件夹
+     * @param directory 需要遍历的文件夹
+     * @throws IOException 如果遍历过程中发生 I/O 错误
      */
     public static void traverseDirectory(File directory) throws IOException {
         // 获取文件夹下的所有文件和文件夹
@@ -54,11 +64,9 @@ public class ShapefileToGeoJSON {
                     try {
                         traverseDirectory(file);
                     } catch (IOException e) {
-                        // 处理异常，例如记录错误
                         log.error("Error traversing directory", e);
                     }
                 }));
-
 
         files.stream()
                 .filter(file -> file.getName().toLowerCase().endsWith(SHP))
@@ -70,8 +78,7 @@ public class ShapefileToGeoJSON {
             // 等待所有任务完成或超时
             boolean terminated = EXECUTOR_SERVICE.awaitTermination(1, TimeUnit.HOURS);
             if (!terminated) {
-                // 处理未成功终止的情况，例如记录日志或进行资源清理
-                System.err.println("ExecutorService did not terminate within the specified time.");
+                log.warn("ExecutorService did not terminate within the specified time.");
             }
         } catch (InterruptedException e) {
             log.error("The conversion process is interrupted", e);
@@ -80,9 +87,9 @@ public class ShapefileToGeoJSON {
     }
 
     /**
-     * 将 .shp 文件转换为 .geojson 文件的方法
+     * 将 .shp 文件转换为 .geojson 文件。
      *
-     * @param shpFile
+     * @param shpFile 需要转换的 .shp 文件
      */
     public static void convertShpToGeoJSON(File shpFile) {
         String shpFilePath = shpFile.getAbsolutePath();
@@ -107,7 +114,7 @@ public class ShapefileToGeoJSON {
             // 释放数据存储资源
             dataStore.dispose();
         } catch (IOException e) {
-            log.error("Description Failed to convert Shapefile to GeoJSON", e);
+            log.error("Failed to convert Shapefile to GeoJSON", e);
         }
     }
 }

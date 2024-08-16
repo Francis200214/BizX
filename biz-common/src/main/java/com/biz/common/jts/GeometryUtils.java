@@ -12,9 +12,19 @@ import java.util.List;
 
 /**
  * 提供JTS（Java Topology Suite）几何对象的常用操作工具方法。
+ * <p>该工具类提供了几何对象的创建、操作、计算等常见功能，封装了对JTS库的使用。</p>
+ *
+ * <p>该类是不可实例化的，因为它只包含静态方法。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * Geometry geom = GeometryUtils.geometryStrToGeometry("POINT (30 10)");
+ * double[] center = GeometryUtils.center(geom);
+ * }</pre>
  *
  * @author francis
- * @since 2023-03-28 18:40
+ * @version 1.0.1
+ * @since 1.0.1
  */
 public final class GeometryUtils {
 
@@ -36,7 +46,6 @@ public final class GeometryUtils {
         if (Common.isBlank(str)) {
             return null;
         }
-
         return WKT_READER.read(str);
     }
 
@@ -81,7 +90,6 @@ public final class GeometryUtils {
         if (geo1 == null || geo2 == null) {
             return null;
         }
-
         return geo1.union(geo2);
     }
 

@@ -7,10 +7,26 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 /**
  * Jwt Token 解密工具类
- * 用于解密和解析 JWT Token
+ * <p>用于解密和解析 JWT Token，提供了检查 Token 是否过期、获取 Token 中的 Subject 和指定键对应的值等功能。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * JwtDecryptHelper decryptHelper = JwtDecryptHelper.decryptBuilder()
+ *     .token("your-jwt-token")
+ *     .secret("your-secret")
+ *     .signatureAlgorithm(SignatureAlgorithm.HS256)
+ *     .build();
+ *
+ * boolean isExpired = decryptHelper.isExpired();
+ * String subject = decryptHelper.getSubject();
+ * Object value = decryptHelper.getByKey("key");
+ * }</pre>
+ *
+ * <p>该类依赖于 {@link JwtUtils} 和 {@link Common} 类提供的工具方法。</p>
  *
  * @author francis
- * @date 2024-01-04 13:20
+ * @version 1.0.1
+ * @since 1.0.1
  */
 public class JwtDecryptHelper {
 
@@ -33,7 +49,7 @@ public class JwtDecryptHelper {
     private final Jws<Claims> jwsClaims;
 
     /**
-     * 构造函数
+     * 构造函数，初始化 JwtDecryptHelper 对象。
      *
      * @param token              JWT Token
      * @param secret             密钥
@@ -50,7 +66,7 @@ public class JwtDecryptHelper {
     }
 
     /**
-     * 检查 Token 是否过期
+     * 检查 Token 是否过期。
      *
      * @return 是否过期
      */
@@ -59,7 +75,7 @@ public class JwtDecryptHelper {
     }
 
     /**
-     * 获取 Subject
+     * 获取 Token 中的 Subject 信息。
      *
      * @param <T> Subject 的类型
      * @return Subject 数据
@@ -69,7 +85,7 @@ public class JwtDecryptHelper {
     }
 
     /**
-     * 获取 Token 中指定 Key 对应的值
+     * 获取 Token 中指定 Key 对应的值。
      *
      * @param <T> 值的类型
      * @param key 键
@@ -80,7 +96,7 @@ public class JwtDecryptHelper {
     }
 
     /**
-     * 创建 JwtToken 解密构建器
+     * 创建 JwtToken 解密构建器。
      *
      * @return JwtToken 解密构建器
      */
@@ -103,7 +119,7 @@ public class JwtDecryptHelper {
         private SignatureAlgorithm signatureAlgorithm;
 
         /**
-         * 设置需要解密的 Token
+         * 设置需要解密的 Token。
          *
          * @param token Token
          * @return JwtDecryptBuilder
@@ -114,7 +130,7 @@ public class JwtDecryptHelper {
         }
 
         /**
-         * 设置解密密钥
+         * 设置解密密钥。
          *
          * @param secret 密钥
          * @return JwtDecryptBuilder
@@ -125,7 +141,7 @@ public class JwtDecryptHelper {
         }
 
         /**
-         * 设置密钥算法
+         * 设置密钥算法。
          *
          * @param signatureAlgorithm 密钥算法
          * @return JwtDecryptBuilder
@@ -136,7 +152,7 @@ public class JwtDecryptHelper {
         }
 
         /**
-         * 构建 JwtDecryptHelper 对象
+         * 构建 JwtDecryptHelper 对象。
          *
          * @return JwtDecryptHelper 对象
          */

@@ -9,10 +9,24 @@ import java.util.Map;
 
 /**
  * Http Request 工具类，提供创建和执行HTTP请求的能力。
+ * <p>该类封装了 {@link RestTemplate}，并提供了方便的链式API来创建和执行各种HTTP请求（GET、POST、PUT、DELETE）。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ *     String response = HttpRequestHelper.post("http://example.com/api")
+ *         .contentType("application/json")
+ *         .body("{\"key\":\"value\"}")
+ *         .header("Authorization", "Bearer token")
+ *         .build()
+ *         .execute();
+ * }</pre>
+ *
+ * <p>该类通过静态方法提供了多种HTTP请求方法的Builder实例，并允许设置请求头、表单参数和请求体。</p>
  *
  * @author francis
- * @since 2024-07-29 15:35
- **/
+ * @version 1.0.1
+ * @since 1.0.1
+ */
 @Slf4j
 public final class HttpRequestHelper {
 
@@ -23,10 +37,10 @@ public final class HttpRequestHelper {
     private Object body;
 
     /**
-     * 私有构造器
+     * 私有构造器，防止直接实例化。
      *
-     * @param uri 请求的URI
-     * @param method HTTP请求方法
+     * @param uri 请求的URI，不能为空
+     * @param method HTTP请求方法，不能为空
      */
     private HttpRequestHelper(String uri, HttpMethod method) {
         this.uri = uri;
@@ -38,7 +52,7 @@ public final class HttpRequestHelper {
     /**
      * 创建一个GET请求的Builder实例。
      *
-     * @param uri 请求的URI
+     * @param uri 请求的URI，不能为空
      * @return Builder实例
      */
     public static Builder get(String uri) {
@@ -48,7 +62,7 @@ public final class HttpRequestHelper {
     /**
      * 创建一个POST请求的Builder实例。
      *
-     * @param uri 请求的URI
+     * @param uri 请求的URI，不能为空
      * @return Builder实例
      */
     public static Builder post(String uri) {
@@ -58,7 +72,7 @@ public final class HttpRequestHelper {
     /**
      * 创建一个PUT请求的Builder实例。
      *
-     * @param uri 请求的URI
+     * @param uri 请求的URI，不能为空
      * @return Builder实例
      */
     public static Builder put(String uri) {
@@ -68,7 +82,7 @@ public final class HttpRequestHelper {
     /**
      * 创建一个DELETE请求的Builder实例。
      *
-     * @param uri 请求的URI
+     * @param uri 请求的URI，不能为空
      * @return Builder实例
      */
     public static Builder delete(String uri) {
@@ -85,7 +99,6 @@ public final class HttpRequestHelper {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<?> entity;
 
-        // 根据是否存在表单参数和Content-Type是否为application/x-www-form-urlencoded来决定创建HttpEntity的方式
         if (!formParams.isEmpty() && headers.getContentType() == MediaType.APPLICATION_FORM_URLENCODED) {
             entity = new HttpEntity<>(formParams, headers);
         } else {
@@ -114,8 +127,8 @@ public final class HttpRequestHelper {
         /**
          * 构造函数初始化Builder实例。
          *
-         * @param uri 请求的URI
-         * @param method HTTP请求方法
+         * @param uri 请求的URI，不能为空
+         * @param method HTTP请求方法，不能为空
          */
         private Builder(String uri, HttpMethod method) {
             this.uri = uri;
@@ -127,7 +140,7 @@ public final class HttpRequestHelper {
         /**
          * 设置请求的Content-Type。
          *
-         * @param contentType Content-Type字符串
+         * @param contentType Content-Type字符串，不能为空
          * @return Builder实例
          */
         public Builder contentType(String contentType) {
@@ -138,8 +151,8 @@ public final class HttpRequestHelper {
         /**
          * 设置一个请求头。
          *
-         * @param name 头部的名称
-         * @param value 头部的值
+         * @param name 头部的名称，不能为空
+         * @param value 头部的值，不能为空
          * @return Builder实例
          */
         public Builder header(String name, String value) {
@@ -150,8 +163,8 @@ public final class HttpRequestHelper {
         /**
          * 添加一个表单参数。
          *
-         * @param name 参数的名称
-         * @param value 参数的值
+         * @param name 参数的名称，不能为空
+         * @param value 参数的值，不能为空
          * @return Builder实例
          */
         public Builder form(String name, Object value) {
@@ -162,7 +175,7 @@ public final class HttpRequestHelper {
         /**
          * 设置请求的主体。
          *
-         * @param body 请求的主体对象
+         * @param body 请求的主体对象，不能为空
          * @return Builder实例
          */
         public Builder body(Object body) {

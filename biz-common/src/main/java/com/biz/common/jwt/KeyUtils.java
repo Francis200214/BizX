@@ -8,17 +8,27 @@ import java.security.Key;
 import java.util.Base64;
 
 /**
- * 该类提供生成JWT密钥Key的工具方法。
+ * KeyUtils类提供用于生成JWT密钥Key的工具方法。
+ * <p>该类支持根据密钥字符串、密钥对象和签名算法生成Key对象，用于JWT的签名和验证。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * Key keyFromString = KeyUtils.getKeyFromSecret("your-secret-key");
+ * Key keyFromAlgorithm = KeyUtils.getKeyFromSecret(SignatureAlgorithm.HS256);
+ * }</pre>
+ *
+ * <p>该类依赖于 {@link JwtUtils} 和 {@link Common} 类提供的工具方法。</p>
  *
  * @author francis
- * @since 2024-01-04 13:37
- **/
+ * @version 1.0.1
+ * @since 1.0.1
+ */
 public final class KeyUtils {
 
     /**
-     * 根据密钥字符串生成Key。
+     * 根据密钥对象生成Key。
      *
-     * @param secret 密钥字符串。
+     * @param secret 密钥对象。
      * @return 生成的Key对象。
      */
     public static Key getKeyFromSecret(Key secret) {
@@ -67,5 +77,4 @@ public final class KeyUtils {
     public static Key getKeyFromSecret(Key secret, SignatureAlgorithm signatureAlgorithm) {
         return new SecretKeySpec(secret.getEncoded(), signatureAlgorithm == null ? JwtUtils.DEFAULT_SIGNATURE_ALGORITHM.getJcaName() : signatureAlgorithm.getJcaName());
     }
-
 }

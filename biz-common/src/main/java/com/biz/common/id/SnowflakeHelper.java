@@ -25,7 +25,8 @@ package com.biz.common.id;
  * @see SnowflakeBuilder
  *
  * @author francis
- * @since 2023-07-09 09:52
+ * @version 1.0.1
+ * @since 1.0.1
  **/
 public class SnowflakeHelper {
 

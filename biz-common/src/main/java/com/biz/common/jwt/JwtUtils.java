@@ -13,13 +13,20 @@ import java.util.Map;
 
 
 /**
- * JWT (JSON Web Token) 工具类，提供创建、验证和解析JWT的功能。
- * 使用HS256算法进行加密。
- * 默认密钥使用Base64编码，默认有效期为1天。
- * 支持自定义密钥、有效期和加密算法。
- * 所有的方法都是静态的，不需要实例化。
+ * JWT (JSON Web Token) 工具类
+ * <p>提供创建、验证和解析JWT的功能。该类使用HS256算法进行加密，默认密钥使用Base64编码，默认有效期为1天。</p>
+ * <p>支持自定义密钥、有效期和加密算法。所有的方法都是静态的，不需要实例化。</p>
+ *
+ * <h2>示例代码：</h2>
+ * <pre>{@code
+ * String token = JwtUtils.createToken("user", "john_doe");
+ * boolean isValid = JwtUtils.checkToken(token);
+ * Object userData = JwtUtils.getData(token, "user");
+ * }</pre>
  *
  * @author francis
+ * @version 1.0.1
+ * @since 1.0.1
  */
 @Slf4j
 public final class JwtUtils {
@@ -38,7 +45,6 @@ public final class JwtUtils {
      * JWT默认加密算法，使用HS256算法。
      */
     public static final SignatureAlgorithm DEFAULT_SIGNATURE_ALGORITHM = SignatureAlgorithm.HS256;
-
 
     /**
      * 使用默认配置创建JWT Token。
@@ -75,7 +81,6 @@ public final class JwtUtils {
         return createToken(secret, System.currentTimeMillis() + DEFAULT_EXPIRE, DEFAULT_SIGNATURE_ALGORITHM, key, data);
     }
 
-
     /**
      * 使用指定配置创建JWT Token。
      *
@@ -92,7 +97,6 @@ public final class JwtUtils {
         return create(secret, expire, signatureAlgorithm, map);
     }
 
-
     /**
      * 使用指定配置创建JWT Token。
      *
@@ -108,7 +112,6 @@ public final class JwtUtils {
         map.put(key, data);
         return create(secret, expire, signatureAlgorithm, map);
     }
-
 
     /**
      * 使用指定配置创建JWT Token。
@@ -161,7 +164,6 @@ public final class JwtUtils {
         return check(jwtToken, secret, signatureAlgorithm);
     }
 
-
     /**
      * 获取JWT Body中指定键的值。
      *
@@ -172,7 +174,6 @@ public final class JwtUtils {
     public static Object getData(final String token, final String key) {
         return get(token, key, DEFAULT_SECRET);
     }
-
 
     /**
      * 从JWT中获取指定键值的数据。
@@ -186,7 +187,6 @@ public final class JwtUtils {
         return get(token, key, DEFAULT_SECRET, signatureAlgorithm);
     }
 
-
     /**
      * 从JWT中获取指定键值的数据。
      *
@@ -198,7 +198,6 @@ public final class JwtUtils {
     public static Object getData(String token, String key, String secret) {
         return get(token, key, secret);
     }
-
 
     /**
      * 从JWT中获取主题(sub)。
@@ -405,7 +404,6 @@ public final class JwtUtils {
         return null;
     }
 
-
     /**
      * 解析JWT并返回其声明。
      *
@@ -429,6 +427,5 @@ public final class JwtUtils {
 
         return null;
     }
-
 
 }

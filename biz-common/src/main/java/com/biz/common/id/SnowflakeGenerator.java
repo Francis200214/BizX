@@ -26,7 +26,8 @@ import java.util.concurrent.locks.ReentrantLock;
  * </pre>
  *
  * @author francis
- * @since 2023-07-09 09:49
+ * @version 1.0.1
+ * @since 1.0.1
  */
 public class SnowflakeGenerator {
 
