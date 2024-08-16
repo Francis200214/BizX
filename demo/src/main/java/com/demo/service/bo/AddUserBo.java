@@ -31,4 +31,7 @@ public class AddUserBo {
      */
     private String school;
 
+
+    private AddUserBo addUserBo;
+
 }

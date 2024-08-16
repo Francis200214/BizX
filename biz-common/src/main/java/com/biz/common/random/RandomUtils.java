@@ -1,6 +1,5 @@
 package com.biz.common.random;
 
-
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.NoSuchAlgorithmException;
@@ -13,6 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author francis
  * @since 2023-04-17 17:04
+ * @version 1.0.1
  **/
 @Slf4j
 public final class RandomUtils {
@@ -36,6 +36,21 @@ public final class RandomUtils {
      * 数字、大小写字母字符集合。
      */
     public static final String ALL_CHAR_NUMBER = LOWER_CASE_CHAR + UPPERCASE_CHAR + NUMBER;
+
+    /**
+     * SecureRandom实例，懒加载且线程安全。
+     */
+    private static class SecureRandomHolder {
+        static final SecureRandom INSTANCE;
+
+        static {
+            try {
+                INSTANCE = SecureRandom.getInstance("SHA1PRNG");
+            } catch (NoSuchAlgorithmException e) {
+                throw new ExceptionInInitializerError(e);
+            }
+        }
+    }
 
     /**
      * 生成一个0到指定范围(end-1)的随机整数。
@@ -106,10 +121,9 @@ public final class RandomUtils {
      * 获取一个使用SHA1PRNG算法的SecureRandom实例。
      *
      * @return SecureRandom实例。
-     * @throws NoSuchAlgorithmException 如果指定的随机数生成算法不存在。
      */
-    public static SecureRandom getSHA1PRNGSecureRandom() throws NoSuchAlgorithmException {
-        return SecureRandom.getInstance("SHA1PRNG");
+    public static SecureRandom getSHA1PRNGSecureRandom() {
+        return SecureRandomHolder.INSTANCE;
     }
 
     /**
@@ -120,6 +134,4 @@ public final class RandomUtils {
     public static ThreadLocalRandom getThreadLocalRandom() {
         return ThreadLocalRandom.current();
     }
-
 }
-

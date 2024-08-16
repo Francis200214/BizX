@@ -1,8 +1,10 @@
 package com.biz.operation.log.replace;
 
+import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.spel.SpELUtils;
 import com.biz.common.utils.Common;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -28,12 +30,33 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * @version 1.0.0
  **/
 @Slf4j
-public class DefaultContentReplacer implements ContentReplacer {
+public class DefaultContentReplacer implements ContentReplacer, SmartInitializingSingleton {
 
     /**
-     * 默认的表达式解析器，用于解析SpEL表达式。
+     * 使用者自定义操作日志中替换关键字的接口。
+     */
+    private ReplaceOperationLogKey replaceOperationLogKey;
+
+    /**
+     * 默认的表达式解析器，用于解析 SpEL 表达式。
      */
     private final ExpressionParser parser = new SpelExpressionParser();
+
+    /**
+     * 当所有 Bean 都加载完成后，获取使用者自定义的{@link ReplaceOperationLogKey}实现 Bean。
+     *
+     * <p>如果找不到{@link ReplaceOperationLogKey}的实现，则不会执行任何操作。</p>
+     */
+    @Override
+    public void afterSingletonsInstantiated() {
+        try {
+            this.replaceOperationLogKey = BizXBeanUtils.getBean(ReplaceOperationLogKey.class);
+        } catch (Exception e) {
+            if (log.isWarnEnabled()) {
+                log.warn("ReplaceOperationLogKey Bean is null in DefaultContentReplacer");
+            }
+        }
+    }
 
     /**
      * 使用默认的表达式解析器和上下文进行内容替换。
@@ -52,7 +75,7 @@ public class DefaultContentReplacer implements ContentReplacer {
      *
      * <p>如果上下文不是{@link StandardEvaluationContext}的实例，将抛出{@link IllegalArgumentException}。</p>
      *
-     * @param content 原始内容，包含需要替换的占位符或表达式
+     * @param content 操作日志原始内容，包含需要替换的占位符或表达式
      * @param context 上下文，用于提供替换所需的数据
      * @param parser 表达式解析器，用于解析SpEL表达式
      * @return 替换后的内容，所有占位符或表达式均已被替换为具体值
@@ -68,22 +91,37 @@ public class DefaultContentReplacer implements ContentReplacer {
         String[] parameterNames = (String[])evalContext.lookupVariable("parameterNames");
 
         SpELUtils.setVariable(evalContext, parameterNames, args);
+
+        // 替换默认的关键字和值
+        content = this.replaceCustomKey(content);
+
         SpELContentReplacerHelper helper = SpELContentReplacerHelper.builder()
                 .content(content)
                 .context(context)
                 .parser(parser)
                 .build();
-
-        // 替换默认的关键字和值
+        // 替换框架默认的关键字和值
         this.replaceDefaultKey(helper, evalContext, parser);
-        return parseSpelExpressions(helper.toContent(), evalContext, parser);
+        // 替换日志中的SpEl表达式
+        helper.replaceForSpEl();
+        return helper.toContent();
     }
 
+    /**
+     * 替换使用者自定义实现的替换操作日志上下文关键字信息。
+     *
+     * @param content 操作日志原始内容，包含需要替换的占位符或表达式
+     */
+    private String replaceCustomKey(String content) {
+        if (replaceOperationLogKey != null) {
+            content = replaceOperationLogKey.replace(content);
+            return content;
+        }
+        return content;
+    }
 
     /**
-     * 默认替换关键字。
-     *
-     * <p>该方法是替换框架默认的关键字信息。</p>
+     * 替换框架支持的关键字。
      *
      * @param helper SpEl内容替换器
      * @param context context 上下文，用于提供替换所需的数据
@@ -96,36 +134,6 @@ public class DefaultContentReplacer implements ContentReplacer {
         helper.replaceByValue("operationName", SpELUtils.parseExpression("'"+context.lookupVariable("operationName")+"'", context, parser, String.class));
     }
 
-    /**
-     * 解析并替换内容中的SpEL表达式。
-     *
-     * <p>该方法用于查找并解析内容中的SpEL表达式，支持格式为<code>#{expression}</code>的表达式。</p>
-     *
-     * @param content 包含SpEL表达式的内容
-     * @param context SpEL解析上下文
-     * @param parser 表达式解析器，用于解析SpEL表达式
-     * @return 替换后的内容，所有SpEL表达式均已被解析并替换为具体值
-     */
-    private String parseSpelExpressions(String content, StandardEvaluationContext context, ExpressionParser parser) {
-        StringBuilder parsedContent = new StringBuilder();
-        int start = 0;
-        while (start < content.length()) {
-            int openIndex = content.indexOf("#{", start);
-            if (openIndex == -1) {
-                parsedContent.append(content.substring(start));
-                break;
-            }
-            parsedContent.append(content, start, openIndex);
-            int closeIndex = content.indexOf("}", openIndex);
-            if (closeIndex == -1) {
-                parsedContent.append(content.substring(openIndex));
-                break;
-            }
-            String expression = content.substring(openIndex + 2, closeIndex);
-            Object value = SpELUtils.parseExpression(expression, context, parser, Object.class);
-            parsedContent.append(value);
-            start = closeIndex + 1;
-        }
-        return parsedContent.toString();
-    }
+
+
 }

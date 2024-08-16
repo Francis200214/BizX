@@ -1,7 +1,7 @@
 package com.biz.operation.log.store;
 
 /**
- * {@code OperationLogUserSession}接口定义了操作日志中当前用户信息的存储和管理方法。
+ * {@code OperationLogUserContext}接口定义了操作日志中当前用户信息的存储和管理方法。
  *
  * <p>该接口主要用于获取当前操作用户的ID和姓名，以及提供清除用户信息的功能。</p>
  *
@@ -18,7 +18,7 @@ package com.biz.operation.log.store;
  * @since 1.0.0
  * @version 1.0.0
  */
-public interface OperationLogUserSession {
+public interface OperationLogUserContext {
 
     /**
      * 获取当前操作用户的唯一标识符（ID）。

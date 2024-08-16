@@ -1,6 +1,7 @@
 package com.biz.operation.log.processor;
 
 import com.biz.operation.log.OperationLog;
+import com.biz.operation.log.OperationLogAspect;
 import com.biz.operation.log.recorder.OperationLogRecorder;
 import com.biz.operation.log.replace.ContentReplacer;
 import lombok.extern.slf4j.Slf4j;
@@ -87,8 +88,16 @@ public class OperationLogProcessor {
      *
      * <p>此方法主要用于在目标方法成功执行后，记录操作日志。</p>
      *
+     * <p>该方法调用 {@link OperationLogRecorder#record(String, Throwable)} 来实际记录日志，
+     * 其中 {@link OperationLogRecorder} 是处理日志记录的主要类。</p>
+     *
+     * <p>此方法通常会被 {@link OperationLogAspect} 的 AOP 切面逻辑所调用，
+     * 用于在带有 {@link OperationLog} 注解的方法执行完成后自动记录日志。</p>
+     *
      * @param joinPoint 切入点信息，包含目标方法的上下文
      * @see JoinPoint
+     * @see OperationLogRecorder
+     * @see OperationLogAspect
      */
     public void processAfterReturning(JoinPoint joinPoint) {
         operationLogRecorder.record(null, null);
@@ -99,12 +108,21 @@ public class OperationLogProcessor {
      *
      * <p>此方法主要用于在目标方法执行过程中抛出异常时，记录操作日志并捕获异常信息。</p>
      *
+     * <p>该方法调用 {@link OperationLogRecorder#record(String, Throwable)} 来实际记录日志，
+     * 并通过传递异常对象 {@link Throwable} 来记录发生的异常信息。</p>
+     *
+     * <p>此方法通常会被 {@link OperationLogAspect} 的 AOP 切面逻辑所调用，
+     * 用于在带有 {@link OperationLog} 注解的方法执行过程中抛出异常时自动记录日志。</p>
+     *
      * @param joinPoint 切入点信息，包含目标方法的上下文
      * @param e 方法执行过程中抛出的异常
      * @see JoinPoint
+     * @see OperationLogRecorder
+     * @see OperationLogAspect
      * @see Throwable
      */
     public void processAfterThrowing(JoinPoint joinPoint, Throwable e) {
         operationLogRecorder.record(null, e);
     }
+
 }

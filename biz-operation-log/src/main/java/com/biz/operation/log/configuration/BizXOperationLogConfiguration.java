@@ -8,8 +8,8 @@ import com.biz.operation.log.processor.OperationLogProcessor;
 import com.biz.operation.log.recorder.OperationLogRecorder;
 import com.biz.operation.log.replace.ContentReplacer;
 import com.biz.operation.log.replace.DefaultContentReplacer;
-import com.biz.operation.log.store.DefaultOperationLogUserSession;
-import com.biz.operation.log.store.OperationLogUserSession;
+import com.biz.operation.log.store.DefaultOperationLogUserContext;
+import com.biz.operation.log.store.OperationLogUserContext;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * <p>此配置类主要包含以下几个核心Bean：</p>
  * <ul>
- *     <li>{@link OperationLogUserSession}：用户存储服务接口的默认实现。</li>
+ *     <li>{@link OperationLogUserContext}：用户存储服务接口的默认实现。</li>
  *     <li>{@link OperationLogHandler}：操作日志处理器接口的默认实现。</li>
  *     <li>{@link ContentReplacer}：日志内容替换器的默认实现。</li>
  *     <li>{@link OperationLogHandlerFactory}：操作日志处理器工厂。</li>
@@ -35,7 +35,7 @@ import org.springframework.context.annotation.Configuration;
  * </ul>
  *
  * @see DefaultOperationLogHandler
- * @see DefaultOperationLogUserSession
+ * @see DefaultOperationLogUserContext
  * @see OperationLogAspect
  * @author francis
  * @since 1.0.0
@@ -46,18 +46,18 @@ import org.springframework.context.annotation.Configuration;
 public class BizXOperationLogConfiguration {
 
     /**
-     * 创建一个默认的 OperationLogUserSession 实例。
+     * 创建一个默认的 OperationLogUserContext 实例。
      *
-     * <p>如果 Spring 上下文中不存在自定义的 OperationLogUserSession Bean，
+     * <p>如果 Spring 上下文中不存在自定义的 OperationLogUserContext Bean，
      * 则会使用该方法提供的默认实现。</p>
      *
-     * @return 默认的 OperationLogUserSession 实例
-     * @see DefaultOperationLogUserSession
+     * @return 默认的 OperationLogUserContext 实例
+     * @see DefaultOperationLogUserContext
      */
     @Bean
-    @ConditionalOnMissingBean(OperationLogUserSession.class)
-    public OperationLogUserSession operationLogUserStore() {
-        return new DefaultOperationLogUserSession();
+    @ConditionalOnMissingBean(OperationLogUserContext.class)
+    public OperationLogUserContext operationLogUserStore() {
+        return new DefaultOperationLogUserContext();
     }
 
     /**
@@ -78,14 +78,10 @@ public class BizXOperationLogConfiguration {
     /**
      * 创建一个 ContentReplacer 实例，用于替换日志内容中的信息。
      *
-     * <p>如果 Spring 上下文中不存在自定义的 ContentReplacer Bean，
-     * 则会使用该方法提供的默认实现。</p>
-     *
      * @return 默认的 ContentReplacer 实例
      * @see DefaultContentReplacer
      */
     @Bean
-    @ConditionalOnMissingBean(ContentReplacer.class)
     public ContentReplacer contentReplacer() {
         return new DefaultContentReplacer();
     }
@@ -106,13 +102,13 @@ public class BizXOperationLogConfiguration {
      * 创建一个 OperationLogRecorder 实例，用于记录操作日志。
      *
      * @param operationLogHandlerFactory 日志处理器工厂
-     * @param operationLogUserSession 用户存储服务
+     * @param operationLogUserContext 用户存储服务
      * @return OperationLogRecorder 实例
      * @see OperationLogRecorder
      */
     @Bean
-    public OperationLogRecorder operationLogRecorder(OperationLogHandlerFactory operationLogHandlerFactory, OperationLogUserSession operationLogUserSession) {
-        return new OperationLogRecorder(operationLogHandlerFactory, operationLogUserSession);
+    public OperationLogRecorder operationLogRecorder(OperationLogHandlerFactory operationLogHandlerFactory, OperationLogUserContext operationLogUserContext) {
+        return new OperationLogRecorder(operationLogHandlerFactory, operationLogUserContext);
     }
 
     /**

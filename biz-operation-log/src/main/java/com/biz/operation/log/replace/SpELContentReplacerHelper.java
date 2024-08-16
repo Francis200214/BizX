@@ -1,5 +1,6 @@
 package com.biz.operation.log.replace;
 
+import com.biz.common.spel.SpELUtils;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -88,6 +89,13 @@ public class SpELContentReplacerHelper {
      */
     public void replaceByValue(String contentKey, String value) {
         content = content.replace(contentKey, value);
+    }
+
+    /**
+     * 使用SpEL表达式替换内容中的占位符。
+     */
+    public void replaceForSpEl() {
+        content = String.valueOf(SpELUtils.parseExpression(content, context, parser, Object.class));
     }
 
     /**

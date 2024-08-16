@@ -4,7 +4,7 @@ import com.biz.common.utils.Common;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * {@code DefaultOperationLogUserSession}类是{@link OperationLogUserSession}接口的默认实现。
+ * {@code DefaultOperationLogUserContext}类是{@link OperationLogUserContext}接口的默认实现。
  *
  * <p>该实现使用{@link ThreadLocal}来存储和管理当前操作用户的ID和姓名。通过这种方式，
  * 可以确保在同一线程内安全地访问和修改操作用户的信息。</p>
@@ -28,7 +28,7 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0.0
  */
 @Slf4j
-public class DefaultOperationLogUserSession implements OperationLogUserSession {
+public class DefaultOperationLogUserContext implements OperationLogUserContext {
 
     /**
      * 当前操作用户的ID，使用{@link ThreadLocal}来存储。

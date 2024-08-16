@@ -5,7 +5,7 @@ import org.springframework.expression.ExpressionParser;
 /**
  * {@code ContentReplacer}接口定义了内容替换的操作。
  *
- * <p>该接口用于替换字符串中的占位符或表达式。用户可以实现该接口，提供自定义的替换逻辑。</p>
+ * <p>该接口用于替换字符串中的占位符或表达式。</p>
  *
  * <p>主要用于在日志记录等场景中，将模板化的字符串内容根据上下文动态替换为实际的值。</p>
  *

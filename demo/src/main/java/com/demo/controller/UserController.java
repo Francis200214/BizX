@@ -1,13 +1,11 @@
 package com.demo.controller;
 
 import com.biz.web.rbac.BizAccessAllow;
-import com.demo.service.UserService;
+import com.demo.service.IUserService;
 import com.demo.service.bo.AddUserBo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +26,7 @@ public class UserController {
     public static final String USER_CACHE = "userCache";
 
     @Autowired
-    private UserService userService;
+    private IUserService IUserService;
 
 //    @CacheEvict
     @GetMapping("/addUser")
@@ -39,9 +37,9 @@ public class UserController {
         addUserBo.setAge(18);
         addUserBo.setSchool("清华");
 
-        userService.addUser(addUserBo);
+        IUserService.addUser(addUserBo);
 
-        userService.deleteUser("1");
+        IUserService.deleteUser("1");
         return "dssd";
     }
 
