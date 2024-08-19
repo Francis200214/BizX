@@ -12,12 +12,26 @@ import java.util.*;
 
 /**
  * 提供关于类、字段、方法等的反射工具方法。
+ * 该类封装了多个静态方法，方便开发者通过反射机制对类进行操作，如获取类的信息、实例化对象、调用方法、设置字段值等。
+ *
+ * <p>该工具类提供了一些常用的反射操作，包括判断字段类型、获取类的字段、方法、构造方法、注解信息，动态调用方法、修改字段值等。</p>
+ *
+ * <pre>{@code
+ * // 示例用法
+ * Class<?> clazz = AClass.class;
+ * Set<FieldModel> fields = ReflectionUtils.getFields(clazz);
+ * System.out.println(fields);
+ * }</pre>
  *
  * @author francis
  * @since 1.0.1
+ * @version 1.0.1
  */
 public class ReflectionUtils {
 
+    /**
+     * 包装类型的集合，用于判断某个字段是否为类类型。
+     */
     private static final Set<Class<?>> WRAPPER_TYPES = new HashSet<Class<?>>() {{
         add(String.class);
         add(Boolean.class);
@@ -30,7 +44,6 @@ public class ReflectionUtils {
         add(Short.class);
         add(Void.class);
     }};
-
 
     /**
      * 判断给定的字段是否为类类型。
@@ -79,7 +92,6 @@ public class ReflectionUtils {
         if (pck == null) {
             return null;
         }
-
         return pck.getName();
     }
 
@@ -195,7 +207,6 @@ public class ReflectionUtils {
                     .parameterTypeModels(buildParameterTypeModelSet(constructor.getParameterTypes()))
                     .build());
         }
-
         return set;
     }
 
@@ -328,12 +339,12 @@ public class ReflectionUtils {
         return set;
     }
 
-
     /**
-     * 根据Class类型，获取对应的实例
+     * 根据Class类型，获取对应的实例。
      * 通过调用Class的newInstance方法创建并返回一个该类的新实例。
      *
      * @param clazz 待创建实例的Class对象
+     * @param <T>   实例类型
      * @return 类的新实例
      * @throws InstantiationException 如果类没有无参构造方法或实例化失败
      * @throws IllegalAccessException 如果访问类或构造方法被限制
@@ -342,12 +353,12 @@ public class ReflectionUtils {
         return Common.to(clazz.newInstance());
     }
 
-
     /**
-     * 使用 Class 的无参构造方法创建对象实例
+     * 使用 Class 的无参构造方法创建对象实例。
      * 通过获取并调用类的无参构造方法来创建并返回一个该类的新实例。
      *
      * @param clazz 待创建实例的Class对象
+     * @param <T>   实例类型
      * @return 类的新实例
      * @throws InstantiationException    如果类没有无参构造方法或实例化失败
      * @throws IllegalAccessException    如果访问构造方法被限制
@@ -359,9 +370,8 @@ public class ReflectionUtils {
         return Common.to(clazz.getDeclaredConstructor().newInstance());
     }
 
-
     /**
-     * 根据传入的类的Class对象，以及构造方法的形参的Class对象，获取对应的构造方法对象
+     * 根据传入的类的Class对象，以及构造方法的形参的Class对象，获取对应的构造方法对象。
      * 通过指定参数类型获取类的构造方法对象。
      *
      * @param clazz          类的Class对象
@@ -374,13 +384,13 @@ public class ReflectionUtils {
         return clazz.getDeclaredConstructor(parameterTypes);
     }
 
-
     /**
-     * 根据传入的构造方法对象，以及传入构造方法的实参，获取对应的实例
+     * 根据传入的构造方法对象，以及传入构造方法的实参，获取对应的实例。
      * 通过调用构造方法并传入参数来创建并返回类的实例。
      *
      * @param constructor 构造方法对象
      * @param initrans    传入构造方法的实参数组
+     * @param <T>         实例类型
      * @return 类的实例
      * @throws InstantiationException    如果实例化失败
      * @throws IllegalAccessException    如果访问构造方法被限制
@@ -398,7 +408,7 @@ public class ReflectionUtils {
     }
 
     /**
-     * 根据传入的属性名字符串，修改对应的属性值
+     * 根据传入的属性名字符串，修改对应的属性值。
      * 通过反射机制获取类的指定字段并设置其值。
      *
      * @param clazz 类的Class对象
@@ -418,9 +428,8 @@ public class ReflectionUtils {
         field.set(obj, value);
     }
 
-
     /**
-     * 取属性字段中的值
+     * 取属性字段中的值。
      * 通过反射机制获取类的指定字段的值。
      *
      * @param field 属性字段对象
@@ -433,9 +442,8 @@ public class ReflectionUtils {
         return field.get(value);
     }
 
-
     /**
-     * 根据传入的方法名字符串，获取对应的方法
+     * 根据传入的方法名字符串，获取对应的方法。
      * 通过指定方法名和参数类型数组获取类的Method对象。
      *
      * @param clazz          要操作的类的Class对象
@@ -451,7 +459,7 @@ public class ReflectionUtils {
     }
 
     /**
-     * 根据传入的方法对象，调用对应的方法
+     * 根据传入的方法对象，调用对应的方法。
      * 通过传入Method对象和参数数组来调用相应的方法。
      *
      * @param method 方法对象
@@ -469,9 +477,8 @@ public class ReflectionUtils {
         return method.invoke(obj, args);
     }
 
-
     /**
-     * 获取 Class 的包
+     * 获取 Class 的包。
      * 通过Class对象获取对应的Package对象。
      *
      * @param clazz Class对象
@@ -481,9 +488,8 @@ public class ReflectionUtils {
         return clazz.getPackage();
     }
 
-
     /**
-     * 构建方法参数实体对象模型
+     * 构建方法参数实体对象模型。
      * 根据参数类型数组构建一个方法参数实体对象模型的集合。
      *
      * @param parameterTypes 参数类型数组
@@ -498,7 +504,6 @@ public class ReflectionUtils {
         }
         return set;
     }
-
 
     /**
      * 根据类的字段信息构建字段模型集合。
@@ -522,7 +527,6 @@ public class ReflectionUtils {
         }
         return set;
     }
-
 
     /**
      * 根据类的方法信息构建方法模型集合。
