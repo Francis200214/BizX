@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * @author francis
  * @since 2024-05-28 11:07
  **/
-public class MD5Util {
+public class MD5Utils {
 
     /**
      * MD5算法标识

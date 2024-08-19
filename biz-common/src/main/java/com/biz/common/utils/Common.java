@@ -1,7 +1,7 @@
 package com.biz.common.utils;
 
 import com.biz.common.date.datetime.DateTimeUtils;
-import com.biz.common.random.PhoneNumberUtil;
+import com.biz.common.random.PhoneNumberUtils;
 import com.biz.common.random.RandomUtils;
 
 import java.util.Collection;
@@ -98,8 +98,8 @@ public final class Common {
      * @return 随机的手机号码
      */
     public static String createRandomPhoneNumber() {
-        return PhoneNumberUtil.createPhoneNumber(
-                PhoneNumberUtil.OperatorEnum.getOperateByCode(
+        return PhoneNumberUtils.createPhoneNumber(
+                PhoneNumberUtils.OperatorEnum.getOperateByCode(
                         RandomUtils.generateNumber(3)));
     }
 }

@@ -16,7 +16,7 @@ public final class SecureUtils {
      * @return 加密后的MD5字符串。
      */
     public static String toMd5(String dateString) {
-        return MD5Util.getMD5(dateString);
+        return MD5Utils.getMD5(dateString);
     }
 
 }

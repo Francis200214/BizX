@@ -7,11 +7,27 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-
 /**
- * 本类提供生成随机手机号码的功能。
+ * {@code PhoneNumberUtils}类提供了生成随机手机号码的功能，支持中国移动、中国联通和中国电信三大运营商的号码生成。
+ * 该类为不可实例化的工具类，所有方法均为静态方法。
+ *
+ * <p>主要功能包括：</p>
+ * <ul>
+ *   <li>根据指定的运营商生成随机的手机号码。</li>
+ *   <li>提供了获取运营商相关信息的方法。</li>
+ * </ul>
+ *
+ * <p>示例用法：</p>
+ * <pre>{@code
+ * String phoneNumber = PhoneNumberUtils.createPhoneNumber(PhoneNumberUtils.OperatorEnum.CHINA_MOBILE);
+ * System.out.println("生成的手机号码: " + phoneNumber);
+ * }</pre>
+ *
+ * @author francis
+ * @since 1.0.1
+ * @version 1.0.1
  */
-public final class PhoneNumberUtil {
+public final class PhoneNumberUtils {
 
     /**
      * 中国移动的号段数组。
@@ -40,10 +56,12 @@ public final class PhoneNumberUtil {
      * 运营商前缀代码与号段数组的映射。
      */
     private static final Map<Integer, String[]> OPERATOR_PREFIX_MAP = new HashMap<>();
+
     /**
      * 运营商代码与枚举值的映射。
      */
     private static final Map<Integer, OperatorEnum> CODE_TO_ENUM_MAP = new HashMap<>();
+
     /**
      * 运营商代码与名称的映射。
      */
@@ -51,6 +69,7 @@ public final class PhoneNumberUtil {
 
     /**
      * 静态初始化块，填充映射表。
+     * 将运营商的代码与其相应的号段、枚举值、名称进行映射。
      */
     static {
         OPERATOR_PREFIX_MAP.put(0, CHINA_MOBILE);
@@ -99,6 +118,9 @@ public final class PhoneNumberUtil {
 
     /**
      * 运营商枚举，定义了三大运营商及其代码。
+     * 提供了获取运营商名称和枚举值的方法。
+     *
+     * @see PhoneNumberUtils#createPhoneNumber(OperatorEnum)
      */
     @Getter
     @AllArgsConstructor
@@ -122,6 +144,7 @@ public final class PhoneNumberUtil {
          * 运营商代码。
          */
         private final Integer code;
+
         /**
          * 运营商名称。
          */
@@ -147,5 +170,4 @@ public final class PhoneNumberUtil {
             return Optional.ofNullable(CODE_TO_ENUM_MAP.get(code)).orElse(null);
         }
     }
-
 }
