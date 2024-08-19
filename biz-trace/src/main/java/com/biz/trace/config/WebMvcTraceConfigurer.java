@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @author francis
  * @see WebMvcConfigurer
  * @see TraceInterceptor
- * @since 2023/4/1 16:30
+ * @since 1.0.1
  */
 @Slf4j
 @ConditionalOnProperty(prefix = "biz.trace", name = "enabled", havingValue = "true")

@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
  * @see BizXBeanUtils
  *
  * @author francis
- * @since 2024-07-04 16:34
+ * @since 1.0.1
  **/
 @Slf4j
 public class DefaultTraceStoreServiceImpl implements TraceStoreService {

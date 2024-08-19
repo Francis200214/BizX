@@ -21,7 +21,7 @@ import java.lang.annotation.Annotation;
  * @see Annotation
  *
  * @author francis
- * @since 2023-04-10 22:24
+ * @since 1.0.1
  */
 @Slf4j
 public class CheckParameterLongMinHandler implements CheckParameterStrategy {

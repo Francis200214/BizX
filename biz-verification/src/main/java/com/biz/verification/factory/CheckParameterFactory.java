@@ -22,7 +22,7 @@ import java.util.Map;
  * @see InitializingBean
  * @author francis
  * @version 1.0
- * @since 2023-04-08
+ * @since 1.0.1
  **/
 @Slf4j
 public class CheckParameterFactory implements InitializingBean, ApplicationContextAware {

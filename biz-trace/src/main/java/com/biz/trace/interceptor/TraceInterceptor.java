@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
  * @see BizXBeanUtils
  *
  * @author francis
- * @since 2024-07-04 17:11
+ * @since 1.0.1
  **/
 @Slf4j
 public class TraceInterceptor implements HandlerInterceptor, Ordered {

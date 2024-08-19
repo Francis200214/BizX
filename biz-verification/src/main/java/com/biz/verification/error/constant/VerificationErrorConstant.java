@@ -17,7 +17,7 @@ import com.biz.common.utils.ErrorCodeConstant;
  *
  * @author francis
  * @version 1.0
- * @since 2024-08-09
+ * @since 1.0.1
  * @see ErrorCodeConstant
  */
 public final class VerificationErrorConstant {

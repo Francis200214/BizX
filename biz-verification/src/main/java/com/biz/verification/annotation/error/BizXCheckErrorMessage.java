@@ -23,7 +23,7 @@ import java.lang.annotation.*;
  * </pre>
  *
  * @see ErrorCodeConstant
- * @since 2023-04-08
+ * @since 1.0.1
  * @version 1.0.0
  * @author francis
  */

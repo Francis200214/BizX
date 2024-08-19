@@ -18,7 +18,7 @@ import com.biz.common.id.SnowflakeHelper;
  * </pre>
  *
  * @author francis
- * @since 2024-07-04 15:54
+ * @since 1.0.1
  * @see TraceIdService
  * @see SnowflakeHelper
  */

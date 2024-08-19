@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @param <T> 泛型参数，表示分页数据的类型。
  * @author francis
- * @since 2023-08-08 09:53
+ * @since 1.0.1
  **/
 public final class PaginationHelper<T> {
 

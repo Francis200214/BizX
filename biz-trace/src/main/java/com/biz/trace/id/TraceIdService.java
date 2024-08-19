@@ -16,7 +16,7 @@ package com.biz.trace.id;
  * </pre>
  *
  * @author francis
- * @since 2024-07-04 15:49
+ * @since 1.0.1
  */
 public interface TraceIdService {
 

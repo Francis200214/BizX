@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Configuration;
  * </ul>
  *
  * @author francis
- * @since 2024-08-09 09:00
+ * @since 1.0.1
  * @see TraceStoreService
  * @see TraceIdService
  * @see DefaultTraceStoreServiceImpl

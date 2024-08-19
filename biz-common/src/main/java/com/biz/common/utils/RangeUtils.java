@@ -5,7 +5,7 @@ package com.biz.common.utils;
  * 主要用于根据给定的经纬度和距离，计算出扩展后的经纬度范围。
  *
  * @author francis
- * @since 2023/3/31 17:36
+ * @since 1.0.1
  */
 public final class RangeUtils {
 

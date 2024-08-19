@@ -9,7 +9,7 @@ import java.util.Collection;
  * 它提供方法来获取所有的BizRedisCacheEntity实例。
  *
  * @author francis
- * @since 2024-04-02 11:00
+ * @since 1.0.1
  **/
 public interface BizRedisCacheManager {
 

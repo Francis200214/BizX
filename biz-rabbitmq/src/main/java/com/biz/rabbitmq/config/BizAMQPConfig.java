@@ -27,7 +27,7 @@ import org.springframework.messaging.handler.annotation.support.MessageHandlerMe
  * @see MessageHandlerMethodFactory
  * @see RabbitListenerEndpointRegistrar
  * @see Configuration
- * @since 2023-08-18 13:23
+ * @since 1.0.1
  **/
 @Configuration
 public class BizAMQPConfig implements RabbitListenerConfigurer {

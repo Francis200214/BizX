@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @param <T> 业务数据的类型
  * @author francis
- * @since 2023-08-18 15:07
+ * @since 1.0.1
  **/
 @Setter
 @Getter

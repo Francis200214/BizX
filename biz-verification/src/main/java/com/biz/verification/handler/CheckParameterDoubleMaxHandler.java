@@ -15,7 +15,7 @@ import java.lang.annotation.Annotation;
  * @see BizXCheckDoubleMax
  * @see BizXVerificationException
  * @see CheckParameterStrategy
- * @since 2023-04-08
+ * @since 1.0.1
  * @version 1.0.0
  * @author francis
  **/

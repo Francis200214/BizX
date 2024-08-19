@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * </p>
  *
  * @author francis
- * @since 2023-08-18 15:24
+ * @since 1.0.1
  **/
 @Configuration
 @ConditionalOnProperty(prefix = "biz.rabbitmq", name = "enabled", havingValue = "true")

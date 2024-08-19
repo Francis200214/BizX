@@ -4,7 +4,7 @@ package com.biz.common.utils;
  * 符号常量
  *
  * @author francis
- * @since 2024-04-01 16:30
+ * @since 1.0.1
  **/
 public final class SymbolConstant {
 

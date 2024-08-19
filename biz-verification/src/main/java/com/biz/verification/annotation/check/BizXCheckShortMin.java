@@ -23,7 +23,7 @@ import java.lang.annotation.*;
  * </pre>
  *
  * @see BizXCheckErrorMessage
- * @since 2024-08-07
+ * @since 1.0.1
  * @version 1.0.0
  * @author francis
  **/

@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
  *
  * @author francis
  * @version 1.0.1
- * @since 2024-06-22 11:57
+ * @since 1.0.1
  * @see java.text.DateFormat
  * @see java.text.SimpleDateFormat
  * @see java.lang.ThreadLocal

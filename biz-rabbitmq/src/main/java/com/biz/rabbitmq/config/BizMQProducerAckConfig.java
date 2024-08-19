@@ -45,7 +45,7 @@ import org.springframework.context.annotation.Configuration;
  * @see RabbitAdmin
  * @see Configuration
  * @see ApplicationContextAware
- * @since 2023-08-18
+ * @since 1.0.1
  */
 @Slf4j
 @Configuration

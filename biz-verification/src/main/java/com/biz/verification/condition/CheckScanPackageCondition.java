@@ -20,7 +20,7 @@ import java.util.List;
  * <p>使用 {@link Value} 注解从配置文件中读取包路径，并在 {@link PostConstruct} 方法中初始化包路径列表。</p>
  *
  * @author francis
- * @since 2024-08-06
+ * @since 1.0.1
  **/
 public class CheckScanPackageCondition {
 

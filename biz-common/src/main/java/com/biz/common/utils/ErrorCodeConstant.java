@@ -6,7 +6,7 @@ package com.biz.common.utils;
  *
  * @author francis
  * @version 1.0.0
- * @since 2024-08-07
+ * @since 1.0.1
  */
 public final class ErrorCodeConstant {
 

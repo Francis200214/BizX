@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentMap;
  * 该类负责管理Redis缓存实体，在Spring Boot自动配置的条件下激活。
  *
  * @author francis
- * @since 2024-04-02 11:05
+ * @since 1.0.1
  **/
 @ConditionalOnProperty(value = "biz.cache.redis-cache", havingValue = "true")
 public class BizRedisCacheLocalManager implements BizRedisCacheManager {

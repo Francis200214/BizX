@@ -20,7 +20,7 @@ package com.biz.trace.store;
  * @see DefaultTraceStoreServiceImpl
  *
  * @author francis
- * @since 2024-07-04 16:32
+ * @since 1.0.1
  **/
 public interface TraceStoreService {
 
