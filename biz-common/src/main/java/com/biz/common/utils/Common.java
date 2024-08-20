@@ -9,9 +9,13 @@ import java.util.Collection;
 /**
  * 提供常用工具方法的类。
  * 包含对字符串、集合、日期时间及随机数的处理功能。
+ * 这个类封装了一些常见的操作，使得代码更加简洁和易于维护。
+ *
+ * <p>该类为工具类，所有方法均为静态方法，不需要实例化对象即可使用。</p>
  *
  * @author francis
- * @date 2023/3/28 18:43
+ * @since 1.0.1
+ * @version 1.0.1
  */
 public final class Common {
 
@@ -67,6 +71,7 @@ public final class Common {
      * @param <T> 目标类型
      * @return 转换后的对象
      */
+    @SuppressWarnings("unchecked")
     public static <T> T to(Object o) {
         return (T) o;
     }

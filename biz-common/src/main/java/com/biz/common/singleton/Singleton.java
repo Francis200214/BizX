@@ -1,19 +1,30 @@
 package com.biz.common.singleton;
 
+import java.util.Objects;
 import java.util.function.Supplier;
 
 /**
  * 单例管理器类，用于懒汉式地管理单例对象。
- * 该类支持延迟加载和重置单例对象的功能，确保单例对象的唯一性和可控性。
+ * 该类支持延迟加载功能，确保单例对象的唯一性和可控性。
+ *
+ * <p>此类提供了一种灵活且线程安全的单例管理机制，可以在应用程序中使用，
+ * 以确保单例对象的惰性初始化。</p>
+ *
+ * <pre>{@code
+ * // 示例用法
+ * Singleton<UserService> userServiceSingleton = Singleton.createWithSupplier(UserService::new);
+ * UserService userService = userServiceSingleton.get();
+ * }</pre>
  *
  * @param <T> 单例对象的类型
  * @author francis
+ * @since 1.0.1
+ * @version 1.0.1
  */
 public final class Singleton<T> {
 
     private final Supplier<T> supplier;
-    private T instance;
-    private volatile boolean loaded = false;
+    private volatile T instance;
 
     /**
      * 构造函数，私有化以防止外部实例化。
@@ -22,10 +33,7 @@ public final class Singleton<T> {
      *                 必须不为空，否则抛出NullPointerException。
      */
     public Singleton(Supplier<T> supplier) {
-        if (supplier == null) {
-            throw new NullPointerException("Supplier not null");
-        }
-        this.supplier = supplier;
+        this.supplier = Objects.requireNonNull(supplier, "Supplier cannot be null");
     }
 
     /**
@@ -43,28 +51,18 @@ public final class Singleton<T> {
     /**
      * 获取单例对象。
      * 如果单例对象尚未加载，则通过供应商加载并返回；否则直接返回已加载的实例。
-     * 采用双重检查锁定的方式实现线程安全的懒汉式加载。
+     * 采用经典的双重检查锁定方式实现线程安全的懒汉式加载。
      *
      * @return 单例对象。
      */
     public T get() {
-        if (!loaded) {
+        if (instance == null) {
             synchronized (this) {
                 if (instance == null) {
                     instance = supplier.get();
                 }
-                loaded = true;
             }
         }
         return instance;
     }
-
-    /**
-     * 重置单例对象的加载状态，使得下次调用get()方法时重新加载单例对象。
-     * 这个方法在需要重新初始化单例对象的场景下非常有用，比如在测试或者需要刷新单例对象的情况下。
-     */
-    public void reset() {
-        loaded = false;
-    }
-
 }

@@ -4,11 +4,24 @@ import java.util.List;
 
 /**
  * 分页辅助类，用于提供分页功能的支持。
- * 该类是线程安全的，但要求dataList在创建PaginationHelper实例后不应被修改。
+ * 该类是线程安全的，但要求`dataList`在创建`PaginationHelper`实例后不应被修改。
+ * <p>
+ * 通过该类，开发者可以方便地实现对数据列表的分页操作，获取当前页的数据，以及计算总页数等功能。
+ * </p>
+ *
+ * <pre>{@code
+ * // 示例用法
+ * List<String> data = Arrays.asList("A", "B", "C", "D", "E", "F");
+ * PaginationHelper<String> paginationHelper = new PaginationHelper<>(2, 2, data);
+ * List<String> pageData = paginationHelper.getPageData(); // 返回 ["C", "D"]
+ * int totalPages = paginationHelper.getTotalPageCount(); // 返回 3
+ * int totalItems = paginationHelper.getDataListSize(); // 返回 6
+ * }</pre>
  *
  * @param <T> 泛型参数，表示分页数据的类型。
  * @author francis
  * @since 1.0.1
+ * @version 1.0.1
  **/
 public final class PaginationHelper<T> {
 
@@ -34,8 +47,8 @@ public final class PaginationHelper<T> {
      *
      * @param pageNumber 当前页码，必须大于0。
      * @param pageSize   每页的记录数，必须大于0。
-     * @param dataList   分页数据列表，不应在创建PaginationHelper实例后被修改。
-     * @throws IllegalArgumentException 如果pageNumber或pageSize不满足要求。
+     * @param dataList   分页数据列表，不应在创建`PaginationHelper`实例后被修改。
+     * @throws IllegalArgumentException 如果`pageNumber`或`pageSize`不满足要求。
      */
     public PaginationHelper(int pageNumber, int pageSize, List<T> dataList) {
         if (pageNumber <= 0) {

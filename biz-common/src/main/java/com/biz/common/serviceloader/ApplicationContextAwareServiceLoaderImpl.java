@@ -6,16 +6,21 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 实现了服务加载器的特定逻辑，利用Spring框架的ApplicationContext来加载服务。
- * 此实现类继承自AbstractServiceLoaderProvider，提供了特定于应用程序上下文的服务加载机制。
+ * 此实现类继承自{@link AbstractServiceLoaderProvider}，提供了特定于应用程序上下文的服务加载机制。
+ *
+ * <p>该类通过Spring的应用程序上下文来加载服务实例，使得服务的加载与Spring框架集成。
+ * 使用{@link BizXBeanUtils#getBean(Class)}方法获取指定类型的Bean实例。</p>
  *
  * @author francis
+ * @since 1.0.1
+ * @version 1.0.1
  */
 @Slf4j
 public class ApplicationContextAwareServiceLoaderImpl extends AbstractServiceLoaderProvider {
 
     /**
      * 加载指定类别的服务实例。
-     * 本方法利用BizXBeanUtils.getBean方法从Spring应用程序上下文中获取指定类型的bean实例。
+     * 本方法利用{@link BizXBeanUtils#getBean(Class)}方法从Spring应用程序上下文中获取指定类型的bean实例。
      * 如果找不到对应的bean，将返回null。
      *
      * @param tClass 服务的类别，用于从应用程序上下文中获取对应的bean。

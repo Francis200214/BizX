@@ -5,7 +5,12 @@ package com.biz.common.serviceloader;
  * 该接口定义了一个方法，用于根据类类型动态获取服务实例。
  * 使用泛型来实现类型安全的服务获取，增强了代码的可读性和可维护性。
  *
+ * <p>通过实现该接口，可以为不同的服务提供动态加载机制，
+ * 这在模块化和插件化系统中尤为有用。</p>
+ *
  * @author francis
+ * @since 1.0.1
+ * @version 1.0.1
  */
 public interface ServiceLoaderProvider {
 

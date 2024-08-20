@@ -36,7 +36,7 @@ public class DemoTest {
 
     @Test
     public void test1() {
-        PeopleStrategyService slelect = peopleStrategyService.slelect(PeopleEnum.女人);
+        PeopleStrategyService slelect = peopleStrategyService.select(PeopleEnum.女人);
         System.out.println("slelect " + slelect);
         slelect.handle();
     }
