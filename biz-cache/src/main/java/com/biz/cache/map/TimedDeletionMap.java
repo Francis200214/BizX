@@ -12,18 +12,47 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-
 /**
- * 提供定时删除功能的并发映射表。
- * 该类封装了一个ConcurrentHashMap，并通过定时任务定期删除过期的条目。
+ * 提供定时删除功能的并发映射表。该类封装了一个 {@link ConcurrentHashMap}，并通过定时任务定期删除过期的条目。
+ * 它特别适合需要管理大量时间敏感数据的应用场景，如缓存管理、会话管理等。
+ *
+ * <p>这个类使用了一个内部的 {@link ScheduledExecutorService} 来定期执行清理任务，移除所有已过期的条目。</p>
+ *
+ * <h3>示例用法:</h3>
+ * <pre>{@code
+ * TimedDeletionMap<String, String> cache = new TimedDeletionMap.TimedDeletionMapBuilder<String, String>()
+ *     .withMapSupplier(ConcurrentHashMap::new)
+ *     .withCleanupInterval(5, TimeUnit.MINUTES)
+ *     .withOnRemoveConsumer(value -> System.out.println("Removed: " + value))
+ *     .build();
+ *
+ * cache.put("key1", "value1", 10, TimeUnit.SECONDS);
+ *
+ * String value = cache.get("key1");
+ * if (value != null) {
+ *     System.out.println("Value: " + value);
+ * }
+ *
+ * // 10秒后，"key1" 将被自动删除
+ * }</pre>
+ *
+ * <p>注意：确保在应用程序生命周期结束时调用 {@link #close()} 方法，以正确关闭内部的线程池。</p>
  *
  * @param <K> Map 中键的类型
  * @param <V> Map 中值的类型
- * @author francis
+ * @see ConcurrentHashMap
+ * @see ScheduledExecutorService
+ * @see ExecutorsUtils
+ * @see TimeUnit
+ * @see java.util.function.Consumer
+ * @see java.util.function.Supplier
+ * @see AutoCloseable
+ * @see java.util.concurrent.Executors
  * @since 1.0.1
  */
+
 @Slf4j
-public class TimedDeletionMap<K, V> implements AutoCloseable {
+public class TimedDeletionMap<K, V> implements AutoCloseable, TimedDeletionCacheMap<K, V> {
 
     /**
      * 使用ConcurrentHashMap来存储键值对，其中值是一个带有过期时间的条目。
@@ -55,6 +84,16 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
     private final Consumer<V> onRemoveConsumer;
 
     /**
+     * 默认的清理间隔，单位为分钟。
+     */
+    private static final long DEFAULT_CLEANUP_INTERVAL = 5;
+
+    /**
+     * 默认的时间单位，为分钟。
+     */
+    private static final TimeUnit DEFAULT_TIME_UNIT = TimeUnit.MINUTES;
+
+    /**
      * 使用给定的映射、执行器服务、清理间隔和时间单位初始化。
      *
      * @param map              存储条目的映射
@@ -63,14 +102,25 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
      * @param cleanupInterval  清理任务执行的间隔
      * @param timeUnit         清理任务执行间隔的时间单位
      */
-    public TimedDeletionMap(ConcurrentHashMap<K, TimedEntry<V>> map, ScheduledExecutorService executorService, Consumer<V> onRemoveConsumer, long cleanupInterval, TimeUnit timeUnit) {
+    public TimedDeletionMap(ConcurrentHashMap<K, TimedEntry<V>> map, ScheduledExecutorService executorService,
+                            Consumer<V> onRemoveConsumer, long cleanupInterval, TimeUnit timeUnit) {
         this.map = map;
         this.executorService = executorService;
-        // 初始化清理任务
         this.cleanupInterval = cleanupInterval;
         this.timeUnit = timeUnit;
         this.onRemoveConsumer = onRemoveConsumer;
         scheduleCleanupTask(cleanupInterval, timeUnit);
+    }
+
+    /**
+     * 向映射中添加一个键值对，并指定其过期时间。
+     *
+     * @param key   key，键值对中的键
+     * @param value value，键值对中的值
+     * @return 添加的值
+     */
+    public V put(K key, V value) {
+        return this.put(key, value, DEFAULT_CLEANUP_INTERVAL, DEFAULT_TIME_UNIT);
     }
 
     /**
@@ -83,6 +133,9 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
      * @return 添加的值
      */
     public V put(K key, V value, long expirationTime, TimeUnit timeUnit) {
+        if (map.containsKey(key)) {
+            return null;
+        }
         long expirationMillis = System.currentTimeMillis() + timeUnit.toMillis(expirationTime);
         TimedEntry<V> timedEntry = new TimedEntry<>(value, expirationMillis);
         map.put(key, timedEntry);
@@ -119,7 +172,7 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
      *
      * @return 映射中条目的数量
      */
-    public long size() {
+    public int size() {
         return map.size();
     }
 
@@ -132,6 +185,9 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
     public void close() throws Exception {
         if (executorService != null) {
             executorService.shutdown();
+            if (!executorService.awaitTermination(60, TimeUnit.SECONDS)) {
+                executorService.shutdownNow();
+            }
         }
     }
 
@@ -142,19 +198,20 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
      * @param <V> Map 中值的类型
      */
     public static class TimedDeletionMapBuilder<K, V> {
+
         /**
          * 供应商接口，用于提供ConcurrentHashMap实例。
          * 这个字段被用来延迟初始化ConcurrentHashMap，以提高内存使用效率。
          * ConcurrentHashMap用于存储具有时间限制的条目，键为K类型，值为TimedEntry<V>类型。
          */
-        private Supplier<ConcurrentHashMap<K, TimedEntry<V>>> mapSupplier;
+        private Supplier<Map<K, TimedEntry<V>>> mapSupplier;
 
         /**
          * 定时任务执行服务，用于定期执行清理任务。
          * 这个 executorService 负责定时清理过期的条目，以保持缓存的活力。
          * 使用 ExecutorsUtils.buildScheduledExecutorService() 进行初始化，该方法具体实现了 executorService 的配置和创建。
          */
-        private ScheduledExecutorService executorService = ExecutorsUtils.buildScheduledExecutorService();
+        private ScheduledExecutorService executorService;
 
         /**
          * 清理间隔时间。
@@ -182,7 +239,7 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
          * @param supplier ConcurrentHashMap 的 Supplier
          * @return 当前构建器实例
          */
-        public TimedDeletionMapBuilder<K, V> withMapSupplier(Supplier<ConcurrentHashMap<K, TimedEntry<V>>> supplier) {
+        public TimedDeletionMapBuilder<K, V> withMapSupplier(Supplier<Map<K, TimedEntry<V>>> supplier) {
             this.mapSupplier = supplier;
             return this;
         }
@@ -232,7 +289,11 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
             if (mapSupplier == null) {
                 throw new IllegalStateException("Map supplier must not be null");
             }
-            return new TimedDeletionMap<>(mapSupplier.get(), executorService, onRemoveConsumer, cleanupInterval, timeUnit);
+            if (executorService == null) {
+                executorService = ExecutorsUtils.buildScheduledExecutorService();
+            }
+            return new TimedDeletionMap<>((ConcurrentHashMap<K, TimedEntry<V>>) mapSupplier.get(),
+                    executorService, onRemoveConsumer, cleanupInterval, timeUnit);
         }
     }
 
@@ -261,8 +322,7 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
                 }
                 keysToRemove.forEach(map::remove);
             } catch (Exception e) {
-                log.error("Error during cleanup task execution: {}", e.getMessage());
-                throw e;
+                log.error("Error during cleanup task execution: {}", e.getMessage(), e);
             }
         }
     }
@@ -299,6 +359,8 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
 
         /**
          * 获取存储的值。
+         *
+         * @return 存储的值
          */
         public T getValue() {
             return value;
@@ -306,12 +368,11 @@ public class TimedDeletionMap<K, V> implements AutoCloseable {
 
         /**
          * 获取值的过期时间。
+         *
+         * @return 过期时间
          */
         public long getExpirationTime() {
             return expirationTime;
         }
     }
 }
-
-
-

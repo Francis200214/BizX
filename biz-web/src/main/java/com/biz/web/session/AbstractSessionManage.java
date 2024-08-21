@@ -26,7 +26,7 @@ public class AbstractSessionManage implements SessionManage, InitializingBean {
     /**
      * 会话缓存 Map
      */
-    private static final SingletonScheduledMap<String, Serializable> SESSION_MAP = SingletonScheduledMap.builder()
+    private static final SingletonScheduledMap<String, Serializable> SESSION_MAP = SingletonScheduledMap.<String, Serializable>builder()
 //            .died(getDiedTime())
             .build();
 
