@@ -63,21 +63,7 @@ public class BizRedisConfig {
         return new LettuceConnectionFactory();
     }
 
-    /**
-     * 配置Jackson2JsonRedisSerializer的序列化方式。
-     *
-     * @return Jackson2JsonRedisSerializer实例
-     */
-    private Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializerConfig() {
-        // jackson序列化所有的类
-        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        // jackson序列化的一些配置
-        ObjectMapper om = new ObjectMapper();
-        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-        om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance);
-        jackson2JsonRedisSerializer.setObjectMapper(om);
-        return jackson2JsonRedisSerializer;
-    }
+
 
     /**
      * 配置ListOperations用于操作列表数据结构。
@@ -226,6 +212,23 @@ public class BizRedisConfig {
     @Bean
     public RedisGeoUtils redisGeoUtils(GeoOperations<String, Object> geoOperations, RedisCommonUtils redisCommonUtils) {
         return new RedisGeoUtils(geoOperations, redisCommonUtils);
+    }
+
+
+    /**
+     * 配置Jackson2JsonRedisSerializer的序列化方式。
+     *
+     * @return Jackson2JsonRedisSerializer实例
+     */
+    private Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializerConfig() {
+        // jackson序列化所有的类
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        // jackson序列化的一些配置
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.activateDefaultTyping(LaissezFaireSubTypeValidator.instance);
+        jackson2JsonRedisSerializer.setObjectMapper(om);
+        return jackson2JsonRedisSerializer;
     }
 
 }

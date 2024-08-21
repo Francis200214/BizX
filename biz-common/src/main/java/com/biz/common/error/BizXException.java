@@ -3,7 +3,7 @@ package com.biz.common.error;
 /**
  * BizX 最高异常类接口。
  * <p>定义了获取错误码和错误信息的方法，用于所有 BizX 相关异常的基类。</p>
- * <p>该抽象类继承自 {@link Exception}，并要求子类实现获取错误码 {@code getCode()} 和错误信息 {@code getMessage()} 的方法。</p>
+ * <p>该抽象类继承自 {@link RuntimeException}，并要求子类实现获取错误码 {@code getCode()} 和错误信息 {@code getMessage()} 的方法。</p>
  *
  * <h2>示例代码：</h2>
  * <pre>{@code
@@ -34,7 +34,7 @@ package com.biz.common.error;
  * @version 1.0.1
  * @since 1.0.1
  */
-public abstract class BizXException extends Exception {
+public abstract class BizXException extends RuntimeException {
 
     /**
      * 获取错误码。
@@ -64,6 +64,15 @@ public abstract class BizXException extends Exception {
      */
     public BizXException(String message) {
         super(message);
+    }
+
+    /**
+     * 带原始异常信息的构造函数。
+     *
+     * @param cause 原始异常信息
+     */
+    public BizXException(Throwable cause) {
+        super(cause);
     }
 
 }
