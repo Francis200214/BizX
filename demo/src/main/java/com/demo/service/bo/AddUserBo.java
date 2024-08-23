@@ -6,7 +6,6 @@ import lombok.*;
  * 添加用户信息
  *
  * @author francis
- * @since 1.0.1
  **/
 @Setter
 @Getter
@@ -30,8 +29,5 @@ public class AddUserBo {
      * 用户学校
      */
     private String school;
-
-
-    private AddUserBo addUserBo;
 
 }

@@ -19,8 +19,8 @@ import org.springframework.scheduling.annotation.Async;
  * <p>实现类可以根据实际需求定义如何将日志推送到目标存储或服务。</p>
  *
  * @author francis
- * @since 1.0.0
  * @version 1.0.0
+ * @since 1.0.0
  */
 public interface OperationLogHandler {
 
@@ -30,14 +30,14 @@ public interface OperationLogHandler {
      * <p>该方法异步执行，主要用于记录操作日志并将其推送到日志存储或处理系统中。</p>
      *
      * @param traceId      日志追踪链路ID，用于标识一条日志的唯一标识符
-     * @param logLargeType 业务日志的大类型，表示日志的分类
-     * @param logSmallType 业务日志的小类型，进一步细分日志的分类
+     * @param category     业务日志的大类型，表示日志的分类
+     * @param subcategory  业务日志的小类型，进一步细分日志的分类
      * @param operatorId   操作人的唯一标识符
      * @param operatorName 操作人的名称
      * @param content      操作日志的具体内容
      * @param e            错误堆栈信息，如果操作过程中出现异常，则记录该异常信息，否则为{@code null}
      */
     @Async
-    void push(String traceId, String logLargeType, String logSmallType, String operatorId, String operatorName, String content, Throwable e);
+    void push(String traceId, String category, String subcategory, String operatorId, String operatorName, String content, Throwable e);
 
 }

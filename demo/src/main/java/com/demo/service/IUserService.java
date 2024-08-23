@@ -6,14 +6,20 @@ import com.demo.service.bo.AddUserBo;
  * 用户服务
  *
  * @author francis
- * @since 1.0.1
  **/
 public interface IUserService {
 
-
+    /**
+     * 添加用户信息
+     * @param addUserBo 用户信息
+     */
     void addUser(AddUserBo addUserBo);
 
-
+    /**
+     * 根据用户Id删除用户信息
+     *
+     * @param userId 用户Id
+     */
     void deleteUser(String userId);
 
 

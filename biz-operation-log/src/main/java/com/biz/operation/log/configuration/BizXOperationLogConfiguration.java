@@ -7,7 +7,7 @@ import com.biz.operation.log.handler.OperationLogHandlerFactory;
 import com.biz.operation.log.processor.OperationLogProcessor;
 import com.biz.operation.log.recorder.OperationLogRecorder;
 import com.biz.operation.log.replace.ContentReplacer;
-import com.biz.operation.log.replace.DefaultContentReplacer;
+import com.biz.operation.log.replace.DefaultContentReplacerProcessor;
 import com.biz.operation.log.store.DefaultOperationLogUserContext;
 import com.biz.operation.log.store.OperationLogUserContext;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -79,11 +79,11 @@ public class BizXOperationLogConfiguration {
      * 创建一个 ContentReplacer 实例，用于替换日志内容中的信息。
      *
      * @return 默认的 ContentReplacer 实例
-     * @see DefaultContentReplacer
+     * @see DefaultContentReplacerProcessor
      */
     @Bean
     public ContentReplacer contentReplacer() {
-        return new DefaultContentReplacer();
+        return new DefaultContentReplacerProcessor();
     }
 
     /**

@@ -23,8 +23,8 @@ import lombok.extern.slf4j.Slf4j;
  * <p>通过使用{@link Slf4j}注解，类中日志记录功能由SLF4J提供。</p>
  *
  * @author francis
- * @since 1.0.0
  * @version 1.0.0
+ * @since 1.0.0
  */
 @Slf4j
 public class DefaultOperationLogHandler implements OperationLogHandler {
@@ -35,20 +35,20 @@ public class DefaultOperationLogHandler implements OperationLogHandler {
      * <p>根据是否有异常信息，记录操作日志的详细内容。当启用调试级别日志时，该方法会输出日志。</p>
      *
      * @param traceId      日志追踪链路ID，用于标识一条日志的唯一标识符
-     * @param logLargeType 业务日志的大类型，表示日志的分类
-     * @param logSmallType 业务日志的小类型，进一步细分日志的分类
+     * @param category     业务日志的大类型，表示日志的分类
+     * @param subcategory  业务日志的小类型，进一步细分日志的分类
      * @param operatorId   操作人的唯一标识符
      * @param operatorName 操作人的名称
      * @param content      操作日志的具体内容
      * @param e            错误堆栈信息，如果操作过程中出现异常，则记录该异常信息，否则为{@code null}
      */
     @Override
-    public void push(String traceId, String logLargeType, String logSmallType, String operatorId, String operatorName, String content, Throwable e) {
+    public void push(String traceId, String category, String subcategory, String operatorId, String operatorName, String content, Throwable e) {
         if (log.isDebugEnabled()) {
             if (e == null) {
-                log.debug("traceId: {}, category: {}, subcategory: {}, operatorId: {}, operatorName: {}, content: {}", traceId, logLargeType, logSmallType, operatorId, operatorName, content);
+                log.debug("traceId: {}, category: {}, subcategory: {}, operatorId: {}, operatorName: {}, content: {}", traceId, category, subcategory, operatorId, operatorName, content);
             } else {
-                log.debug("traceId: {}, category: {}, subcategory: {}, operatorId: {}, operatorName: {}, content: {}, e: {}", traceId, logLargeType, logSmallType, operatorId, operatorName, content, e.getMessage());
+                log.debug("traceId: {}, category: {}, subcategory: {}, operatorId: {}, operatorName: {}, content: {}, e: {}", traceId, category, subcategory, operatorId, operatorName, content, e.getMessage());
             }
         }
     }

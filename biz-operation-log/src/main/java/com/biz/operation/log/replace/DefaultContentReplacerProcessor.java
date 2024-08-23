@@ -2,7 +2,6 @@ package com.biz.operation.log.replace;
 
 import com.biz.common.bean.BizXBeanUtils;
 import com.biz.common.spel.SpELUtils;
-import com.biz.common.utils.Common;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.expression.ExpressionParser;
@@ -10,7 +9,7 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 /**
- * {@code DefaultContentReplacer} 是 {@link ContentReplacer} 接口的默认实现。
+ * {@code DefaultContentReplacerProcessor} 是 {@link ContentReplacer} 接口的默认处理器。
  *
  * <p>该类基于字符串的替换方法，结合 SpEL 表达式和预定义的关键字来进行内容替换。</p>
  *
@@ -31,7 +30,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * @version 1.0.0
  **/
 @Slf4j
-public class DefaultContentReplacer implements ContentReplacer, SmartInitializingSingleton {
+public class DefaultContentReplacerProcessor implements ContentReplacer, SmartInitializingSingleton {
 
     /**
      * 使用者自定义操作日志中替换关键字的接口。
@@ -54,7 +53,7 @@ public class DefaultContentReplacer implements ContentReplacer, SmartInitializin
             this.replaceOperationLogKey = BizXBeanUtils.getBean(ReplaceOperationLogKey.class);
         } catch (Exception e) {
             if (log.isWarnEnabled()) {
-                log.warn("ReplaceOperationLogKey Bean is null in DefaultContentReplacer");
+                log.warn("ReplaceOperationLogKey Bean is null in DefaultContentReplacerProcessor");
             }
         }
     }
@@ -91,22 +90,23 @@ public class DefaultContentReplacer implements ContentReplacer, SmartInitializin
         Object[] args = (Object[]) evalContext.lookupVariable("args");
         String[] parameterNames = (String[])evalContext.lookupVariable("parameterNames");
 
-        SpELUtils.setVariable(evalContext, parameterNames, args);
-
-        // 替换自定义的关键字和值
-        content = this.replaceCustomKey(content);
+        if (parameterNames != null && args != null) {
+            SpELUtils.setVariable(evalContext, parameterNames, args);
+        }
 
         SpELContentReplacerHelper helper = SpELContentReplacerHelper.builder()
                 .content(content)
                 .context(evalContext)
                 .parser(parser)
                 .build();
-
-        // 替换框架支持的关键字和值
-        this.replaceDefaultKey(helper, evalContext, parser);
-
         // 替换日志中的 SpEL 表达式
         helper.replaceForSpEl();
+
+        // 替换自定义的关键字和值
+        helper.setContent(this.replaceCustomKey(helper.toContent()));
+
+        // 替换框架支持的关键字和值
+        this.replaceDefaultKey(helper);
 
         return helper.toContent();
     }
@@ -131,13 +131,9 @@ public class DefaultContentReplacer implements ContentReplacer, SmartInitializin
      * 替换框架支持的关键字。
      *
      * @param helper SpEL 内容替换器
-     * @param context 上下文，用于提供替换所需的数据
-     * @param parser 表达式解析器，用于解析 SpEL 表达式
      */
-    private void replaceDefaultKey(SpELContentReplacerHelper helper, StandardEvaluationContext context, ExpressionParser parser) {
+    private void replaceDefaultKey(SpELContentReplacerHelper helper) {
         helper.replaceByKey("category", "category");
         helper.replaceByKey("subcategory", "subcategory");
-        helper.replaceByValue("{now}", Common.now());
-        helper.replaceByValue("operationName", SpELUtils.parseExpression("'"+context.lookupVariable("operationName")+"'", context, parser, String.class));
     }
 }

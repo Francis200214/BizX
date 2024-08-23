@@ -1,9 +1,13 @@
 package com.biz.operation.log.replace;
 
 import com.biz.common.spel.SpELUtils;
+import lombok.Setter;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * {@code SpELContentReplacerHelper} 类用于处理内容替换操作。
@@ -25,18 +29,18 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * StandardEvaluationContext context = new StandardEvaluationContext();
  * context.setVariable("key", "value");
  * SpELContentReplacerHelper helper = SpELContentReplacerHelper.builder()
- *         .content("some content with key")
+ *         .content("some content with #{key}")
  *         .context(context)
  *         .build();
- * helper.replaceByKey("key", "key");
+ * helper.replaceForSpEl();
  * String result = helper.toContent();
  * }</pre>
  *
- * <p>在以上示例中，"key" 会被替换为上下文中对应的值。</p>
+ * <p>在以上示例中，"#{key}" 会被替换为上下文中对应的值。</p>
  *
  * @author francis
- * @since 1.0.0
  * @version 1.0.0
+ * @since 1.0.0
  */
 public class SpELContentReplacerHelper {
 
@@ -47,13 +51,34 @@ public class SpELContentReplacerHelper {
 
     /**
      * 原始内容，包含需要替换的占位符或表达式。
+     * -- SETTER --
+     *  设置原始内容。
+     *
+     * @param content 需要替换的原始内容
+
      */
+    @Setter
     private String content;
 
     /**
      * SpEL 解析上下文，用于提供表达式解析所需的数据。
      */
     private final StandardEvaluationContext context;
+
+    /**
+     * 匹配 SpEL 表达式占位符的正则表达式模式。
+     */
+    private static final String regex = "#\\{([^}]*)\\}";
+
+    /**
+     * 用于编译和复用正则表达式的 {@link Pattern} 对象。
+     */
+    private static final Pattern pattern = Pattern.compile(regex);
+
+    /**
+     * 用于在内容中查找 SpEL 表达式占位符的 {@link Matcher} 对象。
+     */
+    private final Matcher matcher;
 
     /**
      * 构造一个新的 {@code SpELContentReplacerHelper} 实例。
@@ -66,6 +91,7 @@ public class SpELContentReplacerHelper {
         this.content = content;
         this.context = context;
         this.parser = parser == null ? new SpelExpressionParser() : parser;
+        this.matcher = pattern.matcher(content);
     }
 
     /**
@@ -77,7 +103,7 @@ public class SpELContentReplacerHelper {
     public void replaceByKey(String contentKey, String parserKey) {
         Object parserKeyValue = context.lookupVariable(parserKey);
         if (parserKeyValue != null) {
-            content = content.replace(contentKey, (String) parserKeyValue);
+            content = content.replace(contentKey, String.valueOf(parserKeyValue));
         }
     }
 
@@ -95,7 +121,16 @@ public class SpELContentReplacerHelper {
      * 使用 SpEL 表达式替换内容中的占位符。
      */
     public void replaceForSpEl() {
-        content = String.valueOf(SpELUtils.parseExpression(content, context, parser, Object.class));
+        StringBuffer sb = new StringBuffer();
+        while (matcher.find()) {
+            // 提取 #{...} 中的表达式
+            String expression = matcher.group(1);
+            Object value = SpELUtils.parseExpression(expression, context, parser, Object.class);
+            matcher.appendReplacement(sb, Matcher.quoteReplacement(String.valueOf(value)));
+        }
+        matcher.appendTail(sb);
+        // 更新替换后的内容
+        content = sb.toString();
     }
 
     /**
