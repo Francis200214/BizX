@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 链路追踪配置类。
@@ -38,7 +37,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @ConditionalOnProperty(prefix = "biz.trace", name = "enabled", havingValue = "true")
-@Configuration
 public class TraceConfigurer {
 
     /**
@@ -46,11 +44,12 @@ public class TraceConfigurer {
      * 该拦截器用于在所有 HTTP 请求中添加链路追踪的逻辑。
      *
      * @param traceStoreService 注入的 {@link TraceStoreService} 实例
+     * @param traceIdService 注入的 {@link TraceIdService} 实例
      * @return TraceInterceptor Bean 实例
      */
     @Bean
-    public TraceInterceptor traceInterceptor(TraceStoreService traceStoreService) {
-        return new TraceInterceptor(traceStoreService);
+    public TraceInterceptor traceInterceptor(TraceStoreService traceStoreService, TraceIdService traceIdService) {
+        return new TraceInterceptor(traceStoreService, traceIdService);
     }
 
     /**
@@ -58,13 +57,12 @@ public class TraceConfigurer {
      *
      * <p>如果 Spring 上下文中不存在其他 {@link TraceStoreService} 的 Bean，则该方法将返回 {@link DefaultTraceStoreServiceImpl} 的实例。</p>
      *
-     * @param traceIdService 注入的 {@link TraceIdService} 实例
      * @return 默认的 {@link TraceStoreService} 实现
      */
     @Bean
     @ConditionalOnMissingBean(TraceStoreService.class)
-    public TraceStoreService traceStoreService(TraceIdService traceIdService) {
-        return new DefaultTraceStoreServiceImpl(traceIdService);
+    public TraceStoreService traceStoreService() {
+        return new DefaultTraceStoreServiceImpl();
     }
 
     /**
@@ -79,4 +77,6 @@ public class TraceConfigurer {
     public TraceIdService traceIdService() {
         return new DefaultTraceIdServiceImpl();
     }
+
+
 }

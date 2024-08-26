@@ -11,8 +11,8 @@ package com.biz.trace.store;
  * 示例使用：
  * {@code
  * TraceStoreService traceStoreService = ...;
- * String traceId = traceStoreService.getTraceId();
- * traceStoreService.removeTraceId();
+ * String traceId = traceStoreService.get();
+ * traceStoreService.remove();
  * }
  * </pre>
  *
@@ -24,6 +24,16 @@ package com.biz.trace.store;
  **/
 public interface TraceStoreService {
 
+
+    /**
+     * 设置当前线程的追踪Id。
+     *
+     * <p>实现类应确保每个线程都有独立的追踪Id，以便在多线程环境中能够正确地追踪和关联日志。</p>
+     *
+     * @param traceId 追踪Id
+     */
+    void put(String traceId);
+
     /**
      * 获取当前线程的追踪Id。
      *
@@ -31,13 +41,13 @@ public interface TraceStoreService {
      *
      * @return 当前线程的追踪Id
      */
-    String getTraceId();
+    String get();
 
     /**
      * 移除当前线程的追踪Id。
      *
      * <p>该方法通常在请求处理完成后调用，以确保追踪Id不会在线程间泄露，并且能够正确清理资源。</p>
      */
-    void removeTraceId();
+    void remove();
 
 }
