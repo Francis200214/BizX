@@ -41,13 +41,6 @@ public class OperationLogTestService {
                                 .name(RandomUtils.generateStr())
                                 .age(RandomUtils.generateNumber(50))
                                 .school(RandomUtils.generateStr())
-                                .addUserBo(
-                                        AddUserBo.builder()
-                                                .name(RandomUtils.generateStr())
-                                                .age(RandomUtils.generateNumber(50))
-                                                .school(RandomUtils.generateStr())
-                                                .build()
-                                )
                                 .build()
                 );
             });
@@ -61,8 +54,5 @@ public class OperationLogTestService {
         log.info("Performance test completed in {} ms", (endTime - startTime));
     }
 
-    public static void main(String[] args) throws InterruptedException {
-
-    }
 
 }

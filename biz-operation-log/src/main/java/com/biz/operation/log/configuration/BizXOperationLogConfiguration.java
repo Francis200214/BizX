@@ -13,7 +13,6 @@ import com.biz.operation.log.store.OperationLogUserContext;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * 配置类，负责操作日志的自动配置。
@@ -41,7 +40,6 @@ import org.springframework.context.annotation.Configuration;
  * @since 1.0.0
  * @version 1.0.0
  */
-@Configuration
 @ConditionalOnProperty(prefix = "biz.operation.log", name = "enabled", havingValue = "true")
 public class BizXOperationLogConfiguration {
 

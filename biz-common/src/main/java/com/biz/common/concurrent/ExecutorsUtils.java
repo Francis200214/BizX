@@ -1,6 +1,7 @@
 package com.biz.common.concurrent;
 
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -77,7 +78,7 @@ public final class ExecutorsUtils {
     /**
      * 创建一个ScheduledFuture任务。
      *
-     * @param task 要执行的任务，不能为空
+     * @param task        要执行的任务，不能为空
      * @param millisecond 任务延迟时间，单位毫秒
      * @return ScheduledFuture任务的未来结果
      * @see ScheduledExecutorService#schedule(Runnable, long, TimeUnit)
@@ -131,7 +132,7 @@ public final class ExecutorsUtils {
     /**
      * 创建一个具有指定核心池大小和最大池大小的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小，不能为空
+     * @param corePoolSize    核心池大小，不能为空
      * @param maximumPoolSize 最大池大小，不能为空
      * @return ThreadPoolExecutor实例
      * @see ThreadPoolExecutor
@@ -143,9 +144,9 @@ public final class ExecutorsUtils {
     /**
      * 创建一个具有指定核心池大小、最大池大小和线程保持活跃时间的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小，不能为空
+     * @param corePoolSize    核心池大小，不能为空
      * @param maximumPoolSize 最大池大小，不能为空
-     * @param keepAliveTime 线程保持活跃时间，不能为空
+     * @param keepAliveTime   线程保持活跃时间，不能为空
      * @return ThreadPoolExecutor实例
      * @see ThreadPoolExecutor
      */
@@ -156,10 +157,10 @@ public final class ExecutorsUtils {
     /**
      * 创建一个完全自定义的ThreadPoolExecutor实例。
      *
-     * @param corePoolSize 核心池大小，不能为空
+     * @param corePoolSize    核心池大小，不能为空
      * @param maximumPoolSize 最大池大小，不能为空
-     * @param keepAliveTime 线程保持活跃时间，不能为空
-     * @param workQueue 工作队列，不能为空
+     * @param keepAliveTime   线程保持活跃时间，不能为空
+     * @param workQueue       工作队列，不能为空
      * @return ThreadPoolExecutor实例
      * @see ThreadPoolExecutor
      */
@@ -261,7 +262,7 @@ public final class ExecutorsUtils {
         /**
          * 当尝试提交的任务被拒绝时调用。
          *
-         * @param r 被拒绝的任务，不能为空
+         * @param r        被拒绝的任务，不能为空
          * @param executor 线程池执行器，不能为空
          */
         @Override

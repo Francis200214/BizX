@@ -26,14 +26,16 @@ logging:
     root: info
   pattern:
     # 控制台输出
-    console: "%clr([%X{traceId}]){faint} %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %highlight(%-5level) %clr(%logger{36}){cyan} : %msg%n"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr([%thread]){faint} %highlight(%-5level) %clr(%logger{36}){cyan} : %clr([%X{traceId}]){faint}  %msg%n"
     # 文件输出
-    file: "[%X{traceId}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - [%X{traceId}] - %msg%n"
 
 biz:
   operation:
     log:
-      enabled: true
+      enabled: false
+  trace:
+    enabled: true
 
 
 

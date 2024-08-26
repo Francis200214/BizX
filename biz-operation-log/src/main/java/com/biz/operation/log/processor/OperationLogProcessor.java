@@ -25,7 +25,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
  * @Component
  * public class MyService {
  *
- *     @OperationLog(category = "SERVICE_OPERATION", content = "'Executing method with args: ' + #args")
+ *     @OperationLog(category = "SERVICE_OPERATION", content = "Executing method with args: #{#args}")
  *     public void myMethod(String arg) {
  *         // 方法逻辑
  *     }
