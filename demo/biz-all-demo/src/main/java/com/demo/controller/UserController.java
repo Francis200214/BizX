@@ -8,9 +8,7 @@ import com.demo.service.bo.AddUserBo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.demo.controller.UserController.USER_CACHE;
 
@@ -61,6 +59,13 @@ public class UserController {
     public String findUser() {
         log.info("查询...");
         return "dssd";
+    }
+
+
+    @GetMapping("/findUserById/{id}")
+    public String findUser(@PathVariable("id") String id, @CookieValue("X-Header-Trance-ID") String tranceId) {
+        log.info("根据用户Id查询用户信息 用户Id为 {} 链路ID {}", id, tranceId);
+        return "用户信息";
     }
 
 }
