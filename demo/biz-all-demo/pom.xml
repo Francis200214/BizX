@@ -5,15 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>io.github.francis200214</groupId>
-        <artifactId>BizX</artifactId>
+        <artifactId>demo</artifactId>
         <version>1.4.11</version>
-        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>biz-all-demo</artifactId>
-    <name>${project.artifactId}</name>
-    <version>1.4.11</version>
-    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -23,16 +19,6 @@
 
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
         <!--AMQP依赖，包含RabbitMQ-->
         <dependency>
@@ -46,28 +32,6 @@
             <version>1.4.11</version>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!-- Mockito -->
         <dependency>

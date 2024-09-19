@@ -24,7 +24,6 @@
         <module>biz-trace</module>
         <module>biz-operation-log</module>
         <module>biz-security</module>
-        <module>demo/biz-all-demo</module>
     </modules>
 
 
