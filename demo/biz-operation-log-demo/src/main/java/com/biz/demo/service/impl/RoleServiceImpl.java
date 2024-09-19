@@ -24,6 +24,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    @OperationLog(category = "ROLE", subcategory = "REMOVE_ROLE", content = "删除的角色ID为: #{#userId} - #{#roleId}")
     public void removeRole(String userId, String roleId) {
         log.info("[removeRole] 删除角色成功");
     }
