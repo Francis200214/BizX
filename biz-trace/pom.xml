@@ -21,7 +21,7 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>1.4.11</version>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <dependency>

@@ -1,0 +1,7 @@
+# Auto Config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.biz.security.config.SecurityConfigurer,\
+com.biz.security.config.WebMvcSecurityConfigurer
+
+
+
