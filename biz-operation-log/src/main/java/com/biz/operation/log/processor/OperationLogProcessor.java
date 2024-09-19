@@ -79,7 +79,7 @@ public class OperationLogProcessor {
         context.setVariable("parameterNames", signature.getParameterNames());
         context.setVariable("args", joinPoint.getArgs());
         String content = contentReplacer.replace(operationLog.content(), context);
-        operationLogRecorder.setContent(content);
+        operationLogRecorder.setContent(joinPoint, content);
         operationLogRecorder.setOperationLog(operationLog);
     }
 
@@ -88,7 +88,7 @@ public class OperationLogProcessor {
      *
      * <p>此方法主要用于在目标方法成功执行后，记录操作日志。</p>
      *
-     * <p>该方法调用 {@link OperationLogRecorder#record(String, Throwable)} 来实际记录日志，
+     * <p>该方法调用 {@link OperationLogRecorder#record(JoinPoint, String, Throwable)} 来实际记录日志，
      * 其中 {@link OperationLogRecorder} 是处理日志记录的主要类。</p>
      *
      * <p>此方法通常会被 {@link OperationLogAspect} 的 AOP 切面逻辑所调用，
@@ -100,7 +100,7 @@ public class OperationLogProcessor {
      * @see OperationLogAspect
      */
     public void processAfterReturning(JoinPoint joinPoint) {
-        operationLogRecorder.record(null, null);
+        operationLogRecorder.record(joinPoint, null, null);
     }
 
     /**
@@ -108,7 +108,7 @@ public class OperationLogProcessor {
      *
      * <p>此方法主要用于在目标方法执行过程中抛出异常时，记录操作日志并捕获异常信息。</p>
      *
-     * <p>该方法调用 {@link OperationLogRecorder#record(String, Throwable)} 来实际记录日志，
+     * <p>该方法调用 {@link OperationLogRecorder#record(JoinPoint, String, Throwable)} 来实际记录日志，
      * 并通过传递异常对象 {@link Throwable} 来记录发生的异常信息。</p>
      *
      * <p>此方法通常会被 {@link OperationLogAspect} 的 AOP 切面逻辑所调用，
@@ -122,7 +122,7 @@ public class OperationLogProcessor {
      * @see Throwable
      */
     public void processAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        operationLogRecorder.record(null, e);
+        operationLogRecorder.record(joinPoint, null, e);
     }
 
 }

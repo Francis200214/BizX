@@ -2,8 +2,14 @@ package com.biz.operation.log.recorder;
 
 import com.biz.operation.log.OperationLog;
 import com.biz.operation.log.handler.OperationLogHandlerFactory;
+import com.biz.operation.log.store.OperationLogContext;
+import com.biz.operation.log.store.OperationLogContextHolder;
+import com.biz.operation.log.store.OperationLogStoreKey;
 import com.biz.operation.log.store.OperationLogUserContext;
 import lombok.Setter;
+import org.aspectj.lang.JoinPoint;
+
+import java.util.Optional;
 
 /**
  * {@code OperationLogRecorder}类负责记录操作日志。
@@ -15,7 +21,7 @@ import lombok.Setter;
  *
  * <p>主要方法包括：</p>
  * <ul>
- *     <li>{@link #record(String, Throwable)}：记录操作日志，并处理可能的异常。</li>
+ *     <li>{@link #record(JoinPoint, String, Throwable)}：记录操作日志，并处理可能的异常。</li>
  * </ul>
  *
  * @author francis
@@ -35,10 +41,9 @@ public class OperationLogRecorder {
     private final OperationLogUserContext operationLogUserContext;
 
     /**
-     * 日志内容，包含需要记录的操作日志信息。
+     * 日志内容。
      */
-    @Setter
-    private String content;
+    private static OperationLogContextHolder operationLogContextHolder;
 
     /**
      * 操作日志对象，包含日志的分类和其他相关信息。
@@ -57,6 +62,12 @@ public class OperationLogRecorder {
         this.operationLogUserContext = operationLogUserContext;
     }
 
+
+    public void setContent(JoinPoint joinPoint, String content) {
+        OperationLogContextHolder.setOperationLogContext(OperationLogContextHolder.buildOperationLogStoreKey(joinPoint),
+                OperationLogContextHolder.buildOperationLogContent(content));
+    }
+
     /**
      * 记录操作日志，并处理可能的异常。
      *
@@ -66,10 +77,16 @@ public class OperationLogRecorder {
      * @param traceId 跟踪ID，用于标识特定操作的唯一标识符
      * @param e 如果操作中发生异常，该异常对象将被记录在日志中
      */
-    public void record(String traceId, Throwable e) {
+    public void record(JoinPoint joinPoint, String traceId, Throwable e) {
         String operatorId = operationLogUserContext.getOperationUserId();
         String operatorName = operationLogUserContext.getOperationUserName();
+        OperationLogContext operationLogContext = OperationLogContextHolder.getOperationLogContext(OperationLogContextHolder.buildOperationLogStoreKey(joinPoint));
         operationLogHandlerFactory.getOperationLogHandler(operationLog.category(), operationLog.subcategory())
-                .push(traceId, operationLog.category(), operationLog.subcategory(), operatorId, operatorName, content, e);
+                .push(traceId, operationLog.category(), operationLog.subcategory(), operatorId, operatorName,
+                        Optional.ofNullable(operationLogContext).map(OperationLogContext::getContent).orElse(null), e);
     }
+
+
+
+
 }
