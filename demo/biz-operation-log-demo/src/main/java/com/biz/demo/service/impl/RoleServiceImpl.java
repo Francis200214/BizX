@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     @OperationLog(category = "ROLE", subcategory = "ADD_ROLE", content = "添加的角色信息为: #{#userId} - #{#roleId}")
     public void addRole(String userId, String roleId) {
-         log.info("[addRole] 添加角色成功");
+        log.info("[addRole] 添加角色成功");
     }
 
     @Override
