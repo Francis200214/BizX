@@ -8,4 +8,18 @@ package com.biz.security.authentication;
  * @since 1.0.1
  **/
 public class AuthenticationFactory {
+
+    public static AuthenticationService getAuthenticationService(AuthMethodType methodType) {
+        switch (methodType) {
+            case USERNAME_PASSWORD:
+                return new UsernamePasswordAuthenticationService();
+            case OAUTH2:
+                return new OAuth2AuthenticationService();
+            case TOKEN:
+                return new TokenAuthenticationService();
+            default:
+                throw new IllegalArgumentException("不支持的认证方式");
+        }
+    }
+
 }

@@ -8,4 +8,18 @@ package com.biz.security.authentication;
  * @since 1.0.1
  **/
 public enum AuthMethodType {
+
+    /**
+     * 用户名密码认证
+     */
+    USERNAME_PASSWORD,
+    /**
+     * OAuth2认证
+     */
+    OAUTH2,
+    /**
+     * Token认证
+     */
+    TOKEN;
+
 }
