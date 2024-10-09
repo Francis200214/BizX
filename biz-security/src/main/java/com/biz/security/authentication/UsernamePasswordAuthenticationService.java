@@ -10,8 +10,6 @@ import com.biz.security.user.UserDetailsStrategy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 
-import java.util.Collections;
-
 /**
  * 用户名密码的认证方式实现类。
  *
@@ -53,12 +51,12 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
             throw new AuthenticationException(SecurityErrorConstant.USERNAME_PASSWORD_INFORMATION_IS_MISSING_FAILED);
         }
 
-        // 从数据库或存储中获取加密后的密码
-        String storedEncryptedPassword = findEncryptedPasswordByUsername(username);
+        // 从数据库或存储中获取用户信息
+        UserDetails userDetails = findUserDetailsByUsername(username);
         // 输入的密码与数据库存储的加密密码进行匹配
-        if (passwordEncryptionService.matches(password, storedEncryptedPassword)) {
+        if (passwordEncryptionService.matches(password, userDetails.getPassword())) {
             // 返回用户详细信息
-            return new UserDetails(username, "456789", Collections.singletonList("USER"));
+            return userDetails;
 
         } else {
             throw new AuthenticationException(SecurityErrorConstant.USER_PASSWORD_ERROR);
@@ -72,9 +70,12 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
      * @param username 用户名
      * @return 加密后的密码
      */
-    private String findEncryptedPasswordByUsername(String username) {
-
-        return null;
+    private UserDetails findUserDetailsByUsername(String username) throws RuntimeException {
+        UserDetails userDetails = userDetailsStrategy.loadUserByUsername(username);
+        if (userDetails == null) {
+            throw new RuntimeException("UserDetails is null");
+        }
+        return userDetails;
     }
 
     @Override
@@ -83,9 +84,8 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
         try {
             this.userDetailsStrategy = BizXBeanUtils.getBean(UserDetailsStrategy.class);
         } catch (Exception e) {
-
+            throw new RuntimeException("UserDetailsStrategy is null");
         }
-
     }
 
 }
