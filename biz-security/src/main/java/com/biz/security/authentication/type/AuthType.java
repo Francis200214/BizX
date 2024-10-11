@@ -1,4 +1,4 @@
-package com.biz.security.authentication;
+package com.biz.security.authentication.type;
 
 /**
  * 认证类型
@@ -7,7 +7,7 @@ package com.biz.security.authentication;
  * @create 2024-09-13
  * @since 1.0.1
  **/
-public enum AuthMethodType {
+public enum AuthType {
 
     /**
      * 用户名密码认证
