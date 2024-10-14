@@ -92,7 +92,18 @@ public class JwtDecryptHelper {
      * @return 键对应的值
      */
     public <T> T getByKey(String key) {
-        return Common.to(jwsClaims.getBody().get(key));
+        if (jwsClaims == null) {
+            throw new IllegalArgumentException("jwsClaims is null");
+        }
+        Claims body = jwsClaims.getBody();
+        if (body == null) {
+            return null;
+        }
+        Object value = body.get(key);
+        if (value == null) {
+            return null;
+        }
+        return Common.to(value);
     }
 
     /**

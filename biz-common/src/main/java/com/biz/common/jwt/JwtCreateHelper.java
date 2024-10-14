@@ -2,6 +2,7 @@ package com.biz.common.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -57,7 +58,7 @@ public final class JwtCreateHelper {
      */
     public JwtCreateHelper(String secret, long expire, SignatureAlgorithm signatureAlgorithm, Map<String, Object> data) {
         this.secret = Optional.ofNullable(secret).orElse(JwtUtils.DEFAULT_SECRET);
-        this.expire = expire <= 0 ? JwtUtils.DEFAULT_EXPIRE : expire;
+        this.expire = expire <= 0 ? (System.currentTimeMillis() + JwtUtils.DEFAULT_EXPIRE) : expire;
         this.signatureAlgorithm = Optional.ofNullable(signatureAlgorithm).orElse(JwtUtils.DEFAULT_SIGNATURE_ALGORITHM);
         this.data = data;
     }
@@ -142,7 +143,7 @@ public final class JwtCreateHelper {
         /**
          * JWT载荷中的数据。
          */
-        private Map<String, Object> data;
+        private Map<String, Object> data = new HashMap<>();
 
         private JwtTokenCreateBuilder() {
         }
