@@ -10,18 +10,17 @@ import com.biz.security.user.UserDetails;
  * </p>
  *
  * @author francis
- * @create 2024-09-20
- * @since 1.0.1
- **/
+ * @version 1.0.1
+ * @since 2024-09-20
+ */
 public interface AuthorizationHandler {
 
-
     /**
-     * 检查用户是否有权限访问资源
+     * 检查用户是否有权限访问资源。
      *
      * @param userDetails 用户信息
      * @param resource    资源名称
-     * @return true: 有权限访问, false: 无权限访问
+     * @return {@code true} 如果用户有权限访问资源，否则返回 {@code false}
      */
     boolean check(UserDetails userDetails, String resource);
 
