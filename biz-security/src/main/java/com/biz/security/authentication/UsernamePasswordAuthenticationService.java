@@ -18,28 +18,27 @@ import org.springframework.beans.factory.SmartInitializingSingleton;
  * </p>
  *
  * @author francis
- * @create 2024-09-20
- * @since 1.0.1
- **/
+ * @version 1.0.1
+ * @since 2024-09-20
+ */
 @Slf4j
 public class UsernamePasswordAuthenticationService implements AuthenticationService, SmartInitializingSingleton {
 
     /**
-     * 密码加密服务
+     * 密码加密服务。
      */
     private PasswordEncryptionService passwordEncryptionService;
 
     /**
-     * 获取用户信息策略
+     * 获取用户信息策略。
      */
     private UserDetailsStrategy userDetailsStrategy;
 
-
     /**
-     * 用户名密码认证，验证用户输入的用户名和密码是否正确
+     * 用户名密码认证，验证用户输入的用户名和密码是否正确。
      *
      * @param loginRequest 包含用户名和密码的登录请求
-     * @return UserDetails 返回认证成功后的用户信息
+     * @return {@link UserDetails} 返回认证成功后的用户信息
      * @throws AuthenticationException 当认证失败时抛出异常
      */
     @Override
@@ -60,7 +59,6 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
 
         } else {
             throw new AuthenticationException(SecurityErrorConstant.USER_PASSWORD_ERROR);
-
         }
     }
 
@@ -68,7 +66,8 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
      * 根据用户名获取用户存储在数据库中的加密密码。
      *
      * @param username 用户名
-     * @return 加密后的密码
+     * @return {@link UserDetails} 用户信息
+     * @throws RuntimeException 当获取用户信息失败时抛出异常
      */
     private UserDetails findUserDetailsByUsername(String username) throws RuntimeException {
         UserDetails userDetails = userDetailsStrategy.loadUserByUsername(username);
@@ -78,6 +77,9 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
         return userDetails;
     }
 
+    /**
+     * 在所有单例初始化后，设置必要的依赖。
+     */
     @Override
     public void afterSingletonsInstantiated() {
         this.passwordEncryptionService = new PasswordEncryptionService(BizXBeanUtils.getBean(PasswordEncryptor.class));
@@ -87,5 +89,4 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
             throw new RuntimeException("UserDetailsStrategy is null");
         }
     }
-
 }

@@ -1,24 +1,29 @@
 package com.biz.security.authentication.type;
 
 /**
- * 认证类型
+ * 认证类型。
+ * <p>
+ * 定义了系统支持的不同认证方式。
+ * </p>
  *
  * @author francis
- * @create 2024-09-13
- * @since 1.0.1
- **/
+ * @version 1.0.1
+ * @since 2024-09-13
+ */
 public enum AuthType {
 
     /**
-     * 用户名密码认证
+     * 用户名密码认证。
      */
     USERNAME_PASSWORD,
+
     /**
-     * OAuth2认证
+     * OAuth2 认证。
      */
     OAUTH2,
+
     /**
-     * Token认证
+     * Token 认证。
      */
     TOKEN;
 

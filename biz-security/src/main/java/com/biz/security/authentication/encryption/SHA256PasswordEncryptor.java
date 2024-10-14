@@ -4,14 +4,24 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * 使用SHA-256算法实现密码加密和验证的类
+ * 使用 SHA-256 算法实现密码加密和验证的类。
+ *
+ * <p>
+ * 此类实现了 {@link PasswordEncryptor} 接口，提供对密码的加密和验证功能。
+ * </p>
  *
  * @author francis
- * @create 2024-09-20
- * @since 1.0.1
- **/
+ * @version 1.0.1
+ * @since 2024-09-20
+ */
 public class SHA256PasswordEncryptor implements PasswordEncryptor {
 
+    /**
+     * 使用 SHA-256 算法加密密码。
+     *
+     * @param rawPassword 明文密码
+     * @return 加密后的密码
+     */
     @Override
     public String encrypt(String rawPassword) {
         try {
@@ -27,9 +37,15 @@ public class SHA256PasswordEncryptor implements PasswordEncryptor {
         }
     }
 
+    /**
+     * 验证密码是否匹配。
+     *
+     * @param rawPassword 用户输入的明文密码
+     * @param encryptedPassword 已加密的密码
+     * @return {@code true} 如果密码匹配，否则返回 {@code false}
+     */
     @Override
     public boolean matches(String rawPassword, String encryptedPassword) {
         return encrypt(rawPassword).equals(encryptedPassword);
     }
-
 }
