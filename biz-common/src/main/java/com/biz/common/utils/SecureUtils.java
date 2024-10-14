@@ -40,4 +40,18 @@ public final class SecureUtils {
         return MD5Utils.computeMD5(input).equals(md5);
     }
 
+    /**
+     * 校验字符串是否与MD5摘要（大写）匹配。
+     * <p>
+     * 该方法用于校验字符串是否与指定的MD5摘要（大写）匹配。通过比较两个字符串是否相等，可以确定字符串是否被篡改过。
+     * </p>
+     *
+     * @param input 待校验的字符串。
+     * @param md5   对比的MD5摘要（大写）。
+     * @return 如果字符串与MD5摘要（大写）匹配，则返回true，否则返回false。
+     */
+    public static boolean matchByUpperCaseMD5(String input, String md5) {
+        return MD5Utils.computeMD5(input).toUpperCase().equals(md5);
+    }
+
 }
