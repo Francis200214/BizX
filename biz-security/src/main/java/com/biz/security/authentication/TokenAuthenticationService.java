@@ -66,7 +66,12 @@ public class TokenAuthenticationService implements AuthenticationService, SmartI
         if (tokenValidator == null) {
             throw new RuntimeException("TokenValidator 校验 Token 是否有效未实现！");
         }
-        return tokenValidator.validate(token);
+        try {
+            return tokenValidator.validate(token);
+        } catch (Exception e) {
+            log.error("TokenValidator 校验 Token 是否有效失败！", e);
+            return false;
+        }
     }
 
     /**
