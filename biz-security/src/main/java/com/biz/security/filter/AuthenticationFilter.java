@@ -58,10 +58,18 @@ public class AuthenticationFilter implements SecurityFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        log.debug("AuthenticationFilter 开始执行认证过滤");
+        if (log.isDebugEnabled()) {
+            log.debug("AuthenticationFilter 开始执行认证过滤");
+        }
         try {
             // 获取认证类型
             AuthType authType = AuthTypeBuilder.getAuthType(request.getHeader(HttpConstant.AUTH_TYPE));
+            if (authType == null) {
+                // 未识别的认证类型, 执行下一个过滤器
+                chain.doFilter(request, response);
+                return;
+            }
+
             // 根据认证类型获取认证服务
             AuthenticationService authenticationService = authenticationFactory.getAuthenticationService(authType);
             // 获取用户信息

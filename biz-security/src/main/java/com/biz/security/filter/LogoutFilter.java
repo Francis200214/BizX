@@ -53,11 +53,15 @@ public class LogoutFilter implements SecurityFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        log.debug("退出登录过滤器执行");
+        if (log.isDebugEnabled()) {
+            log.debug("退出登录过滤器执行");
+        }
+
         // 检查是否是退出模式
-        if (this.isLogoutRequest(request)) {
+        if (!this.isLogoutRequest(request)) {
             // 执行下一个过滤器
             chain.doFilter(request, response);
+            return;
         }
 
         securityContextHolder.clearContext();

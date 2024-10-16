@@ -79,6 +79,9 @@ public final class SecurityFilterChainExecutor implements SmartInitializingSingl
 
             // 执行过滤器链
             execute(httpRequest, httpResponse);
+            if (httpResponse.getStatus() != 200) {
+                return;
+            }
         }
 
         // 将请求传递给下一个过滤器
@@ -120,7 +123,7 @@ public final class SecurityFilterChainExecutor implements SmartInitializingSingl
                 .addFilter(authenticationFilter)
                 // 请求头中真实IP地址
                 .addFilter(forwardedHeaderFilter)
-                // 登出
+                // 退出登录
                 .addFilter(logoutFilter)
                 // 角色校验
                 .addFilter(roleAuthorizationFilter)
@@ -134,8 +137,6 @@ public final class SecurityFilterChainExecutor implements SmartInitializingSingl
 
         // 自定义过滤器执行
         FilterChain chain = builder.build();
-        chain.doFilter(request, response);
-
         // 执行过滤器链
         chain.doFilter(request, response);
     }

@@ -49,11 +49,17 @@ public final class RoleAuthorizationFilter implements SecurityFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        log.debug("角色权限过滤器执行中...");
+        if (log.isDebugEnabled()) {
+            log.debug("角色权限过滤器执行中");
+        }
+
         Annotation annotation = HttpServletRequestUtils.getAnnotation(request, SecuredAccess.class);
         if (annotation != null) {
             SecuredAccess securedAccess = (SecuredAccess) annotation;
             if (!validateRoleAccess(securedAccess, securityContextHolder.getContext())) {
+                if (log.isDebugEnabled()) {
+                    log.debug("角色权限鉴权失败");
+                }
                 // 校验角色失败，返回错误信息
                 handleAccessDenied(response);
                 // 终止过滤器链

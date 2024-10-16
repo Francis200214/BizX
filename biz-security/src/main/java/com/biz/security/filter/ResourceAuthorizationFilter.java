@@ -49,11 +49,17 @@ public final class ResourceAuthorizationFilter implements SecurityFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        log.debug("执行资源权限校验过滤...");
+        if (log.isDebugEnabled()) {
+            log.debug("执行资源权限校验过滤");
+        }
+
         Annotation annotation = HttpServletRequestUtils.getAnnotation(request, SecuredAccess.class);
         if (annotation != null) {
             SecuredAccess securedAccess = (SecuredAccess) annotation;
             if (!validateResourceAccess(securedAccess, securityContextHolder.getContext())) {
+                if (log.isDebugEnabled()) {
+                    log.debug("资源权限鉴权失败");
+                }
                 // 校验权限失败，返回错误信息
                 handleAccessDenied(response);
                 // 终止过滤器链

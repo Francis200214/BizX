@@ -60,14 +60,20 @@ public class RealIpUpdateFilter implements SecurityFilter {
      */
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
-        log.debug("执行真实IP过滤器...");
+        if (log.isDebugEnabled()) {
+            log.debug("执行真实IP过滤器");
+        }
+
         UserDetails userDetails = securityContextHolder.getContext();
-        // 获取客户端 IP
-        String ipAddress = getClientIp(request);
-        // 设置客户端 IP
-        userDetails.setIpAddress(ipAddress);
-        // 更新用户信息
-        securityContextHolder.refreshContext(userDetails);
+        // 不对未认证用户进行记录
+        if (userDetails != null) {
+            // 获取客户端 IP
+            String ipAddress = getClientIp(request);
+            // 设置客户端 IP
+            userDetails.setIpAddress(ipAddress);
+            // 更新用户信息
+            securityContextHolder.refreshContext(userDetails);
+        }
 
         // 处理成功，执行下一个过滤器
         chain.doFilter(request, response);
