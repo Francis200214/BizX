@@ -20,7 +20,7 @@ public class OperationLogContextHolder {
     /**
      * 当前线程操作日志上下文。
      */
-    private static final ThreadLocal<ConcurrentHashMap<OperationLogStoreKey, OperationLogContext>> OPERATION_LOG_CONTEXT = new ThreadLocal<>();
+    private static final InheritableThreadLocal<ConcurrentHashMap<OperationLogStoreKey, OperationLogContext>> OPERATION_LOG_CONTEXT = new InheritableThreadLocal<>();
 
     /**
      * 获取当前线程操作日志上下文。
