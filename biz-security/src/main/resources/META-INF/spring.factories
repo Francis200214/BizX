@@ -1,7 +1,10 @@
 # Auto Config
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.biz.security.config.SecurityConfigurer,\
-com.biz.security.config.WebMvcSecurityConfigurer
+com.biz.security.config.AuthenticationConfigurer,\
+com.biz.security.config.AuthorizationConfigurer,\
+com.biz.security.config.PasswordEncryptorConfigurer,\
+com.biz.security.config.FilterConfigurer,\
+com.biz.security.config.UserDetailsStoreConfigurer
 
 
 
