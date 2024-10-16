@@ -1,26 +1,24 @@
 package com.biz.security.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.util.ServletRequestPathUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * HttpServletRequest 对象工具类。
- * <p>
- * 提供用于处理 HttpServletRequest 对象的工具方法，包括获取请求对应的处理方法（HandlerMethod）和注解信息。
- * </p>
  *
- * @author francis
- * @version 1.0.1
- * @since 2024-10-11
+ * 提供用于处理 HttpServletRequest 对象的工具方法，包括获取请求对应的处理方法（HandlerMethod）和注解信息。
  */
+@Slf4j
 public final class HttpServletRequestUtils {
 
     /**
@@ -31,24 +29,43 @@ public final class HttpServletRequestUtils {
      */
     public static HandlerMethod getHandlerMethod(HttpServletRequest request) {
         // 获取 Spring 应用上下文
-        ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+        ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+
+        if (context == null) {
+            // 日志记录上下文为空的情况
+            System.err.println("Application context is null.");
+            return null;
+        }
 
         // 从上下文中获取所有的 HandlerMapping 实例
         Map<String, HandlerMapping> handlerMappings = context.getBeansOfType(HandlerMapping.class);
 
+        // 手动解析请求路径并缓存
+        try {
+            ServletRequestPathUtils.parseAndCache(request);
+        } catch (Exception e) {
+            log.debug("Error occurred while parsing request path: {}", e.getMessage(), e);
+            return null;
+        }
+
         // 遍历所有 HandlerMapping 找到处理请求的 HandlerMethod
         try {
             for (HandlerMapping handlerMapping : handlerMappings.values()) {
-                Object handler = Objects.requireNonNull(handlerMapping.getHandler(request)).getHandler();
+                HandlerExecutionChain handlerExecutionChain = handlerMapping.getHandler(request);
+                if (handlerExecutionChain == null) {
+                    continue;
+                }
+                Object handler = handlerExecutionChain.getHandler();
                 if (handler instanceof HandlerMethod) {
                     return (HandlerMethod) handler;
                 }
             }
         } catch (Exception e) {
-            // 在没有找到匹配的方法时，返回 null
-            return null;
+            // 日志记录异常详细信息
+            log.debug("Error occurred while getting handler method: {}", e.getMessage(), e);
         }
 
+        // 在没有找到匹配的方法时，返回 null
         return null;
     }
 
@@ -70,5 +87,4 @@ public final class HttpServletRequestUtils {
         }
         return null;
     }
-
 }
