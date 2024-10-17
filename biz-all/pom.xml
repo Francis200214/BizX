@@ -5,14 +5,14 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.11</version>
+        <version>1.5.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>biz-all</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.11</version>
+    <version>1.5.1</version>
 
     <packaging>jar</packaging>
 
@@ -22,55 +22,55 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-cache</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-core</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-oss</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-redis</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-web</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-verification</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-trace</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-operation-log</artifactId>
-            <version>1.4.11</version>
+            <version>1.5.1</version>
         </dependency>
 
     </dependencies>

@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.github.francis200214</groupId>
         <artifactId>BizX</artifactId>
-        <version>1.4.11</version>
+        <version>1.5.1</version>
     </parent>
 
     <artifactId>biz-operation-log</artifactId>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>io.github.francis200214</groupId>
             <artifactId>biz-common</artifactId>
-            <version>${project.parent.version}</version>
+            <version>1.5.1</version>
         </dependency>
 
         <dependency>

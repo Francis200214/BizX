@@ -5,7 +5,7 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.4.11</version>
+        <version>1.5.1</version>
     </parent>
     <modules>
         <module>biz-security-demo</module>
@@ -16,7 +16,7 @@
 
     <artifactId>demo</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.4.11</version>
+    <version>1.5.1</version>
     <packaging>pom</packaging>
 
 
@@ -61,6 +61,42 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
+        <!-- Spring Boot Test 依赖，包含JUnit 5 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <!-- Exclude JUnit 4, since we are using JUnit 5 -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Mockito Core，用于单元测试时进行依赖的mock -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- AssertJ 断言库，增强测试的可读性（可选） -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>
