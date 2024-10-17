@@ -23,7 +23,7 @@ public class AuthTypeBuilder {
      */
     public static AuthType getAuthType(String authType) {
         if (Common.isBlank(authType)) {
-            throw new IllegalArgumentException("认证类型不能为空");
+            return null;
         }
         return AuthType.valueOf(authType);
     }

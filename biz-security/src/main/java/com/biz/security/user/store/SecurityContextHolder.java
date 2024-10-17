@@ -2,7 +2,7 @@ package com.biz.security.user.store;
 
 import com.biz.common.bean.BizXBeanUtils;
 import com.biz.security.user.UserDetails;
-import com.biz.security.user.event.UserAuthenticatedEvent;
+import com.biz.security.user.event.UserSettingEvent;
 import com.biz.security.user.event.UserClearEvent;
 import com.biz.security.user.event.UserRefreshedEvent;
 import org.springframework.beans.factory.SmartInitializingSingleton;
@@ -40,7 +40,7 @@ public class SecurityContextHolder implements SmartInitializingSingleton, Applic
     public void setContext(UserDetails userDetails) {
         securityContextStrategy.setUserDetails(userDetails);
         if (eventPublisher != null) {
-            eventPublisher.publishEvent(new UserAuthenticatedEvent(SecurityContextHolder.class, userDetails));
+            eventPublisher.publishEvent(new UserSettingEvent(SecurityContextHolder.class, userDetails));
         }
     }
 
