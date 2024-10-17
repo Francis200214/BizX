@@ -6,7 +6,6 @@ import com.biz.security.error.AuthenticationException;
 import com.biz.security.error.SecurityErrorConstant;
 import com.biz.security.user.UserDetails;
 import com.biz.security.user.UserDetailsStrategy;
-import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 
@@ -42,7 +41,7 @@ public class OAuth2AuthenticationService implements AuthenticationService, Smart
      * @throws AuthenticationException 当认证失败时抛出异常
      */
     @Override
-    public UserDetails authenticate(@NotNull LoginRequest loginRequest) throws AuthenticationException {
+    public UserDetails authenticate(LoginRequest loginRequest) throws AuthenticationException {
         String token = loginRequest.getToken();
         String provider = loginRequest.getOAuth2Provider();
 

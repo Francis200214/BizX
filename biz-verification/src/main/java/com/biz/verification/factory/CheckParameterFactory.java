@@ -1,7 +1,6 @@
 package com.biz.verification.factory;
 
 import com.biz.verification.strategy.CheckParameterStrategy;
-import com.sun.istack.internal.NotNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
@@ -54,7 +53,7 @@ public class CheckParameterFactory implements InitializingBean, ApplicationConte
      * @param fieldName 参数名称
      * @throws Throwable 如果校验失败或处理过程中出现异常
      */
-    public void handle(@NotNull Annotation annotation, Object byFieldValue, String className, String methodName, String fieldName) throws Throwable {
+    public void handle(Annotation annotation, Object byFieldValue, String className, String methodName, String fieldName) throws Throwable {
         // 从缓存 Map 中获取对应的处理实现
         CheckParameterStrategy checkParameterStrategy = CHECK_PARAMETER_STRATEGY_MAP.get(annotation.annotationType());
         if (checkParameterStrategy == null) {
