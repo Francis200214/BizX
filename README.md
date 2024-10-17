@@ -1,4 +1,5 @@
 <h1 align="center">BizX</h1>
+
 <p align="center">
   <img src="https://img.shields.io/badge/Java-8+-blue" alt="Java"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-2.7.x-brightgreen" alt="Spring Boot"/>
@@ -8,49 +9,84 @@
 <hr>
 
 
-## 简介
+## 介绍
 
-BizX 是一个灵活且高效的业务开发框架, 主要提供业务开发中的一些工具类和中间件封装, 让我们在业务开发中只专注于业务。
+BizX 是一个灵活且高效的业务开发框架，提供丰富的工具类和组件封装，帮助开发者专注于业务逻辑。适合小微型公司及独立开发者，快速构建具备追踪、认证、工具、OSS、缓存等功能的应用系统。
 
 
 -------------------------------------------------------------------------------
 
-## 模块介绍
+## 🛠️ 模块特性
 
-| 模块                | 介绍                                                 |
-|-------------------|----------------------------------------------------|
-| biz-common        | 工具模块，其中提供了线程池、JTS、反射、封装策略模式、字符串、日期等常用工具类与封装的一些设计模式 |
-| biz-operation-log | 操作日志模块，主要操作日志的记录、查询、导出功能                           |                                        |
-| biz-core          | 核心模块，目前没啥核心的功能，还没想好怎么做                             |
-| biz-web           | Web模块，目前包括对Token和Web 异常层面的功能                       |
-| biz-cache         | 主要对Caffeine、Redis和本地马匹缓存进行了封装                      |
-| biz-oss           | 主要对AmazonS3协议进行了封装, 市面上主流的OSS存储都是遵循了AmazonS3协议     |
-| biz-rabbitmq      | 主要对RabbitMQ进行了封装                                   |
-| biz-redis         | 主要封装了Redis的配置和工具类，实现了开箱即用                          |
+- **🗄️ biz-cache**：提供本地缓存支持，适配 LRU 和定时清除功能，支持 Spring 的 `@Cache` 注解与 Caffeine 实现。
+- **🛡️ biz-security**：提供用户认证和鉴权功能，确保 Web 请求的安全性。
+- **📝 biz-operation-log**：操作日志记录功能，轻松记录用户操作行为。
+- **🔗 biz-trace**：实现全链路跟踪，分配唯一的请求 ID。
+- **🛠️ biz-common**：包含 JWT、时间处理、ID 生成器等常用工具。
 
-引入biz-all可把所有的jar包都引入
+[//]: # (![BizX架构图]&#40;https://yourrepo.com/path/to/architecture.png&#41;)
 
-# biz-common 模块内部介绍
-- Bean 操作：biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类进行操作 Bean 对象，避免了项目中需要实现 Spring 中的接口才能使用 Bean 的问题。
-  BizBeanUtils 中主要提供了一些常用的 Bean 操作方法，如：
-  - 获取单个Bean 对象 BizBeanUtils.getBean(class)
-  - 获取所有的 Bean 对象集合 BizBeanUtils.getBeanDefinitionClasses()
-  - 获取 Bean 对象上带某个直接的 Bean 对象集合 BizBeanUtils.getBeansWithAnnotation(annotation)
-- 条形码工具类：对条形码的创建进行了封装，使用 BizBarCodeUtils 工具类进行操作。
-  - 主要方法 BarCodeUtils.generate(text, path)，text 为要生成条形码的文本，path 为要生成的条形码图片路径。
-- 中文转拼音工具类：对中文转拼音进行了封装，使用 ChineseCharactersUtils 工具类进行操作。主要方法：
-  - ChineseCharactersUtils.getPinyin(chinese)，中文转成拼音全拼，chinese 参数为要转换的中文。
-  - ChineseCharactersUtils.getPinyinFirst(chinese)，中文转成拼音后取拼音的第一个首字母，chinese 参数为要转换的中文。
-- ExecutorsUtils 线程池工具类：对使用的线程池进行了封装，在不指定线程池参数的情况下，根据本机器的配置自动调整线程池大小，保证线程池的效率。
-- BizScheduledFuture：当业务中使用到定时任务时，可以使用 BizScheduledFuture 工具类进行操作。其中提供了提交、取消和重置任务的能力，并封装了ScheduledExecutorService的使用，同时也对并发的情况做了处理。
-- 
+[//]: # (-------------------------------------------------------------------------------)
 
+[//]: # ()
+[//]: # (## 🚀 快速入门)
 
+[//]: # ()
+[//]: # (### 通过 Maven 引入)
 
-### Bean 操作
-biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类进行操作 Bean 对象，避免了项目中需要实现 Spring 中的接口才能使用 Bean 的问题。
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<dependency>)
+
+[//]: # (  <groupId>io.github.francis200214</groupId>)
+
+[//]: # (  <artifactId>biz-all</artifactId>)
+
+[//]: # (  <version>1.5.1</version>)
+
+[//]: # (</dependency>)
+
+[//]: # (```)
 
 
+-------------------------------------------------------------------------------
+
+## 📚 文档与教程
+
+- 快速开始 - 快速上手使用 BizX
+- 详细文档 - （正在写...）
+
+-------------------------------------------------------------------------------
+
+## 🏆 贡献方式
+
+我们欢迎贡献！请遵循以下步骤来参与：
+
+- Fork 1.5.x 库。
+- 把 Fork 的代码 Clone 到你本地。
+- 修改代码
+- 修改完成后 Commit 提交（注意：Commit 提交时请严格按照 [约定式规范](https://www.conventionalcommits.org/zh-hans/v1.0.0/#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83)）。
+- Push 到远程 1.5.x 库。
+- 创建 Pull Request 到 1.5.x 分支。
+- 等待合并。
+  
+-------------------------------------------------------------------------------
+
+## 📞 社区与支持
+- GitHub Issues：遇到问题可在 GitHub Issues 中提问
+
+-------------------------------------------------------------------------------
+
+## 📜 许可证
+BizX 遵循 Apache License 2.0
+
+-------------------------------------------------------------------------------
+
+## ⭐ 支持我们
+觉得 BizX 对你有帮助？别忘了点个 ⭐Star 支持我们，让我们做得更好！
+
+-------------------------------------------------------------------------------
 
 ## 鸣谢
 
@@ -59,3 +95,16 @@ biz-common中对Bean操作进行了封装，可以使用 BizBeanUtils 工具类�
 <p>
 <img src="https://images.gitee.com/uploads/images/2020/0406/220236_f5275c90_5531506.png" alt="图片引用自lets-mica" style="float:left;">
 </p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
