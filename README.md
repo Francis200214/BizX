@@ -63,12 +63,12 @@ BizX 是一个灵活且高效的业务开发框架，提供丰富的工具类和
 
 我们欢迎贡献！请遵循以下步骤来参与：
 
-- Fork 1.5.x 库。
+- Fork 1.5.x-dev 库。
 - 把 Fork 的代码 Clone 到你本地。
 - 修改代码
 - 修改完成后 Commit 提交（注意：Commit 提交时请严格按照 [约定式规范](https://www.conventionalcommits.org/zh-hans/v1.0.0/#%E7%BA%A6%E5%AE%9A%E5%BC%8F%E6%8F%90%E4%BA%A4%E8%A7%84%E8%8C%83)）。
-- Push 到远程 1.5.x 库。
-- 创建 Pull Request 到 1.5.x 分支。
+- Push 到远程 1.5.x-dev 库。
+- 创建 Pull Request 到 1.5.x-dev 分支。
 - 等待合并。
   
 -------------------------------------------------------------------------------
