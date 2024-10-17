@@ -1,17 +1,42 @@
 
+# IntelliJ IDEA 工作目录
 .idea
-.mvn
 *.iml
+*.ipr
+*.iws
 
+# .maven目录
+/.mvn/
+.mvn
+
+# Maven 依赖
+/target/
+
+# 操作系统相关文件
+.DS_Store
+Thumbs.db
+
+# 编译输出
 target
+out
 result
+
+# 本地环境配置
+/.env
+.env
+
+# 日志
 logs
+
+# 临时文件
+*.tmp
 
 mvnw
 mvnw.cmd
 node_modules
 _book
 
+# 文档
 doc/
 code/
 
