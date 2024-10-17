@@ -1,0 +1,14 @@
+biz:
+  security:
+    enabled: true
+    password:
+      encryptor: "md5" # 可选值："md5", "sha-256"
+
+logging:
+  level:
+    com.biz.security: DEBUG # 调试级别日志
+server:
+  port: 1002
+
+
+
