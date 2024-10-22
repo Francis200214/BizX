@@ -15,6 +15,7 @@ import com.biz.common.error.BizXErrorConstant;
  */
 public enum SecurityErrorConstant implements BizXErrorConstant {
 
+
     USER_NOT_FOUND(10001, "用户不存在"),
     USER_PASSWORD_ERROR(10002, "用户密码错误"),
     USER_NOT_LOGIN(10003, "用户未登录"),
@@ -33,7 +34,14 @@ public enum SecurityErrorConstant implements BizXErrorConstant {
 
     NONE_IMPLEMENTED_USERNAME_PASSWORD(30001, "未实现用户名密码方式获取用户信息"),
     NONE_IMPLEMENTED_TOKEN(30002, "未实现token方式获取用户信息"),
-    NONE_IMPLEMENTED_O_AUTH_2(30003, "未实现OAuth2方式获取用户信息");
+    NONE_IMPLEMENTED_O_AUTH_2(30003, "未实现OAuth2方式获取用户信息"),
+
+    NOT_FOUND_AUTH_TYPE(40001, "未知的认证类型"),
+
+
+
+
+    ;
 
     /**
      * 异常代码。

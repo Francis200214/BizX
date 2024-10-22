@@ -5,6 +5,7 @@ import com.biz.security.authentication.AuthenticationService;
 import com.biz.security.authentication.LoginRequest;
 import com.biz.security.authentication.type.AuthType;
 import com.biz.security.authentication.type.AuthTypeBuilder;
+import com.biz.security.error.AuthenticationTypeConvertException;
 import com.biz.security.filter.chain.FilterChain;
 import com.biz.security.filter.constant.HttpConstant;
 import com.biz.security.user.UserDetails;
@@ -77,10 +78,19 @@ public class AuthenticationFilter implements SecurityFilter {
             // 设置用户信息
             this.setUserDetails(userDetails);
 
-        } catch (Exception e) {
-            // 认证失败
+        } catch (AuthenticationTypeConvertException e) {
             if (log.isDebugEnabled()) {
-                log.debug("AuthenticationFilter 认证失败", e);
+                log.debug("未知的认证类型异常", e);
+            }
+            try {
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("认证失败", e);
             }
             try {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
