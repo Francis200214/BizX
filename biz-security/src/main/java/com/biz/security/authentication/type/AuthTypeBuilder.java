@@ -1,6 +1,8 @@
 package com.biz.security.authentication.type;
 
 import com.biz.common.utils.Common;
+import com.biz.security.error.AuthenticationTypeConvertException;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 认证类型 Builder。
@@ -12,6 +14,7 @@ import com.biz.common.utils.Common;
  * @version 1.0.1
  * @since 2024-10-10
  */
+@Slf4j
 public class AuthTypeBuilder {
 
     /**
@@ -25,7 +28,15 @@ public class AuthTypeBuilder {
         if (Common.isBlank(authType)) {
             return null;
         }
-        return AuthType.valueOf(authType);
+
+        try {
+            return AuthType.valueOf(authType);
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("未知的认证类型! 未知的认证类型为 {}", authType);
+            }
+            throw new AuthenticationTypeConvertException();
+        }
     }
 
 }
