@@ -83,7 +83,7 @@ public class AuthenticationFilter implements SecurityFilter {
                 log.debug("未知的认证类型异常", e);
             }
             try {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendError(e.getCode(), e.getMessage());
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
