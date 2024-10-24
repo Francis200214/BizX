@@ -1,11 +1,13 @@
 package com.biz.security.filter;
 
+import com.biz.common.utils.Common;
 import com.biz.security.authentication.AuthenticationFactory;
 import com.biz.security.authentication.AuthenticationService;
 import com.biz.security.authentication.LoginRequest;
 import com.biz.security.authentication.type.AuthType;
 import com.biz.security.authentication.type.AuthTypeBuilder;
-import com.biz.security.error.AuthenticationTypeConvertException;
+import com.biz.security.error.AuthenticationException;
+import com.biz.security.error.SecurityErrorConstant;
 import com.biz.security.filter.chain.FilterChain;
 import com.biz.security.filter.constant.HttpConstant;
 import com.biz.security.user.UserDetails;
@@ -78,9 +80,9 @@ public class AuthenticationFilter implements SecurityFilter {
             // 设置用户信息
             this.setUserDetails(userDetails);
 
-        } catch (AuthenticationTypeConvertException e) {
+        } catch (AuthenticationException e) {
             if (log.isDebugEnabled()) {
-                log.debug("未知的认证类型异常", e);
+                log.debug("认证时出现异常 Code {} Message {}", e.getCode(), e.getMessage());
             }
             try {
                 response.sendError(e.getCode(), e.getMessage());
@@ -90,10 +92,10 @@ public class AuthenticationFilter implements SecurityFilter {
 
         } catch (Exception e) {
             if (log.isDebugEnabled()) {
-                log.debug("认证失败", e);
+                log.debug("认证时出现未知异常", e);
             }
             try {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+                response.sendError(SecurityErrorConstant.AUTHENTICATION_FAILED.getCode(), SecurityErrorConstant.AUTHENTICATION_FAILED.getMessage());
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
@@ -186,7 +188,7 @@ public class AuthenticationFilter implements SecurityFilter {
      */
     private UserDetails getUserDetailsByUsernamePassword(HttpServletRequest request, AuthenticationService authenticationService) {
         if (!request.getMethod().equals(HttpConstant.POST)) {
-            throw new IllegalArgumentException("请求方式必须为 POST");
+            throw new AuthenticationException(SecurityErrorConstant.REQUEST_TYPE_MUST_POST);
         }
 
         return authenticationService.authenticate(

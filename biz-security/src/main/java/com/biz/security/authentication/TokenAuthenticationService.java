@@ -1,6 +1,7 @@
 package com.biz.security.authentication;
 
 import com.biz.common.bean.BizXBeanUtils;
+import com.biz.common.utils.Common;
 import com.biz.security.authentication.validator.TokenValidator;
 import com.biz.security.error.AuthenticationException;
 import com.biz.security.error.SecurityErrorConstant;
@@ -43,13 +44,12 @@ public class TokenAuthenticationService implements AuthenticationService, SmartI
     @Override
     public UserDetails authenticate(LoginRequest loginRequest) throws AuthenticationException {
         String token = loginRequest.getToken();
-
-        if (token == null) {
+        if (Common.isBlank(token)) {
             throw new AuthenticationException(SecurityErrorConstant.TOKEN_INFORMATION_IS_MISSING_FAILED);
         }
 
         // Token 验证
-        if (isValidToken(token)) {
+        if (this.isValidToken(token)) {
             return this.findUserDetailsByToken(token);
         } else {
             throw new AuthenticationException(SecurityErrorConstant.TOKEN_AUTHENTICATION_FAILED);

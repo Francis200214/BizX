@@ -1,6 +1,7 @@
 package com.biz.security.authentication;
 
 import com.biz.common.bean.BizXBeanUtils;
+import com.biz.common.utils.Common;
 import com.biz.security.authentication.encryption.PasswordEncryptionService;
 import com.biz.security.authentication.encryption.PasswordEncryptor;
 import com.biz.security.error.AuthenticationException;
@@ -8,6 +9,7 @@ import com.biz.security.error.SecurityErrorConstant;
 import com.biz.security.user.UserDetails;
 import com.biz.security.user.UserDetailsStrategy;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 
 /**
@@ -43,22 +45,34 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
      */
     @Override
     public UserDetails authenticate(LoginRequest loginRequest) throws AuthenticationException {
-        String username = loginRequest.getUsername();
-        String password = loginRequest.getPassword();
+        if (Common.isBlank(loginRequest.getUsername())) {
+            throw new AuthenticationException(SecurityErrorConstant.USERNAME_INFORMATION_IS_MISSING_FAILED);
+        }
 
-        if (username == null || password == null) {
-            throw new AuthenticationException(SecurityErrorConstant.USERNAME_PASSWORD_INFORMATION_IS_MISSING_FAILED);
+        if (Common.isBlank(loginRequest.getPassword())) {
+            throw new AuthenticationException(SecurityErrorConstant.PASSWORD_INFORMATION_IS_MISSING_FAILED);
         }
 
         // 从数据库或存储中获取用户信息
-        UserDetails userDetails = findUserDetailsByUsername(username);
-        // 输入的密码与数据库存储的加密密码进行匹配
-        if (passwordEncryptionService.matches(password, userDetails.getPassword())) {
-            // 返回用户详细信息
-            return userDetails;
+        UserDetails userDetails = this.findUserDetailsByUsername(loginRequest.getUsername());
+        if (Common.isBlank(userDetails.getPassword())) {
+            throw new AuthenticationException(SecurityErrorConstant.PASSWORD_INFORMATION_IS_MISSING_FAILED_IN_DATABASE);
+        }
 
-        } else {
-            throw new AuthenticationException(SecurityErrorConstant.USER_PASSWORD_ERROR);
+        try {
+            // 输入的密码与数据库存储的加密密码进行匹配
+            if (passwordEncryptionService.matches(loginRequest.getPassword(), userDetails.getPassword())) {
+                // 返回用户详细信息
+                return userDetails;
+
+            } else {
+                throw new AuthenticationException(SecurityErrorConstant.USER_OR_PASSWORD_FAILED);
+            }
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("在用户名和密码认证时, 输入的密码和数据库的密码匹配时出现了异常 {}", e.getMessage());
+            }
+            throw new  AuthenticationException();
         }
     }
 
@@ -72,13 +86,13 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
     private UserDetails findUserDetailsByUsername(String username) throws RuntimeException {
         UserDetails userDetails = userDetailsStrategy.loadUserByUsername(username);
         if (userDetails == null) {
-            throw new RuntimeException("UserDetails is null");
+            throw new AuthenticationException(SecurityErrorConstant.USER_OR_PASSWORD_FAILED);
         }
         return userDetails;
     }
 
     /**
-     * 在所有单例初始化后，设置必要的依赖。
+     * 在所有单例初始化后，设置必要地依赖。
      */
     @Override
     public void afterSingletonsInstantiated() {
@@ -86,7 +100,7 @@ public class UsernamePasswordAuthenticationService implements AuthenticationServ
         try {
             this.userDetailsStrategy = BizXBeanUtils.getBean(UserDetailsStrategy.class);
         } catch (Exception e) {
-            throw new RuntimeException("UserDetailsStrategy is null");
+            throw new BeanDefinitionStoreException("未找到 UserDetailsStrategy Bean");
         }
     }
 }

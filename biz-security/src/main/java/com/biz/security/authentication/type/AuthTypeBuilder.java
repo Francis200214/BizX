@@ -1,7 +1,8 @@
 package com.biz.security.authentication.type;
 
 import com.biz.common.utils.Common;
-import com.biz.security.error.AuthenticationTypeConvertException;
+import com.biz.security.error.AuthenticationException;
+import com.biz.security.error.SecurityErrorConstant;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -22,20 +23,30 @@ public class AuthTypeBuilder {
      *
      * @param authType 认证类型字符串
      * @return {@link AuthType} 对应的认证类型枚举
-     * @throws IllegalArgumentException 如果认证类型为空或无效
+     * @throws AuthenticationException 如果认证类型转换时出现错误则抛出 {@link AuthenticationException} 异常
      */
-    public static AuthType getAuthType(String authType) {
+    public static AuthType getAuthType(String authType) throws AuthenticationException {
         if (Common.isBlank(authType)) {
-            return null;
+            if (log.isDebugEnabled()) {
+                log.debug("Header 中未传入认证类型数据");
+            }
+            throw new AuthenticationException(SecurityErrorConstant.NOT_AUTH_TYPE);
         }
 
         try {
             return AuthType.valueOf(authType);
-        } catch (Exception e) {
+
+        } catch (IllegalArgumentException e) {
             if (log.isDebugEnabled()) {
                 log.debug("未知的认证类型! 未知的认证类型为 {}", authType);
             }
-            throw new AuthenticationTypeConvertException();
+            throw new AuthenticationException(SecurityErrorConstant.NOT_FOUND_AUTH_TYPE);
+
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("认证类型转换时出现了未知错误 {}", e.getMessage());
+            }
+            throw new AuthenticationException();
         }
     }
 
