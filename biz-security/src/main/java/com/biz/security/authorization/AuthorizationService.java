@@ -21,6 +21,15 @@ public interface AuthorizationService {
      * @param resource    资源名称
      * @return {@code true} 如果用户有权限访问资源，否则返回 {@code false}
      */
-    boolean authorize(UserDetails userDetails, String resource);
+    boolean authorizeResource(UserDetails userDetails, String resource);
+
+    /**
+     * 校验用户是否有指定角色。
+     *
+     * @param userDetails 用户信息
+     * @param role        角色名称
+     * @return {@code true} 如果用户有指定角色，否则返回 {@code false}
+     */
+    boolean authorizeRole(UserDetails userDetails, String role);
 
 }
