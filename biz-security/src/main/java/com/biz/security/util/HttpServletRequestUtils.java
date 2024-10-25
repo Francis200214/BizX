@@ -33,7 +33,9 @@ public final class HttpServletRequestUtils {
 
         if (context == null) {
             // 日志记录上下文为空的情况
-            System.err.println("Application context is null.");
+            if (log.isDebugEnabled()) {
+                log.debug("Spring 应用上下文为空, 无法获取到对于的接口");
+            }
             return null;
         }
 
@@ -44,7 +46,9 @@ public final class HttpServletRequestUtils {
         try {
             ServletRequestPathUtils.parseAndCache(request);
         } catch (Exception e) {
-            log.debug("Error occurred while parsing request path: {}", e.getMessage(), e);
+            if (log.isDebugEnabled()) {
+                log.debug("解析请求路径时发生错误: {}", e.getMessage());
+            }
             return null;
         }
 
@@ -62,10 +66,11 @@ public final class HttpServletRequestUtils {
             }
         } catch (Exception e) {
             // 日志记录异常详细信息
-            log.debug("Error occurred while getting handler method: {}", e.getMessage(), e);
+            if (log.isDebugEnabled()) {
+                log.debug("获取路径对于处理接口时发生错误: {}", e.getMessage());
+            }
         }
 
-        // 在没有找到匹配的方法时，返回 null
         return null;
     }
 
