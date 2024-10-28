@@ -1,6 +1,5 @@
 package com.biz.security.error;
 
-import com.biz.common.error.BizXException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,24 +14,24 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResourceAuthorizationException extends AuthorizationException {
+public class HaveNotResourceAuthorizationException extends AuthorizationException {
 
     /**
      * 异常 Code 码。
      */
-    private int CODE = SecurityErrorConstant.RESOURCE_AUTHORIZATION_FAILED.getCode();
+    private int CODE = SecurityErrorConstant.HAVE_NOT_RESOURCE_AUTHORIZATION_FAILED.getCode();
 
     /**
      * 异常信息。
      */
-    private String MESSAGE = SecurityErrorConstant.RESOURCE_AUTHORIZATION_FAILED.getMessage();
+    private String MESSAGE = SecurityErrorConstant.HAVE_NOT_RESOURCE_AUTHORIZATION_FAILED.getMessage();
 
     /**
      * 构造方法，根据错误常量创建异常实例。
      *
      * @param errorConstant 错误常量
      */
-    public ResourceAuthorizationException(SecurityErrorConstant errorConstant) {
+    public HaveNotResourceAuthorizationException(SecurityErrorConstant errorConstant) {
         this.CODE = errorConstant.getCode();
         this.MESSAGE = errorConstant.getMessage();
     }

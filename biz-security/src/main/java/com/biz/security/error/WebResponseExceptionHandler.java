@@ -32,6 +32,8 @@ public abstract class WebResponseExceptionHandler extends BizXException implemen
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.setContentType("application/json");
             response.sendError(getCode(), getMessage());
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(String.format("{\"code\":%d,\"message\":\"%s\"}", getCode(), getMessage()));
         } catch (IOException e) {
             if (log.isDebugEnabled()) {
                 log.debug("设置返回状态码时出现异常 {}", e.getMessage());
@@ -48,5 +50,7 @@ public abstract class WebResponseExceptionHandler extends BizXException implemen
     public void setResponse(HttpServletResponse response) {
         this.setResponse(response, getCode(), getMessage());
     }
+
+
 
 }

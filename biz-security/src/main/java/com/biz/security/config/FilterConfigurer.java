@@ -2,6 +2,7 @@ package com.biz.security.config;
 
 import com.biz.security.authentication.AuthenticationFactory;
 import com.biz.security.authentication.LogoutSuccessHandler;
+import com.biz.security.authorization.AuthorizationManager;
 import com.biz.security.filter.*;
 import com.biz.security.user.store.SecurityContextHolder;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -74,8 +75,8 @@ public class FilterConfigurer {
      * @return 资源鉴权过滤器
      */
     @Bean
-    public ResourceAuthorizationFilter resourceAuthorizationFilter(SecurityContextHolder securityContextHolder) {
-        return new ResourceAuthorizationFilter(securityContextHolder);
+    public ResourceAuthorizationFilter resourceAuthorizationFilter(SecurityContextHolder securityContextHolder, AuthorizationManager authorizationManager) {
+        return new ResourceAuthorizationFilter(securityContextHolder, authorizationManager);
     }
 
     /**

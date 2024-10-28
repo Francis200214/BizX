@@ -3,7 +3,7 @@ package com.biz.security.filter;
 import com.biz.security.authorization.AuthorizationManager;
 import com.biz.security.authorization.enums.SecuredAccess;
 import com.biz.security.error.AuthorizationException;
-import com.biz.security.error.ResourceAuthorizationException;
+import com.biz.security.error.HaveNotResourceAuthorizationException;
 import com.biz.security.filter.chain.FilterChain;
 import com.biz.security.user.store.SecurityContextHolder;
 import com.biz.security.util.HttpServletRequestUtils;
@@ -70,12 +70,12 @@ public final class ResourceAuthorizationFilter implements SecurityFilter {
                         log.debug("资源权限鉴权失败");
                     }
                     // 校验权限失败，抛出异常
-                    throw new ResourceAuthorizationException();
+                    throw new HaveNotResourceAuthorizationException();
                 }
             }
         } catch (AuthorizationException e) {
             if (log.isDebugEnabled()) {
-                log.debug("资源权限过滤器执行时未知错误 {}", e.getMessage());
+                log.debug("鉴权错误 {}", e.getMessage());
             }
             e.setResponse(response);
             return;

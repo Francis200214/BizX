@@ -43,8 +43,8 @@ public enum SecurityErrorConstant implements BizXErrorConstant {
 
 
     AUTHORIZATION_FAILED(13001, "鉴权时出现未知错误"),
-    ROLE_AUTHORIZATION_FAILED(13002, "角色鉴权时出现未知错误"),
-    RESOURCE_AUTHORIZATION_FAILED(13003, "资源鉴权时出现未知错误"),
+    HAVE_NOT_ROLE_AUTHORIZATION_FAILED(13002, "没有角色权限"),
+    HAVE_NOT_RESOURCE_AUTHORIZATION_FAILED(13003, "没有资源权限"),
 
 
 

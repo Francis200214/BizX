@@ -14,35 +14,35 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleAuthorizationException extends AuthorizationException {
+public class HaveNotRoleAuthorizationException extends AuthorizationException {
 
     /**
      * 异常 Code 码。
      */
-    private static int CODE = SecurityErrorConstant.ROLE_AUTHORIZATION_FAILED.getCode();
+    private int CODE = SecurityErrorConstant.HAVE_NOT_ROLE_AUTHORIZATION_FAILED.getCode();
 
     /**
      * 异常信息。
      */
-    private static String MESSAGE = SecurityErrorConstant.ROLE_AUTHORIZATION_FAILED.getMessage();
+    private String MESSAGE = SecurityErrorConstant.HAVE_NOT_ROLE_AUTHORIZATION_FAILED.getMessage();
 
     /**
      * 构造方法，根据错误常量创建异常实例。
      *
      * @param errorConstant 错误常量
      */
-    public RoleAuthorizationException(SecurityErrorConstant errorConstant) {
-        CODE = errorConstant.getCode();
-        MESSAGE = errorConstant.getMessage();
+    public HaveNotRoleAuthorizationException(SecurityErrorConstant errorConstant) {
+        this.CODE = errorConstant.getCode();
+        this.MESSAGE = errorConstant.getMessage();
     }
 
     @Override
     public int getCode() {
-        return CODE;
+        return this.CODE;
     }
 
     @Override
     public String getMessage() {
-        return MESSAGE;
+        return this.MESSAGE;
     }
 }
