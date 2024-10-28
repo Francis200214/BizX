@@ -3,57 +3,45 @@ package com.biz.security.error;
 import com.biz.common.error.BizXException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
- * 无用户信息异常。
- *
- * <p>
- * 用于表示在获取用户详细信息时发生的错误。
- * </p>
+ * 资源鉴权异常
  *
  * @author francis
- * @version 1.0.1
- * @since 2024-09-20
- */
-@NoArgsConstructor
+ * @create 2024-10-28
+ * @since 1.0.1
+ **/
+@Slf4j
 @AllArgsConstructor
-public class NoneUserDetailsException extends WebResponseExceptionHandler {
+@NoArgsConstructor
+public class ResourceAuthorizationException extends AuthorizationException {
 
     /**
      * 异常 Code 码。
      */
-    private int CODE = SecurityErrorConstant.NONE_USER_NOT_LOGIN.getCode();
+    private int CODE = SecurityErrorConstant.RESOURCE_AUTHORIZATION_FAILED.getCode();
 
     /**
      * 异常信息。
      */
-    private String MESSAGE = SecurityErrorConstant.NONE_USER_NOT_LOGIN.getMessage();
+    private String MESSAGE = SecurityErrorConstant.RESOURCE_AUTHORIZATION_FAILED.getMessage();
 
     /**
      * 构造方法，根据错误常量创建异常实例。
      *
      * @param errorConstant 错误常量
      */
-    public NoneUserDetailsException(SecurityErrorConstant errorConstant) {
+    public ResourceAuthorizationException(SecurityErrorConstant errorConstant) {
         this.CODE = errorConstant.getCode();
         this.MESSAGE = errorConstant.getMessage();
     }
 
-    /**
-     * 获取异常 Code。
-     *
-     * @return 异常 Code
-     */
     @Override
     public int getCode() {
         return this.CODE;
     }
 
-    /**
-     * 获取异常信息。
-     *
-     * @return 异常信息
-     */
     @Override
     public String getMessage() {
         return this.MESSAGE;

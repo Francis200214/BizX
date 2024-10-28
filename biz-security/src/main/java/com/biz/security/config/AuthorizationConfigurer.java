@@ -2,8 +2,11 @@ package com.biz.security.config;
 
 import com.biz.security.authorization.AuthorizationManager;
 import com.biz.security.authorization.AuthorizationService;
-import com.biz.security.authorization.handler.ResourceAuthorizationHandler;
-import com.biz.security.authorization.handler.RoleAuthorizationHandler;
+import com.biz.security.authorization.ResourceAuthorizationHandler;
+import com.biz.security.authorization.RoleAuthorizationHandler;
+import com.biz.security.authorization.handler.DefaultResourceAuthorizationHandler;
+import com.biz.security.authorization.handler.DefaultRoleAuthorizationHandler;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
@@ -27,8 +30,8 @@ public class AuthorizationConfigurer {
      * @return AuthorizationManager 实例
      */
     @Bean
-    public AuthorizationService authorizationService() {
-        return new AuthorizationManager();
+    public AuthorizationService authorizationService(ResourceAuthorizationHandler resourceAuthorizationHandler, RoleAuthorizationHandler roleAuthorizationHandler) {
+        return new AuthorizationManager(resourceAuthorizationHandler, roleAuthorizationHandler);
     }
 
     /**
@@ -37,8 +40,9 @@ public class AuthorizationConfigurer {
      * @return ResourceAuthorizationHandler 实例
      */
     @Bean
+    @ConditionalOnMissingBean
     public ResourceAuthorizationHandler resourceAuthorizationHandler() {
-        return new ResourceAuthorizationHandler();
+        return new DefaultResourceAuthorizationHandler();
     }
 
     /**
@@ -47,7 +51,8 @@ public class AuthorizationConfigurer {
      * @return RoleAuthorizationHandler 实例
      */
     @Bean
+    @ConditionalOnMissingBean
     public RoleAuthorizationHandler roleAuthorizationHandler() {
-        return new RoleAuthorizationHandler();
+        return new DefaultRoleAuthorizationHandler();
     }
 }

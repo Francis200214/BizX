@@ -1,0 +1,50 @@
+package com.biz.security.error;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 鉴权异常
+ *
+ * @author francis
+ * @create 2024-10-28
+ * @since 1.0.1
+ **/
+@Slf4j
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuthorizationException extends WebResponseExceptionHandler {
+
+    /**
+     * 异常 Code 码。
+     */
+    private int CODE = SecurityErrorConstant.AUTHORIZATION_FAILED.getCode();
+
+    /**
+     * 异常信息。
+     */
+    private String MESSAGE = SecurityErrorConstant.AUTHORIZATION_FAILED.getMessage();
+
+
+    /**
+     * 构造方法，根据错误常量创建异常实例。
+     *
+     * @param errorConstant 错误常量
+     */
+    public AuthorizationException(SecurityErrorConstant errorConstant) {
+        this.CODE = errorConstant.getCode();
+        this.MESSAGE = errorConstant.getMessage();
+    }
+
+    @Override
+    public int getCode() {
+        return this.CODE;
+    }
+
+    @Override
+    public String getMessage() {
+        return this.MESSAGE;
+    }
+
+}

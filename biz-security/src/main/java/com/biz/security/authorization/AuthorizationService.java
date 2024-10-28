@@ -1,5 +1,6 @@
 package com.biz.security.authorization;
 
+import com.biz.security.authorization.enums.SecuredAccess;
 import com.biz.security.user.UserDetails;
 
 /**
@@ -24,6 +25,15 @@ public interface AuthorizationService {
     boolean authorizeResource(UserDetails userDetails, String resource);
 
     /**
+     * 校验用户是否有权限访问资源。
+     *
+     * @param securedAccess 资源访问控制信息
+     * @param userDetails   用户信息
+     * @return {@code true} 如果用户有权限访问资源，否则返回 {@code false}
+     */
+    boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails);
+
+    /**
      * 校验用户是否有指定角色。
      *
      * @param userDetails 用户信息
@@ -31,5 +41,14 @@ public interface AuthorizationService {
      * @return {@code true} 如果用户有指定角色，否则返回 {@code false}
      */
     boolean authorizeRole(UserDetails userDetails, String role);
+
+    /**
+     * 校验用户是否有指定角色。
+     *
+     * @param securedAccess 资源访问控制信息
+     * @param userDetails   用户信息
+     * @return {@code true} 如果用户有指定角色，否则返回 {@code false}
+     */
+    boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails);
 
 }

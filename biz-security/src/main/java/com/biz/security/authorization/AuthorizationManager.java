@@ -1,12 +1,9 @@
 package com.biz.security.authorization;
 
-import com.biz.common.bean.BizXBeanUtils;
-import com.biz.security.authorization.handler.ResourceAuthorizationHandler;
-import com.biz.security.authorization.handler.RoleAuthorizationHandler;
+import com.biz.security.authorization.enums.SecuredAccess;
+import com.biz.security.error.NoneUserDetailsException;
 import com.biz.security.user.UserDetails;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.beans.factory.SmartInitializingSingleton;
 
 /**
  * 权限管理类，负责用户的权限校验逻辑。
@@ -20,17 +17,28 @@ import org.springframework.beans.factory.SmartInitializingSingleton;
  * @since 2024-09-13
  */
 @Slf4j
-public class AuthorizationManager implements AuthorizationService, SmartInitializingSingleton {
+public class AuthorizationManager implements AuthorizationService {
 
     /**
      * 资源权限处理器。
      */
-    private ResourceAuthorizationHandler resourceAuthorizationHandler;
+    private final ResourceAuthorizationHandler resourceAuthorizationHandler;
 
     /**
      * 角色权限处理器。
      */
-    private RoleAuthorizationHandler roleAuthorizationHandler;
+    private final RoleAuthorizationHandler roleAuthorizationHandler;
+
+    /**
+     * 构造函数，注入资源权限处理器和角色权限处理器。
+     *
+     * @param resourceAuthorizationHandler 资源权限处理器
+     * @param roleAuthorizationHandler     角色权限处理器
+     */
+    public AuthorizationManager(ResourceAuthorizationHandler resourceAuthorizationHandler, RoleAuthorizationHandler roleAuthorizationHandler) {
+        this.resourceAuthorizationHandler = resourceAuthorizationHandler;
+        this.roleAuthorizationHandler = roleAuthorizationHandler;
+    }
 
     /**
      * 校验用户是否有权限访问资源。
@@ -41,13 +49,32 @@ public class AuthorizationManager implements AuthorizationService, SmartInitiali
      */
     @Override
     public boolean authorizeResource(UserDetails userDetails, String resource) {
-        if (resourceAuthorizationHandler == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("没有权限处理器");
-            }
-            return false;
+        if (resource == null) {
+            throw new NullPointerException("校验的资源名称不能为 Null");
+        }
+        if (userDetails == null) {
+            throw new NoneUserDetailsException();
         }
         return resourceAuthorizationHandler.check(userDetails, resource);
+    }
+
+
+    /**
+     * 校验用户是否有权限访问资源。
+     *
+     * @param securedAccess 权限注解
+     * @param userDetails   用户信息
+     * @return {@code true} 如果用户有权限访问资源，否则返回 {@code false}
+     */
+    @Override
+    public boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails) {
+        if (securedAccess == null) {
+            return false;
+        }
+        if (userDetails == null) {
+            throw new NoneUserDetailsException();
+        }
+        return resourceAuthorizationHandler.authorizeResource(securedAccess, userDetails);
     }
 
     /**
@@ -59,37 +86,32 @@ public class AuthorizationManager implements AuthorizationService, SmartInitiali
      */
     @Override
     public boolean authorizeRole(UserDetails userDetails, String role) {
-        if (roleAuthorizationHandler == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("没有角色处理器");
-            }
-            return false;
+        if (role == null) {
+            throw new NullPointerException("校验的角色名称不能为 Null");
         }
+        if (userDetails == null) {
+            throw new NoneUserDetailsException();
+        }
+
         return roleAuthorizationHandler.check(userDetails, role);
     }
 
+
     /**
-     * 在所有单例初始化后，初始化权限处理器列表。
+     * 校验用户是否有权限访问角色。
+     *
+     * @param securedAccess 权限注解
+     * @param userDetails   用户信息
+     * @return {@code true} 如果用户有权限访问角色，否则返回 {@code false}
      */
     @Override
-    public void afterSingletonsInstantiated() {
-        try {
-            resourceAuthorizationHandler = BizXBeanUtils.getBean(ResourceAuthorizationHandler.class);
-        } catch (Exception e) {
-            if (log.isDebugEnabled()) {
-                log.debug("没有资源权限处理器 ResourceAuthorizationHandler Bean");
-            }
-            throw new NoSuchBeanDefinitionException("没有资源权限处理器 ResourceAuthorizationHandler Bean");
+    public boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails) {
+        if (userDetails == null) {
+            throw new NoneUserDetailsException();
         }
 
-        try {
-            roleAuthorizationHandler = BizXBeanUtils.getBean(RoleAuthorizationHandler.class);
-        } catch (Exception e) {
-            if (log.isDebugEnabled()) {
-                log.debug("没有角色权限处理器 RoleAuthorizationHandler Bean");
-            }
-            throw new NoSuchBeanDefinitionException("没有角色权限处理器 RoleAuthorizationHandler Bean");
-        }
-
+        return roleAuthorizationHandler.authorizeResource(securedAccess, userDetails);
     }
+
+
 }

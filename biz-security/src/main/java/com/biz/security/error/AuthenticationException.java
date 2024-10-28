@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationException extends BizXException {
+public class AuthenticationException extends WebResponseExceptionHandler {
 
     /**
      * 异常 Code 码。
