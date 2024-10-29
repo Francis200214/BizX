@@ -1,5 +1,6 @@
 package com.biz.security.filter;
 
+import com.biz.common.utils.Common;
 import com.biz.security.authentication.AuthenticationFactory;
 import com.biz.security.authentication.AuthenticationService;
 import com.biz.security.authentication.LoginRequest;
@@ -63,9 +64,16 @@ public class AuthenticationFilter implements SecurityFilter {
         if (log.isDebugEnabled()) {
             log.debug("AuthenticationFilter 开始执行认证过滤");
         }
+        String authTypeStr = request.getHeader(HttpConstant.AUTH_TYPE);
+        if (Common.isBlank(authTypeStr)) {
+            // 未传入认证类型, 执行下一个过滤器
+            chain.doFilter(request, response);
+            return;
+        }
+
         try {
             // 获取认证类型
-            AuthType authType = AuthTypeBuilder.getAuthType(request.getHeader(HttpConstant.AUTH_TYPE));
+            AuthType authType = AuthTypeBuilder.getAuthType(authTypeStr);
             if (authType == null) {
                 // 未识别的认证类型, 执行下一个过滤器
                 chain.doFilter(request, response);
@@ -95,6 +103,8 @@ public class AuthenticationFilter implements SecurityFilter {
             }
             try {
                 response.sendError(SecurityErrorConstant.AUTHENTICATION_FAILED.getCode(), SecurityErrorConstant.AUTHENTICATION_FAILED.getMessage());
+                response.setContentType("application/json;charset=UTF-8");
+                response.getWriter().write(String.format("{\"code\":%d,\"message\":\"%s\"}", SecurityErrorConstant.AUTHENTICATION_FAILED.getCode(), SecurityErrorConstant.AUTHENTICATION_FAILED.getMessage()));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
