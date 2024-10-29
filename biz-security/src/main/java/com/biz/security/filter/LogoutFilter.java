@@ -2,6 +2,7 @@ package com.biz.security.filter;
 
 import com.biz.security.authentication.LogoutSuccessHandler;
 import com.biz.security.filter.chain.FilterChain;
+import com.biz.security.filter.constant.SecurityHttpConstant;
 import com.biz.security.user.store.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
 
@@ -81,7 +82,7 @@ public class LogoutFilter implements SecurityFilter {
      * @return 是否是退出登录请求
      */
     private boolean isLogoutRequest(HttpServletRequest request) {
-        return request.getRequestURI().endsWith("/logout");
+        return request.getRequestURI().endsWith(SecurityHttpConstant.LOGIN_OUT_URL);
     }
 
 }

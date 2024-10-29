@@ -9,7 +9,7 @@ import com.biz.security.authentication.type.AuthTypeBuilder;
 import com.biz.security.error.AuthenticationException;
 import com.biz.security.error.SecurityErrorConstant;
 import com.biz.security.filter.chain.FilterChain;
-import com.biz.security.filter.constant.HttpConstant;
+import com.biz.security.filter.constant.SecurityHttpConstant;
 import com.biz.security.user.UserDetails;
 import com.biz.security.user.store.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -64,7 +64,7 @@ public class AuthenticationFilter implements SecurityFilter {
         if (log.isDebugEnabled()) {
             log.debug("AuthenticationFilter 开始执行认证过滤");
         }
-        String authTypeStr = request.getHeader(HttpConstant.AUTH_TYPE);
+        String authTypeStr = request.getHeader(SecurityHttpConstant.AUTH_TYPE);
         if (Common.isBlank(authTypeStr)) {
             // 未传入认证类型, 执行下一个过滤器
             chain.doFilter(request, response);
@@ -196,7 +196,7 @@ public class AuthenticationFilter implements SecurityFilter {
      * @return 用户信息
      */
     private UserDetails getUserDetailsByUsernamePassword(HttpServletRequest request, AuthenticationService authenticationService) {
-        if (!request.getMethod().equals(HttpConstant.POST)) {
+        if (!request.getMethod().equals(SecurityHttpConstant.POST)) {
             throw new AuthenticationException(SecurityErrorConstant.REQUEST_TYPE_MUST_POST);
         }
 

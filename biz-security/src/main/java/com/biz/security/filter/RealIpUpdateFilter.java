@@ -1,6 +1,7 @@
 package com.biz.security.filter;
 
 import com.biz.security.filter.chain.FilterChain;
+import com.biz.security.filter.constant.SecurityHttpConstant;
 import com.biz.security.user.UserDetails;
 import com.biz.security.user.store.SecurityContextHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -30,17 +31,17 @@ public class RealIpUpdateFilter implements SecurityFilter {
     /**
      * 未知 IP 的标识符。
      */
-    private static final String UNKNOWN = "unknown";
+    private static final String UNKNOWN = SecurityHttpConstant.UNKNOWN;
 
     /**
      * X-Forwarded-For 请求头。
      */
-    private static final String FORWARDED_FOR = "X-Forwarded-For";
+    private static final String FORWARDED_FOR = SecurityHttpConstant.FORWARDED_FOR;
 
     /**
      * X-Real-IP 请求头。
      */
-    private static final String REAL_IP = "X-Real-IP";
+    private static final String REAL_IP = SecurityHttpConstant.REAL_IP;
 
     /**
      * 构造函数。

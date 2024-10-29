@@ -11,7 +11,7 @@ package com.biz.security.filter.constant;
  * @version 1.0.1
  * @since 2024-10-10
  */
-public final class HttpConstant {
+public final class SecurityHttpConstant {
 
     /**
      * POST 请求方式。
@@ -54,9 +54,14 @@ public final class HttpConstant {
     public static final String REAL_IP = "X-Real-IP";
 
     /**
+     * 登出 URL。
+     */
+    public static final String LOGIN_OUT_URL = "/logout";
+
+    /**
      * 私有构造方法，防止实例化。
      */
-    private HttpConstant() {
-        throw new UnsupportedOperationException("不能实例化 HttpConstant 类");
+    private SecurityHttpConstant() {
+        throw new UnsupportedOperationException("不能实例化 SecurityHttpConstant 类");
     }
 }
