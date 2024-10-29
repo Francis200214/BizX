@@ -1,6 +1,5 @@
 package com.biz.security.error;
 
-import com.biz.common.error.BizXException;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 

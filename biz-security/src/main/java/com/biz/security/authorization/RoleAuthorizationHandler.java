@@ -23,6 +23,6 @@ public interface RoleAuthorizationHandler extends AuthorizationHandler {
      * @param userDetails 用户详情
      * @return 用户是否具有访问指定角色的权限
      */
-    boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails);
+    boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails);
 
 }

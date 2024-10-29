@@ -38,7 +38,7 @@ public class DefaultRoleAuthorizationHandler implements RoleAuthorizationHandler
      * @return {@code true} 如果用户具有该资源权限，否则返回 {@code false}
      */
     @Override
-    public boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails) {
+    public boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails) {
         // 允许匿名访问
         if (securedAccess.allowAnonymous()) {
             return true;
@@ -48,21 +48,13 @@ public class DefaultRoleAuthorizationHandler implements RoleAuthorizationHandler
             return true;
         }
 
-        // 验证用户是否登录
-        if (securedAccess.hasRole().length == 0) {
-            return true;
-        }
-
         // 验证用户是否有角色权限访问
-        for (String roleAccess : securedAccess.hasRole()) {
-            for (String role : userDetails.getRoles()) {
-                if (roleAccess.equals(role)) {
-                    return true;
-                }
+        for (String role : securedAccess.hasRole()) {
+            if (!this.check(userDetails, role)) {
+                return false;
             }
         }
-
-        return false;
+        return true;
     }
 
 

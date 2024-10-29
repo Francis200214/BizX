@@ -1,7 +1,8 @@
 package com.biz.security.authorization;
 
 import com.biz.security.authorization.enums.SecuredAccess;
-import com.biz.security.error.NoneUserDetailsException;
+import com.biz.security.error.AuthorizationException;
+import com.biz.security.error.SecurityErrorConstant;
 import com.biz.security.user.UserDetails;
 import lombok.extern.slf4j.Slf4j;
 
@@ -65,7 +66,13 @@ public class AuthorizationManager implements AuthorizationService {
      */
     @Override
     public boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails) {
-        return resourceAuthorizationHandler.authorizeResource(securedAccess, userDetails);
+        if (requiresAuthentication(securedAccess)) {
+            if (userDetails == null) {
+                throw new AuthorizationException(SecurityErrorConstant.USER_NOT_LOGIN);
+            }
+            return resourceAuthorizationHandler.authorizeResource(securedAccess, userDetails);
+        }
+        return true;
     }
 
     /**
@@ -94,7 +101,28 @@ public class AuthorizationManager implements AuthorizationService {
      */
     @Override
     public boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails) {
-        return roleAuthorizationHandler.authorizeResource(securedAccess, userDetails);
+        if (requiresAuthentication(securedAccess)) {
+            if (userDetails == null) {
+                throw new AuthorizationException(SecurityErrorConstant.USER_NOT_LOGIN);
+            }
+            return roleAuthorizationHandler.authorizeRole(securedAccess, userDetails);
+        }
+        return true;
+    }
+
+
+    /**
+     * 判断是否需要登录。
+     *
+     * @param securedAccess 权限注解
+     * @return 如果需要登录返回 {@code true}，否则返回 {@code false}
+     */
+    private static boolean requiresAuthentication(SecuredAccess securedAccess) {
+        if (securedAccess != null) {
+            // 需要登录
+            return securedAccess.requiresAuthentication();
+        }
+        return false;
     }
 
 
