@@ -42,6 +42,7 @@ public final class ResourceAuthorizationFilter implements SecurityFilter {
      * 构造函数。
      *
      * @param securityContextHolder 安全上下文持有者
+     * @param authorizationManager  授权管理器
      */
     public ResourceAuthorizationFilter(SecurityContextHolder securityContextHolder, AuthorizationManager authorizationManager) {
         this.securityContextHolder = securityContextHolder;
