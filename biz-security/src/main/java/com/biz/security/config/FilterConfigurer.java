@@ -64,8 +64,8 @@ public class FilterConfigurer {
      * @return 角色授权过滤器
      */
     @Bean
-    public RoleAuthorizationFilter roleAuthorizationFilter(SecurityContextHolder securityContextHolder) {
-        return new RoleAuthorizationFilter(securityContextHolder);
+    public RoleAuthorizationFilter roleAuthorizationFilter(SecurityContextHolder securityContextHolder, AuthorizationManager authorizationManager) {
+        return new RoleAuthorizationFilter(securityContextHolder, authorizationManager);
     }
 
     /**

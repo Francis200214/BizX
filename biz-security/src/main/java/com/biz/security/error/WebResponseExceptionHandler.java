@@ -30,9 +30,8 @@ public abstract class WebResponseExceptionHandler extends BizXException implemen
 
         try {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.setContentType("application/json");
+            response.setContentType("application/json;charset=UTF-8");
             response.sendError(getCode(), getMessage());
-            response.setCharacterEncoding("UTF-8");
             response.getWriter().write(String.format("{\"code\":%d,\"message\":\"%s\"}", getCode(), getMessage()));
         } catch (IOException e) {
             if (log.isDebugEnabled()) {

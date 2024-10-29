@@ -87,6 +87,8 @@ public final class ResourceAuthorizationFilter implements SecurityFilter {
             }
             try {
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "资源权限过滤器执行时未知错误");
+                response.setContentType("application/json;charset=UTF-8");
+                response.getWriter().write(String.format("{\"code\":%d,\"message\":\"%s\"}", HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "资源权限过滤器执行时未知错误"));
                 return;
             } catch (IOException ex) {
                 throw new RuntimeException(ex);

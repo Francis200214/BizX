@@ -1,8 +1,10 @@
 package com.biz.security.filter;
 
+import com.biz.security.authorization.AuthorizationManager;
 import com.biz.security.authorization.enums.SecuredAccess;
+import com.biz.security.error.AuthorizationException;
+import com.biz.security.error.HaveNotRoleAuthorizationException;
 import com.biz.security.filter.chain.FilterChain;
-import com.biz.security.user.UserDetails;
 import com.biz.security.user.store.SecurityContextHolder;
 import com.biz.security.util.HttpServletRequestUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -32,12 +34,19 @@ public final class RoleAuthorizationFilter implements SecurityFilter {
     private final SecurityContextHolder securityContextHolder;
 
     /**
+     * 鉴权管理器。
+     */
+    private final AuthorizationManager authorizationManager;
+
+    /**
      * 构造函数。
      *
      * @param securityContextHolder 安全上下文持有者
+     * @param authorizationManager 鉴权管理器
      */
-    public RoleAuthorizationFilter(SecurityContextHolder securityContextHolder) {
+    public RoleAuthorizationFilter(SecurityContextHolder securityContextHolder, AuthorizationManager authorizationManager) {
         this.securityContextHolder = securityContextHolder;
+        this.authorizationManager = authorizationManager;
     }
 
     /**
@@ -53,69 +62,41 @@ public final class RoleAuthorizationFilter implements SecurityFilter {
             log.debug("角色权限过滤器执行中");
         }
 
-        Annotation annotation = HttpServletRequestUtils.getAnnotation(request, SecuredAccess.class);
-        if (annotation != null) {
-            SecuredAccess securedAccess = (SecuredAccess) annotation;
-            if (!validateRoleAccess(securedAccess, securityContextHolder.getContext())) {
-                if (log.isDebugEnabled()) {
-                    log.debug("角色权限鉴权失败");
+        try {
+            Annotation annotation = HttpServletRequestUtils.getAnnotation(request, SecuredAccess.class);
+            if (annotation != null) {
+                SecuredAccess securedAccess = (SecuredAccess) annotation;
+                if (!authorizationManager.authorizeRole(securedAccess, securityContextHolder.getContext())) {
+                    if (log.isDebugEnabled()) {
+                        log.debug("角色权限鉴权失败");
+                    }
+                    // 校验角色失败，抛出异常
+                    throw new HaveNotRoleAuthorizationException();
                 }
-                // 校验角色失败，返回错误信息
-                handleAccessDenied(response);
-                // 终止过滤器链
+            }
+
+        } catch (AuthorizationException e) {
+            if (log.isDebugEnabled()) {
+                log.debug("角色鉴权错误 {}", e.getMessage());
+            }
+            e.setResponse(response);
+            return;
+
+        } catch (Exception e) {
+            if (log.isDebugEnabled()) {
+                log.debug("角色权限过滤器执行时未知错误 {}", e.getMessage());
+            }
+            try {
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "角色权限过滤器执行时未知错误");
                 return;
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         }
+
         // 角色权限校验通过，执行下一个过滤器
         chain.doFilter(request, response);
     }
 
-    /**
-     * 处理访问被拒绝的情况。
-     *
-     * @param response 响应对象
-     */
-    private void handleAccessDenied(HttpServletResponse response) {
-        try {
-            response.setStatus(HttpServletResponse.SC_FORBIDDEN); // 设置状态码为 403 Forbidden
-            response.setContentType("application/json");
-            response.getWriter().write("{\"error\": \"Access Denied\", \"message\": \"You do not have permission to access this role.\"}");
-        } catch (IOException e) {
-            throw new RuntimeException("角色权限校验失败时设置 Response 出错", e);
-        }
-    }
 
-    /**
-     * 校验角色访问权限。
-     *
-     * @param securedAccess 角色访问注解
-     * @param userDetails   用户信息
-     * @return {@code true} 如果用户有权限访问角色，否则返回 {@code false}
-     */
-    private static boolean validateRoleAccess(SecuredAccess securedAccess, UserDetails userDetails) {
-        // 允许匿名访问
-        if (securedAccess.allowAnonymous()) {
-            return true;
-        }
-        // 允许不登录访问
-        if (!securedAccess.requiresAuthentication()) {
-            return true;
-        }
-
-        // 验证用户是否登录
-        if (securedAccess.hasRole().length == 0) {
-            return true;
-        }
-
-        // 验证用户是否有角色权限访问
-        for (String roleAccess : securedAccess.hasRole()) {
-            for (String role : userDetails.getRoles()) {
-                if (roleAccess.equals(role)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
 }
