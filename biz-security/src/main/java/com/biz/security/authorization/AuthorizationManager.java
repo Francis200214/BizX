@@ -52,9 +52,6 @@ public class AuthorizationManager implements AuthorizationService {
         if (resource == null) {
             throw new NullPointerException("校验的资源名称不能为 Null");
         }
-        if (userDetails == null) {
-            throw new NoneUserDetailsException();
-        }
         return resourceAuthorizationHandler.check(userDetails, resource);
     }
 
@@ -68,12 +65,6 @@ public class AuthorizationManager implements AuthorizationService {
      */
     @Override
     public boolean authorizeResource(SecuredAccess securedAccess, UserDetails userDetails) {
-        if (securedAccess == null) {
-            return false;
-        }
-        if (userDetails == null) {
-            throw new NoneUserDetailsException();
-        }
         return resourceAuthorizationHandler.authorizeResource(securedAccess, userDetails);
     }
 
@@ -89,9 +80,6 @@ public class AuthorizationManager implements AuthorizationService {
         if (role == null) {
             throw new NullPointerException("校验的角色名称不能为 Null");
         }
-        if (userDetails == null) {
-            throw new NoneUserDetailsException();
-        }
 
         return roleAuthorizationHandler.check(userDetails, role);
     }
@@ -106,10 +94,6 @@ public class AuthorizationManager implements AuthorizationService {
      */
     @Override
     public boolean authorizeRole(SecuredAccess securedAccess, UserDetails userDetails) {
-        if (userDetails == null) {
-            throw new NoneUserDetailsException();
-        }
-
         return roleAuthorizationHandler.authorizeResource(securedAccess, userDetails);
     }
 
