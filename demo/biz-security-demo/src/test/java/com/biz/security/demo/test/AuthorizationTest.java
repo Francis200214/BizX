@@ -94,13 +94,13 @@ public class AuthorizationTest {
 
 
     /**
-     * 测试不需要登录（无需登录）
+     * 测试需要登录（需要登录）
      */
     @Test
     public void testMustLogin() throws Exception {
-        mockMvc.perform(get("/api/news"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("Here is the latest news"));
+        mockMvc.perform(get("/api/user/info")
+                )
+                .andExpect(status().isOk());
     }
 
 

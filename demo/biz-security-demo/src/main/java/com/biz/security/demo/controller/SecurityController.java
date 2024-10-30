@@ -50,12 +50,14 @@ class SecurityController {
         return ResponseEntity.ok(currentUser);
     }
 
+
     // 用户登出接口
     @PostMapping("/logout")
     public ResponseEntity<String> logout() {
         log.info("Logging out user...");
         return ResponseEntity.ok("Logout successful");
     }
+
 
     // 添加用户（需要 AddUser 权限）
     @SecuredAccess(hasAuthority = "AddUser")
@@ -64,6 +66,7 @@ class SecurityController {
         return ResponseEntity.ok("User added successfully");
     }
 
+
     // 修改用户（需要 ChangeUser 权限）
     @SecuredAccess(hasAuthority = "ChangeUser")
     @PutMapping("/user/change")
@@ -71,7 +74,6 @@ class SecurityController {
         log.info("Change user: {}", username);
         return ResponseEntity.ok("User Changed successfully: " + username);
     }
-
 
 
     // 查询用户列表（需要 USER 角色）
@@ -99,6 +101,7 @@ class SecurityController {
         log.info("Viewing news...");
         return ResponseEntity.ok("Here is the latest news");
     }
+
 
     // 获取当前用户信息（需要登录）
     @SecuredAccess
