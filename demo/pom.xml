@@ -5,7 +5,7 @@
     <parent>
         <artifactId>BizX</artifactId>
         <groupId>io.github.francis200214</groupId>
-        <version>1.5.1</version>
+        <version>1.5.2</version>
     </parent>
     <modules>
         <module>biz-security-demo</module>
@@ -16,7 +16,7 @@
 
     <artifactId>demo</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.5.1</version>
+    <version>1.5.2</version>
     <packaging>pom</packaging>
 
 
