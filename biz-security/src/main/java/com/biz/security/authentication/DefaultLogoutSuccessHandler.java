@@ -16,6 +16,8 @@ import java.io.IOException;
  */
 public class DefaultLogoutSuccessHandler implements LogoutSuccessHandler {
 
+    private static final String MESSAGE = "退出登录成功";
+
     /**
      * 退出登录成功处理。
      *
@@ -27,6 +29,7 @@ public class DefaultLogoutSuccessHandler implements LogoutSuccessHandler {
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType("application/json");
-        response.getWriter().write("{\"message\": \"退出登录成功\"}");
+        response.getWriter().write(String.format("{\"code\":%d,\"message\":\"%s\"}", HttpServletResponse.SC_OK, MESSAGE));
     }
+
 }

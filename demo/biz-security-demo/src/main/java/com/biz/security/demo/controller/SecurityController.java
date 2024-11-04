@@ -52,9 +52,11 @@ class SecurityController {
 
 
     // 用户登出接口
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public ResponseEntity<String> logout() {
         log.info("Logging out user...");
+        UserDetails currentUser = securityContextHolder.getContext();
+        log.info("Current user: {}", currentUser);
         return ResponseEntity.ok("Logout successful");
     }
 
